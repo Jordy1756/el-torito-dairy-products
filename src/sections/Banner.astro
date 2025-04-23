@@ -1,0 +1,70 @@
+---
+import Navbar from "@components/Navbar.astro";
+import Hero from "./Hero.astro";
+import Awards from "./Awards.astro";
+
+import { getBannerImage } from "@scripts/handleBannerImages";
+import { bannerSection } from "@data";
+
+const { bannerImages } = bannerSection;
+
+const [bg1, bg2, bg3, bg4, bg5] = bannerImages.map(({ id }) => `url(${getBannerImage(id)})`);
+---
+
+<header id="banner">
+    <Navbar />
+    <Hero />
+    <Awards />
+</header>
+
+<style define:vars={{ bg1, bg2, bg3, bg4, bg5 }}>
+    header::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-color: var(--image-background);
+        z-index: -1;
+    }
+
+    header {
+        color: var(--neutral-900);
+        padding: 1rem;
+        width: 100%;
+        min-height: 100dvh;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        position: relative;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 3rem;
+        animation: changeBackground 25s infinite linear;
+        z-index: 999;
+        overflow: hidden;
+    }
+
+    @keyframes changeBackground {
+        0%,
+        15%,
+        100% {
+            background-image: var(--bg1);
+        }
+        20%,
+        35% {
+            background-image: var(--bg2);
+        }
+        40%,
+        55% {
+            background-image: var(--bg3);
+        }
+        60%,
+        75% {
+            background-image: var(--bg4);
+        }
+        80%,
+        95% {
+            background-image: var(--bg5);
+        }
+    }
+</style>

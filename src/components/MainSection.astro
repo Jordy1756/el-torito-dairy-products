@@ -1,0 +1,30 @@
+---
+type Props = {
+    id: "our-team" | "testimonies" | "products" | "about-us" | "FAQ" | "contact-us";
+    flexDirection?: "row" | "column";
+    flexWrap?: "wrap" | "nowrap";
+    paddingInline?: "1rem" | 0;
+};
+
+const { id, flexDirection = "column", flexWrap = "nowrap", paddingInline = "1rem" } = Astro.props;
+---
+
+<section id={id}>
+    <slot />
+</section>
+
+<style define:vars={{ flexDirection, flexWrap, paddingInline }}>
+    section {
+        padding-block: 1rem;
+        display: flex;
+        flex-direction: var(--flexDirection);
+        flex-wrap: var(--flexWrap);
+        gap: 2rem;
+    }
+
+    @media screen and (width < 1542px) {
+        section {
+            padding-inline: var(--paddingInline);
+        }
+    }
+</style>

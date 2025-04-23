@@ -1,0 +1,206 @@
+---
+import WhatsappIcon from "@icons/WhatsappIcon.astro";
+import FacebookIcon from "@icons/FacebookIcon.astro";
+import InstagramIcon from "@icons/InstagramIcon.astro";
+import logo from "@images/company/logo.webp";
+import { Image } from "astro:assets";
+import { getYear } from "@utils/handleDates";
+
+import { basics } from "@data";
+
+type Props = {
+    backgroundColor?: "var(--primary-700)" | "transparent";
+};
+
+const { backgroundColor = "var(--primary-700)" } = Astro.props;
+const { name, slogan, socialNetworks } = basics;
+
+const SOCIAL_NETWORKS: Record<string, string | any> = {
+    Whatsapp: WhatsappIcon,
+    Facebook: FacebookIcon,
+    Instagram: InstagramIcon,
+};
+---
+
+<footer>
+    <section class="footer__content">
+        <div>
+            <a href="/#"><Image src={logo} alt={`Logo de ${name}`} /></a>
+            <p>{slogan}</p>
+        </div>
+        <nav>
+            <div>
+                <h6>Empresa</h6>
+                <ul>
+                    <li><a href="/#about-us">Sobre nosotros</a></li>
+                    <li><a href="/#products">Nuestros productos</a></li>
+                    <li><a href="/#testimonies">Testimonios</a></li>
+                    <li><a href="/#our-team">Nuestro equipo</a></li>
+                    <li><a href="/#FAQ">Preguntas frecuentes</a></li>
+                    <li><a href="/#contact-us">Contáctanos</a></li>
+                </ul>
+            </div>
+            <div>
+                <h6>Legal</h6>
+                <ul>
+                    <li><a href="/privacyPolicy">Privacidad</a></li>
+                    <li><a href="/termsAndConditions">Términos</a></li>
+                </ul>
+            </div>
+        </nav>
+    </section>
+    <div></div>
+    <section class="footer__info">
+        <p translate="no">
+            © {getYear(new Date())}
+            {name}. <span translate="yes">Todos los derechos reservados.</span>
+        </p>
+        <address>
+            {
+                socialNetworks.map(({ network, url }) => {
+                    const Icon = SOCIAL_NETWORKS[network];
+                    return (
+                        <a href={url} target="_blank" rel="noopener noreferrer">
+                            <Icon width={24} height={24} />
+                        </a>
+                    );
+                })
+            }
+        </address>
+    </section>
+</footer>
+
+<style define:vars={{ backgroundColor }}>
+    footer {
+        width: 100%;
+        padding: 1rem;
+        background-color: var(--backgroundColor);
+        color: var(--neutral-50);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    footer > div {
+        height: 1px;
+        width: min(100%, var(--max-width));
+        background-color: var(--neutral-50);
+    }
+
+    footer > section {
+        width: min(100%, var(--max-width));
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 2rem;
+    }
+
+    /* FOOTER CONTENT */
+
+    .footer__content > div {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        flex: 1;
+    }
+
+    .footer__content > div > a,
+    .footer__content > ul > li > a {
+        display: flex;
+    }
+
+    .footer__content > div > a {
+        width: fit-content;
+    }
+
+    .footer__content > div > a > img {
+        width: 75px;
+        height: auto;
+        object-fit: contain;
+    }
+
+    .footer__content > nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+    }
+
+    .footer__content > nav > div,
+    .footer__content > nav > div > ul {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .footer__content > nav > div {
+        gap: 1rem;
+    }
+
+    .footer__content > nav > div > ul {
+        gap: 0.5rem;
+    }
+
+    .footer__content > nav > div > ul > li::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 1px;
+        background-color: var(--neutral-50);
+        transition:
+            transform 0.3s ease-in-out,
+            width 0.3s ease-in-out;
+    }
+
+    .footer__content > nav > div > ul > li {
+        position: relative;
+    }
+
+    .footer__content > nav > div > ul > li:hover::before {
+        width: 100%;
+        transform: translateX(-50%);
+    }
+
+    .footer__content > nav > div > ul > li > a {
+        color: var(--neutral-200);
+    }
+
+    /* FOOTER INFO */
+
+    .footer__info > address {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .footer__info > address > a {
+        display: flex;
+        transition: scale 0.3s ease-in-out;
+    }
+
+    .footer__info > address > a:hover {
+        scale: 1.1;
+    }
+
+    @media screen and (width <= 650px) {
+        .footer__content,
+        .footer__content > div,
+        .footer__content > nav,
+        .footer__content > nav > div,
+        .footer__content > nav > div > ul {
+            align-items: center;
+        }
+
+        .footer__info > address {
+            justify-content: center;
+        }
+
+        :is(footer > section, .footer__content > nav) {
+            flex-direction: column;
+        }
+
+        :is(.footer__content > div, .footer__info > p) {
+            text-align: center;
+        }
+    }
+</style>

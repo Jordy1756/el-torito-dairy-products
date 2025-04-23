@@ -1,0 +1,30 @@
+---
+import FAQItem from "@components/FAQItem.astro";
+import MainSection from "@components/MainSection.astro";
+import { FAQsSection } from "@data";
+
+const { title, description, FAQs } = FAQsSection;
+---
+
+<MainSection id="FAQ">
+    <header>
+        <h2>{title}</h2>
+        <p>{description}</p>
+    </header>
+    <main>
+        {FAQs.map(({ question, answer }) => <FAQItem question={question} answer={answer} />)}
+    </main>
+</MainSection>
+
+<style>
+    header {
+        text-align: center;
+    }
+
+    main {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        flex: 1;
+    }
+</style>

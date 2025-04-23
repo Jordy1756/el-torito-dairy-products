@@ -1,0 +1,113 @@
+---
+import { Image } from "astro:assets";
+import { getIdentityImage } from "@scripts/handleAboutDetailCard";
+
+type Props = {
+    id: string;
+    number: string;
+    title: string;
+    content: string;
+};
+
+const { id, number, title, content } = Astro.props;
+---
+
+<article>
+    <div>
+        <div class="about__statistic-card">
+            <span>{number}</span>
+            <Image src={getIdentityImage(id)} alt={`Imagen de ${title}`} />
+        </div>
+        <div class="about__description-card">
+            <h3>{title}</h3>
+            <p>{content}</p>
+        </div>
+    </div>
+</article>
+
+<style>
+    article {
+        height: 500px;
+        display: flex;
+        align-items: center;
+        animation: revealAboutDetailCard linear both;
+        animation-timeline: view();
+        animation-range: entry 25% cover 45%;
+    }
+
+    article > div {
+        display: flex;
+        gap: 1rem;
+    }
+
+    :is(.about__statistic-card, .about__description-card) {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        gap: 0.5rem;
+    }
+
+    .about__statistic-card {
+        position: relative;
+    }
+
+    .about__statistic-card > span {
+        display: block;
+        font-size: 1.25rem;
+        border-bottom: 1px solid var(--neutral-900);
+        padding-bottom: 1rem;
+    }
+
+    .about__statistic-card > img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 400px;
+        height: 500px;
+        object-fit: cover;
+        border-radius: var(--border-radius-out);
+    }
+
+    @keyframes revealAboutDetailCard {
+        from {
+            opacity: 0;
+            translate: 50% 50%;
+        }
+        to {
+            opacity: 1;
+            translate: 0 0;
+        }
+    }
+
+    @media screen and (width <= 1000px) {
+        article {
+            height: 350px;
+        }
+
+        .about__statistic-card > img {
+            width: 75%;
+            height: 350px;
+        }
+    }
+
+    @media screen and (width <= 700px) {
+        article {
+            height: auto;
+            animation-range: entry 20% cover 35%;
+        }
+
+        .about__statistic-card > img {
+            display: none;
+        }
+
+        .about__statistic-card {
+            flex: 1;
+        }
+
+        .about__description-card {
+            flex: 5;
+        }
+    }
+</style>

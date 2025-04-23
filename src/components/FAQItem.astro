@@ -1,0 +1,108 @@
+---
+type Props = {
+    question: string;
+    answer: string;
+};
+
+const { question, answer } = Astro.props;
+---
+
+<details name="FAQs">
+    <summary>
+        <h6>{question}</h6>
+        <div></div>
+    </summary>
+    <div>
+        <p>{answer}</p>
+    </div>
+</details>
+
+<style>
+    details {
+        padding: 1rem;
+        border-radius: var(--border-radius-out);
+        box-shadow: var(--box-shadow);
+        animation: revealFAQ linear both;
+        animation-timeline: view();
+    }
+
+    details > summary {
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    details > summary > div {
+        position: relative;
+        width: 20px;
+        height: 20px;
+    }
+
+    details > summary > div::before,
+    details > summary > div::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        background-color: var(--neutral-900);
+        width: 100%;
+        height: 2px;
+        transform: translate(0, -50%);
+        transition: transform 0.2s ease-in-out;
+    }
+
+    details > summary > div::before {
+        transform: rotate(180deg);
+    }
+
+    details > summary > div::after {
+        transform: rotate(90deg);
+    }
+
+    details[open] > summary > div::before,
+    details[open] > summary > div::after {
+        transform: rotate(0);
+    }
+
+    @supports (interpolate-size: allow-keywords) {
+        details::details-content {
+            height: 0;
+            overflow: clip;
+            transition:
+                margin-top 0.2s ease-in-out,
+                height 0.2s ease-in-out,
+                content-visibility 0.2s allow-discrete;
+        }
+
+        details[open]::details-content {
+            margin-top: 0.5rem;
+            height: auto;
+        }
+    }
+
+    @supports not (interpolate-size: allow-keywords) {
+        details[open] > div {
+            margin-top: 0.5rem;
+        }
+    }
+
+    @keyframes revealFAQ {
+        entry 0% {
+            opacity: 0;
+            transform: translateY(100%);
+        }
+        entry 100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        exit 0% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        exit 100% {
+            opacity: 0;
+            transform: translateY(-100%);
+        }
+    }
+</style>

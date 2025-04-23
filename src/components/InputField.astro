@@ -1,0 +1,110 @@
+---
+type Props = {
+    name: string;
+    label: string;
+    fieldType: "input" | "textarea";
+    inputType?: "text" | "email";
+    pattern?: RegExp;
+    minLength?: number;
+    maxLength?: number;
+    flex?: number;
+};
+
+const { name, label, inputType, fieldType, pattern, minLength, maxLength, flex } = Astro.props;
+---
+
+<div>
+    {
+        fieldType === "input" ? (
+            <input
+                name={name}
+                type={inputType}
+                placeholder=""
+                pattern={pattern?.source}
+                minlength={minLength}
+                maxlength={maxLength}
+                required
+            />
+        ) : (
+            <textarea name={name} placeholder="" minlength={minLength} maxlength={maxLength} required />
+        )
+    }
+    <label>{label}</label>
+    <p></p>
+</div>
+
+<style define:vars={{ flex }}>
+    div {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        position: relative;
+        flex: var(--flex);
+    }
+
+    div > :is(input:focus, textarea:focus):not(:placeholder-shown):valid {
+        border-color: var(--success-900);
+    }
+
+    div > :is(input, textarea):not(:placeholder-shown):invalid {
+        border-color: var(--error-500);
+    }
+
+    div > :is(input, textarea) {
+        padding: 0.5625rem calc(0.5625rem * 2 - 0.25rem);
+        border: 1px solid var(--neutral-400);
+        border-radius: var(--border-radius-out);
+        background-color: var(--neutral-50);
+        flex: 1;
+    }
+
+    div > textarea {
+        resize: none;
+        min-height: 200px;
+        field-sizing: content;
+    }
+
+    div > label {
+        line-height: 1;
+    }
+
+    div > label {
+        padding-inline: 0.25rem;
+        position: absolute;
+        top: calc(0.5625rem * 2 - 0.25rem);
+        left: 0.5625rem;
+        pointer-events: none;
+        background-color: var(--neutral-50);
+        transition:
+            top 0.3s ease-in-out,
+            font-size 0.3s ease-in-out,
+            color 0.3s ease-in-out;
+    }
+
+    div > :is(input, textarea):focus + label,
+    div > :is(input, textarea):not(:placeholder-shown) + label {
+        top: calc(-0.5625rem * 2 + 0.65rem);
+        font-size: 0.9rem;
+        color: var(--neutral-700);
+    }
+
+    div > :is(input:focus, textarea:focus):not(:placeholder-shown):valid + label {
+        color: var(--success-900);
+    }
+
+    div > :is(input, textarea):not(:placeholder-shown):invalid + label {
+        color: var(--error-900);
+    }
+
+    div > p {
+        padding-inline: 0.5625rem;
+        color: var(--error-900);
+        font-size: 0.75rem;
+    }
+
+    @media screen and (width <= 400px) {
+        div > :is(input, textarea) {
+            width: 100%;
+        }
+    }
+</style>

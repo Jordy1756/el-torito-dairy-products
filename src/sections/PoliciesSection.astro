@@ -1,0 +1,57 @@
+---
+import { getFormattedDate } from "@utils/handleDates";
+
+type Props = {
+    title: string;
+    description: string;
+    content: Array<{
+        subtitle: string;
+        description: string;
+    }>;
+};
+
+const { title, description, content } = Astro.props;
+---
+
+<section>
+    <header>
+        <h2>{title}</h2>
+        <p>{description}</p>
+    </header>
+    <main>
+        {
+            content.map(({ subtitle, description }) => (
+                <article>
+                    <h4>{subtitle}</h4>
+                    <p>{description}</p>
+                </article>
+            ))
+        }
+    </main>
+    <footer>
+        <p>Última actualización: {getFormattedDate(new Date())}</p>
+    </footer>
+</section>
+
+<style>
+    section,
+    section > header,
+    section > main,
+    section > main > article {
+        display: flex;
+        flex-direction: column;
+    }
+
+    section {
+        gap: 2rem;
+    }
+
+    section > header,
+    section > main > article {
+        gap: 0.5rem;
+    }
+
+    section > main {
+        gap: 1rem;
+    }
+</style>

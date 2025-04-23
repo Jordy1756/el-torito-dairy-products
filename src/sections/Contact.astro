@@ -1,0 +1,136 @@
+---
+import InputField from "@components/InputField.astro";
+import MainSection from "@components/MainSection.astro";
+import LocationIcon from "@icons/LocationIcon.astro";
+import PhoneIcon from "@icons/PhoneIcon.astro";
+import EmailIcon from "@icons/EmailIcon.astro";
+import ContactLink from "@components/ContactLink.astro";
+import Actionable from "@components/Actionable.astro";
+import SendIcon from "@icons/SendIcon.astro";
+
+import { basics, contactUsSection } from "@data";
+import { contactFields } from "@definitions/contactFieldTypes";
+
+const { email, phone, address } = basics;
+const { title, description, addressLink, addressMapLink, schedules } = contactUsSection;
+---
+
+<MainSection id="contact-us" flexDirection="row" flexWrap="wrap">
+    <article class="contact__info">
+        <header>
+            <h2>{title}</h2>
+            <p>{description}</p>
+        </header>
+        <main>
+            <div>
+                <h6>Información de contacto</h6>
+                <address>
+                    <ContactLink link={addressLink} text={address}>
+                        <LocationIcon width={24} height={24} color="var(--neutral-900)" />
+                    </ContactLink>
+                    <ContactLink link={`tel:${phone.trim()}`} text={phone}>
+                        <PhoneIcon width={24} height={24} color="var(--neutral-900)" />
+                    </ContactLink>
+                    <ContactLink link={`mailto:${email}`} text={email}>
+                        <EmailIcon width={24} height={24} color="var(--neutral-900)" />
+                    </ContactLink>
+                </address>
+            </div>
+            <div>
+                <h6>Horario</h6>
+                {
+                    schedules.map(({ day, hours }) => (
+                        <p>
+                            {day}: {hours}
+                        </p>
+                    ))
+                }
+            </div>
+        </main>
+        <iframe src={addressMapLink} loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </article>
+    <article class="contact__form">
+        <h5>Ponte en contacto con nosotros</h5>
+        <form id="contact-form">
+            {
+                Object.entries(contactFields).map(
+                    ([key, { name, inputType, fieldType, pattern, minLength, maxLength, flex }]) => (
+                        <InputField
+                            name={key}
+                            label={name}
+                            fieldType={fieldType}
+                            inputType={inputType}
+                            pattern={pattern}
+                            minLength={minLength}
+                            maxLength={maxLength}
+                            flex={flex}
+                        />
+                    )
+                )
+            }
+            <Actionable type="button" className="primary" buttonType="submit"
+                >Enviar
+                <SendIcon width={22} height={22} color="var(--neutral-50)" />
+            </Actionable>
+        </form>
+    </article>
+</MainSection>
+
+<style>
+    article:is(.contact__info, .contact__form) {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    /* CONTACT INFO */
+
+    .contact__info {
+        flex: 2.5;
+    }
+
+    :is(.contact__info > header, .contact__info > main > div, .contact__info > main > div > address) {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .contact__info > header > p {
+        max-width: 100%;
+    }
+
+    .contact__info > main {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .contact__info > iframe {
+        border: none;
+        border-radius: var(--border-radius-out);
+        flex: 1;
+        width: 100%;
+        min-height: 250px;
+    }
+
+    /* CONTACT FORM */
+
+    .contact__form {
+        flex: 1;
+    }
+
+    .contact__form > h5 {
+        text-align: center;
+    }
+
+    .contact__form > form {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        flex: 1;
+    }
+</style>
+
+<script src="../scripts/handleContactForm.ts"></script>

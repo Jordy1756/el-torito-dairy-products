@@ -1,0 +1,178 @@
+---
+import MainSection from "@components/MainSection.astro";
+import TestimonyCard from "@components/TestimonyCard.astro";
+import { testimoniesSection } from "@data";
+import { getTestimonyId, getAnimationTimeline, getTimelineScope } from "@scripts/handleTestimonies";
+
+const { title, description, testimonies } = testimoniesSection;
+---
+
+<MainSection id="testimonies" paddingInline={0}>
+    <header>
+        <h2>{title}</h2>
+        <p>{description}</p>
+    </header>
+    <main>
+        <div>
+            {
+                testimonies.map(({ name, time, testimony, gridArea }, i) => (
+                    <TestimonyCard
+                        id={getTestimonyId(i)}
+                        name={name}
+                        time={time}
+                        testimony={testimony}
+                        gridArea={gridArea}
+                    />
+                ))
+            }
+        </div>
+        <nav>
+            {
+                testimonies.map((_, i) => (
+                    <a href={`#${getTestimonyId(i)}`} style={`animation-timeline: ${getAnimationTimeline(i)};`} />
+                ))
+            }
+        </nav>
+    </main>
+</MainSection>
+
+<style define:vars={{ timelineScope: getTimelineScope(testimonies) }}>
+    header {
+        text-align: center;
+        padding-inline: 1rem;
+    }
+
+    main {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    main > div {
+        padding-inline: 1rem;
+        gap: 1rem;
+    }
+
+    main > nav {
+        display: none;
+    }
+
+    @media screen and (width >= 950px) {
+        main > div {
+            display: grid;
+            place-items: center;
+        }
+    }
+
+    @media screen and (width < 950px) {
+        @supports (animation-timeline: view()) {
+            main {
+                timeline-scope: var(--timelineScope);
+                bottom: calc(anchor(top) - 3rem);
+                right: calc(anchor(right) + 3rem);
+            }
+
+            main > div {
+                display: flex;
+                padding-block: 1rem;
+                overflow-x: auto;
+                scrollbar-width: none;
+                overscroll-behavior-x: contain;
+                scroll-padding: 0 25%;
+                scroll-snap-type: x mandatory;
+                scroll-behavior: smooth;
+            }
+
+            main > nav {
+                display: flex;
+                justify-content: center;
+                gap: 0.5rem;
+            }
+
+            main > nav > a {
+                width: 16px;
+                height: 16px;
+                border-radius: 9999px;
+                background-color: var(--neutral-300);
+            }
+        }
+
+        @supports not (animation-timeline: view()) {
+            main > div {
+                display: grid;
+                place-items: center;
+            }
+        }
+    }
+
+    @media screen and (600px <= width < 950px) {
+        @supports (animation-timeline: view()) {
+            main > nav > a:first-child {
+                animation: colorize-first-dot linear;
+            }
+
+            main > nav > a:not(:first-child, :last-child) {
+                animation: colorize-center-dot linear;
+            }
+
+            main > nav > a:last-child {
+                animation: colorize-last-dot linear;
+            }
+
+            @keyframes colorize-first-dot {
+                entry 100%,
+                exit 100% {
+                    background-color: var(--primary-500);
+                    width: 32px;
+                    border-radius: 16px;
+                }
+            }
+
+            @keyframes colorize-center-dot {
+                entry 100% {
+                    background-color: var(--primary-500);
+                    width: 32px;
+                    border-radius: 16px;
+                }
+
+                entry 90%,
+                exit 50% {
+                    background-color: var(--neutral-300);
+                    width: 16px;
+                    border-radius: 9999px;
+                }
+            }
+
+            @keyframes colorize-last-dot {
+                entry 50%,
+                exit 100% {
+                    background-color: var(--primary-500);
+                    width: 32px;
+                    border-radius: 16px;
+                }
+            }
+        }
+    }
+
+    @media screen and (width < 600px) {
+        @supports (animation-timeline: view()) {
+            main > div {
+                scroll-padding: 0;
+            }
+
+            main > nav > a:first-child,
+            main > nav > a:last-child,
+            main > nav > a:not(:first-child, :last-child) {
+                animation: colorize-dot linear;
+            }
+
+            @keyframes colorize-dot {
+                50% {
+                    background-color: var(--primary-500);
+                    width: 32px;
+                    border-radius: 16px;
+                }
+            }
+        }
+    }
+</style>

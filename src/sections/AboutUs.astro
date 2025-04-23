@@ -1,0 +1,52 @@
+---
+import AboutDetailCard from "@components/AboutDetailCard.astro";
+import MainSection from "@components/MainSection.astro";
+import { aboutUsSection } from "@data";
+
+const { title, description, identities } = aboutUsSection;
+---
+
+<MainSection id="about-us">
+    <header>
+        <h2>{title}</h2>
+        <p>{description}</p>
+    </header>
+    <main>
+        {
+            identities.map(({ id, title, content }, index) => (
+                <AboutDetailCard
+                    id={id}
+                    number={(index + 1).toString().padStart(2, "0")}
+                    title={title}
+                    content={content}
+                />
+            ))
+        }
+    </main>
+</MainSection>
+
+<style>
+    header {
+        text-align: center;
+        margin-bottom: 5rem;
+    }
+
+    main {
+        display: flex;
+        flex-direction: column;
+        gap: 5rem;
+        contain: paint;
+    }
+
+    @media screen and (width <= 1000px) {
+        main {
+            gap: 3rem;
+        }
+    }
+
+    @media screen and (width <= 700px) {
+        main {
+            gap: 2rem;
+        }
+    }
+</style>

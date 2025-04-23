@@ -1,0 +1,40 @@
+---
+
+---
+
+<div id="toast">
+    <p></p>
+</div>
+
+<style>
+    div {
+        position: fixed;
+        bottom: -25dvh;
+        right: 1rem;
+        padding: 1rem;
+        border-radius: var(--border-radius-out);
+        box-shadow: var(--box-shadow);
+        color: var(--neutral-50);
+        z-index: 1000;
+        transition:
+            bottom 0.3s ease-in-out,
+            background-color 0.3s ease-in-out;
+    }
+
+    div.success,
+    div.error {
+        bottom: 1rem;
+    }
+
+    div.success {
+        background-color: var(--success-700);
+    }
+
+    div.error {
+        background-color: var(--error-700);
+    }
+
+    div > p {
+        max-width: min(25ch, 100%);
+    }
+</style>
