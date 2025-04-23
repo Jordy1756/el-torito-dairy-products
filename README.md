@@ -112,5 +112,3 @@ Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) par
 - WhatsApp: +506 8412 6988
 - [Facebook](https://www.facebook.com/LacteosElTorito)
 - [Instagram](https://www.instagram.com/lacteoseltorito)
-
----
