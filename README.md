@@ -113,11 +113,5 @@ Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) par
 - [Facebook](https://www.facebook.com/LacteosElTorito)
 - [Instagram](https://www.instagram.com/lacteoseltorito)
 
-## 🙏 Agradecimientos
-
-- Iconos de [Iconify](https://iconify.design/)
-- Imágenes alojadas en [Cloudinary](https://cloudinary.com/)
-- Fuentes de Google Fonts
-
 ---
 Desarrollado con ❤️ para El Torito © 2024
