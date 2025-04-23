@@ -1,18 +1,18 @@
 ---
-import { getProductImage } from "@scripts/handleProductCard";
 import { Image } from "astro:assets";
 
 type Props = {
     id: string;
     name: string;
+    image: string;
     description: string;
 };
 
-const { id, name, description } = Astro.props;
+const { id, name, image, description } = Astro.props;
 ---
 
 <article>
-    <Image src={getProductImage(id)} alt={`Imagen del producto ${name}`} />
+    <Image src={image} alt={`Imagen del producto ${name}`} width={500} height={500} />
     <div>
         <h5>{name}</h5>
         <p>{description}</p>

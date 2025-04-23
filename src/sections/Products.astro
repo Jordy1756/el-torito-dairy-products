@@ -12,7 +12,11 @@ const { title, description, products } = productsSection;
         <p>{description}</p>
     </header>
     <main>
-        {products.map(({ id, name, description }) => <ProductCard id={id} name={name} description={description} />)}
+        {
+            products.map(({ id, name, image, description }) => (
+                <ProductCard id={id} name={name} image={image} description={description} />
+            ))
+        }
     </main>
 </MainSection>
 

@@ -27,6 +27,7 @@ const setupMobileMenu = (elements: NavbarElements): void => {
 
     addToggleListener(menuBtn);
     addToggleListener(overlay);
+    
     toggleLinks.forEach(addToggleListener);
     removeLinks.forEach(addRemoveListener);
 };

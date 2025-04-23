@@ -11,8 +11,8 @@ const { title, description, team } = ourTeamSection;
         <p>{description}</p>
     </header>
     {
-        team.map(({ id, name, role, gridArea }, index) => (
-            <OurTeamCard index={index} id={id} name={name} role={role} gridArea={gridArea} />
+        team.map(({ name, image, role, gridArea }, index) => (
+            <OurTeamCard index={index} name={name} image={image} role={role} gridArea={gridArea} />
         ))
     }
 </section>
