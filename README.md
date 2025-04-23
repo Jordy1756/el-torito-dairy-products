@@ -100,12 +100,6 @@ El sitio implementa características de Progressive Web App:
 
 Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) para detalles.
 
-## 👥 Equipo
-
-- Bernardo Araya - CEO
-- Pamela Araya - Gerente de Ventas
-- Vinicio Araya - Gerente de Ventas
-
 ## 📧 Contacto
 
 - Email: lacteoseltorito@gmail.com
