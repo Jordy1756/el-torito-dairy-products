@@ -2,13 +2,6 @@
 import Navbar from "@components/Navbar.astro";
 import Hero from "./Hero.astro";
 import Awards from "./Awards.astro";
-
-import { getBannerImage } from "@scripts/handleBannerImages";
-import { bannerSection } from "@data";
-
-const { bannerImages } = bannerSection;
-
-const [bg1, bg2, bg3, bg4, bg5] = bannerImages.map(({ id }) => `url(${getBannerImage(id)})`);
 ---
 
 <header id="banner">
@@ -17,7 +10,7 @@ const [bg1, bg2, bg3, bg4, bg5] = bannerImages.map(({ id }) => `url(${getBannerI
     <Awards />
 </header>
 
-<style define:vars={{ bg1, bg2, bg3, bg4, bg5 }}>
+<style>
     header::before {
         content: "";
         position: absolute;
@@ -39,32 +32,30 @@ const [bg1, bg2, bg3, bg4, bg5] = bannerImages.map(({ id }) => `url(${getBannerI
         align-items: center;
         flex-direction: column;
         gap: 3rem;
-        animation: changeBackground 25s infinite linear;
+        animation: changeBackground 20s infinite linear;
         z-index: 999;
         overflow: hidden;
     }
 
     @keyframes changeBackground {
         0%,
-        15%,
-        100% {
-            background-image: var(--bg1);
+        20% {
+            background-image: url(https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387808/banner_img_01_xp3kl6.webp);
         }
-        20%,
-        35% {
-            background-image: var(--bg2);
+        25%,
+        45% {
+            background-image: url(https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387808/banner_img_02_bnjs84.webp);
         }
-        40%,
-        55% {
-            background-image: var(--bg3);
+        50%,
+        70% {
+            background-image: url(https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387808/banner_img_03_ic4ksm.webp);
         }
-        60%,
-        75% {
-            background-image: var(--bg4);
-        }
-        80%,
+        75%,
         95% {
-            background-image: var(--bg5);
+            background-image: url(https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387808/banner_img_04_rim6to.webp);
+        }
+        100% {
+            background-image: url(https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387808/banner_img_01_xp3kl6.webp);
         }
     }
 </style>
