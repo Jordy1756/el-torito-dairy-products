@@ -1,8 +1,8 @@
-# El Torito - Empresa Láctea de Santa Cruz de Turrialba
+# Lácteos El Torito - Empresa Láctea de Santa Cruz de Turrialba
 
 ## 🥛 Descripción
 
-El Torito es una empresa familiar fundada en 2012, dedicada a la producción y comercialización de productos lácteos artesanales en Santa Cruz de Turrialba, Costa Rica. Este repositorio contiene el código fuente del sitio web corporativo.
+Lácteos El Torito es una empresa familiar fundada en 2012, dedicada a la producción y comercialización de productos lácteos artesanales en Santa Cruz de Turrialba, Costa Rica. Este repositorio contiene el código fuente del sitio web corporativo.
 
 ## 🚀 Características
 
@@ -114,4 +114,3 @@ Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) par
 - [Instagram](https://www.instagram.com/lacteoseltorito)
 
 ---
-Desarrollado con ❤️ para El Torito © 2024
