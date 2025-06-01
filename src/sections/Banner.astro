@@ -5,7 +5,7 @@ import Awards from "./Awards.astro";
 ---
 
 <header id="banner">
-    <Navbar />
+    <Navbar color="var(--neutral-50)" className="slide__in-down" />
     <Hero />
     <Awards />
 </header>
@@ -15,7 +15,7 @@ import Awards from "./Awards.astro";
         content: "";
         position: absolute;
         inset: 0;
-        background-color: var(--image-background);
+        background-color: var(--image-background-hover);
         z-index: -1;
     }
 
@@ -27,6 +27,7 @@ import Awards from "./Awards.astro";
         background-repeat: no-repeat;
         background-position: center center;
         background-size: cover;
+        background-attachment: fixed;
         position: relative;
         display: flex;
         align-items: center;

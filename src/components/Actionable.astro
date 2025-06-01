@@ -21,36 +21,34 @@ const { type, className, buttonType, href } = Astro.props;
     )
 }
 <style>
-    button,
-    a {
+    :is(button, a) {
         border-radius: var(--border-radius-out);
         text-align: center;
     }
 
-    :is(button.primary, a.primary) {
+    .primary:is(button, a) {
         background-color: var(--primary-500);
         color: var(--neutral-50);
-        padding: 0.5625rem 1.5625rem;
+        padding: 9px 25px;
         border: none;
         transition:
             opacity 0.3s ease-in-out,
             transform 0.3s ease-in-out;
     }
 
-    :is(button.primary:hover, a.primary:hover) {
+    .primary:is(button, a):hover {
         opacity: 0.9;
         scale: 1.01;
     }
 
-    :is(button.secondary, a.secondary) {
-        border: 1px solid var(--primary-500);
+    .secondary:is(button, a) {
+        border: 1px solid var(--neutral-900);
         background-color: transparent;
-        color: var(--primary-500);
-        padding: 0.5rem 1.5rem;
+        color: var(--neutral-900);
+        padding: 8px 24px;
     }
 
-    button:has(svg),
-    a:has(svg) {
+    :is(button, a):has(svg, img) {
         display: flex;
         align-items: center;
         justify-content: center;

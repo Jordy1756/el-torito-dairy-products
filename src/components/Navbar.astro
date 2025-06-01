@@ -1,14 +1,19 @@
 ---
 import Actionable from "./Actionable.astro";
-import PhoneIcon from "@icons/PhoneIcon.astro";
 import { Image } from "astro:assets";
 
 import { basics } from "@data";
 
+type Props = {
+    color: "var(--neutral-50)" | "var(--neutral-900)";
+    className?: "slide__in-down";
+};
+
+const { color, className } = Astro.props;
 const { name, logo } = basics;
 ---
 
-<nav id="navbar" class="navbar">
+<nav id="navbar" class={`navbar ${className}`}>
     <div>
         <a href="/#"><Image src={logo} alt={`Logo de ${name}`} width={43} height={43} /></a>
         <button id="menu-btn" type="button">
@@ -21,27 +26,37 @@ const { name, logo } = basics;
         <li><a href="/#about-us">Sobre nosotros</a></li>
         <li><a href="/#testimonies">Testimonios</a></li>
         <li><a href="/#our-team">Nuestro equipo</a></li>
+        <li><a href="/#contact-us">Contacto</a></li>
     </ul>
-    <Actionable type="CTA" className="primary" href="/#contact-us">
-        Contacto <PhoneIcon width={16} height={16} color="var(--neutral-50)" />
-    </Actionable>
+    <aside>
+        <Actionable type="CTA" className="primary" href="/#products">Productos</Actionable>
+        <!-- <Actionable type="CTA" className="secondary" href="/#contact-us">Contacto</Actionable> -->
+    </aside>
 </nav>
 <div id="overlay"></div>
 
 <script src="../scripts/handleNavbar.ts"></script>
 
-<style>
+<style define:vars={{ color }}>
+    aside {
+        display: flex;
+        gap: 1rem;
+    }
+
     nav {
         width: min(100%, var(--max-width));
         display: flex;
         align-items: center;
         gap: 2rem;
-        color: var(--neutral-50);
+        color: var(--color);
         transition:
             width 0.3s ease-in-out,
             padding 0.2s ease-in-out,
             background-color 0.2s ease-in-out,
             color 0.2s ease-in-out;
+    }
+
+    .navbar.slide__in-down {
         animation: slideInDown 0.5s ease-in-out;
     }
 
@@ -81,7 +96,7 @@ const { name, logo } = basics;
         height: 1px;
         background-color: var(--neutral-50);
         transition:
-            transform 0.3s ease-in-out,
+            left 0.3s ease-in-out,
             width 0.3s ease-in-out;
     }
 
@@ -90,8 +105,8 @@ const { name, logo } = basics;
     }
 
     nav > ul > li:hover::before {
+        left: 0;
         width: 100%;
-        transform: translateX(-50%);
     }
 
     /* NAVBAR SCROLLED */

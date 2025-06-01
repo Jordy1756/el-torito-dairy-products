@@ -10,7 +10,7 @@ const { name, summary } = basics;
     <article>
         <h1 translate="no">{name}</h1>
         <p>{summary}</p>
-        <Actionable type="CTA" className="primary" href="/#products">Ver productos</Actionable>
+        <Actionable type="CTA" className="primary" href="/#products">Productos</Actionable>
     </article>
     <div id="carousel-controls">
         {Array.from({ length: 4 }).map((_, index) => <span>{(index + 1).toString().padStart(2, "0")}</span>)}
