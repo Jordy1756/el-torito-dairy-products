@@ -16,32 +16,23 @@ const { name } = basics;
 ---
 
 <Layout title={name}>
-    <div>
-        <Banner />
-        <main>
-            <AboutUs />
-            <Products />
-            <Testimonies />
-            <OurTeam />
-            <FAQ />
-            <Contact />
-        </main>
-        <Footer />
-        <Toast />
-    </div>
+    <Banner />
+    <main>
+        <AboutUs />
+        <Products />
+        <Testimonies />
+        <OurTeam />
+        <FAQ />
+        <Contact />
+    </main>
+    <Footer />
+    <Toast />
     <script src="../scripts/main.ts"></script>
 </Layout>
 
 <style>
-    div {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 3rem;
-        position: relative;
-    }
-
-    div > main {
+    main {
+        align-self: center;
         display: flex;
         flex-direction: column;
         gap: 3rem;

@@ -26,16 +26,13 @@ const { name, logo } = basics;
         <li><a href="/#about-us">Sobre nosotros</a></li>
         <li><a href="/#testimonies">Testimonios</a></li>
         <li><a href="/#our-team">Nuestro equipo</a></li>
-        <li><a href="/#contact-us">Contacto</a></li>
     </ul>
     <aside>
         <Actionable type="CTA" className="primary" href="/#products">Productos</Actionable>
-        <!-- <Actionable type="CTA" className="secondary" href="/#contact-us">Contacto</Actionable> -->
+        <Actionable type="CTA" className="secondary" href="/#contact-us">Contacto</Actionable>
     </aside>
 </nav>
 <div id="overlay"></div>
-
-<script src="../scripts/handleNavbar.ts"></script>
 
 <style define:vars={{ color }}>
     aside {
@@ -156,7 +153,7 @@ const { name, logo } = basics;
         }
     }
 
-    @media screen and (width <= 768px) {
+    @media screen and (width <= 777px) {
         nav > div > button {
             display: flex;
             width: 36px;

@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+export const initCarouselControls = () => {
     if (window.innerWidth < 480) return;
 
     let currentIndex = 0;
@@ -15,4 +15,4 @@ document.addEventListener("DOMContentLoaded", () => {
     changeSlide(currentIndex);
 
     setInterval(main, 5000);
-});
+};

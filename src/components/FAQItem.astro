@@ -20,10 +20,11 @@ const { question, answer } = Astro.props;
 <style>
     details {
         padding: 1rem;
-        border-radius: var(--border-radius-out);
-        box-shadow: var(--box-shadow);
         animation: revealFAQ linear both;
         animation-timeline: view();
+        border-bottom: 1px solid var(--neutral-200);
+        /* border-radius: var(--border-radius-out);
+        box-shadow: var(--box-shadow); */
     }
 
     details > summary {
@@ -36,8 +37,8 @@ const { question, answer } = Astro.props;
 
     details > summary > div {
         position: relative;
-        width: 20px;
-        height: 20px;
+        min-width: 20px;
+        min-height: 20px;
     }
 
     details > summary > div::before,

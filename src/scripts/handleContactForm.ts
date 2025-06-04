@@ -6,7 +6,7 @@ import { sendContactEmail } from "@utils/sendEmail";
 import { formDataEntryToString } from "@utils/convertToString";
 import { debounce } from "@utils/debounce";
 
-document.addEventListener("DOMContentLoaded", () => {
+export const initContactForm = () => {
     const form = document.getElementById("contact-form") as HTMLFormElement;
     const inputs = form.querySelectorAll("div > input, div > textarea") as NodeListOf<HTMLInputElement>;
     const paragraphs = form.querySelectorAll("div > p") as NodeListOf<HTMLParagraphElement>;
@@ -37,4 +37,4 @@ document.addEventListener("DOMContentLoaded", () => {
     inputs.forEach((input, index) => input.addEventListener("input", () => debouncedValidation(input, index)));
 
     sendButton.addEventListener("click", () => inputs.forEach((input, index) => errorHandler(input, index)));
-});
+};

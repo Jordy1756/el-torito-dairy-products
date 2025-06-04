@@ -18,7 +18,7 @@ const { name, summary } = basics;
 </section>
 
 <style>
-    section {
+    .hero {
         flex: 1;
         width: min(100%, var(--max-width));
         color: var(--neutral-50);
@@ -28,41 +28,41 @@ const { name, summary } = basics;
         gap: 2rem;
     }
 
-    section > div,
-    section > article {
+    .hero > div,
+    .hero > article {
         display: flex;
         flex-direction: column;
         gap: 1rem;
     }
 
-    section > article {
+    .hero > article {
         align-items: start;
         animation: slideInRight 0.5s ease-in-out;
     }
 
-    section > article > p {
+    .hero > article > p {
         max-width: 50ch;
     }
 
-    section > div {
+    .hero > div {
         align-items: center;
         animation: slideInLeft 0.5s ease-in-out;
     }
 
-    section > div > span {
+    .hero > div > span {
         font-size: 1rem;
         transition:
             font-size 0.3s ease-in-out,
             font-weight 0.3s ease-in-out;
     }
 
-    section > div > span.active {
+    .hero > div > span.active {
         font-size: 1.75rem;
         font-weight: var(--font-weight-title);
     }
 
     @media screen and (width <= 480px) {
-        section > div {
+        .hero > div {
             display: none;
         }
     }
@@ -89,5 +89,3 @@ const { name, summary } = basics;
         }
     }
 </style>
-
-<script src="../scripts/handleCarouselControls.ts"></script>

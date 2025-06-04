@@ -18,7 +18,7 @@ const { title, description, content } = Astro.props;
         <h2>{title}</h2>
         <p>{description}</p>
     </header>
-    <main>
+    <div>
         {
             content.map(({ subtitle, description }) => (
                 <article>
@@ -27,7 +27,7 @@ const { title, description, content } = Astro.props;
                 </article>
             ))
         }
-    </main>
+    </div>
     <footer>
         <p>Última actualización: {getFormattedDate(new Date())}</p>
     </footer>
@@ -36,8 +36,8 @@ const { title, description, content } = Astro.props;
 <style>
     section,
     section > header,
-    section > main,
-    section > main > article {
+    section > div,
+    section > div > article {
         display: flex;
         flex-direction: column;
     }
@@ -47,11 +47,11 @@ const { title, description, content } = Astro.props;
     }
 
     section > header,
-    section > main > article {
+    section > div > article {
         gap: 0.5rem;
     }
 
-    section > main {
+    section > div {
         gap: 1rem;
     }
 </style>
