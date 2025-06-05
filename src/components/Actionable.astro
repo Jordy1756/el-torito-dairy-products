@@ -29,23 +29,20 @@ const { type, className, buttonType, href } = Astro.props;
     .primary:is(button, a) {
         background-color: var(--primary-500);
         color: var(--neutral-50);
-        padding: 9px 25px;
+        padding: 9px 17px;
         border: none;
-        transition:
-            opacity 0.3s ease-in-out,
-            transform 0.3s ease-in-out;
+        transition: background-color 0.3s ease-in-out;
     }
 
     .primary:is(button, a):hover {
-        opacity: 0.9;
-        scale: 1.01;
+        background-color: var(--primary-400);
     }
 
     .secondary:is(button, a) {
         border: 1px solid var(--neutral-900);
         background-color: transparent;
         color: var(--neutral-900);
-        padding: 8px 24px;
+        padding: 8px 16px;
     }
 
     :is(button, a):has(svg, img) {

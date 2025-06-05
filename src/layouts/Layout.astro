@@ -41,6 +41,7 @@ const { title } = Astro.props;
         --neutral-900: #161618;
         --primary-50: #d1f4dd;
         --primary-300: #48d575;
+        --primary-400: #2bba59;
         --primary-500: #208c43;
         --primary-700: #0b3017;
         --primary-900: #06180c;
@@ -74,12 +75,11 @@ const { title } = Astro.props;
     html {
         scroll-behavior: smooth;
         scrollbar-width: thin;
-        scroll-padding-top: calc(43px + 4px);
     }
 
-    html:has(:target#testimony-0, :target#testimony-1, :target#testimony-2, :target#testimony-3, :target#testimony-4) {
+    /* html:has(:target#testimony-0, :target#testimony-1, :target#testimony-2, :target#testimony-3, :target#testimony-4) {
         scroll-padding-top: 1rem;
-    }
+    } */
 
     body {
         font-family: var(--font);
@@ -176,8 +176,8 @@ const { title } = Astro.props;
         min-height: 100vh;
     }
 
-    .navbar.open ~ .hero,
+    /* .navbar.open ~ .hero,
     .navbar.scrolled ~ .hero {
         margin-top: calc(43px + 3rem);
-    }
+    } */
 </style>

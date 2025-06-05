@@ -1,8 +1,7 @@
 import Lenis from "lenis";
 import "lenis/dist/lenis.css";
-import { initNavbar } from "@scripts/handleNavbar";
-import { initCarouselControls } from "@scripts/handleCarouselControls";
-import { initContactForm } from "@scripts/handleContactForm";
+import { initNavbar } from "@scripts/components/handleNavbar";
+import { initContactForm } from "@scripts/components/handleContactForm";
 
 const initLenis = () => {
     const lenis = new Lenis();
@@ -18,7 +17,6 @@ const initLenis = () => {
 const initApp = () => {
     initLenis();
     initNavbar();
-    initCarouselControls();
     initContactForm();
 };
 

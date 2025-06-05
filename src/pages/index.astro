@@ -1,10 +1,7 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import Banner from "@sections/Banner.astro";
-import AboutUs from "@sections/AboutUs.astro";
 import Products from "@sections/Products.astro";
-import Testimonies from "@sections/Testimonies.astro";
-import OurTeam from "@sections/OurTeam.astro";
 import FAQ from "@sections/FAQ.astro";
 import Contact from "@sections/Contact.astro";
 import Footer from "@components/Footer.astro";
@@ -18,16 +15,13 @@ const { name } = basics;
 <Layout title={name}>
     <Banner />
     <main>
-        <AboutUs />
         <Products />
-        <Testimonies />
-        <OurTeam />
         <FAQ />
         <Contact />
     </main>
     <Footer />
     <Toast />
-    <script src="../scripts/main.ts"></script>
+    <script src="../scripts/pages/index.ts"></script>
 </Layout>
 
 <style>

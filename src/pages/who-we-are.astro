@@ -1,0 +1,49 @@
+---
+import Navbar from "@components/Navbar.astro";
+import Layout from "@layouts/Layout.astro";
+import AboutUs from "@sections/AboutUs.astro";
+import Testimonies from "@sections/Testimonies.astro";
+import OurTeam from "@sections/OurTeam.astro";
+import FAQ from "@sections/FAQ.astro";
+import Contact from "@sections/Contact.astro";
+import Footer from "@components/Footer.astro";
+import Toast from "@components/Toast.astro";
+
+import { basics } from "@data";
+
+const { name } = basics;
+---
+
+<Layout title={`${name} - Sobre nosotros`}>
+    <header>
+        <Navbar color="var(--neutral-900)" />
+    </header>
+    <main>
+        <AboutUs />
+        <Testimonies />
+        <OurTeam />
+        <FAQ />
+        <Contact />
+    </main>
+    <Footer />
+    <Toast />
+    <script src="../scripts/pages/whoWeAre.ts"></script>
+</Layout>
+
+<style>
+    header {
+        padding: 0.5rem 1rem;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        border-bottom: 1px solid var(--neutral-300);
+    }
+
+    main {
+        align-self: center;
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+        width: min(100%, var(--max-width));
+    }
+</style>
