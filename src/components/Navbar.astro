@@ -5,15 +5,15 @@ import { Image } from "astro:assets";
 import { basics } from "@data";
 
 type Props = {
-    color: "var(--neutral-50)" | "var(--neutral-900)";
-    className?: "slide__in-down";
+    baseUrl: "/" | "/who-we-are";
+    classNames?: ("slide__in-down" | "on__dark-bg")[];
 };
 
-const { color, className } = Astro.props;
+const { baseUrl, classNames } = Astro.props;
 const { name, logo } = basics;
 ---
 
-<nav id="navbar" class={`navbar ${className}`}>
+<nav id="navbar" class:list={["navbar", ...(classNames || [])]}>
     <div>
         <a href="/#"><Image src={logo} alt={`Logo de ${name}`} width={43} height={43} /></a>
         <button id="menu-btn" type="button">
@@ -29,23 +29,23 @@ const { name, logo } = basics;
     </ul>
     <aside>
         <Actionable type="CTA" className="primary" href="/#products">Productos</Actionable>
-        <Actionable type="CTA" className="secondary" href="/#contact-us">Contacto</Actionable>
+        <Actionable type="CTA" className="secondary" href={`${baseUrl}#contact-us`}>Contacto</Actionable>
     </aside>
 </nav>
 <div id="overlay"></div>
 
-<style define:vars={{ color }}>
+<style>
     aside {
         display: flex;
         gap: 1rem;
     }
 
-    nav {
+    .navbar {
         width: min(100%, var(--max-width));
         display: flex;
         align-items: center;
         gap: 2rem;
-        color: var(--color);
+        color: var(--neutral-900);
         transition:
             width 0.3s ease-in-out,
             padding 0.2s ease-in-out,
@@ -53,62 +53,70 @@ const { name, logo } = basics;
             color 0.2s ease-in-out;
     }
 
+    .navbar.on__dark-bg {
+        color: var(--neutral-50);
+    }
+
     .navbar.slide__in-down {
         animation: slideInDown 0.5s ease-in-out;
     }
 
-    nav > div {
+    .navbar > div {
         display: flex;
         align-items: center;
         gap: 1rem;
         margin-right: auto;
     }
 
-    nav > div > a {
+    .navbar > div > a {
         display: flex;
     }
 
-    nav > div > button {
+    .navbar > div > button {
         display: none;
     }
 
-    nav > div > a > img {
+    .navbar > div > a > img {
         max-width: 43px;
         height: auto;
         object-fit: contain;
     }
 
-    nav > ul {
+    .navbar > ul {
         display: flex;
         align-items: center;
         gap: 1rem;
     }
 
-    nav > ul > li::before {
+    .navbar > ul > li::before {
         content: "";
         position: absolute;
         bottom: 0;
         left: 50%;
         width: 0;
         height: 1px;
-        background-color: var(--neutral-50);
+        background-color: var(--neutral-900);
         transition:
             left 0.3s ease-in-out,
             width 0.3s ease-in-out;
     }
 
-    nav > ul > li {
+    .navbar.on__dark-bg > ul > li::before {
+        background-color: var(--neutral-50);
+    }
+
+    .navbar > ul > li {
         position: relative;
     }
 
-    nav > ul > li:hover::before {
+    .navbar > ul > li:hover::before {
         left: 0;
         width: 100%;
     }
 
     /* NAVBAR SCROLLED */
 
-    nav.scrolled {
+    .navbar.scrolled {
         position: fixed;
         top: 0;
         left: 50%;
@@ -120,17 +128,17 @@ const { name, logo } = basics;
         border-bottom: 1px solid var(--neutral-300);
     }
 
-    nav.scrolled > div > button > span {
+    .navbar.scrolled > div > button > span {
         background-color: var(--primary-500);
     }
 
-    nav.scrolled > ul > li::before {
+    .navbar.scrolled > ul > li::before {
         background-color: var(--neutral-900);
     }
 
     @media screen and (width > 1542px) {
-        nav.scrolled::before,
-        nav.scrolled::after {
+        .navbar.scrolled::before,
+        .navbar.scrolled::after {
             content: "";
             position: absolute;
             bottom: -1px;
@@ -138,23 +146,23 @@ const { name, logo } = basics;
             border-bottom: 1px solid var(--neutral-300);
         }
 
-        nav.scrolled::before {
+        .navbar.scrolled::before {
             left: 100%;
         }
 
-        nav.scrolled::after {
+        .navbar.scrolled::after {
             right: 100%;
         }
     }
 
     @media screen and (width <= 1542px) {
-        nav.scrolled {
+        .navbar.scrolled {
             padding-inline: 1rem;
         }
     }
 
     @media screen and (width <= 777px) {
-        nav > div > button {
+        .navbar > div > button {
             display: flex;
             width: 36px;
             height: 24px;
@@ -165,7 +173,7 @@ const { name, logo } = basics;
             border: none;
         }
 
-        nav > div > button > span {
+        .navbar > div > button > span {
             width: calc(var(--index) * 33.33%);
             height: 3px;
             background-color: var(--neutral-50);
@@ -177,7 +185,7 @@ const { name, logo } = basics;
                 background-color 0.6s ease-in-out;
         }
 
-        nav > ul {
+        .navbar > ul {
             display: none;
             padding-block: 1rem;
             border-top: 1px solid var(--neutral-300);
@@ -185,7 +193,7 @@ const { name, logo } = basics;
 
         /* NAV OPEN */
 
-        nav.open {
+        .navbar.open {
             padding: 1rem;
             position: fixed;
             top: 0;
@@ -201,40 +209,40 @@ const { name, logo } = basics;
             z-index: 998;
         }
 
-        nav.open.scrolled {
+        .navbar.open.scrolled {
             transform: none;
         }
 
-        nav.open > div {
+        .navbar.open > div {
             width: 100%;
         }
 
-        nav.open > div > button {
+        .navbar.open > div > button {
             margin-left: auto;
         }
 
-        nav.open > div > button > span {
+        .navbar.open > div > button > span {
             background-color: var(--neutral-900);
             width: 75%;
         }
 
-        nav.open.scrolled > div > button > span {
+        .navbar.open.scrolled > div > button > span {
             background-color: var(--primary-900);
         }
 
-        nav.open > div > button > span:nth-child(1) {
+        .navbar.open > div > button > span:nth-child(1) {
             transform: translateX(12px) translateY(10.5px) rotate(45deg);
         }
 
-        nav.open > div > button > span:nth-child(2) {
+        .navbar.open > div > button > span:nth-child(2) {
             opacity: 0;
         }
 
-        nav.open > div > button > span:nth-child(3) {
+        .navbar.open > div > button > span:nth-child(3) {
             transform: translateX(12px) translateY(-10.5px) rotate(-45deg);
         }
 
-        nav.open > ul {
+        .navbar.open > ul {
             width: 100%;
             display: flex;
             flex-direction: column;
@@ -242,16 +250,16 @@ const { name, logo } = basics;
             align-items: start;
         }
 
-        nav.open > ul > li {
+        .navbar.open > ul > li {
             width: 100%;
         }
 
-        nav + div {
+        .navbar + div {
             display: none;
             transition: background-color 0.3s ease-in-out;
         }
 
-        nav.open + div {
+        .navbar.open + div {
             display: block;
             position: fixed;
             top: 0;

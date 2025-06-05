@@ -21,7 +21,7 @@ const { title, description, addressLink, addressMapLink, schedules } = contactUs
             <h2>{title}</h2>
             <p>{description}</p>
         </header>
-        <main>
+        <div>
             <div>
                 <h6>Información de contacto</h6>
                 <address>
@@ -46,7 +46,7 @@ const { title, description, addressLink, addressMapLink, schedules } = contactUs
                     ))
                 }
             </div>
-        </main>
+        </div>
         <iframe src={addressMapLink} loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </article>
     <article class="contact__form">
@@ -86,7 +86,7 @@ const { title, description, addressLink, addressMapLink, schedules } = contactUs
         flex: 2.5;
     }
 
-    :is(.contact__info > header, .contact__info > main > div, .contact__info > main > div > address) {
+    :is(.contact__info > header, .contact__info > div > div, .contact__info > div > div > address) {
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
@@ -97,7 +97,7 @@ const { title, description, addressLink, addressMapLink, schedules } = contactUs
         max-width: 100%;
     }
 
-    .contact__info > main {
+    .contact__info > div {
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;

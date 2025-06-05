@@ -15,8 +15,8 @@ const { name } = basics;
 ---
 
 <Layout title={`${name} - Sobre nosotros`}>
-    <header>
-        <Navbar color="var(--neutral-900)" />
+    <header id="header">
+        <Navbar baseUrl="/who-we-are" />
     </header>
     <main>
         <AboutUs />
@@ -32,18 +32,21 @@ const { name } = basics;
 
 <style>
     header {
-        padding: 0.5rem 1rem;
-        width: 100%;
+        position: sticky;
+        top: 0;
+        left: 0;
         display: flex;
         justify-content: center;
+        padding: 0.5rem 1rem;
         border-bottom: 1px solid var(--neutral-300);
+        background-color: var(--neutral-50);
+        z-index: 999;
     }
 
     main {
         align-self: center;
         display: flex;
         flex-direction: column;
-        gap: 3rem;
         width: min(100%, var(--max-width));
     }
 </style>

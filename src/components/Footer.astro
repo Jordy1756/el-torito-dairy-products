@@ -7,11 +7,6 @@ import { getYear } from "@scripts/utils/handleDates";
 
 import { basics } from "@data";
 
-type Props = {
-    backgroundColor?: "var(--primary-700)" | "transparent";
-};
-
-const { backgroundColor = "var(--primary-700)" } = Astro.props;
 const { name, logo, slogan, socialNetworks } = basics;
 
 const SOCIAL_NETWORKS: Record<string, string | any> = {
@@ -69,11 +64,11 @@ const SOCIAL_NETWORKS: Record<string, string | any> = {
     </section>
 </footer>
 
-<style define:vars={{ backgroundColor }}>
+<style>
     footer {
         width: 100%;
         padding: 1rem;
-        background-color: var(--backgroundColor);
+        background-color: var(--primary-700);
         color: var(--neutral-50);
         display: flex;
         flex-direction: column;

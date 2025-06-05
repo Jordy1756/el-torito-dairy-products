@@ -11,7 +11,7 @@ const { title, description, identities } = aboutUsSection;
         <h2>{title}</h2>
         <p>{description}</p>
     </header>
-    <main>
+    <div>
         {
             identities.map(({ title, content, image }, index) => (
                 <AboutDetailCard
@@ -22,13 +22,12 @@ const { title, description, identities } = aboutUsSection;
                 />
             ))
         }
-    </main>
+    </div>
 </MainSection>
 
 <style>
     header {
         text-align: center;
-        /* background-color: rebeccapurple; */
     }
 
     main {
