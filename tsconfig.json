@@ -7,9 +7,9 @@
             "@layouts/*": ["src/layouts/*"],
             "@sections/*": ["src/sections/*"],
             "@icons/*": ["src/assets/icons/*"],
-            "@config/*": ["src/config/*"],
-            "@utils/*": ["src/utils/*"],
-            "@definitions/*": ["src/types/*"],
+            "@config/*": ["src/scripts/config/*"],
+            "@utils/*": ["src/scripts/utils/*"],
+            "@definitions/*": ["src/scripts/types/*"],
             "@scripts/*": ["src/scripts/*"],
             "@data": ["src/data/data.json"]
         }

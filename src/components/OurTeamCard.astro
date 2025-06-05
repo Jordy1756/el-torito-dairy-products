@@ -4,16 +4,25 @@ import Image from "astro/components/Image.astro";
 type Props = {
     index: number;
     name: string;
-    image: string;
+    image: { src: string; alt: string };
     role: string;
     gridArea: string;
 };
 
-const { index, name, image, role, gridArea } = Astro.props;
+const {
+    index,
+    name,
+    image: { src, alt },
+    role,
+    gridArea,
+} = Astro.props;
 ---
 
-<article class="article-container">
-    <Image src={image} alt={`Foto de ${name}`} width={200} height={200} />
+<article class="our__team-card">
+    <figure>
+        <Image src={src} alt={alt} width={200} height={200} />
+        <figcaption>{alt}</figcaption>
+    </figure>
     <div>
         <h6>{name}</h6>
         <p>{role}</p>
@@ -21,7 +30,7 @@ const { index, name, image, role, gridArea } = Astro.props;
 </article>
 
 <style define:vars={{ index, gridArea }}>
-    article {
+    .our__team-card {
         padding: 1rem;
         border-radius: var(--border-radius-out);
         overflow: hidden;
@@ -30,7 +39,7 @@ const { index, name, image, role, gridArea } = Astro.props;
         grid-area: var(--gridArea);
     }
 
-    article > img {
+    .our__team-card > figure > img {
         position: absolute;
         inset: 0;
         width: 100%;
@@ -42,14 +51,8 @@ const { index, name, image, role, gridArea } = Astro.props;
             filter 0.3s ease-in-out;
     }
 
-    article:hover > img {
-        scale: 1;
-        filter: brightness(0.6);
-    }
-
-    article > div {
+    .our__team-card > div {
         position: absolute;
-        bottom: -100%;
         width: calc(100% - 2rem);
         border-radius: var(--border-radius-in);
         padding: 0.5rem;
@@ -57,7 +60,7 @@ const { index, name, image, role, gridArea } = Astro.props;
         z-index: 1;
     }
 
-    article > div::before {
+    .our__team-card > div::before {
         content: "";
         position: absolute;
         inset: 0;
@@ -67,21 +70,30 @@ const { index, name, image, role, gridArea } = Astro.props;
         border-radius: inherit;
     }
 
-    article:hover > div {
-        bottom: 1rem;
-    }
-
-    article > div > p {
+    .our__team-card > div > p {
         font-size: 0.875rem;
     }
 
     @media screen and (width > 1024px) {
-        article {
+        .our__team-card {
             animation: scaleShift 2.5s infinite alternate calc(var(--index) * 0.5s) ease-in-out;
         }
 
-        article:hover {
+        .our__team-card:hover {
             animation-play-state: paused;
+        }
+
+        .our__team-card:hover > figure > img {
+            scale: 1;
+            filter: brightness(0.6);
+        }
+
+        .our__team-card > div {
+            bottom: -100%;
+        }
+
+        .our__team-card:hover > div {
+            bottom: 1rem;
         }
 
         @keyframes scaleShift {
@@ -92,11 +104,20 @@ const { index, name, image, role, gridArea } = Astro.props;
     }
 
     @media screen and (width <= 1024px) {
-        article {
+        .our__team-card {
             min-height: 300px;
             animation: revealTeamCard linear both;
             animation-timeline: view();
             animation-range: entry 15% cover 20%;
+        }
+
+        .our__team-card > figure > img {
+            scale: 1;
+            filter: brightness(0.6);
+        }
+
+        .our__team-card > div {
+            bottom: 1rem;
         }
 
         @keyframes revealTeamCard {
@@ -112,7 +133,7 @@ const { index, name, image, role, gridArea } = Astro.props;
     }
 
     @media screen and (width <= 480px) {
-        article {
+        .our__team-card {
             aspect-ratio: 1 / 1;
             min-height: auto;
         }

@@ -1,10 +1,10 @@
 import type { APIResponse } from "@definitions/sharedTypes";
 import { contactFields } from "@definitions/contactFieldTypes";
-import { validateInput } from "@utils/validateInput";
-import { showToast } from "@utils/handleToast";
-import { sendContactEmail } from "@utils/sendEmail";
-import { formDataEntryToString } from "@utils/convertToString";
-import { debounce } from "@utils/debounce";
+import { validateInput } from "@scripts/utils/validateInput";
+import { showToast } from "@scripts/utils/handleToast";
+import { sendContactEmail } from "@scripts/utils/sendEmail";
+import { formDataEntryToString } from "@scripts/utils/convertToString";
+import { debounce } from "@scripts/utils/debounce";
 
 export const initContactForm = () => {
     const form = document.getElementById("contact-form") as HTMLFormElement;

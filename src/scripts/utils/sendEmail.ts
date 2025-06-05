@@ -1,4 +1,4 @@
-import { MAILGUN_API_URL, MAILGUN_HEADERS } from "@config/configEmail";
+import { MAILGUN_API_URL, MAILGUN_HEADERS } from "@scripts/config/configEmail";
 
 export const sendContactEmail = async ({
     name,

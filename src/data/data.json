@@ -159,35 +159,50 @@
             {
                 "id": "staff1",
                 "name": "Bernardo Araya",
-                "image": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387843/no_img_t09jhk.webp",
+                "image": {
+                    "src": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745286041/our_team_img_09_rqrxbf.webp",
+                    "alt": "Bernardo Araya, Fundador y CEO de Lácteos El Torito"
+                },
                 "role": "Fundador y CEO",
                 "gridArea": "staffImage1"
             },
             {
                 "id": "staff2",
                 "name": "Pamela Araya",
-                "image": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387843/no_img_t09jhk.webp",
+                "image": {
+                    "src": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745285806/our_team_img_06_vfndde.webp",
+                    "alt": "Pamela Araya, Gerente de ventas de Lácteos El Torito"
+                },
                 "role": "Gerente de ventas",
                 "gridArea": "staffImage2"
             },
             {
                 "id": "staff3",
                 "name": "Vinicio Araya",
-                "image": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387843/no_img_t09jhk.webp",
+                "image": {
+                    "src": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745285806/our_team_img_05_pfs0qb.webp",
+                    "alt": "Vinicio Araya, Gerente de ventas de Lácteos El Torito"
+                },
                 "role": "Gerente de ventas",
                 "gridArea": "staffImage3"
             },
             {
                 "id": "staff4",
                 "name": "Cinthya Aguilar",
-                "image": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387843/no_img_t09jhk.webp",
+                "image": {
+                    "src": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745285806/our_team_img_07_rngvcv.webp",
+                    "alt": "Cinthya Aguilar, Gerente de producción de Lácteos El Torito"
+                },
                 "role": "Operaria",
                 "gridArea": "staffImage4"
             },
             {
                 "id": "staff5",
                 "name": "Steven Prado",
-                "image": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387843/no_img_t09jhk.webp",
+                "image": {
+                    "src": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745286294/our_team_img_04_wqaexx.webp",
+                    "alt": "Steven Prado, Gerente de producción de Lácteos El Torito"
+                },
                 "role": "Operario",
                 "gridArea": "staffImage5"
             }

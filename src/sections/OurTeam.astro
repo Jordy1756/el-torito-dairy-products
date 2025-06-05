@@ -5,7 +5,7 @@ import { ourTeamSection } from "@data";
 const { title, description, team } = ourTeamSection;
 ---
 
-<section id="our-team">
+<section class="our__team" id="our-team">
     <header>
         <h2>{title}</h2>
         <p>{description}</p>
@@ -18,8 +18,8 @@ const { title, description, team } = ourTeamSection;
 </section>
 
 <style>
-    section {
-        padding: 1rem;
+    .our__team {
+        padding: 4rem 1rem;
         width: min(100%, var(--max-width));
         min-height: 100dvh;
         display: grid;
@@ -28,7 +28,7 @@ const { title, description, team } = ourTeamSection;
         gap: 1rem;
     }
 
-    header {
+    .our__team > header {
         grid-area: text;
         display: flex;
         flex-direction: column;
@@ -39,7 +39,7 @@ const { title, description, team } = ourTeamSection;
     }
 
     @media screen and (width > 1024px) {
-        section {
+        .our__team {
             grid-template-columns: repeat(12, 1fr);
             grid-template-rows: repeat(11, 1fr);
             grid-template-areas:
@@ -58,7 +58,7 @@ const { title, description, team } = ourTeamSection;
     }
 
     @media screen and (width <= 1024px) {
-        section {
+        .our__team {
             grid-template-columns: repeat(2, 1fr);
             grid-template-rows: auto;
             grid-template-areas:
@@ -71,7 +71,7 @@ const { title, description, team } = ourTeamSection;
     }
 
     @media screen and (width <= 480px) {
-        section {
+        .our__team {
             grid-template-columns: 1fr;
             grid-template-areas:
                 "text"
