@@ -76,43 +76,64 @@
                 "id": "product1",
                 "name": "Natilla Casera",
                 "description": "Cremosa natilla elaborada con ingredientes frescos y naturales, perfecta para acompañar platillos típicos costarricenses.",
-                "image": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387857/NatillaCasera_jgww7m.webp"
+                "image": {
+                    "src": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387857/NatillaCasera_jgww7m.webp",
+                    "alt": "Natilla Casera de Lácteos El Torito"
+                }
             },
             {
                 "id": "product2",
                 "name": "Queso Maduro",
                 "description": "Queso con sabor intenso y textura cremosa tras un cuidadoso proceso de maduración. Ideal para tablas y sándwiches.",
-                "image": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387858/QuesoMaduro_erkqw7.webp"
+                "image": {
+                    "src": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387858/QuesoMaduro_erkqw7.webp",
+                    "alt": "Queso Maduro de Lácteos El Torito"
+                }
             },
             {
                 "id": "product3",
                 "name": "Queso Palmito",
                 "description": "Sabor suave y textura firme, elaborado artesanalmente en forma de trenza. Perfecto para compartir en cualquier ocasión.",
-                "image": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387859/QuesoPalmito_iwxuvg.webp"
+                "image": {
+                    "src": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387859/QuesoPalmito_iwxuvg.webp",
+                    "alt": "Queso Palmito de Lácteos El Torito"
+                }
             },
             {
                 "id": "product4",
                 "name": "Yogurt Guanabana",
                 "description": "Cremoso yogurt artesanal con sabor exótico de guanábana. Sin conservantes ni colorantes artificiales.",
-                "image": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387860/YogurtGuananbana_wal2sy.webp"
+                "image": {
+                    "src": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387860/YogurtGuananbana_wal2sy.webp",
+                    "alt": "Yogurt Guanabana de Lácteos El Torito"
+                }
             },
             {
                 "id": "product5",
-                "name": "Queso Maduro con Chile",
-                "description": "Variante picante de nuestro queso maduro infusionado con chiles seleccionados. Para amantes de sabores intensos.",
-                "image": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387858/QuesoMaduroChile_aqsky6.webp"
+                "name": "Yogurt Kiwi",
+                "description": "Combina la acidez del kiwi con la suavidad del yogurt fresco. Sin aditivos artificiales, refrescante y equilibrado.",
+                "image": {
+                    "src": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387860/YogurtKiwi_brprhv.webp",
+                    "alt": "Yogurt Kiwi de Lácteos El Torito"
+                }
             },
             {
                 "id": "product6",
-                "name": "Yogurt Kiwi",
-                "description": "Combina la acidez del kiwi con la suavidad del yogurt fresco. Sin aditivos artificiales, refrescante y equilibrado.",
-                "image": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387860/YogurtKiwi_brprhv.webp"
+                "name": "Queso Maduro con Chile",
+                "description": "Variante picante de nuestro queso maduro infusionado con chiles seleccionados. Para amantes de sabores intensos.",
+                "image": {
+                    "src": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387858/QuesoMaduroChile_aqsky6.webp",
+                    "alt": "Queso Maduro con Chile de Lácteos El Torito"
+                }
             },
             {
                 "id": "product7",
                 "name": "Yogurt Mora",
                 "description": "Yogurt artesanal con moras frescas de la región. Rico en antioxidantes y vitaminas, con delicioso sabor natural.",
-                "image": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387861/YogurtMora_d1kx8p.webp"
+                "image": {
+                    "src": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387861/YogurtMora_d1kx8p.webp",
+                    "alt": "Yogurt Mora de Lácteos El Torito"
+                }
             }
         ]
     },

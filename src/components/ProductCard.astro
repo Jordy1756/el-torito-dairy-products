@@ -4,7 +4,7 @@ import { Image } from "astro:assets";
 type Props = {
     id: string;
     name: string;
-    image: string;
+    image: { src: string; alt: string };
     description: string;
 };
 
@@ -12,7 +12,7 @@ const { id, name, image, description } = Astro.props;
 ---
 
 <article>
-    <Image src={image} alt={`Imagen del producto ${name}`} width={500} height={500} />
+    <Image src={image.src} alt={image.alt} width={500} height={500} />
     <div>
         <h5>{name}</h5>
         <p>{description}</p>
