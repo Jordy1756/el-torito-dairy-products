@@ -19,7 +19,9 @@ const SOCIAL_NETWORKS: Record<string, string | any> = {
 <footer>
     <section class="footer__content">
         <div>
-            <a href="/#"><Image src={logo} alt={`Logo de ${name}`} width={75} height={75} /></a>
+            <a href="/#">
+                <Image src={logo} alt={`Logo de ${name}`} width={75} height={75} />
+            </a>
             <p>{slogan}</p>
         </div>
         <nav>
@@ -134,7 +136,7 @@ const SOCIAL_NETWORKS: Record<string, string | any> = {
         gap: 0.5rem;
     }
 
-    .footer__content > nav > div > ul > li::before {
+    .footer__content > nav > div > ul > li > a::before {
         content: "";
         position: absolute;
         bottom: 0;
@@ -143,21 +145,18 @@ const SOCIAL_NETWORKS: Record<string, string | any> = {
         height: 1px;
         background-color: var(--neutral-50);
         transition:
-            transform 0.3s ease-in-out,
+            left 0.3s ease-in-out,
             width 0.3s ease-in-out;
     }
 
-    .footer__content > nav > div > ul > li {
-        position: relative;
-    }
-
-    .footer__content > nav > div > ul > li:hover::before {
-        width: 100%;
-        transform: translateX(-50%);
-    }
-
     .footer__content > nav > div > ul > li > a {
-        color: var(--neutral-200);
+        position: relative;
+        color: var(--neutral-100);
+    }
+
+    .footer__content > nav > div > ul > li > a:hover::before {
+        width: 100%;
+        left: 0;
     }
 
     /* FOOTER INFO */

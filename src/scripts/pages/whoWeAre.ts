@@ -1,23 +1,17 @@
-import Lenis from "lenis";
-import "lenis/dist/lenis.css";
 import { initNavbar } from "@scripts/components/handleNavbar";
-import { initContactForm } from "@scripts/components/handleContactForm";
+import { createSectionObserver } from "@utils/handleObservers";
+import { initLenis } from "@utils/handleLenis";
 
-const initLenis = () => {
-    const lenis = new Lenis();
-
-    const raf = (time: number) => {
-        lenis.raf(time);
-        requestAnimationFrame(raf);
-    };
-
-    requestAnimationFrame(raf);
+const initObserverSections = () => {
+    const sections = document.querySelectorAll("#about-us, #testimonies, #our-team") as NodeListOf<HTMLElement>;
+    sections.forEach((section) => createSectionObserver(section.id).observe(section));
 };
 
 const initApp = () => {
     initLenis();
     initNavbar();
-    initContactForm();
+    initObserverSections();
+    // initContactForm();
 };
 
 document.addEventListener("DOMContentLoaded", () => initApp());

@@ -14,7 +14,7 @@ const { name, logo } = basics;
 ---
 
 <nav id="navbar" class:list={["navbar", ...(classNames || [])]}>
-    <div>
+    <div class="navbar__brand">
         <a href="/#"><Image src={logo} alt={`Logo de ${name}`} width={43} height={43} /></a>
         <button id="menu-btn" type="button">
             <span style="--index: 3"></span>
@@ -22,24 +22,19 @@ const { name, logo } = basics;
             <span style="--index: 1"></span>
         </button>
     </div>
-    <ul>
-        <li><a href="/who-we-are#about-us">Sobre nosotros</a></li>
-        <li><a href="/who-we-are#testimonies">Testimonios</a></li>
-        <li><a href="/who-we-are#our-team">Nuestro equipo</a></li>
+    <ul id="nav-list">
+        <li data-link="about-us"><a href="/who-we-are#about-us">Sobre nosotros</a></li>
+        <li data-link="testimonies"><a href="/who-we-are#testimonies">Testimonios</a></li>
+        <li data-link="our-team"><a href="/who-we-are#our-team">Nuestro equipo</a></li>
     </ul>
-    <aside>
+    <div class="navbar__actions">
         <Actionable type="CTA" className="primary" href="/#products">Productos</Actionable>
         <Actionable type="CTA" className="secondary" href={`${baseUrl}#contact-us`}>Contacto</Actionable>
-    </aside>
+    </div>
 </nav>
 <div id="overlay"></div>
 
 <style>
-    aside {
-        display: flex;
-        gap: 1rem;
-    }
-
     .navbar {
         width: min(100%, var(--max-width));
         display: flex;
@@ -61,22 +56,22 @@ const { name, logo } = basics;
         animation: slideInDown 0.5s ease-in-out;
     }
 
-    .navbar > div {
+    .navbar > .navbar__brand {
         display: flex;
         align-items: center;
         gap: 1rem;
         margin-right: auto;
     }
 
-    .navbar > div > a {
+    .navbar > .navbar__brand > a {
         display: flex;
     }
 
-    .navbar > div > button {
+    .navbar > .navbar__brand > button {
         display: none;
     }
 
-    .navbar > div > a > img {
+    .navbar > .navbar__brand > a > img {
         max-width: 43px;
         height: auto;
         object-fit: contain;
@@ -88,7 +83,8 @@ const { name, logo } = basics;
         gap: 1rem;
     }
 
-    .navbar > ul > li::before {
+    .navbar > ul > li::before,
+    .navbar > ul > li.active::before {
         content: "";
         position: absolute;
         bottom: 0;
@@ -109,9 +105,15 @@ const { name, logo } = basics;
         position: relative;
     }
 
-    .navbar > ul > li:hover::before {
+    .navbar > ul > li:hover::before,
+    .navbar > ul > li.active::before {
         left: 0;
         width: 100%;
+    }
+
+    .navbar > .navbar__actions {
+        display: flex;
+        gap: 1rem;
     }
 
     /* NAVBAR SCROLLED */
@@ -128,7 +130,7 @@ const { name, logo } = basics;
         border-bottom: 1px solid var(--neutral-300);
     }
 
-    .navbar.scrolled > div > button > span {
+    .navbar.scrolled > .navbar__brand > button > span {
         background-color: var(--primary-500);
     }
 
@@ -162,7 +164,7 @@ const { name, logo } = basics;
     }
 
     @media screen and (width <= 777px) {
-        .navbar > div > button {
+        .navbar > .navbar__brand > button {
             display: flex;
             width: 36px;
             height: 24px;
@@ -173,7 +175,7 @@ const { name, logo } = basics;
             border: none;
         }
 
-        .navbar > div > button > span {
+        .navbar > .navbar__brand > button > span {
             width: calc(var(--index) * 33.33%);
             height: 3px;
             background-color: var(--neutral-50);
@@ -213,28 +215,28 @@ const { name, logo } = basics;
             transform: none;
         }
 
-        .navbar.open > div {
+        .navbar.open > .navbar__brand {
             width: 100%;
         }
 
-        .navbar.open > div > button {
+        .navbar.open > .navbar__brand > button {
             margin-left: auto;
         }
 
-        .navbar.open > div > button > span {
+        .navbar.open > .navbar__brand > button > span {
             background-color: var(--neutral-900);
             width: 75%;
         }
 
-        .navbar.open.scrolled > div > button > span {
+        .navbar.open.scrolled > .navbar__brand > button > span {
             background-color: var(--primary-900);
         }
 
-        .navbar.open > div > button > span:nth-child(1) {
+        .navbar.open > .navbar__brand > button > span:nth-child(1) {
             transform: translateX(12px) translateY(10.5px) rotate(45deg);
         }
 
-        .navbar.open > div > button > span:nth-child(2) {
+        .navbar.open > .navbar__brand > button > span:nth-child(2) {
             opacity: 0;
         }
 
@@ -255,19 +257,18 @@ const { name, logo } = basics;
         }
 
         .navbar + div {
-            display: none;
-            transition: background-color 0.3s ease-in-out;
+            position: fixed;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            z-index: 997;
+            pointer-events: none;
         }
 
         .navbar.open + div {
-            display: block;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100dvh;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 997;
+            opacity: 1;
+            pointer-events: visible;
         }
     }
 

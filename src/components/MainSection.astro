@@ -9,12 +9,12 @@ type Props = {
 const { id, flexDirection = "column", flexWrap = "nowrap", paddingInline = "1rem" } = Astro.props;
 ---
 
-<section id={id}>
+<section class="main__section" id={id}>
     <slot />
 </section>
 
 <style define:vars={{ flexDirection, flexWrap, paddingInline }}>
-    section {
+    .main__section {
         padding-block: calc(44px + 2rem);
         display: flex;
         flex-direction: var(--flexDirection);
@@ -24,7 +24,7 @@ const { id, flexDirection = "column", flexWrap = "nowrap", paddingInline = "1rem
     }
 
     @media screen and (width < 1542px) {
-        section {
+        .main__section {
             padding-inline: var(--paddingInline);
         }
     }
