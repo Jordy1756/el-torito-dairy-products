@@ -116,6 +116,16 @@ const { name, logo } = basics;
         gap: 1rem;
     }
 
+    .navbar + div {
+        position: fixed;
+        inset: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+        z-index: 997;
+        pointer-events: none;
+    }
+
     /* NAVBAR SCROLLED */
 
     .navbar.scrolled {
@@ -254,16 +264,6 @@ const { name, logo } = basics;
 
         .navbar.open > ul > li {
             width: 100%;
-        }
-
-        .navbar + div {
-            position: fixed;
-            inset: 0;
-            background-color: rgba(0, 0, 0, 0.5);
-            opacity: 0;
-            transition: opacity 0.3s ease-in-out;
-            z-index: 997;
-            pointer-events: none;
         }
 
         .navbar.open + div {
