@@ -9,19 +9,13 @@ type Props = {
     gridArea: string;
 };
 
-const {
-    index,
-    name,
-    image: { src, alt },
-    role,
-    gridArea,
-} = Astro.props;
+const { index, name, image, role, gridArea } = Astro.props;
 ---
 
 <article class="our__team-card">
     <figure>
-        <Image src={src} alt={alt} width={200} height={200} />
-        <figcaption>{alt}</figcaption>
+        <Image src={image.src} alt={image.alt} width={200} height={200} />
+        <figcaption>{image.alt}</figcaption>
     </figure>
     <div>
         <h6>{name}</h6>

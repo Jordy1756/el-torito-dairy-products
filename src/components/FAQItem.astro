@@ -1,4 +1,6 @@
 ---
+import AccordionIcon from "@icons/AccordionIcon.astro";
+
 type Props = {
     question: string;
     answer: string;
@@ -10,7 +12,9 @@ const { question, answer } = Astro.props;
 <details name="FAQs">
     <summary>
         <h6>{question}</h6>
-        <div></div>
+        <figure>
+            <AccordionIcon width={24} height={24} color="var(--neutral-900)" />
+        </figure>
     </summary>
     <div>
         <p>{answer}</p>
@@ -23,8 +27,6 @@ const { question, answer } = Astro.props;
         animation: revealFAQ linear both;
         animation-timeline: view();
         border-bottom: 1px solid var(--neutral-200);
-        /* border-radius: var(--border-radius-out);
-        box-shadow: var(--box-shadow); */
     }
 
     details > summary {
@@ -35,35 +37,22 @@ const { question, answer } = Astro.props;
         gap: 1rem;
     }
 
-    details > summary > div {
-        position: relative;
-        min-width: 20px;
-        min-height: 20px;
-    }
-
-    details > summary > div::before,
-    details > summary > div::after {
-        content: "";
-        position: absolute;
-        top: 50%;
-        background-color: var(--neutral-900);
-        width: 100%;
-        height: 2px;
-        transform: translate(0, -50%);
+    details > summary > figure {
+        display: grid;
+        place-items: center;
         transition: transform 0.2s ease-in-out;
     }
 
-    details > summary > div::before {
+    details[open] > summary > figure {
         transform: rotate(180deg);
     }
 
-    details > summary > div::after {
-        transform: rotate(90deg);
+    details > div {
+        padding-inline: 1rem;
     }
 
-    details[open] > summary > div::before,
-    details[open] > summary > div::after {
-        transform: rotate(0);
+    details > div > p {
+        color: var(--neutral-700);
     }
 
     @supports (interpolate-size: allow-keywords) {
