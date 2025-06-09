@@ -28,7 +28,7 @@ const viewTimeline = `--${id}`;
     </main>
 </article>
 
-<style define:vars={{ gridArea, viewTimeline }}>
+<style define:vars={{ "grid-area": gridArea, "view-timeline": viewTimeline }}>
     article {
         display: flex;
         flex-direction: column;
@@ -70,7 +70,7 @@ const viewTimeline = `--${id}`;
 
     @media (width >= 950px) {
         article {
-            grid-area: var(--gridArea);
+            grid-area: var(--grid-area);
             width: fit-content;
             animation: revealTestimonyCard linear both;
             animation-timeline: view();
@@ -103,7 +103,7 @@ const viewTimeline = `--${id}`;
     @media screen and (width < 950px) {
         @supports (animation-timeline: view()) {
             article {
-                view-timeline: var(--viewTimeline) inline;
+                view-timeline: var(--view-timeline) inline;
                 scroll-snap-align: center;
                 min-width: calc(50% - 0.5rem);
             }

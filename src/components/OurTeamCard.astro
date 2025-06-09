@@ -23,14 +23,14 @@ const { index, name, image, role, gridArea } = Astro.props;
     </div>
 </article>
 
-<style define:vars={{ index, gridArea }}>
+<style define:vars={{ index, "grid-area": gridArea }}>
     .our__team-card {
         padding: 1rem;
         border-radius: var(--border-radius-out);
         overflow: hidden;
         position: relative;
         color: var(--neutral-50);
-        grid-area: var(--gridArea);
+        grid-area: var(--grid-area);
     }
 
     .our__team-card > figure > img {

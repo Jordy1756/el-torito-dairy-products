@@ -6,7 +6,6 @@ import PhoneIcon from "@icons/PhoneIcon.astro";
 import EmailIcon from "@icons/EmailIcon.astro";
 import ContactLink from "@components/ContactLink.astro";
 import Actionable from "@components/Actionable.astro";
-import SendIcon from "@icons/SendIcon.astro";
 
 import { basics, contactUsSection } from "@data";
 import { contactFields } from "@definitions/contactFieldTypes";
@@ -47,7 +46,8 @@ const { title, description, addressLink, addressMapLink, schedules } = contactUs
                 }
             </div>
         </div>
-        <iframe src={addressMapLink} loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe src={addressMapLink} loading="lazy" allowfullscreen="" referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
     </article>
     <article class="contact__form">
         <h5>Ponte en contacto con nosotros</h5>

@@ -19,29 +19,15 @@ const { id, name, image, description } = Astro.props;
     </div>
 </article>
 
-<style define:vars={{ gridArea: id }}>
+<style define:vars={{ "grid-area": id }}>
     article {
         position: relative;
-        min-height: 300px;
-        grid-area: var(--gridArea);
+        grid-area: var(--grid-area);
         border-radius: var(--border-radius-out);
         animation: revealProduct linear both;
         animation-timeline: view();
-        animation-range: entry 15% cover 20%;
+        animation-range: entry 25% cover 45%;
         overflow: hidden;
-
-        &:hover > img {
-            scale: 1.1;
-            filter: brightness(0.5);
-        }
-
-        &:hover > div {
-            bottom: 0;
-        }
-
-        &:hover > div > p {
-            height: auto;
-        }
     }
 
     article > img {
@@ -57,6 +43,11 @@ const { id, name, image, description } = Astro.props;
             filter 0.3s ease-in-out;
     }
 
+    article:hover > img {
+        scale: 1.1;
+        filter: brightness(0.5);
+    }
+
     article > div {
         padding: 1rem;
         width: 100%;
@@ -69,10 +60,18 @@ const { id, name, image, description } = Astro.props;
         transition: bottom 0.2s ease-in-out;
     }
 
+    article:hover > div {
+        bottom: 0;
+    }
+
     article > div > p {
         height: 0;
         overflow: hidden;
         transition: height 0.2s ease-in-out;
+    }
+
+    article:hover > div > p {
+        height: auto;
     }
 
     @keyframes revealProduct {

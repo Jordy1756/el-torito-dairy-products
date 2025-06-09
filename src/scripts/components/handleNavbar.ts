@@ -16,12 +16,18 @@ export const initNavbar = () => {
         const addToggleListener = (element: HTMLElement) =>
             element.addEventListener("click", () => {
                 nav.classList.toggle("open");
-                if (nav.classList.contains("open")) setContactButton("var(--neutral-900)");
-                else setContactButton(nav.classList.contains("scrolled") ? "var(--neutral-900)" : "var(--neutral-50)");
+                setContactButton(
+                    nav.classList.contains("scrolled") || nav.classList.contains("open")
+                        ? "var(--neutral-900)"
+                        : "var(--neutral-50)"
+                );
             });
 
         const addRemoveListener = (element: HTMLElement) =>
-            element.addEventListener("click", () => nav.classList.contains("open") && nav.classList.remove("open"));
+            element.addEventListener("click", () => {
+                nav.classList.contains("open") && nav.classList.remove("open");
+                setContactButton(nav.classList.contains("scrolled") ? "var(--neutral-900)" : "var(--neutral-50)");
+            });
 
         addToggleListener(menuBtn);
         addRemoveListener(overlay);
