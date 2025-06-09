@@ -20,10 +20,14 @@ const { type, className, buttonType, href } = Astro.props;
         </a>
     )
 }
+
 <style>
     :is(button, a) {
         border-radius: var(--border-radius-out);
         text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .primary:is(button, a) {

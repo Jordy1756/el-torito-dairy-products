@@ -6,16 +6,16 @@ const { awards } = awardsSection;
 const totalAwards = awards.length;
 ---
 
-<section>
+<aside>
     {
         awards.map(({ title, value }, index) => (
             <AwardCard index={index} title={title} value={value} totalAwards={totalAwards} />
         ))
     }
-</section>
+</aside>
 
 <style>
-    section {
+    aside {
         width: min(100%, var(--max-width));
         display: flex;
         justify-content: end;
@@ -25,14 +25,14 @@ const totalAwards = awards.length;
     }
 
     @media screen and (width <= 905px) {
-        section {
+        aside {
             height: 170px;
             position: relative;
         }
     }
 
     @media screen and (width <= 480px) {
-        section {
+        aside {
             height: 160px;
         }
     }

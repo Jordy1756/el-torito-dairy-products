@@ -8,8 +8,8 @@ const initApp = () => {
     const banner = document.querySelector("#banner") as HTMLElement;
 
     initLenis();
-    const { nav, setContactButton } = initNavbar();
-    createBannerObserver(nav, setContactButton).observe(banner);
+    const { nav } = initNavbar();
+    createBannerObserver(nav).observe(banner);
     initCarouselControls();
     initContactForm();
 };

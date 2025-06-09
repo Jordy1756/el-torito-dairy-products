@@ -1,6 +1,7 @@
 import { initNavbar } from "@scripts/components/handleNavbar";
 import { createSectionObserver } from "@utils/handleObservers";
 import { initLenis } from "@utils/handleLenis";
+import { initContactForm } from "@scripts/components/handleContactForm";
 
 const initObserverSections = () => {
     const sections = document.querySelectorAll("#about-us, #testimonies, #our-team") as NodeListOf<HTMLElement>;
@@ -11,7 +12,7 @@ const initApp = () => {
     initLenis();
     initNavbar();
     initObserverSections();
-    // initContactForm();
+    initContactForm();
 };
 
 document.addEventListener("DOMContentLoaded", () => initApp());
