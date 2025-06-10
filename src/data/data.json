@@ -46,25 +46,37 @@
                 "id": "history",
                 "title": "Historia",
                 "content": "Lácteos el Torito nace en 2012 en Santa Cruz de Turrialba, fundada por Bernardo Araya Abarca, quien cuenta con más de 40 años de experiencia en distribución de lácteos. Comenzamos comprando productos terminados a fabricantes locales, hasta lograr construir nuestras propias instalaciones. Nos dedicamos a preservar recetas tradicionales, garantizando calidad y seguridad en cada uno de nuestros productos elaborados en esta pintoresca zona rural costarricense.",
-                "image": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387808/history_img_pdubh2.webp"
+                "image": {
+                    "src": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387808/history_img_pdubh2.webp",
+                    "alt": "Historia de Lácteos El Torito"
+                }
             },
             {
                 "id": "mission",
                 "title": "Misión",
                 "content": "Nuestra misión es producir y comercializar productos lácteos frescos y naturales, sin conservantes ni aditivos, que cumplan con los más altos estándares de calidad. Nos enfocamos en satisfacer las necesidades de nuestros clientes mediante productos nutritivos y un servicio excepcional, contribuyendo a su bienestar y salud.",
-                "image": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387808/mission_img_wihlro.webp"
+                "image": {
+                    "src": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387808/mission_img_wihlro.webp",
+                    "alt": "Misión de Lácteos El Torito"
+                }
             },
             {
                 "id": "vision",
                 "title": "Visión",
                 "content": "La visión de Lácteos El Torito es ser reconocidos como la empresa líder en productos lácteos en Costa Rica, destacándonos por la calidad y excelencia de nuestros productos. Nos esforzamos en innovar y mejorar continuamente nuestros procesos para ofrecer productos nutritivos y deliciosos, con integridad y compromiso hacia nuestros clientes.",
-                "image": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387808/vision_img_eyxn6i.webp"
+                "image": {
+                    "src": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387808/vision_img_eyxn6i.webp",
+                    "alt": "Visión de Lácteos El Torito"
+                }
             },
             {
                 "id": "values",
                 "title": "Valores",
                 "content": "En Lácteos El Torito nos fundamentamos en la excelencia, honestidad, responsabilidad y compromiso. Valoramos la tradición artesanal combinada con prácticas modernas para garantizar la máxima calidad. Trabajamos con integridad, respetando a proveedores, colaboradores y consumidores, estableciendo relaciones duraderas basadas en la confianza mutua.",
-                "image": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387808/values_img_nkbstd.webp"
+                "image": {
+                    "src": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387808/values_img_nkbstd.webp",
+                    "alt": "Valores de Lácteos El Torito"
+                }
             }
         ]
     },
@@ -75,7 +87,8 @@
             {
                 "id": "product1",
                 "name": "Natilla Casera",
-                "description": "Cremosa natilla elaborada con ingredientes frescos y naturales, perfecta para acompañar platillos típicos costarricenses.",
+                "weight": "500g",
+                "category": "Lácteo Tradicional",
                 "image": {
                     "src": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387857/NatillaCasera_jgww7m.webp",
                     "alt": "Natilla Casera de Lácteos El Torito"
@@ -84,7 +97,8 @@
             {
                 "id": "product2",
                 "name": "Queso Maduro",
-                "description": "Queso con sabor intenso y textura cremosa tras un cuidadoso proceso de maduración. Ideal para tablas y sándwiches.",
+                "weight": "1kg",
+                "category": "Queso Artesanal",
                 "image": {
                     "src": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387858/QuesoMaduro_erkqw7.webp",
                     "alt": "Queso Maduro de Lácteos El Torito"
@@ -93,7 +107,8 @@
             {
                 "id": "product3",
                 "name": "Queso Palmito",
-                "description": "Sabor suave y textura firme, elaborado artesanalmente en forma de trenza. Perfecto para compartir en cualquier ocasión.",
+                "weight": "800g",
+                "category": "Queso Trenzado",
                 "image": {
                     "src": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387859/QuesoPalmito_iwxuvg.webp",
                     "alt": "Queso Palmito de Lácteos El Torito"
@@ -102,7 +117,8 @@
             {
                 "id": "product4",
                 "name": "Yogurt Guanabana",
-                "description": "Cremoso yogurt artesanal con sabor exótico de guanábana. Sin conservantes ni colorantes artificiales.",
+                "weight": "250ml",
+                "category": "Yogurt Tropical",
                 "image": {
                     "src": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387860/YogurtGuananbana_wal2sy.webp",
                     "alt": "Yogurt Guanabana de Lácteos El Torito"
@@ -111,7 +127,8 @@
             {
                 "id": "product5",
                 "name": "Yogurt Kiwi",
-                "description": "Combina la acidez del kiwi con la suavidad del yogurt fresco. Sin aditivos artificiales, refrescante y equilibrado.",
+                "weight": "250ml",
+                "category": "Yogurt Frutal",
                 "image": {
                     "src": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387860/YogurtKiwi_brprhv.webp",
                     "alt": "Yogurt Kiwi de Lácteos El Torito"
@@ -120,7 +137,8 @@
             {
                 "id": "product6",
                 "name": "Queso Maduro con Chile",
-                "description": "Variante picante de nuestro queso maduro infusionado con chiles seleccionados. Para amantes de sabores intensos.",
+                "weight": "1kg",
+                "category": "Queso Especiado",
                 "image": {
                     "src": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387858/QuesoMaduroChile_aqsky6.webp",
                     "alt": "Queso Maduro con Chile de Lácteos El Torito"
@@ -129,7 +147,18 @@
             {
                 "id": "product7",
                 "name": "Yogurt Mora",
-                "description": "Yogurt artesanal con moras frescas de la región. Rico en antioxidantes y vitaminas, con delicioso sabor natural.",
+                "weight": "250ml",
+                "category": "Yogurt Antioxidante",
+                "image": {
+                    "src": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387861/YogurtMora_d1kx8p.webp",
+                    "alt": "Yogurt Mora de Lácteos El Torito"
+                }
+            },
+            {
+                "id": "product8",
+                "name": "Yogurt Mora",
+                "weight": "250ml",
+                "category": "Yogurt Antioxidante",
                 "image": {
                     "src": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387861/YogurtMora_d1kx8p.webp",
                     "alt": "Yogurt Mora de Lácteos El Torito"

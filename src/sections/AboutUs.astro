@@ -28,25 +28,26 @@ const { title, description, identities } = aboutUsSection;
 <style>
     header {
         text-align: center;
-        margin-bottom: 3rem;
+        margin-bottom: 5rem;
     }
 
     div {
         display: flex;
         flex-direction: column;
         gap: 5rem;
-        contain: paint;
+        overflow: clip;
+        background-color: red;
     }
 
     @media screen and (width <= 1000px) {
         div {
-            gap: 3rem;
+            /* gap: 3rem; */
         }
     }
 
     @media screen and (width <= 700px) {
         div {
-            gap: 2rem;
+            /* gap: 2rem; */
         }
     }
 </style>

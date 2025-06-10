@@ -13,8 +13,8 @@ const { title, description, products } = productsSection;
     </header>
     <div>
         {
-            products.map(({ id, name, image, description }) => (
-                <ProductCard id={id} name={name} image={image} description={description} />
+            products.map(({ id, name, image, weight, category }) => (
+                <ProductCard id={id} name={name} image={image} weight={weight} category={category} />
             ))
         }
     </div>
@@ -26,7 +26,6 @@ const { title, description, products } = productsSection;
     }
 
     div {
-        /* min-height: 100vh; */
         flex: 1;
         display: grid;
         grid-template-columns: repeat(8, 1fr);
@@ -37,8 +36,8 @@ const { title, description, products } = productsSection;
             "product1 product1 product2 product2 product2 product3 product3 product3"
             "product4 product4 product2 product2 product2 product5 product5 product5"
             "product4 product4 product2 product2 product2 product5 product5 product5"
-            "product4 product4 product6 product6 product6 product6 product7 product7"
-            "product4 product4 product6 product6 product6 product6 product7 product7";
+            "product4 product4 product6 product6 product7 product7 product8 product8"
+            "product4 product4 product6 product6 product7 product7 product8 product8";
     }
 
     @media screen and (768px <= width <= 1000px) {

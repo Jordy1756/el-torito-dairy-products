@@ -27,6 +27,13 @@ const { title } = Astro.props;
 
     :root {
         --font: "Poppins", "Open Sans", sans-serif, system-ui;
+        --text-size-mega: clamp(2.027rem, 5vw + 1rem, 3.815rem);
+        --text-size-huge: clamp(1.802rem, 4vw + 1rem, 3.052rem);
+        --text-size-xlarge: clamp(1.602rem, 3vw + 1rem, 2.441rem);
+        --text-size-large: clamp(1.424rem, 2.5vw + 1rem, 1.953rem);
+        --text-size-medium: clamp(1.266rem, 2vw + 1rem, 1.563rem);
+        --text-size-small: clamp(1.125rem, 1.5vw + 1rem, 1.25rem);
+        --text-size-base: 1rem;
         --font-weight-normal: 300;
         --font-weight-title: 400;
         --neutral-50: #fbfbfc;
@@ -104,37 +111,31 @@ const { title } = Astro.props;
     }
 
     h1 {
-        font-size: clamp(2.027rem, 5dvw + 1rem, 3.815rem);
-        line-height: 1.1;
+        font-size: var(--text-size-mega);
     }
 
     h2 {
-        font-size: clamp(1.802rem, 4dvw + 1rem, 3.052rem);
-        line-height: 1.2;
+        font-size: var(--text-size-huge);
     }
 
     h3 {
-        font-size: clamp(1.602rem, 3dvw + 1rem, 2.441rem);
-        line-height: 1.25;
+        font-size: var(--text-size-xlarge);
     }
 
     h4 {
-        font-size: clamp(1.424rem, 2.5dvw + 1rem, 1.953rem);
-        line-height: 1.3;
+        font-size: var(--text-size-large);
     }
 
     h5 {
-        font-size: clamp(1.266rem, 2dvw + 1rem, 1.563rem);
-        line-height: 1.4;
+        font-size: var(--text-size-medium);
     }
 
     h6 {
-        font-size: clamp(1.125rem, 1.5dvw + 1rem, 1.25rem);
-        line-height: 1.5;
+        font-size: var(--text-size-small);
     }
 
     p {
-        font-size: 1rem;
+        font-size: var(--text-size-base);
         line-height: 1.75;
         text-wrap: pretty;
         font-kerning: normal;
@@ -176,9 +177,4 @@ const { title } = Astro.props;
         flex-direction: column;
         min-height: 100vh;
     }
-
-    /* .navbar.open ~ .hero,
-    .navbar.scrolled ~ .hero {
-        margin-top: calc(43px + 3rem);
-    } */
 </style>

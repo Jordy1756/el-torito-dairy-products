@@ -5,7 +5,10 @@ type Props = {
     number: string;
     title: string;
     content: string;
-    image: string;
+    image: {
+        src: string;
+        alt: string;
+    };
 };
 
 const { number, title, content, image } = Astro.props;
@@ -15,7 +18,7 @@ const { number, title, content, image } = Astro.props;
     <div>
         <div class="about__statistic-card">
             <span>{number}</span>
-            <Image src={image} alt={`Imagen de ${title}`} width={400} height={500} />
+            <Image src={image.src} alt={image.alt} width={400} height={500} />
         </div>
         <div class="about__description-card">
             <h3>{title}</h3>
@@ -32,11 +35,13 @@ const { number, title, content, image } = Astro.props;
         animation: revealAboutDetailCard linear both;
         animation-timeline: view();
         animation-range: entry 25% cover 45%;
+        background-color: rebeccapurple;
     }
 
     .about__detail-card > div {
         display: flex;
         gap: 1rem;
+        background-color: gray;
     }
 
     :is(.about__statistic-card, .about__description-card) {
