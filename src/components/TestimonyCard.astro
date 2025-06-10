@@ -13,7 +13,7 @@ const { id, name, time, testimony, gridArea } = Astro.props;
 const viewTimeline = `--${id}`;
 ---
 
-<article {id} draggable="false">
+<article {id} class="testimony__card" draggable="false">
     <header>
         <figure>
             <UserIcon width={32} height={32} color="var(--neutral-50)" />
@@ -29,7 +29,7 @@ const viewTimeline = `--${id}`;
 </article>
 
 <style define:vars={{ "grid-area": gridArea, "view-timeline": viewTimeline }}>
-    article {
+    .testimony__card {
         display: flex;
         flex-direction: column;
         gap: 1.5rem;
@@ -39,13 +39,13 @@ const viewTimeline = `--${id}`;
         box-shadow: var(--box-shadow);
     }
 
-    article > header {
+    .testimony__card > header {
         display: flex;
         align-items: center;
         gap: 1rem;
     }
 
-    article > header > figure {
+    .testimony__card > header > figure {
         display: grid;
         place-items: center;
         padding: 0.75rem;
@@ -53,23 +53,23 @@ const viewTimeline = `--${id}`;
         background-color: var(--neutral-900);
     }
 
-    article > header > div {
+    .testimony__card > header > div {
         display: flex;
         flex-direction: column;
     }
 
-    article > header > div > p {
+    .testimony__card > header > div > p {
         font-size: 0.875rem;
         color: var(--neutral-700);
         opacity: 0.9;
     }
 
-    article > main > p {
+    .testimony__card > main > p {
         max-width: 50ch;
     }
 
     @media (width >= 950px) {
-        article {
+        .testimony__card {
             grid-area: var(--grid-area);
             width: fit-content;
             animation: revealTestimonyCard linear both;
@@ -80,7 +80,7 @@ const viewTimeline = `--${id}`;
                 transform 0.3s ease-in-out;
         }
 
-        article:hover {
+        .testimony__card:hover {
             box-shadow: var(--box-shadow-hover);
             transform: translate(5px, 5px);
             z-index: 1;
@@ -102,25 +102,25 @@ const viewTimeline = `--${id}`;
 
     @media screen and (width < 950px) {
         @supports (animation-timeline: view()) {
-            article {
+            .testimony__card {
                 view-timeline: var(--view-timeline) inline;
                 scroll-snap-align: center;
                 min-width: calc(50% - 0.5rem);
             }
         }
 
-        article {
+        .testimony__card {
             padding: 1rem;
         }
 
-        article > main > p {
+        .testimony__card > main > p {
             max-width: 100%;
         }
     }
 
     @media (width < 600px) {
         @supports (animation-timeline: view()) {
-            article {
+            .testimony__card {
                 min-width: 100%;
             }
         }

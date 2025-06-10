@@ -12,7 +12,7 @@ const { title, description, testimonies } = testimoniesSection;
         <h2>{title}</h2>
         <p>{description}</p>
     </header>
-    <div>
+    <div class="testimonies__container">
         <div>
             {
                 testimonies.map(({ name, time, testimony, gridArea }, i) => (
@@ -42,23 +42,23 @@ const { title, description, testimonies } = testimoniesSection;
         padding-inline: 1rem;
     }
 
-    div {
+    .testimonies__container {
         display: flex;
         flex-direction: column;
         gap: 1rem;
     }
 
-    div > div {
+    .testimonies__container > div {
         padding-inline: 1rem;
         gap: 1rem;
     }
 
-    div > nav {
+    .testimonies__container > nav {
         display: none;
     }
 
     @media screen and (width >= 950px) {
-        div > div {
+        .testimonies__container > div {
             display: grid;
             place-items: center;
         }
@@ -66,13 +66,13 @@ const { title, description, testimonies } = testimoniesSection;
 
     @media screen and (width < 950px) {
         @supports (animation-timeline: view()) {
-            div {
+            .testimonies__container {
                 timeline-scope: var(--timelineScope);
                 bottom: calc(anchor(top) - 3rem);
                 right: calc(anchor(right) + 3rem);
             }
 
-            div > div {
+            .testimonies__container > div {
                 display: flex;
                 padding-block: 1rem;
                 overflow-x: auto;
@@ -83,13 +83,13 @@ const { title, description, testimonies } = testimoniesSection;
                 scroll-behavior: smooth;
             }
 
-            div > nav {
+            .testimonies__container > nav {
                 display: flex;
                 justify-content: center;
                 gap: 0.5rem;
             }
 
-            div > nav > a {
+            .testimonies__container > nav > a {
                 width: 16px;
                 height: 16px;
                 border-radius: 9999px;
@@ -98,7 +98,7 @@ const { title, description, testimonies } = testimoniesSection;
         }
 
         @supports not (animation-timeline: view()) {
-            div > div {
+            .testimonies__container > div {
                 display: grid;
                 place-items: center;
             }
@@ -107,15 +107,15 @@ const { title, description, testimonies } = testimoniesSection;
 
     @media screen and (600px <= width < 950px) {
         @supports (animation-timeline: view()) {
-            div > nav > a:first-child {
+            .testimonies__container > nav > a:first-child {
                 animation: colorize-first-dot linear;
             }
 
-            div > nav > a:not(:first-child, :last-child) {
+            .testimonies__container > nav > a:not(:first-child, :last-child) {
                 animation: colorize-center-dot linear;
             }
 
-            div > nav > a:last-child {
+            .testimonies__container > nav > a:last-child {
                 animation: colorize-last-dot linear;
             }
 
@@ -156,13 +156,13 @@ const { title, description, testimonies } = testimoniesSection;
 
     @media screen and (width < 600px) {
         @supports (animation-timeline: view()) {
-            div > div {
+            .testimonies__container > div {
                 scroll-padding: 0;
             }
 
-            div > nav > a:first-child,
-            div > nav > a:last-child,
-            div > nav > a:not(:first-child, :last-child) {
+            .testimonies__container > nav > a:first-child,
+            .testimonies__container > nav > a:last-child,
+            .testimonies__container > nav > a:not(:first-child, :last-child) {
                 animation: colorize-dot linear;
             }
 

@@ -5,7 +5,7 @@ import LocationIcon from "@icons/LocationIcon.astro";
 import PhoneIcon from "@icons/PhoneIcon.astro";
 import EmailIcon from "@icons/EmailIcon.astro";
 import ContactLink from "@components/ContactLink.astro";
-import Actionable from "@components/Actionable.astro";
+import Button from "@components/Button.astro";
 
 import { basics, contactUsSection } from "@data";
 import { contactFields } from "@definitions/contactFieldTypes";
@@ -68,7 +68,7 @@ const { title, description, addressLink, addressMapLink, schedules } = contactUs
                     )
                 )
             }
-            <Actionable type="button" className="primary" buttonType="submit">Enviar</Actionable>
+            <Button type="submit" className="primary">Enviar</Button>
         </form>
     </article>
 </MainSection>

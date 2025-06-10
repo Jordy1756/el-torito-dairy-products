@@ -1,36 +1,27 @@
 ---
 type Props = {
-    type: "CTA" | "button";
     className: "primary" | "secondary";
-    buttonType?: "button" | "submit";
-    href?: string;
+    type: "button" | "submit" | "reset";
 };
 
-const { type, className, buttonType, href } = Astro.props;
+const { className, type } = Astro.props;
 ---
 
-{
-    type === "button" ? (
-        <button type={buttonType} class={className}>
-            <slot />
-        </button>
-    ) : (
-        <a href={href} class={className}>
-            <slot />
-        </a>
-    )
-}
+<button type={type} class={className}>
+    <slot />
+</button>
 
 <style>
-    :is(button, a) {
+    button {
         border-radius: var(--border-radius-out);
         text-align: center;
         display: flex;
         align-items: center;
         justify-content: center;
+        gap: 0.5rem;
     }
 
-    .primary:is(button, a) {
+    button.primary {
         background-color: var(--primary-500);
         color: var(--neutral-50);
         padding: 9px 25px;
@@ -38,21 +29,14 @@ const { type, className, buttonType, href } = Astro.props;
         transition: background-color 0.3s ease-in-out;
     }
 
-    .primary:is(button, a):hover {
+    button.primary:hover {
         background-color: var(--primary-400);
     }
 
-    .secondary:is(button, a) {
+    button.secondary {
         border: 1px solid var(--neutral-900);
         background-color: transparent;
         color: var(--neutral-900);
         padding: 8px 24px;
-    }
-
-    :is(button, a):has(svg, img) {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.5rem;
     }
 </style>

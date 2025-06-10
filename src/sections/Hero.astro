@@ -1,6 +1,5 @@
 ---
-import Actionable from "@components/Actionable.astro";
-
+import NavigationLink from "@components/NavigationLink.astro";
 import { basics } from "@data";
 
 const { name, summary } = basics;
@@ -10,7 +9,7 @@ const { name, summary } = basics;
     <article>
         <h1 translate="no">{name}</h1>
         <p>{summary}</p>
-        <Actionable type="CTA" className="primary" href="/#products">Productos</Actionable>
+        <NavigationLink className="primary" href="/#products">Productos</NavigationLink>
     </article>
     <div id="carousel-controls">
         {Array.from({ length: 4 }).map((_, index) => <span>{(index + 1).toString().padStart(2, "0")}</span>)}

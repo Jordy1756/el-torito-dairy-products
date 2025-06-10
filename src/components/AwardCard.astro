@@ -9,7 +9,7 @@ type Props = {
 const { index, title, value, totalAwards } = Astro.props;
 ---
 
-<article>
+<article class="award__card">
     <p>{title}</p>
     <div>
         <p>{value}</p>
@@ -17,7 +17,7 @@ const { index, title, value, totalAwards } = Astro.props;
 </article>
 
 <style define:vars={{ index, totalAwards }}>
-    article {
+    .award__card {
         --award-card-width: min(100%, 270px);
         width: var(--award-card-width);
         height: 170px;
@@ -31,19 +31,19 @@ const { index, title, value, totalAwards } = Astro.props;
         backdrop-filter: var(--blur-effect);
     }
 
-    article > div {
+    .award__card > div {
         flex: 1;
         display: grid;
         place-items: center;
     }
 
-    article > div > p {
+    .award__card > div > p {
         text-align: center;
         font-size: clamp(1.802rem, 4vw + 1rem, 3.052rem);
     }
 
     @media screen and (width <= 905px) {
-        article {
+        .award__card {
             --animation-duration: 25s;
             position: absolute;
             top: 0;
@@ -62,7 +62,7 @@ const { index, title, value, totalAwards } = Astro.props;
     }
 
     @media screen and (width <= 480px) {
-        article {
+        .award__card {
             height: 160px;
         }
     }

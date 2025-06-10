@@ -11,7 +11,7 @@ type Props = {
 const { id, name, image, description } = Astro.props;
 ---
 
-<article>
+<article class="product__card">
     <Image src={image.src} alt={image.alt} width={500} height={500} />
     <div>
         <h5>{name}</h5>
@@ -20,7 +20,7 @@ const { id, name, image, description } = Astro.props;
 </article>
 
 <style define:vars={{ "grid-area": id }}>
-    article {
+    .product__card {
         position: relative;
         grid-area: var(--grid-area);
         border-radius: var(--border-radius-out);
@@ -30,7 +30,7 @@ const { id, name, image, description } = Astro.props;
         overflow: hidden;
     }
 
-    article > img {
+    .product__card > img {
         position: absolute;
         inset: 0;
         width: 100%;
@@ -43,12 +43,12 @@ const { id, name, image, description } = Astro.props;
             filter 0.3s ease-in-out;
     }
 
-    article:hover > img {
+    .product__card:hover > img {
         scale: 1.1;
         filter: brightness(0.5);
     }
 
-    article > div {
+    .product__card > div {
         padding: 1rem;
         width: 100%;
         position: absolute;
@@ -60,17 +60,17 @@ const { id, name, image, description } = Astro.props;
         transition: bottom 0.2s ease-in-out;
     }
 
-    article:hover > div {
+    .product__card:hover > div {
         bottom: 0;
     }
 
-    article > div > p {
+    .product__card > div > p {
         height: 0;
         overflow: hidden;
         transition: height 0.2s ease-in-out;
     }
 
-    article:hover > div > p {
+    .product__card:hover > div > p {
         height: auto;
     }
 
@@ -86,7 +86,7 @@ const { id, name, image, description } = Astro.props;
     }
 
     @media screen and (width <= 520px) {
-        article {
+        .product__card {
             aspect-ratio: 4 / 3;
             min-height: auto;
         }

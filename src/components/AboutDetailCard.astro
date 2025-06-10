@@ -11,7 +11,7 @@ type Props = {
 const { number, title, content, image } = Astro.props;
 ---
 
-<article>
+<article class="about__detail-card">
     <div>
         <div class="about__statistic-card">
             <span>{number}</span>
@@ -25,7 +25,7 @@ const { number, title, content, image } = Astro.props;
 </article>
 
 <style>
-    article {
+    .about__detail-card {
         height: 500px;
         display: flex;
         align-items: center;
@@ -34,7 +34,7 @@ const { number, title, content, image } = Astro.props;
         animation-range: entry 25% cover 45%;
     }
 
-    article > div {
+    .about__detail-card > div {
         display: flex;
         gap: 1rem;
     }
@@ -81,7 +81,7 @@ const { number, title, content, image } = Astro.props;
     }
 
     @media screen and (width <= 1000px) {
-        article {
+        .about__detail-card {
             height: 350px;
         }
 
@@ -92,7 +92,7 @@ const { number, title, content, image } = Astro.props;
     }
 
     @media screen and (width <= 700px) {
-        article {
+        .about__detail-card {
             height: auto;
             animation-range: entry 20% cover 35%;
         }

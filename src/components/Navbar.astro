@@ -1,8 +1,8 @@
 ---
-import Actionable from "./Actionable.astro";
 import { Image } from "astro:assets";
 
 import { basics } from "@data";
+import NavigationLink from "@components/NavigationLink.astro";
 
 type Props = {
     baseUrl: "/" | "/who-we-are";
@@ -30,8 +30,8 @@ const { name, logo } = basics;
         <li data-link="our-team"><a href="/who-we-are#our-team">Nuestro equipo</a></li>
     </ul>
     <div class="navbar__actions">
-        <Actionable type="CTA" className="primary" href="/#products">Productos</Actionable>
-        <Actionable type="CTA" className="secondary" href={`${baseUrl}#contact-us`}>Contacto</Actionable>
+        <NavigationLink className="primary" href="/#products">Productos</NavigationLink>
+        <NavigationLink className="secondary" href={`${baseUrl}#contact-us`}>Contacto</NavigationLink>
     </div>
 </nav>
 <div id="overlay"></div>

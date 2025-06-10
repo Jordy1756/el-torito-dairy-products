@@ -78,9 +78,9 @@ const { title } = Astro.props;
         scrollbar-width: thin;
     }
 
-    /* html:has(:target#testimony-0, :target#testimony-1, :target#testimony-2, :target#testimony-3, :target#testimony-4) {
-        scroll-padding-top: 1rem;
-    } */
+    html:has(:target#testimony-0, :target#testimony-1, :target#testimony-2, :target#testimony-3, :target#testimony-4) {
+        scroll-padding-top: calc(144px + 3rem);
+    }
 
     body {
         font-family: var(--font);

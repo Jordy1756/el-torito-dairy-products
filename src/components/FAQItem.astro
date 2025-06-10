@@ -9,7 +9,7 @@ type Props = {
 const { question, answer } = Astro.props;
 ---
 
-<details name="FAQs">
+<details name="FAQs" class="faq__item">
     <summary>
         <h6>{question}</h6>
         <figure>
@@ -22,14 +22,14 @@ const { question, answer } = Astro.props;
 </details>
 
 <style>
-    details {
+    .faq__item {
         padding: 1rem;
         animation: revealFAQ linear both;
         animation-timeline: view();
         border-bottom: 1px solid var(--neutral-200);
     }
 
-    details > summary {
+    .faq__item > summary {
         cursor: pointer;
         display: flex;
         justify-content: space-between;
@@ -37,26 +37,26 @@ const { question, answer } = Astro.props;
         gap: 1rem;
     }
 
-    details > summary > figure {
+    .faq__item > summary > figure {
         display: grid;
         place-items: center;
         transition: transform 0.2s ease-in-out;
     }
 
-    details[open] > summary > figure {
+    .faq__item[open] > summary > figure {
         transform: rotate(180deg);
     }
 
-    details > div {
+    .faq__item > div {
         padding-inline: 1rem;
     }
 
-    details > div > p {
+    .faq__item > div > p {
         color: var(--neutral-700);
     }
 
     @supports (interpolate-size: allow-keywords) {
-        details::details-content {
+        .faq__item::details-content {
             height: 0;
             overflow: clip;
             transition:
@@ -65,14 +65,14 @@ const { question, answer } = Astro.props;
                 content-visibility 0.2s allow-discrete;
         }
 
-        details[open]::details-content {
+        .faq__item[open]::details-content {
             margin-top: 0.5rem;
             height: auto;
         }
     }
 
     @supports not (interpolate-size: allow-keywords) {
-        details[open] > div {
+        .faq__item[open] > div {
             margin-top: 0.5rem;
         }
     }

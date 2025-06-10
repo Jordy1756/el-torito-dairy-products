@@ -1,0 +1,42 @@
+---
+type Props = {
+    className: "primary" | "secondary";
+    href: string;
+};
+
+const { className, href } = Astro.props;
+---
+
+<a href={href} class={className}>
+    <slot />
+</a>
+
+<style>
+    a {
+        border-radius: var(--border-radius-out);
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+
+    a.primary {
+        background-color: var(--primary-500);
+        color: var(--neutral-50);
+        padding: 9px 25px;
+        border: none;
+        transition: background-color 0.3s ease-in-out;
+    }
+
+    a.primary:hover {
+        background-color: var(--primary-400);
+    }
+
+    a.secondary {
+        border: 1px solid var(--neutral-900);
+        background-color: transparent;
+        color: var(--neutral-900);
+        padding: 8px 24px;
+    }
+</style>
