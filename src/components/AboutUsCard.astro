@@ -14,7 +14,7 @@ type Props = {
 const { number, title, content, image } = Astro.props;
 ---
 
-<article class="about__detail-card">
+<article class="about__us-card">
     <div>
         <div class="about__statistic-card">
             <span>{number}</span>
@@ -28,23 +28,22 @@ const { number, title, content, image } = Astro.props;
 </article>
 
 <style>
-    .about__detail-card {
-        height: 500px;
+    .about__us-card {
+        min-height: 500px;
         display: flex;
         align-items: center;
-        animation: revealAboutDetailCard linear both;
+        animation: revealAboutUsCard linear both;
         animation-timeline: view();
         animation-range: entry 25% cover 45%;
-        background-color: rebeccapurple;
     }
 
-    .about__detail-card > div {
+    .about__us-card > div {
         display: flex;
         gap: 1rem;
-        background-color: gray;
     }
 
-    :is(.about__statistic-card, .about__description-card) {
+    .about__statistic-card,
+    .about__description-card {
         flex: 1;
         display: flex;
         flex-direction: column;
@@ -69,12 +68,12 @@ const { number, title, content, image } = Astro.props;
         left: 50%;
         transform: translate(-50%, -50%);
         width: 400px;
-        height: 500px;
+        max-height: 500px;
         object-fit: cover;
         border-radius: var(--border-radius-out);
     }
 
-    @keyframes revealAboutDetailCard {
+    @keyframes revealAboutUsCard {
         from {
             opacity: 0;
             translate: 50% 50%;
@@ -86,19 +85,15 @@ const { number, title, content, image } = Astro.props;
     }
 
     @media screen and (width <= 1000px) {
-        .about__detail-card {
-            height: 350px;
-        }
-
         .about__statistic-card > img {
-            width: 75%;
-            height: 350px;
+            width: 80%;
+            height: 450px;
         }
     }
 
     @media screen and (width <= 700px) {
-        .about__detail-card {
-            height: auto;
+        .about__us-card {
+            min-height: auto;
             animation-range: entry 20% cover 35%;
         }
 

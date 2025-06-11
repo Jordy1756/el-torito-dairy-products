@@ -24,8 +24,9 @@ export const sendContactEmail = async ({
             }),
         });
 
-        if (response.ok) return new Response(JSON.stringify({ success: true, message: "Correo enviado con éxito" }));
-        else return new Response(JSON.stringify({ success: false, message: "Error al enviar el correo" }));
+        if (!response.ok) throw new Error();
+
+        return new Response(JSON.stringify({ success: true, message: "Correo enviado con éxito" }));
     } catch (error) {
         console.error(error);
         return new Response(JSON.stringify({ success: false, message: "Error al enviar el correo" }));

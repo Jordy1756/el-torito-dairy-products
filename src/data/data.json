@@ -87,8 +87,8 @@
             {
                 "id": "product1",
                 "name": "Natilla Casera",
-                "weight": "500g",
-                "category": "Lácteo Tradicional",
+                "weight": "250g",
+                "category": "Artesanal",
                 "image": {
                     "src": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387857/NatillaCasera_jgww7m.webp",
                     "alt": "Natilla Casera de Lácteos El Torito"
@@ -97,8 +97,8 @@
             {
                 "id": "product2",
                 "name": "Queso Maduro",
-                "weight": "1kg",
-                "category": "Queso Artesanal",
+                "weight": "250g",
+                "category": "Artesanal",
                 "image": {
                     "src": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387858/QuesoMaduro_erkqw7.webp",
                     "alt": "Queso Maduro de Lácteos El Torito"
@@ -108,7 +108,7 @@
                 "id": "product3",
                 "name": "Queso Palmito",
                 "weight": "800g",
-                "category": "Queso Trenzado",
+                "category": "Artesanal",
                 "image": {
                     "src": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387859/QuesoPalmito_iwxuvg.webp",
                     "alt": "Queso Palmito de Lácteos El Torito"
@@ -116,9 +116,9 @@
             },
             {
                 "id": "product4",
-                "name": "Yogurt Guanabana",
+                "name": "Yogurt Guanábana",
                 "weight": "250ml",
-                "category": "Yogurt Tropical",
+                "category": "Artesanal",
                 "image": {
                     "src": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387860/YogurtGuananbana_wal2sy.webp",
                     "alt": "Yogurt Guanabana de Lácteos El Torito"
@@ -128,7 +128,7 @@
                 "id": "product5",
                 "name": "Yogurt Kiwi",
                 "weight": "250ml",
-                "category": "Yogurt Frutal",
+                "category": "Pasteurizado",
                 "image": {
                     "src": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387860/YogurtKiwi_brprhv.webp",
                     "alt": "Yogurt Kiwi de Lácteos El Torito"
@@ -137,8 +137,8 @@
             {
                 "id": "product6",
                 "name": "Queso Maduro con Chile",
-                "weight": "1kg",
-                "category": "Queso Especiado",
+                "weight": "250g",
+                "category": "Artesanal",
                 "image": {
                     "src": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387858/QuesoMaduroChile_aqsky6.webp",
                     "alt": "Queso Maduro con Chile de Lácteos El Torito"
@@ -148,7 +148,7 @@
                 "id": "product7",
                 "name": "Yogurt Mora",
                 "weight": "250ml",
-                "category": "Yogurt Antioxidante",
+                "category": "Artesanal",
                 "image": {
                     "src": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387861/YogurtMora_d1kx8p.webp",
                     "alt": "Yogurt Mora de Lácteos El Torito"
@@ -158,9 +158,9 @@
                 "id": "product8",
                 "name": "Yogurt Mora",
                 "weight": "250ml",
-                "category": "Yogurt Antioxidante",
+                "category": "Pasteurizado",
                 "image": {
-                    "src": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387861/YogurtMora_d1kx8p.webp",
+                    "src": "https://scontent.fsyq4-1.fna.fbcdn.net/v/t39.30808-6/485406361_1147941663793944_2906677603689099969_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=833d8c&_nc_ohc=8SdEZrf6EwUQ7kNvwGhbmFe&_nc_oc=AdmIeoU2hsHxj8gSxH4f8w2iRDyrtOrfD_y8g3Mdp1SCYRbzPCx8b1Voq-32joHXiIc&_nc_zt=23&_nc_ht=scontent.fsyq4-1.fna&_nc_gid=dv_hlXQ9qGIC2tktLPHumA&oh=00_AfN9wFf-IIWTOyHeOXRwSAPKDoE4UjS8p_9Di_ULXLIILQ&oe=684DA3B2",
                     "alt": "Yogurt Mora de Lácteos El Torito"
                 }
             }

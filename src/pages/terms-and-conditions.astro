@@ -8,25 +8,30 @@ import { basics, termsAndConditions } from "@data";
 
 const { name } = basics;
 const { title, description, content } = termsAndConditions;
+const baseUrl = "/";
 ---
 
 <Layout title=`Política de privacidad de ${name}`>
     <header>
-        <Navbar baseUrl="/" />
+        <Navbar baseUrl={baseUrl} />
     </header>
     <main>
         <PoliciesSection title={title} description={description} content={content} />
     </main>
-    <Footer />
+    <Footer baseUrl={baseUrl} />
 </Layout>
 
 <style>
     header {
-        padding: 0.5rem 1rem;
-        width: 100%;
+        position: sticky;
+        top: 0;
+        left: 0;
         display: flex;
         justify-content: center;
+        padding: 0.5rem 1rem;
         border-bottom: 1px solid var(--neutral-300);
+        background-color: var(--neutral-50);
+        z-index: 999;
     }
 
     main {

@@ -10,16 +10,17 @@ import Toast from "@components/Toast.astro";
 import { basics } from "@data";
 
 const { name } = basics;
+const baseUrl = "/";
 ---
 
 <Layout title={name}>
-    <Banner />
+    <Banner baseUrl={baseUrl} />
     <main>
         <Products />
         <FAQ />
         <Contact />
     </main>
-    <Footer />
+    <Footer baseUrl={baseUrl} />
     <Toast />
     <script src="../scripts/pages/index.ts"></script>
 </Layout>

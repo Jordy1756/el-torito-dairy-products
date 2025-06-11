@@ -7,6 +7,11 @@ import { getYear } from "@scripts/utils/handleDates";
 
 import { basics } from "@data";
 
+type Props = {
+    baseUrl: "/" | "/who-we-are";
+};
+
+const { baseUrl } = Astro.props;
 const { name, logo, slogan, socialNetworks } = basics;
 
 const SOCIAL_NETWORKS: Record<string, string | any> = {
@@ -28,12 +33,12 @@ const SOCIAL_NETWORKS: Record<string, string | any> = {
             <div>
                 <h6>Empresa</h6>
                 <ul>
-                    <li><a href="/#about-us">Sobre nosotros</a></li>
+                    <li><a href="/who-we-are#about-us">Sobre nosotros</a></li>
                     <li><a href="/#products">Nuestros productos</a></li>
-                    <li><a href="/#testimonies">Testimonios</a></li>
-                    <li><a href="/#our-team">Nuestro equipo</a></li>
-                    <li><a href="/#FAQ">Preguntas frecuentes</a></li>
-                    <li><a href="/#contact-us">Contáctanos</a></li>
+                    <li><a href="/who-we-are#testimonies">Testimonios</a></li>
+                    <li><a href="/who-we-are#our-team">Nuestro equipo</a></li>
+                    <li><a href={`${baseUrl}#FAQ`}>Preguntas frecuentes</a></li>
+                    <li><a href={`${baseUrl}#contact-us`}>Contáctanos</a></li>
                 </ul>
             </div>
             <div>
