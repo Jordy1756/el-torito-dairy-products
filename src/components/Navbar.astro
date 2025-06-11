@@ -34,7 +34,7 @@ const { name, logo } = basics;
         <NavigationLink className="secondary" href={`${baseUrl}#contact-us`}>Contacto</NavigationLink>
     </div>
 </nav>
-<div id="overlay"></div>
+<div id="overlay" class="overlay"></div>
 
 <style is:global>
     .navbar > .navbar__actions > a {
@@ -146,7 +146,7 @@ const { name, logo } = basics;
         gap: 1rem;
     }
 
-    .navbar + div {
+    .navbar + .overlay {
         position: fixed;
         inset: 0;
         background-color: rgba(0, 0, 0, 0.5);
@@ -156,7 +156,7 @@ const { name, logo } = basics;
         pointer-events: none;
     }
 
-    /* NAVBAR OUT BANNER */
+    /* NAVBAR OUT OF BANNER */
 
     .navbar.out__banner {
         position: fixed;
@@ -170,10 +170,6 @@ const { name, logo } = basics;
         border-bottom: 1px solid var(--neutral-300);
     }
 
-    .navbar.out__banner > .navbar__brand > button > span {
-        background-color: var(--primary-500);
-    }
-
     .navbar.out__banner > ul > li::before {
         background-color: var(--neutral-900);
     }
@@ -184,8 +180,10 @@ const { name, logo } = basics;
             content: "";
             position: absolute;
             bottom: -1px;
+            height: 100%;
             width: 100%;
             border-bottom: 1px solid var(--neutral-300);
+            background-color: var(--neutral-50);
         }
 
         .navbar.out__banner::before {
@@ -216,9 +214,9 @@ const { name, logo } = basics;
         }
 
         .navbar > .navbar__brand > button > span {
+            background-color: var(--neutral-900);
             width: calc(var(--index) * 33.33%);
             height: 3px;
-            background-color: var(--neutral-50);
             border-radius: var(--border-radius-out);
             transition:
                 width 0.9s ease-in-out,
@@ -227,13 +225,17 @@ const { name, logo } = basics;
                 background-color 0.6s ease-in-out;
         }
 
+        .navbar.on__dark-bg > .navbar__brand > button > span {
+            background-color: var(--neutral-50);
+        }
+
         .navbar > ul {
             display: none;
             padding-block: 1rem;
             border-top: 1px solid var(--neutral-300);
         }
 
-        /* NAV OPEN */
+        /* NAVBAR OPEN */
 
         .navbar.open {
             padding: 1rem;
@@ -268,10 +270,6 @@ const { name, logo } = basics;
             width: 75%;
         }
 
-        .navbar.open.out__banner > .navbar__brand > button > span {
-            background-color: var(--primary-900);
-        }
-
         .navbar.open > .navbar__brand > button > span:nth-child(1) {
             transform: translateX(12px) translateY(10.5px) rotate(45deg);
         }
@@ -296,9 +294,14 @@ const { name, logo } = basics;
             width: 100%;
         }
 
-        .navbar.open + div {
+        .navbar.open + .overlay {
             opacity: 1;
             pointer-events: visible;
+        }
+
+        /* NAVBAR OUT OF BANNER */
+        .navbar.out__banner > .navbar__brand > button > span {
+            background-color: var(--neutral-900);
         }
     }
 
