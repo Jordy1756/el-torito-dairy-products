@@ -14,7 +14,7 @@ const { email, phone, address } = basics;
 const { title, description, addressLink, addressMapLink, schedules } = contactUsSection;
 ---
 
-<MainSection id="contact-us" flexDirection="row" flexWrap="wrap">
+<MainSection id="contact-us">
     <article class="contact__info">
         <header>
             <h2>{title}</h2>
@@ -37,13 +37,15 @@ const { title, description, addressLink, addressMapLink, schedules } = contactUs
             </div>
             <div>
                 <h6>Horario</h6>
-                {
-                    schedules.map(({ day, hours }) => (
-                        <p>
-                            {day}: {hours}
-                        </p>
-                    ))
-                }
+                <ul>
+                    {
+                        schedules.map(({ day, hours }) => (
+                            <li>
+                                {day}: {hours}
+                            </li>
+                        ))
+                    }
+                </ul>
             </div>
         </div>
         <iframe src={addressMapLink} loading="lazy" allowfullscreen="" referrerpolicy="no-referrer-when-downgrade"
@@ -73,6 +75,14 @@ const { title, description, addressLink, addressMapLink, schedules } = contactUs
     </article>
 </MainSection>
 
+<style is:global>
+    #contact-us {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 2rem;
+    }
+</style>
+
 <style>
     article:is(.contact__info, .contact__form) {
         display: flex;
@@ -86,11 +96,16 @@ const { title, description, addressLink, addressMapLink, schedules } = contactUs
         flex: 2.5;
     }
 
-    :is(.contact__info > header, .contact__info > div > div, .contact__info > div > div > address) {
+    .contact__info > header,
+    .contact__info > div > div,
+    .contact__info > div > div > address,
+    .contact__info > div > div > ul {
         display: flex;
         flex-direction: column;
-        flex-wrap: wrap;
-        gap: 0.5rem;
+    }
+
+    .contact__info > header {
+        gap: 0.25rem;
     }
 
     .contact__info > header > p {
@@ -101,7 +116,16 @@ const { title, description, addressLink, addressMapLink, schedules } = contactUs
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
-        gap: 1rem;
+        gap: 2rem;
+    }
+
+    .contact__info > div > div {
+        gap: 0.75rem;
+    }
+
+    .contact__info > div > div > address,
+    .contact__info > div > div > ul {
+        gap: 0.25rem;
     }
 
     .contact__info > iframe {
@@ -109,7 +133,7 @@ const { title, description, addressLink, addressMapLink, schedules } = contactUs
         border-radius: var(--border-radius-out);
         flex: 1;
         width: 100%;
-        min-height: 250px;
+        min-height: 350px;
     }
 
     /* CONTACT FORM */
@@ -125,7 +149,13 @@ const { title, description, addressLink, addressMapLink, schedules } = contactUs
     .contact__form > form {
         display: flex;
         flex-direction: column;
-        gap: 1.5rem;
+        gap: 1rem;
         flex: 1;
+    }
+
+    @media screen and (width <= 480px) {
+        .contact__info > iframe {
+            min-height: 250px;
+        }
     }
 </style>

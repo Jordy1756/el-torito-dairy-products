@@ -8,6 +8,8 @@ import Footer from "@components/Footer.astro";
 import Toast from "@components/Toast.astro";
 
 import { basics } from "@data";
+import InputField from "@components/InputField.astro";
+import Button from "@components/Button.astro";
 
 const { name } = basics;
 const baseUrl = "/";
@@ -22,8 +24,9 @@ const baseUrl = "/";
     </main>
     <Footer baseUrl={baseUrl} />
     <Toast />
-    <script src="../scripts/pages/index.ts"></script>
 </Layout>
+
+<script src="../scripts/pages/index.ts"></script>
 
 <style>
     main {
