@@ -29,7 +29,11 @@ const { title, description, testimonies } = testimoniesSection;
         <nav>
             {
                 testimonies.map((_, i) => (
-                    <a href={`#${getTestimonyId(i)}`} style={`animation-timeline: ${getAnimationTimeline(i)};`} />
+                    <a
+                        aria-label={`Ir a testimonio ${i + 1}`}
+                        href={`#${getTestimonyId(i)}`}
+                        style={`animation-timeline: ${getAnimationTimeline(i)};`}
+                    />
                 ))
             }
         </nav>
