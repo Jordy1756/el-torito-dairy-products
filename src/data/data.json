@@ -18,7 +18,7 @@
             },
             {
                 "network": "Instagram",
-                "url": "https://www.instagram.com/lacteoseltorito"
+                "url": "https://www.instagram.com/lacteos.el_torito"
             }
         ]
     },
@@ -81,7 +81,7 @@
         ]
     },
     "productsSection": {
-        "title": "Nuestros productos.",
+        "title": "Nuestros productos",
         "description": "Conoce nuestra variedad de productos lácteos frescos y saludables",
         "products": [
             {
@@ -160,7 +160,7 @@
                 "weight": "250ml",
                 "category": "Pasteurizado",
                 "image": {
-                    "src": "https://scontent.fsyq4-1.fna.fbcdn.net/v/t39.30808-6/485406361_1147941663793944_2906677603689099969_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=833d8c&_nc_ohc=8SdEZrf6EwUQ7kNvwGhbmFe&_nc_oc=AdmIeoU2hsHxj8gSxH4f8w2iRDyrtOrfD_y8g3Mdp1SCYRbzPCx8b1Voq-32joHXiIc&_nc_zt=23&_nc_ht=scontent.fsyq4-1.fna&_nc_gid=dv_hlXQ9qGIC2tktLPHumA&oh=00_AfN9wFf-IIWTOyHeOXRwSAPKDoE4UjS8p_9Di_ULXLIILQ&oe=684DA3B2",
+                    "src": "https://images.unsplash.com/photo-1523473827533-2a64d0d36748?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                     "alt": "Yogurt Mora de Lácteos El Torito"
                 }
             }
