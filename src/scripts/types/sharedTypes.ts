@@ -6,5 +6,6 @@ export type ErrorTypes = {
 
 export type APIResponse = {
     success: boolean;
+    title: string;
     message: string;
 };

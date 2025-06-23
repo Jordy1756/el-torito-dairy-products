@@ -26,9 +26,21 @@ export const sendContactEmail = async ({
 
         if (!response.ok) throw new Error();
 
-        return new Response(JSON.stringify({ success: true, message: "Correo enviado con éxito" }));
+        return new Response(
+            JSON.stringify({
+                success: true,
+                title: "¡Mensaje enviado!",
+                message: "Gracias por contactarnos. Nos comunicaremos contigo pronto.",
+            })
+        );
     } catch (error) {
         console.error(error);
-        return new Response(JSON.stringify({ success: false, message: "Error al enviar el correo" }));
+        return new Response(
+            JSON.stringify({
+                success: false,
+                title: "No se pudo enviar",
+                message: "Ocurrió un problema al enviar tu mensaje. Por favor, intenta nuevamente.",
+            })
+        );
     }
 };
