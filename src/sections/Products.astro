@@ -45,6 +45,12 @@ const { title, description, products } = productsSection;
         }
     }
 
+    @media screen and (width <= 1256px) {
+        div {
+            grid-template-rows: repeat(6, 125px);
+        }
+    }
+
     @media screen and (768px <= width <= 1024px) {
         div {
             grid-template-columns: repeat(6, 1fr);
