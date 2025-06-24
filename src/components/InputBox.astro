@@ -1,18 +1,20 @@
 ---
 type Props = {
-    name: string;
     label: string;
-    fieldType: "input" | "textarea";
-    inputType?: "text" | "email";
-    pattern?: RegExp;
-    minLength?: number;
-    maxLength?: number;
     flex?: number;
 };
 
-const { name, label, inputType, fieldType, pattern, minLength, maxLength, flex } = Astro.props;
+const { label, flex } = Astro.props;
 ---
 
+<div class="input__box">
+    <fieldset>
+        <slot />
+        <legend>{label}</legend>
+    </fieldset>
+    <p class="error__message"></p>
+</div>
+<!-- 
 <div>
     {
         fieldType === "input" ? (
@@ -31,10 +33,10 @@ const { name, label, inputType, fieldType, pattern, minLength, maxLength, flex }
     }
     <label>{label}</label>
     <p></p>
-</div>
+</div> -->
 
-<style define:vars={{ flex }}>
-    div {
+<style is:global define:vars={{ flex }}>
+    .input__box {
         display: flex;
         flex-direction: column;
         gap: 0.25rem;
@@ -42,69 +44,69 @@ const { name, label, inputType, fieldType, pattern, minLength, maxLength, flex }
         flex: var(--flex);
     }
 
-    div > :is(input:focus, textarea:focus):not(:placeholder-shown):valid {
-        border-color: var(--success-900);
+    .input__box > fieldset {
+        flex: 1;
+        position: relative;
+        border: none;
+
     }
 
-    div > :is(input, textarea):not(:placeholder-shown):invalid {
-        border-color: var(--error-500);
-    }
-
-    div > :is(input, textarea) {
+    .input__box > fieldset > :is(input, textarea) {
+        width: 100%;
+        height: 100%;
         padding: 8px 12px;
         border: 1px solid var(--neutral-400);
         border-radius: var(--border-radius-out);
         background-color: var(--neutral-50);
-        flex: 1;
     }
 
-    div > textarea {
+    .input__box > fieldset > :is(input:focus, textarea:focus):not(:placeholder-shown):valid {
+        border-color: var(--success-700);
+    }
+
+    .input__box > fieldset > :is(input, textarea):not(:placeholder-shown):invalid {
+        border-color: var(--error-700);
+    }
+
+    .input__box > fieldset > textarea {
+        scrollbar-width: thin;
         resize: none;
-        min-height: 200px;
         field-sizing: content;
+        max-height: 350px;
     }
 
-    div > label {
-        line-height: 1;
-    }
-
-    div > label {
+    .input__box > fieldset > legend {
         padding-inline: 0.25rem;
         position: absolute;
         top: 13px;
         left: 9px;
         pointer-events: none;
         background-color: var(--neutral-50);
+        line-height: 1;
         transition:
             top 0.3s ease-in-out,
             font-size 0.3s ease-in-out,
             color 0.3s ease-in-out;
     }
 
-    div > :is(input, textarea):focus + label,
-    div > :is(input, textarea):not(:placeholder-shown) + label {
+    .input__box > fieldset > :is(input, textarea):focus + legend,
+    .input__box > fieldset > :is(input, textarea):not(:placeholder-shown) + legend {
         top: -8px;
         font-size: 0.9rem;
         color: var(--neutral-700);
     }
 
-    div > :is(input:focus, textarea:focus):not(:placeholder-shown):valid + label {
+    .input__box > fieldset > :is(input:focus, textarea:focus):not(:placeholder-shown):valid + legend {
         color: var(--success-900);
     }
 
-    div > :is(input, textarea):not(:placeholder-shown):invalid + label {
+    .input__box > fieldset > :is(input, textarea):not(:placeholder-shown):invalid + legend {
         color: var(--error-900);
     }
 
-    div > p {
+    .input__box > p {
         padding-inline: 0.5625rem;
         color: var(--error-900);
         font-size: 0.75rem;
-    }
-
-    @media screen and (width <= 400px) {
-        div > :is(input, textarea) {
-            width: 100%;
-        }
     }
 </style>

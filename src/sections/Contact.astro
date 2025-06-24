@@ -1,5 +1,5 @@
 ---
-import InputField from "@components/InputField.astro";
+import InputBox from "@components/InputBox.astro";
 import MainSection from "@components/MainSection.astro";
 import LocationIcon from "@icons/LocationIcon.astro";
 import PhoneIcon from "@icons/PhoneIcon.astro";
@@ -8,10 +8,17 @@ import ContactLink from "@components/ContactLink.astro";
 import Button from "@components/Button.astro";
 
 import { basics, contactUsSection } from "@data";
-import { contactFields } from "@definitions/contactFieldTypes";
+import { contactFields } from "@scripts/sections/handleContactFields";
 
 const { email, phone, address } = basics;
 const { title, description, addressLink, addressMapLink, schedules } = contactUsSection;
+const {
+    name: nameField,
+    lastName: lastNameField,
+    email: emailField,
+    subject: subjectField,
+    message: messageField,
+} = contactFields;
 ---
 
 <MainSection id="contact-us">
@@ -54,22 +61,58 @@ const { title, description, addressLink, addressMapLink, schedules } = contactUs
     <article class="contact__form">
         <h5>Ponte en contacto con nosotros</h5>
         <form id="contact-form">
-            {
-                Object.entries(contactFields).map(
-                    ([key, { name, inputType, fieldType, pattern, minLength, maxLength, flex }]) => (
-                        <InputField
-                            name={key}
-                            label={name}
-                            fieldType={fieldType}
-                            inputType={inputType}
-                            pattern={pattern}
-                            minLength={minLength}
-                            maxLength={maxLength}
-                            flex={flex}
-                        />
-                    )
-                )
-            }
+            <InputBox label={nameField.name}>
+                <input
+                    type="text"
+                    name="name"
+                    placeholder=""
+                    minlength={nameField.minLength}
+                    maxlength={nameField.maxLength}
+                    pattern={nameField.pattern.source}
+                    required
+                />
+            </InputBox>
+            <InputBox label={lastNameField.name}>
+                <input
+                    type="text"
+                    name="lastName"
+                    placeholder=""
+                    minlength={lastNameField.minLength}
+                    maxlength={lastNameField.maxLength}
+                    pattern={lastNameField.pattern.source}
+                    required
+                />
+            </InputBox>
+            <InputBox label={emailField.name}>
+                <input
+                    type="email"
+                    name="email"
+                    placeholder=""
+                    minlength={emailField.minLength}
+                    maxlength={emailField.maxLength}
+                    pattern={emailField.pattern.source}
+                    required
+                />
+            </InputBox>
+            <InputBox label={subjectField.name}>
+                <input
+                    type="text"
+                    name="subject"
+                    placeholder=""
+                    minlength={subjectField.minLength}
+                    maxlength={subjectField.maxLength}
+                    pattern={subjectField.pattern.source}
+                    required
+                />
+            </InputBox>
+            <InputBox label={messageField.name} flex={messageField.flex}>
+                <textarea
+                    name="message"
+                    placeholder=""
+                    minlength={messageField.minLength}
+                    maxlength={messageField.maxLength}
+                    required></textarea>
+            </InputBox>
             <Button type="submit" className="primary">Enviar</Button>
         </form>
     </article>
@@ -79,7 +122,7 @@ const { title, description, addressLink, addressMapLink, schedules } = contactUs
     #contact-us {
         flex-direction: row;
         flex-wrap: wrap;
-        gap: 2rem;
+        gap: 32px;
     }
 </style>
 
@@ -87,7 +130,7 @@ const { title, description, addressLink, addressMapLink, schedules } = contactUs
     article:is(.contact__info, .contact__form) {
         display: flex;
         flex-direction: column;
-        gap: 1.5rem;
+        gap: 24px;
     }
 
     /* CONTACT INFO */
@@ -105,7 +148,7 @@ const { title, description, addressLink, addressMapLink, schedules } = contactUs
     }
 
     .contact__info > header {
-        gap: 0.25rem;
+        gap: 4px;
     }
 
     .contact__info > header > p {
@@ -116,16 +159,16 @@ const { title, description, addressLink, addressMapLink, schedules } = contactUs
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
-        gap: 2rem;
+        gap: 32px;
     }
 
     .contact__info > div > div {
-        gap: 0.75rem;
+        gap: 12px;
     }
 
     .contact__info > div > div > address,
     .contact__info > div > div > ul {
-        gap: 0.25rem;
+        gap: 4px;
     }
 
     .contact__info > iframe {
@@ -133,7 +176,7 @@ const { title, description, addressLink, addressMapLink, schedules } = contactUs
         border-radius: var(--border-radius-out);
         flex: 1;
         width: 100%;
-        min-height: 350px;
+        min-height: 21.875rem;
     }
 
     /* CONTACT FORM */
@@ -149,13 +192,13 @@ const { title, description, addressLink, addressMapLink, schedules } = contactUs
     .contact__form > form {
         display: flex;
         flex-direction: column;
-        gap: 1rem;
+        gap: 16px;
         flex: 1;
     }
 
-    @media screen and (width <= 480px) {
+    @media screen and (width <= 30rem) {
         .contact__info > iframe {
-            min-height: 250px;
+            min-height: 15.625rem;
         }
     }
 </style>

@@ -1,5 +1,5 @@
 import type { APIResponse } from "@definitions/sharedTypes";
-import { contactFields } from "@definitions/contactFieldTypes";
+import { contactFields } from "@scripts/sections/handleContactFields";
 import { validateInput } from "@scripts/utils/validateInput";
 import { sendContactEmail } from "@scripts/utils/sendEmail";
 import { formDataEntryToString } from "@scripts/utils/convertToString";
@@ -8,9 +8,11 @@ import type { Toast } from "@definitions/ToastTypes";
 
 export const initContactForm = (showToast: ({ type, title, message }: Toast) => void) => {
     const form = document.getElementById("contact-form") as HTMLFormElement;
-    const inputs = form.querySelectorAll("div > input, div > textarea") as NodeListOf<HTMLInputElement>;
-    const paragraphs = form.querySelectorAll("div > p") as NodeListOf<HTMLParagraphElement>;
+    const inputs = form.querySelectorAll(".input__box input, .input__box textarea") as NodeListOf<HTMLInputElement>;
+    const paragraphs = form.querySelectorAll(".error__message") as NodeListOf<HTMLParagraphElement>;
     const sendButton = form.querySelector("button[type='submit']") as HTMLButtonElement;
+
+    console.log(inputs);
 
     const errorHandler = (input: HTMLInputElement, index: number) =>
         (paragraphs[index].textContent = validateInput(input, contactFields[input.name].errors));
