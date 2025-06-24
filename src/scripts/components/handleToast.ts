@@ -20,12 +20,12 @@ const ICON_TYPES = {
 };
 
 export const initToast = () => {
-    const toast = document.querySelector(".toast") as HTMLElement;
-    const toastMainSection = toast.querySelector("#toast-content") as HTMLElement;
-    const toastIcon = toastMainSection.querySelector("#toast-icon-container") as HTMLElement;
-    const toastTitle = toastMainSection.querySelector("#toast-title") as HTMLHeadingElement;
-    const toastText = toastMainSection.querySelector("#toast-message") as HTMLParagraphElement;
-    const toastCloseButton = toastMainSection.querySelector("#toast-close-btn") as HTMLButtonElement;
+    const toast = document.querySelector("#toast") as HTMLElement;
+    const toastContent = toast.querySelector("#toast-content") as HTMLElement;
+    const toastIcon = toastContent.querySelector("#toast-icon-container") as HTMLElement;
+    const toastTitle = toastContent.querySelector("#toast-title") as HTMLHeadingElement;
+    const toastText = toastContent.querySelector("#toast-message") as HTMLParagraphElement;
+    const toastCloseButton = toastContent.querySelector("#toast-close-btn") as HTMLButtonElement;
 
     const showToast = ({ type, title, message }: Toast) => {
         toast.classList.add("active", type);
