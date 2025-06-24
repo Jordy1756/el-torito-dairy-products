@@ -1,9 +1,12 @@
 ---
-interface Props {
+import { basics } from "@data";
+
+type Props = {
     title: string;
-}
+};
 
 const { title } = Astro.props;
+const { url, summary, logo } = basics;
 ---
 
 <!doctype html>
@@ -13,6 +16,18 @@ const { title } = Astro.props;
         <meta name="description" content="Astro description" />
         <meta name="viewport" content="width=device-width" />
         <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+        <meta property="og:url" content={url} />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={summary} />
+        <meta property="og:image" content={logo} />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta property="twitter:domain" content={url.split("//")[1] ?? ""} />
+        <meta property="twitter:url" content={url} />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={summary} />
+        <meta name="twitter:image" content={logo} />
         <title>{title}</title>
     </head>
     <body>
@@ -33,14 +48,6 @@ const { title } = Astro.props;
         --text-size-large: clamp(1.424rem, 2.5vw + 1rem, 1.953rem);
         --text-size-medium: clamp(1.266rem, 2vw + 1rem, 1.563rem);
         --text-size-small: clamp(1.125rem, 1.5vw + 1rem, 1.25rem);
-
-        /* --text-size-mega: clamp(32.432px, 5vw + 16px, 61.04px);
-        --text-size-huge: clamp(28.832px, 4vw + 16px, 48.832px);
-        --text-size-xlarge: clamp(25.632px, 3vw + 16px, 39.056px);
-        --text-size-large: clamp(22.784px, 2.5vw + 16px, 31.248px);
-        --text-size-medium: clamp(20.256px, 2vw + 16px, 25.008px);
-        --text-size-small: clamp(18px, 1.5vw + 16px, 20px); */
-
         --text-size-base: 1rem;
         --font-weight-normal: 300;
         --font-weight-title: 400;
