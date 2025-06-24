@@ -14,26 +14,6 @@ const { label, flex } = Astro.props;
     </fieldset>
     <p class="error__message"></p>
 </div>
-<!-- 
-<div>
-    {
-        fieldType === "input" ? (
-            <input
-                name={name}
-                type={inputType}
-                placeholder=""
-                pattern={pattern?.source}
-                minlength={minLength}
-                maxlength={maxLength}
-                required
-            />
-        ) : (
-            <textarea name={name} placeholder="" minlength={minLength} maxlength={maxLength} required />
-        )
-    }
-    <label>{label}</label>
-    <p></p>
-</div> -->
 
 <style is:global define:vars={{ flex }}>
     .input__box {
