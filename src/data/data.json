@@ -49,7 +49,7 @@
                 "content": "Lácteos el Torito nace en 2012 en Santa Cruz de Turrialba, fundada por Bernardo Araya Abarca, quien cuenta con más de 40 años de experiencia en distribución de lácteos. Comenzamos comprando productos terminados a fabricantes locales, hasta lograr construir nuestras propias instalaciones. Nos dedicamos a preservar recetas tradicionales, garantizando calidad y seguridad en cada uno de nuestros productos elaborados en esta pintoresca zona rural costarricense.",
                 "image": {
                     "src": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387808/history_img_pdubh2.webp",
-                    "alt": "Historia de Lácteos El Torito"
+                    "alt": "Bernardo Araya, Fundador y CEO de Lácteos El Torito"
                 }
             },
             {
@@ -58,7 +58,7 @@
                 "content": "Nuestra misión es producir y comercializar productos lácteos frescos y naturales, sin conservantes ni aditivos, que cumplan con los más altos estándares de calidad. Nos enfocamos en satisfacer las necesidades de nuestros clientes mediante productos nutritivos y un servicio excepcional, contribuyendo a su bienestar y salud.",
                 "image": {
                     "src": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387808/mission_img_wihlro.webp",
-                    "alt": "Misión de Lácteos El Torito"
+                    "alt": "Vista del pueblo El Torito con casas de fondo, la plaza y el lugar de la planta de Lácteos El Torito"
                 }
             },
             {
@@ -67,7 +67,7 @@
                 "content": "La visión de Lácteos El Torito es ser reconocidos como la empresa líder en productos lácteos en Costa Rica, destacándonos por la calidad y excelencia de nuestros productos. Nos esforzamos en innovar y mejorar continuamente nuestros procesos para ofrecer productos nutritivos y deliciosos, con integridad y compromiso hacia nuestros clientes.",
                 "image": {
                     "src": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387808/vision_img_eyxn6i.webp",
-                    "alt": "Visión de Lácteos El Torito"
+                    "alt": "Mural pintado en la pared del Volcán Turrialba en la planta de Lácteos El Torito"
                 }
             },
             {
@@ -76,7 +76,7 @@
                 "content": "En Lácteos El Torito nos fundamentamos en la excelencia, honestidad, responsabilidad y compromiso. Valoramos la tradición artesanal combinada con prácticas modernas para garantizar la máxima calidad. Trabajamos con integridad, respetando a proveedores, colaboradores y consumidores, estableciendo relaciones duraderas basadas en la confianza mutua.",
                 "image": {
                     "src": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387808/values_img_nkbstd.webp",
-                    "alt": "Valores de Lácteos El Torito"
+                    "alt": "Trabajadores de Lácteos El Torito en una feria de queso"
                 }
             }
         ]
@@ -89,80 +89,80 @@
                 "id": "product1",
                 "name": "Natilla Casera",
                 "weight": "250g",
-                "category": "Artesanal",
+                "highlight": "Receta familiar",
                 "image": {
                     "src": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387857/NatillaCasera_jgww7m.webp",
-                    "alt": "Natilla Casera de Lácteos El Torito"
+                    "alt": "Natilla Casera encima de una mesa de madera con un fondo oscuro de madera"
                 }
             },
             {
                 "id": "product2",
                 "name": "Queso Maduro",
                 "weight": "250g",
-                "category": "Artesanal",
+                "highlight": "Maduración natural",
                 "image": {
                     "src": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387858/QuesoMaduro_erkqw7.webp",
-                    "alt": "Queso Maduro de Lácteos El Torito"
+                    "alt": "Queso Maduro encima de una mesa de madera con un fondo oscuro de madera y panuelos alrededor"
                 }
             },
             {
                 "id": "product3",
                 "name": "Queso Palmito",
                 "weight": "800g",
-                "category": "Artesanal",
+                "highlight": "Textura cremosa",
                 "image": {
                     "src": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387859/QuesoPalmito_iwxuvg.webp",
-                    "alt": "Queso Palmito de Lácteos El Torito"
+                    "alt": "Queso Palmito en una cuchara de madera con un fondo oscuro de madera y panuelos alrededor"
                 }
             },
             {
                 "id": "product4",
-                "name": "Yogurt Guanábana",
+                "name": "Yogurt de Guanábana",
                 "weight": "250ml",
-                "category": "Artesanal",
+                "highlight": "Sabor tropical",
                 "image": {
                     "src": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387860/YogurtGuananbana_wal2sy.webp",
-                    "alt": "Yogurt Guanabana de Lácteos El Torito"
+                    "alt": "Yogurt de Guanábana encima de un tronco de madera con un lago de fondo y hojas verdes"
                 }
             },
             {
                 "id": "product5",
-                "name": "Yogurt Kiwi",
+                "name": "Yogurt de Kiwi",
                 "weight": "250ml",
-                "category": "Pasteurizado",
+                "highlight": "Rico en vitamina C",
                 "image": {
                     "src": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387860/YogurtKiwi_brprhv.webp",
-                    "alt": "Yogurt Kiwi de Lácteos El Torito"
+                    "alt": "Yogurt de Kiwi encima de un tronco de madera con un lago de fondo y hojas verdes"
                 }
             },
             {
                 "id": "product6",
-                "name": "Queso Maduro con Chile",
+                "name": "Queso Maduro Picante",
                 "weight": "250g",
-                "category": "Artesanal",
+                "highlight": "Con chile natural",
                 "image": {
                     "src": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387858/QuesoMaduroChile_aqsky6.webp",
-                    "alt": "Queso Maduro con Chile de Lácteos El Torito"
+                    "alt": "Queso Maduro con peuqeñas cantidades de chile dentro del queso, encima de una mesa de madera con un fondo oscuro de madera y un chile alrededor"
                 }
             },
             {
                 "id": "product7",
-                "name": "Yogurt Mora",
+                "name": "Yogurt de Mora",
                 "weight": "250ml",
-                "category": "Artesanal",
+                "highlight": "Antioxidante natural",
                 "image": {
                     "src": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387861/YogurtMora_d1kx8p.webp",
-                    "alt": "Yogurt Mora de Lácteos El Torito"
+                    "alt": "Yogurt de Mora encima de un tronco de madera con un lago de fondo y hojas verdes"
                 }
             },
             {
                 "id": "product8",
-                "name": "Yogurt Mora",
-                "weight": "250ml",
-                "category": "Pasteurizado",
+                "name": "Queso con Orégano",
+                "weight": "250g",
+                "highlight": "Sabor mediterráneo",
                 "image": {
-                    "src": "https://images.unsplash.com/photo-1523473827533-2a64d0d36748?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                    "alt": "Yogurt Mora de Lácteos El Torito"
+                    "src": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1750964687/queso_maduro_oregano_img_rhdecv.webp",
+                    "alt": "Queso Maduro con pqeuñas cantidades de oregano dentro del queso, cortado a la mitad, encima de una mesa de madera"
                 }
             }
         ]

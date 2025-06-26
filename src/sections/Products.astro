@@ -13,8 +13,8 @@ const { title, description, products } = productsSection;
     </header>
     <div>
         {
-            products.map(({ id, name, image, weight, category }) => (
-                <ProductCard id={id} name={name} image={image} weight={weight} category={category} />
+            products.map(({ id, name, image, weight, highlight }) => (
+                <ProductCard id={id} name={name} image={image} weight={weight} highlight={highlight} />
             ))
         }
     </div>

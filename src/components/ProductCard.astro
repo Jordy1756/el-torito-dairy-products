@@ -9,10 +9,10 @@ type Props = {
         alt: string;
     };
     weight: string;
-    category: string;
+    highlight: string;
 };
 
-const { id, name, image, weight, category } = Astro.props;
+const { id, name, image, weight, highlight } = Astro.props;
 ---
 
 <article class="product__card">
@@ -21,7 +21,7 @@ const { id, name, image, weight, category } = Astro.props;
     <div>
         <!-- <p>{weight}</p> -->
         <div>
-            <h6>{category}</h6>
+            <h6>{highlight}</h6>
             <h5>{name}</h5>
         </div>
     </div>
