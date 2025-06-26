@@ -1,4 +1,6 @@
-import { MAILGUN_API_URL, MAILGUN_HEADERS } from "@scripts/config/configEmail";
+import { MAILGUN_API_KEY, MAILGUN_DOMAIN } from "@scripts/config/configEmail";
+import FormData from "form-data";
+import Mailgun from "mailgun.js";
 
 export const sendContactEmail = async ({
     name,
@@ -8,23 +10,25 @@ export const sendContactEmail = async ({
     message,
 }: Record<string, string>): Promise<Response> => {
     const fullName = `${name} ${lastName}`;
+
+    const mailgun = new Mailgun(FormData);
+    const mg = mailgun.client({
+        username: "api",
+        key: MAILGUN_API_KEY,
+    });
+
     try {
-        const response = await fetch(MAILGUN_API_URL, {
-            method: "POST",
-            headers: MAILGUN_HEADERS,
-            body: new URLSearchParams({
-                from: `${fullName} <${email}>`,
-                to: "jordycastro1756@gmail.com",
-                subject: subject,
-                text: `${message}\n\n${fullName}`,
-                html: `
-                    <p>${message}</p>
-                    <p>${fullName}</p>
-                `,
-            }),
+        const response = await mg.messages.create(MAILGUN_DOMAIN, {
+            from: `${fullName} <${email}>`,
+            to: ["Yordi Castro Rojas <jordycastro1756@gmail.com>"],
+            subject,
+            text: `${message}\n\n${fullName}`,
+            html: `
+                <p>${message}</p>
+            `,
         });
 
-        if (!response.ok) throw new Error();
+        if (!response.status || response.status !== 200) throw new Error("Failed to send email");
 
         return new Response(
             JSON.stringify({
