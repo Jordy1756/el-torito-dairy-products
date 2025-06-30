@@ -13,18 +13,18 @@ const { className, type } = Astro.props;
 
 <style>
     button {
-        border-radius: var(--border-radius-out);
-        text-align: center;
         display: flex;
         align-items: center;
         justify-content: center;
         gap: 0.5rem;
+        text-align: center;
+        border-radius: var(--border-radius-out);
     }
 
     button.primary {
         background-color: var(--primary-500);
         color: var(--neutral-50);
-        padding: 9px 25px;
+        padding: 10.5px 26.5px;
         border: none;
         transition: background-color 0.3s ease-in-out;
     }
@@ -37,6 +37,6 @@ const { className, type } = Astro.props;
         border: 1px solid var(--neutral-900);
         background-color: transparent;
         color: var(--neutral-900);
-        padding: 8px 24px;
+        padding: 9.5px 25.5px;
     }
 </style>

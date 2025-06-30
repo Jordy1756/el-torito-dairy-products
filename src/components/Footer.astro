@@ -12,7 +12,7 @@ type Props = {
 };
 
 const { baseUrl } = Astro.props;
-const { name, logo, slogan, socialNetworks } = basics;
+const { name, slogan, logo, socialNetworks } = basics;
 
 const SOCIAL_NETWORKS: Record<string, string | any> = {
     Whatsapp: WhatsappIcon,
@@ -25,7 +25,7 @@ const SOCIAL_NETWORKS: Record<string, string | any> = {
     <section class="footer__content">
         <div>
             <a href="/#">
-                <Image src={logo} alt={`Logo de ${name}`} width={75} height={75} />
+                <Image src={logo} alt={`Logo de ${name}`} width={120} height={89} />
             </a>
             <p>{slogan}</p>
         </div>
@@ -62,7 +62,7 @@ const SOCIAL_NETWORKS: Record<string, string | any> = {
                     const Icon = SOCIAL_NETWORKS[network];
                     return (
                         <a href={url} target="_blank" rel="noopener noreferrer">
-                            <Icon width={24} height={24} />
+                            <Icon width={24} height={24} color="var(--neutral-50)" />
                         </a>
                     );
                 })
@@ -94,7 +94,7 @@ const SOCIAL_NETWORKS: Record<string, string | any> = {
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
-        gap: 2rem; 
+        gap: 2rem;
     }
 
     /* FOOTER CONTENT */
@@ -116,9 +116,10 @@ const SOCIAL_NETWORKS: Record<string, string | any> = {
     }
 
     .footer__content > div > a > img {
-        width: 75px;
-        height: auto;
+        width: 120px;
+        height: 89px;
         object-fit: contain;
+        filter: brightness(0) invert(1);
     }
 
     .footer__content > nav {

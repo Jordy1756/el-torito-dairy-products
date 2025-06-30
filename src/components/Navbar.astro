@@ -16,7 +16,7 @@ const { name, logo } = basics;
 <nav id="navbar" class:list={["navbar", ...(classNames || [])]}>
     <div class="navbar__brand">
         <a href="/#">
-            <Image src={logo} alt={`Logo de ${name}`} width={43} height={43} />
+            <Image src={logo} alt={`Logo de ${name}`} width={60} height={45} />
         </a>
         <button id="menu-btn" type="button">
             <span style="--index: 3"></span>
@@ -67,7 +67,7 @@ const { name, logo } = basics;
     .navbar {
         width: min(100%, var(--max-width));
         display: flex;
-        align-items: center;
+        align-items: stretch;
         gap: 2rem;
         color: var(--neutral-900);
         transition:
@@ -79,6 +79,10 @@ const { name, logo } = basics;
 
     .navbar.on__dark-bg {
         color: var(--neutral-50);
+    }
+
+    .navbar.on__dark-bg > .navbar__brand > a > img {
+        filter: brightness(0) invert(1);
     }
 
     .navbar.slide__in-down {
@@ -101,8 +105,8 @@ const { name, logo } = basics;
     }
 
     .navbar > .navbar__brand > a > img {
-        max-width: 43px;
-        height: auto;
+        width: 60px;
+        height: 45px;
         object-fit: contain;
     }
 
@@ -163,11 +167,15 @@ const { name, logo } = basics;
         top: 0;
         left: 50%;
         transform: translateX(-50%);
-        padding: 0.5rem;
+        padding-block: 0.5rem;
         background-color: var(--neutral-50);
         color: var(--neutral-900);
         border-radius: none;
         border-bottom: 1px solid var(--neutral-300);
+    }
+
+    .navbar.out__banner > .navbar__brand > a > img {
+        filter: none;
     }
 
     .navbar.out__banner > ul > li::before {
