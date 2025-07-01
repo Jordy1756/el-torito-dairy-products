@@ -5,7 +5,7 @@ export const initNavbar = () => {
     const overlay = document.querySelector("#overlay") as HTMLDivElement;
 
     const setupMobileMenu = (): void => {
-        if (window.innerWidth > 768) return;
+        if (window.innerWidth > 864) return;
 
         const addToggleListener = (element: HTMLElement) =>
             element.addEventListener("click", () => nav.classList.toggle("open"));
