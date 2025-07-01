@@ -25,6 +25,7 @@ const { name, logo } = basics;
         </button>
     </div>
     <ul id="nav-list">
+        <li><a href="/#">Home</a></li>
         <li data-link="about-us"><a href="/who-we-are#about-us">Sobre nosotros</a></li>
         <li data-link="testimonies"><a href="/who-we-are#testimonies">Testimonios</a></li>
         <li data-link="our-team"><a href="/who-we-are#our-team">Nuestro equipo</a></li>
@@ -117,7 +118,8 @@ const { name, logo } = basics;
     }
 
     .navbar > ul > li::before,
-    .navbar > ul > li.active::before {
+    .navbar > ul > li.active::before,
+    .navbar.on__dark-bg > ul > li:first-child::before {
         content: "";
         position: absolute;
         bottom: 0;
@@ -130,7 +132,8 @@ const { name, logo } = basics;
             width 0.3s ease-in-out;
     }
 
-    .navbar.on__dark-bg > ul > li::before {
+    .navbar.on__dark-bg > ul > li::before,
+    .navbar.on__dark-bg > ul > li:first-child::before {
         background-color: var(--neutral-50);
     }
 
@@ -139,7 +142,8 @@ const { name, logo } = basics;
     }
 
     .navbar > ul > li:hover::before,
-    .navbar > ul > li.active::before {
+    .navbar > ul > li.active::before,
+    .navbar.on__dark-bg > ul > li:first-child::before {
         left: 0;
         width: 100%;
     }
@@ -174,7 +178,8 @@ const { name, logo } = basics;
         border-bottom: 1px solid var(--neutral-300);
     }
 
-    .navbar.out__banner > .navbar__brand > a > img {
+    .navbar.out__banner > .navbar__brand > a > img,
+    .navbar.navbar.open > .navbar__brand > a > img {
         filter: none;
     }
 
