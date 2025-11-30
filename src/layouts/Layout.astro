@@ -16,6 +16,9 @@ const { url, summary, logo } = basics;
         <meta name="description" content="Astro description" />
         <meta name="viewport" content="width=device-width" />
         <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+
+        <slot name="head" />
+
         <meta property="og:url" content={url} />
         <meta property="og:type" content="website" />
         <meta property="og:title" content={title} />
@@ -28,6 +31,7 @@ const { url, summary, logo } = basics;
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={summary} />
         <meta name="twitter:image" content={logo} />
+        
         <title>{title}</title>
     </head>
     <body>
@@ -86,8 +90,8 @@ const { url, summary, logo } = basics;
         --box-shadow-hover: 0px 6px 12px 0px rgba(0, 0, 0, 0.25);
         --border-radius-in: 2.5px;
         --border-radius-out: 5px;
-        --max-width: 1544px;
-        /* --max-width: 1336px; */
+        /* --max-width: 1544px; */
+        --max-width: 1336px;
         interpolate-size: allow-keywords;
     }
 

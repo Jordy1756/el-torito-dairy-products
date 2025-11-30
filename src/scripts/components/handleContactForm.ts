@@ -12,8 +12,6 @@ export const initContactForm = (showToast: ({ type, title, message }: Toast) => 
     const paragraphs = form.querySelectorAll(".error__message") as NodeListOf<HTMLParagraphElement>;
     const sendButton = form.querySelector("button[type='submit']") as HTMLButtonElement;
 
-    console.log(inputs);
-
     const errorHandler = (input: HTMLInputElement, index: number) =>
         (paragraphs[index].textContent = validateInput(input, contactFields[input.name].errors));
 
