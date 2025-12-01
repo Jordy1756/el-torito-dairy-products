@@ -19,7 +19,7 @@ const viewTimeline = `--${id}`;
             <UserIcon width={32} height={32} color="var(--neutral-50)" />
         </figure>
         <div>
-            <h6>{name}</h6>
+            <h3>{name}</h3>
             <p>{time}</p>
         </div>
     </header>
@@ -56,6 +56,10 @@ const viewTimeline = `--${id}`;
     .testimony__card > header > div {
         display: flex;
         flex-direction: column;
+    }
+
+    .testimony__card > header > div > h3 {
+        font-size: var(--text-size-small);
     }
 
     .testimony__card > header > div > p {
