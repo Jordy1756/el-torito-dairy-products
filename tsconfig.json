@@ -6,7 +6,7 @@
             "@components/*": ["src/components/*"],
             "@layouts/*": ["src/layouts/*"],
             "@sections/*": ["src/sections/*"],
-            "@icons/*": ["src/assets/icons/*"],
+            "@icons/*": ["src/components/icons/*"],
             "@config/*": ["src/scripts/config/*"],
             "@utils/*": ["src/scripts/utils/*"],
             "@definitions/*": ["src/scripts/types/*"],
