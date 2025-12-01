@@ -2,7 +2,8 @@ import type { ContactField } from "@definitions/contactFieldTypes";
 
 export const contactFields: Record<string, ContactField> = {
     name: {
-        name: "Nombre",
+        label: "Nombre",
+        name: "name",
         pattern: /^[A-ZÁÉÍÓÚÑ][a-záéíóúñ]{2,}$/,
         minLength: 3,
         maxLength: 30,
@@ -14,7 +15,8 @@ export const contactFields: Record<string, ContactField> = {
         },
     },
     lastName: {
-        name: "Apellidos",
+        label: "Apellidos",
+        name: "lastName",
         pattern: /^[A-ZÁÉÍÓÚÑ][a-záéíóúñ]+\s[A-ZÁÉÍÓÚÑ][a-záéíóúñ]+$/,
         minLength: 10,
         maxLength: 50,
@@ -26,7 +28,8 @@ export const contactFields: Record<string, ContactField> = {
         },
     },
     email: {
-        name: "Correo electrónico",
+        label: "Correo electrónico",
+        name: "email",
         pattern: /[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$/,
         minLength: 5,
         maxLength: 50,
@@ -37,7 +40,8 @@ export const contactFields: Record<string, ContactField> = {
         },
     },
     subject: {
-        name: "Asunto",
+        label: "Asunto",
+        name: "subject",
         pattern: /^[a-záéíóúñA-ZÁÉÍÓÚÑ\s]{4,}$/,
         minLength: 5,
         maxLength: 50,
@@ -49,7 +53,8 @@ export const contactFields: Record<string, ContactField> = {
         },
     },
     message: {
-        name: "Mensaje",
+        label: "Mensaje",
+        name: "message",
         pattern: /^[a-záéíóúñA-ZÁÉÍÓÚÑ\s]+$/,
         minLength: 10,
         maxLength: 500,

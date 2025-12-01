@@ -67,8 +67,9 @@ const {
     <article class="contact__form">
         <h5>Ponte en contacto con nosotros</h5>
         <form id="contact-form">
-            <InputBox label={nameField.name}>
+            <InputBox name={nameField.name} label={nameField.label}>
                 <input
+                    id={nameField.name}
                     type="text"
                     name="name"
                     placeholder=""
@@ -78,8 +79,9 @@ const {
                     required
                 />
             </InputBox>
-            <InputBox label={lastNameField.name}>
+            <InputBox name={lastNameField.name} label={lastNameField.label}>
                 <input
+                    id={lastNameField.name}
                     type="text"
                     name="lastName"
                     placeholder=""
@@ -89,8 +91,9 @@ const {
                     required
                 />
             </InputBox>
-            <InputBox label={emailField.name}>
+            <InputBox name={emailField.name} label={emailField.label}>
                 <input
+                    id={emailField.name}
                     type="email"
                     name="email"
                     placeholder=""
@@ -100,8 +103,9 @@ const {
                     required
                 />
             </InputBox>
-            <InputBox label={subjectField.name}>
+            <InputBox name={subjectField.name} label={subjectField.label}>
                 <input
+                    id={subjectField.name}
                     type="text"
                     name="subject"
                     placeholder=""
@@ -111,8 +115,9 @@ const {
                     required
                 />
             </InputBox>
-            <InputBox label={messageField.name} flex={messageField.flex}>
+            <InputBox name={messageField.name} label={messageField.label} flex={messageField.flex}>
                 <textarea
+                    id={messageField.name}
                     name="message"
                     placeholder=""
                     minlength={messageField.minLength}
