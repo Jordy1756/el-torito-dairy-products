@@ -22,7 +22,7 @@ const { title, description, content } = Astro.props;
         {
             content.map(({ subtitle, description }) => (
                 <article>
-                    <h4>{subtitle}</h4>
+                    <h3>{subtitle}</h3>
                     <p>{description}</p>
                 </article>
             ))
@@ -53,5 +53,9 @@ const { title, description, content } = Astro.props;
 
     section > div {
         gap: 1rem;
+    }
+
+    section > div > article > h3 {
+        font-size: var(--text-size-large);
     }
 </style>

@@ -31,7 +31,7 @@ const SOCIAL_NETWORKS: Record<string, string | any> = {
         </div>
         <nav>
             <div>
-                <h6>Empresa</h6>
+                <h2>Empresa</h2>
                 <ul>
                     <li>
                         <a href="/#" aria-label={`Ir a la página principal de ${name}`}>Home</a>
@@ -69,7 +69,7 @@ const SOCIAL_NETWORKS: Record<string, string | any> = {
                 </ul>
             </div>
             <div>
-                <h6>Legal</h6>
+                <h2>Legal</h2>
                 <ul>
                     <li>
                         <a href="/privacy-policy" aria-label={`Ir a la página de Política de Privacidad de ${name}`}>
@@ -179,6 +179,10 @@ const SOCIAL_NETWORKS: Record<string, string | any> = {
 
     .footer__content > nav > div {
         gap: 0.75rem;
+    }
+
+    .footer__content > nav > div > h2 {
+        font-size: var(--text-size-small);
     }
 
     .footer__content > nav > div > ul {

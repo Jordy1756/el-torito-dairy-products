@@ -21,8 +21,8 @@ const { id, name, image, weight, highlight } = Astro.props;
         <figcaption>{image.alt}</figcaption>
     </figure>
     <div>
-        <h6>{highlight}</h6>
-        <h5>{name}</h5>
+        <span>{highlight}</span>
+        <h3>{name}</h3>
     </div>
 </article>
 
@@ -86,8 +86,13 @@ const { id, name, image, weight, highlight } = Astro.props;
         gap: 0.25rem;
     }
 
-    .product__card > div > h6 {
+    .product__card > div > span {
+        font-size: var(--text-size-small);
         color: var(--primary-200);
+    }
+
+    .product__card > div > h3 {
+        font-size: var(--text-size-medium);
     }
 
     @keyframes revealProduct {

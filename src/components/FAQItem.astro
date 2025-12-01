@@ -11,7 +11,7 @@ const { question, answer } = Astro.props;
 
 <details name="FAQs" class="faq__item">
     <summary>
-        <h6>{question}</h6>
+        <h3>{question}</h3>
         <figure>
             <AccordionIcon width={24} height={24} color="var(--neutral-900)" />
         </figure>
@@ -35,6 +35,10 @@ const { question, answer } = Astro.props;
         justify-content: space-between;
         align-items: center;
         gap: 1rem;
+    }
+
+    .faq__item > summary > h3 {
+        font-size: var(--text-size-small);
     }
 
     .faq__item > summary > figure {

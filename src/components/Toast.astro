@@ -7,7 +7,7 @@ import CloseIcon from "@icons/CloseIcon.astro";
     <section id="toast-content">
         <figure id="toast-icon-container"></figure>
         <div>
-            <h6 id="toast-title"></h6>
+            <h3 id="toast-title"></h3>
             <p id="toast-message"></p>
         </div>
         <button id="toast-close-btn" aria-label="Cerrar notificación de toast">
@@ -64,6 +64,10 @@ import CloseIcon from "@icons/CloseIcon.astro";
         display: flex;
         align-items: center;
         justify-content: center;
+    }
+
+    .toast > section > div > h3 {
+        font-size: var(--text-size-small);
     }
 
     .toast > section > div > p {

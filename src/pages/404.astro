@@ -14,10 +14,14 @@ const baseUrl = "/";
         <Navbar baseUrl={baseUrl} />
     </header>
     <main>
+        <h1 class="sr-only">Error 404: Página no encontrada</h1>
         <video
             autoplay
             muted
             loop
+            playsinline
+            aria-hidden="true"
+            tabindex="-1"
             poster="https://res.cloudinary.com/dygwpgeq9/image/upload/v1764555617/404_poster_img_fis9xk.webp"
         >
             <source
@@ -42,11 +46,24 @@ const baseUrl = "/";
     }
 
     main {
+        position: relative;
         flex: 1;
         display: grid;
         place-items: center;
         min-height: calc(100dvh - 44px - 1rem);
         background-color: #fffffe;
+    }
+
+    main > .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
     }
 
     main > video {

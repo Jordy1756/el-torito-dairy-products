@@ -29,7 +29,7 @@ const {
         </header>
         <div>
             <div>
-                <h6>Información de contacto</h6>
+                <h3>Información de contacto</h3>
                 <address>
                     <ContactLink href={addressLink} text={address} aria-label="Ver dirección en Google Maps">
                         <LocationIcon width={24} height={24} color="var(--neutral-900)" />
@@ -43,7 +43,7 @@ const {
                 </address>
             </div>
             <div>
-                <h6>Horario</h6>
+                <h3>Horario</h3>
                 <ul>
                     {
                         schedules.map(({ day, hours }) => (
@@ -65,7 +65,7 @@ const {
         </iframe>
     </article>
     <article class="contact__form">
-        <h5>Ponte en contacto con nosotros</h5>
+        <h4>Ponte en contacto con nosotros</h4>
         <form id="contact-form">
             <InputBox name={nameField.name} label={nameField.label}>
                 <input
@@ -175,6 +175,10 @@ const {
         gap: 0.75rem;
     }
 
+    .contact__info > div > div > h3 {
+        font-size: var(--text-size-small);
+    }
+
     .contact__info > div > div > address,
     .contact__info > div > div > ul {
         gap: 0.25rem;
@@ -194,7 +198,8 @@ const {
         flex: 1 300px;
     }
 
-    .contact__form > h5 {
+    .contact__form > h4 {
+        font-size: var(--text-size-medium);
         text-align: center;
     }
 
