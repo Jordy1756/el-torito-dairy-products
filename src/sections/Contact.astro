@@ -31,13 +31,13 @@ const {
             <div>
                 <h6>Información de contacto</h6>
                 <address>
-                    <ContactLink link={addressLink} text={address}>
+                    <ContactLink href={addressLink} text={address} aria-label="Ver dirección en Google Maps">
                         <LocationIcon width={24} height={24} color="var(--neutral-900)" />
                     </ContactLink>
-                    <ContactLink link={`tel:${phone.trim()}`} text={phone}>
+                    <ContactLink href={`tel:${phone.trim()}`} text={phone} aria-label={`Llamar al número ${phone}`}>
                         <PhoneIcon width={24} height={24} color="var(--neutral-900)" />
                     </ContactLink>
-                    <ContactLink link={`mailto:${email}`} text={email}>
+                    <ContactLink href={`mailto:${email}`} text={email} aria-label={`Enviar un correo a ${email}`}>
                         <EmailIcon width={24} height={24} color="var(--neutral-900)" />
                     </ContactLink>
                 </address>
@@ -55,8 +55,14 @@ const {
                 </ul>
             </div>
         </div>
-        <iframe src={addressMapLink} loading="lazy" allowfullscreen="" referrerpolicy="no-referrer-when-downgrade"
-        ></iframe>
+        <iframe
+            src={addressMapLink}
+            loading="lazy"
+            allowfullscreen=""
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Mapa de la ubicación de El Torito Productos Lácteos"
+        >
+        </iframe>
     </article>
     <article class="contact__form">
         <h5>Ponte en contacto con nosotros</h5>
@@ -113,20 +119,18 @@ const {
                     maxlength={messageField.maxLength}
                     required></textarea>
             </InputBox>
-            <Button type="submit" className="primary">Enviar</Button>
+            <Button type="submit" aria-label="Enviar mensaje de contacto">Enviar</Button>
         </form>
     </article>
 </MainSection>
 
-<style is:global>
-    #contact-us {
+<style>
+    :global(#contact-us) {
         flex-direction: row;
         flex-wrap: wrap;
         gap: 2rem;
     }
-</style>
 
-<style>
     article:is(.contact__info, .contact__form) {
         display: flex;
         flex-direction: column;
@@ -197,10 +201,6 @@ const {
     }
 
     @media screen and (width <= 480px) {
-        /* .contact__form {
-            min-width: 100%;
-        } */
-
         .contact__info > iframe {
             min-height: 250px;
         }

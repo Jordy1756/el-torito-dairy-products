@@ -1,13 +1,14 @@
 ---
-type Props = {
-    link: string;
-    text: string;
-};
+import type { HTMLAttributes } from "astro/types";
 
-const { link, text } = Astro.props;
+interface Props extends HTMLAttributes<"a"> {
+    text: string;
+}
+
+const { text, ...props } = Astro.props;
 ---
 
-<a href={link} target="_blank" rel="noopener noreferrer">
+<a target="_blank" rel="noopener noreferrer" {...props}>
     <slot />
     <p>{text}</p>
 </a>

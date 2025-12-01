@@ -31,7 +31,7 @@ const { url, summary, logo } = basics;
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={summary} />
         <meta name="twitter:image" content={logo} />
-        
+
         <title>{title}</title>
     </head>
     <body>
@@ -82,6 +82,7 @@ const { url, summary, logo } = basics;
         --error-500: #ff745c;
         --error-700: #ff3426;
         --error-900: #b71323;
+        --focus-color: #1b73e9;
         --glass-color: rgba(255, 255, 255, 0.1);
         --image-background: rgba(0, 0, 0, 0.4);
         --image-background-hover: rgba(0, 0, 0, 0.5);
@@ -201,5 +202,11 @@ const { url, summary, logo } = basics;
         display: flex;
         flex-direction: column;
         min-height: 100vh;
+    }
+
+    *:focus-visible {
+        outline: 2px solid var(--focus-color);
+        outline-offset: 0px;
+        border-radius: 2px;
     }
 </style>

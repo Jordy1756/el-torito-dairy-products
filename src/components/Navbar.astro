@@ -15,24 +15,44 @@ const { name, logo } = basics;
 
 <nav id="navbar" class:list={["navbar", ...(classNames || [])]}>
     <div class="navbar__brand">
-        <a href="/#">
+        <a href="/#" aria-label={`Ir a la página principal de ${name}`}>
             <Image src={logo} alt={`Logo de ${name}`} width={60} height={45} />
         </a>
-        <button id="menu-btn" type="button">
+        <button
+            id="menu-btn"
+            type="button"
+            aria-label="Abrir menú de navegación"
+            aria-expanded="false"
+            aria-controls="nav-list"
+        >
             <span style="--index: 3"></span>
             <span style="--index: 2"></span>
             <span style="--index: 1"></span>
         </button>
     </div>
     <ul id="nav-list">
-        <li><a href="/#">Home</a></li>
-        <li data-link="about-us"><a href="/who-we-are#about-us">Sobre nosotros</a></li>
-        <li data-link="testimonies"><a href="/who-we-are#testimonies">Testimonios</a></li>
-        <li data-link="our-team"><a href="/who-we-are#our-team">Nuestro equipo</a></li>
+        <li>
+            <a href="/#" aria-label={`Ir a la página principal de ${name}`}>Home</a>
+        </li>
+        <li data-link="about-us">
+            <a href="/who-we-are#about-us" aria-label={`Ir a la sección Sobre nosotros de ${name}`}>Sobre nosotros</a>
+        </li>
+        <li data-link="testimonies">
+            <a href="/who-we-are#testimonies" aria-label={`Ir a la sección Testimonios de ${name}`}>Testimonios</a>
+        </li>
+        <li data-link="our-team">
+            <a href="/who-we-are#our-team" aria-label={`Ir a la sección Nuestro equipo de ${name}`}>Nuestro equipo</a>
+        </li>
     </ul>
     <div class="navbar__actions">
-        <NavigationLink className="primary" href="/#products">Productos</NavigationLink>
-        <NavigationLink className="secondary" href={`${baseUrl}#contact-us`}>Contacto</NavigationLink>
+        <NavigationLink href="/#products" aria-label={`Ir a la sección Productos de ${name}`}>Productos</NavigationLink>
+        <NavigationLink
+            variant="secondary"
+            href={`${baseUrl}#contact-us`}
+            aria-label={`Ir a la sección Contacto de ${name}`}
+        >
+            Contacto
+        </NavigationLink>
     </div>
 </nav>
 <div id="overlay" class="overlay"></div>

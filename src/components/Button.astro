@@ -1,13 +1,14 @@
 ---
-type Props = {
-    className: "primary" | "secondary";
-    type: "button" | "submit" | "reset";
-};
+import type { HTMLAttributes } from "astro/types";
 
-const { className, type } = Astro.props;
+interface Props extends HTMLAttributes<"button"> {
+    variant?: "primary" | "secondary";
+}
+
+const { variant = "primary", class: className, ...props } = Astro.props;
 ---
 
-<button type={type} class={className}>
+<button class:list={[variant, className]} {...props}>
     <slot />
 </button>
 
@@ -21,7 +22,7 @@ const { className, type } = Astro.props;
         border-radius: var(--border-radius-out);
     }
 
-    button.primary {
+    .primary {
         background-color: var(--primary-500);
         color: var(--neutral-50);
         padding: 10.5px 26.5px;
@@ -29,14 +30,16 @@ const { className, type } = Astro.props;
         transition: background-color 0.3s ease-in-out;
     }
 
-    button.primary:hover {
+    .primary:hover {
         background-color: var(--primary-400);
     }
 
-    button.secondary {
+    .secondary {
         border: 1px solid var(--neutral-900);
         background-color: transparent;
         color: var(--neutral-900);
         padding: 9.5px 25.5px;
     }
+
+    
 </style>
