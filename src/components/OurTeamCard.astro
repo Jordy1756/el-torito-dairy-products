@@ -1,13 +1,13 @@
 ---
 import Image from "astro/components/Image.astro";
 
-type Props = {
+interface Props {
     index: number;
     name: string;
     image: { src: string; alt: string };
     role: string;
     gridArea: string;
-};
+}
 
 const { index, name, image, role, gridArea } = Astro.props;
 ---

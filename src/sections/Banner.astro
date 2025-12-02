@@ -3,9 +3,9 @@ import Navbar from "@components/Navbar.astro";
 import Hero from "./Hero.astro";
 import Awards from "./Awards.astro";
 
-type Props = {
+interface Props {
     baseUrl: "/";
-};
+}
 
 const { baseUrl } = Astro.props;
 ---

@@ -1,13 +1,13 @@
 ---
 import UserIcon from "@icons/UserIcon.astro";
 
-type Props = {
+interface Props {
     id: string;
     name: string;
     time: string;
     testimony: string;
     gridArea: string;
-};
+}
 
 const { id, name, time, testimony, gridArea } = Astro.props;
 const viewTimeline = `--${id}`;

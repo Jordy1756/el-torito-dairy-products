@@ -7,9 +7,9 @@ import { getYear } from "@scripts/utils/handleDates";
 
 import { basics } from "@data";
 
-type Props = {
+interface Props {
     baseUrl: "/" | "/who-we-are";
-};
+}
 
 const { baseUrl } = Astro.props;
 const { name, slogan, logo, socialNetworks } = basics;

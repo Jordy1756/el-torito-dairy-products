@@ -1,9 +1,9 @@
 ---
 import { basics } from "@data";
 
-type Props = {
+interface Props {
     title: string;
-};
+}
 
 const { title } = Astro.props;
 const { url, summary, logo } = basics;

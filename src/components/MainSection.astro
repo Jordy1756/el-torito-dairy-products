@@ -1,8 +1,8 @@
 ---
-type Props = {
+interface Props {
     id: "our-team" | "testimonies" | "products" | "about-us" | "FAQ" | "contact-us";
     paddingInline?: "1rem" | 0;
-};
+}
 
 const { id, paddingInline = "1rem" } = Astro.props;
 ---

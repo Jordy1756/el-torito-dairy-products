@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
 
-type Props = {
+interface Props {
     id: string;
     name: string;
     image: {
@@ -10,7 +10,7 @@ type Props = {
     };
     weight: string;
     highlight: string;
-};
+}
 
 const { id, name, image, weight, highlight } = Astro.props;
 ---

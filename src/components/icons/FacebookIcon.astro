@@ -1,13 +1,12 @@
 ---
 import type { IconProps } from "@definitions/iconTypes.ts";
-type Props = IconProps;
+interface Props extends IconProps {}
 const { width, height, color } = Astro.props;
 ---
 
-<svg width={width} height={height} viewBox="0 0 24 24">
+<svg width={width} height={height} viewBox="0 0 16 16">
     <path
         fill={color}
-        d="M12 2.04c-5.5 0-10 4.49-10 10.02c0 5 3.66 9.15 8.44 9.9v-7H7.9v-2.9h2.54V9.85c0-2.51 1.49-3.89 3.78-3.89c1.09 0 2.23.19 2.23.19v2.47h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.45 2.9h-2.33v7a10 10 0 0 0 8.44-9.9c0-5.53-4.5-10.02-10-10.02"
-    >
-    </path>
+        d="M8 1C4.13 1 1 4.15 1 8.04c0 3.51 2.56 6.43 5.91 6.96v-4.92H5.13V8.04h1.78V6.49c0-1.77 1.05-2.74 2.64-2.74c.77 0 1.57.14 1.57.14v1.73h-.88c-.87 0-1.14.54-1.14 1.1v1.32h1.94l-.31 2.04H9.1V15c3.35-.53 5.91-3.44 5.91-6.96c0-3.89-3.13-7.04-7-7.04Z"
+    ></path>
 </svg>

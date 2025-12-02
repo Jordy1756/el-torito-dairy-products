@@ -24,31 +24,35 @@ Lácteos El Torito es una empresa familiar fundada en 2012, dedicada a la produc
 ## 📦 Instalación
 
 1. Clonar el repositorio:
+
 ```bash
 git clone https://github.com/yourusername/el-torito-dairy-products.git
 cd el-torito-dairy-products
 ```
 
 2. Instalar dependencias:
+
 ```bash
 npm install
 ```
 
 3. Configurar variables de entorno:
 Crear archivo `.env` con:
+
 ```env
 PUBLIC_MAILGUN_API_KEY=tu_api_key
 PUBLIC_MAILGUN_DOMAIN=tu_dominio
 ```
 
 4. Iniciar servidor de desarrollo:
+
 ```bash
 npm run dev
 ```
 
 ## 📁 Estructura del Proyecto
 
-```
+```txt
 src/
 ├── assets/     # Iconos y recursos estáticos
 ├── components/ # Componentes reutilizables
@@ -64,6 +68,7 @@ src/
 ## 🌟 Características Principales
 
 ### Componentes Clave
+
 - `Banner.astro`: Sección hero con fondo dinámico
 - `Products.astro`: Catálogo de productos
 - `Contact.astro`: Formulario de contacto
@@ -71,11 +76,13 @@ src/
 - `FAQ.astro`: Preguntas frecuentes
 
 ### Diseño Responsive
+
 - Desktop: > 1024px
 - Tablet: 768px - 1024px
 - Mobile: < 768px
 
 ### Rendimiento
+
 - Optimización de imágenes
 - Mínimo JavaScript
 - Carga diferida de recursos
@@ -84,6 +91,7 @@ src/
 ## 📱 PWA
 
 El sitio implementa características de Progressive Web App:
+
 - Instalable
 - Funciona offline
 - Experiencia nativa
@@ -102,7 +110,7 @@ Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) par
 
 ## 📧 Contacto
 
-- Email: lacteoseltorito@gmail.com
+- Email: <lacteoseltorito@gmail.com>
 - WhatsApp: +506 8412 6988
 - [Facebook](https://www.facebook.com/LacteosElTorito)
 - [Instagram](https://www.instagram.com/lacteoseltorito)

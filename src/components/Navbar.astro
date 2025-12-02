@@ -4,10 +4,10 @@ import NavigationLink from "@components/NavigationLink.astro";
 
 import { basics } from "@data";
 
-type Props = {
+interface Props {
     baseUrl: "/" | "/who-we-are";
     classNames?: ("slide__in-down" | "on__dark-bg")[];
-};
+}
 
 const { baseUrl, classNames } = Astro.props;
 const { name, logo } = basics;

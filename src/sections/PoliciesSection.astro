@@ -1,14 +1,14 @@
 ---
 import { getFormattedDate } from "@scripts/utils/handleDates";
 
-type Props = {
+interface Props {
     title: string;
     description: string;
     content: Array<{
         subtitle: string;
         description: string;
     }>;
-};
+}
 
 const { title, description, content } = Astro.props;
 ---
