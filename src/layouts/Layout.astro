@@ -6,7 +6,7 @@ interface Props {
 }
 
 const { title } = Astro.props;
-const { url, summary, logo } = basics;
+const { url, summary, ogImage } = basics;
 ---
 
 <!doctype html>
@@ -23,14 +23,14 @@ const { url, summary, logo } = basics;
         <meta property="og:type" content="website" />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={summary} />
-        <meta property="og:image" content={logo} />
+        <meta property="og:image" content={ogImage} />
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta property="twitter:domain" content={url.split("//")[1] ?? ""} />
         <meta property="twitter:url" content={url} />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={summary} />
-        <meta name="twitter:image" content={logo} />
+        <meta name="twitter:image" content={ogImage} />
 
         <title>{title}</title>
     </head>
