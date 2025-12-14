@@ -17,26 +17,25 @@ const hostname = url.hostname;
 <html lang="es">
     <head>
         <meta charset="UTF-8" />
-        <meta name="description" content={summary} />
         <meta name="viewport" content="width=device-width" />
+        <title>{title}</title>
         <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
 
         <slot name="head" />
 
+        <meta name="description" content={summary} />
         <meta property="og:url" content={url} />
         <meta property="og:type" content="website" />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={summary} />
         <meta property="og:image" content={ogImage} />
-
+        
         <meta name="twitter:card" content="summary_large_image" />
         <meta property="twitter:domain" content={hostname} />
         <meta property="twitter:url" content={url} />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={summary} />
         <meta name="twitter:image" content={ogImage} />
-
-        <title>{title}</title>
     </head>
     <body>
         <div id="root" class="root">
@@ -194,6 +193,10 @@ const hostname = url.hostname;
 
     template {
         display: none;
+    }
+
+    address {
+        font-style: normal;
     }
 
     html {

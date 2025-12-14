@@ -21,12 +21,13 @@ const { variant = "primary", class: className, ...props } = Astro.props;
         text-align: center;
         border-radius: var(--border-radius-out);
         font-weight: 400;
+        line-height: normal;
     }
 
     .primary {
         background-color: var(--primary-500);
         color: var(--neutral-50);
-        padding: 10.5px 26.5px;
+        padding: 12px 24px;
         border: none;
         transition: background-color 0.3s ease-in-out;
     }
@@ -39,7 +40,7 @@ const { variant = "primary", class: className, ...props } = Astro.props;
         border: 1px solid var(--neutral-900);
         background-color: transparent;
         color: var(--neutral-900);
-        padding: 9.5px 25.5px;
+        padding: 11px 23px;
     }
 
     .secondary:hover {
