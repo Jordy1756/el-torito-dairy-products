@@ -1,5 +1,4 @@
 import { MAILGUN_API_KEY, MAILGUN_DOMAIN } from "@config/environment";
-import FormData from "form-data";
 import Mailgun from "mailgun.js";
 
 export const sendContactEmail = async ({
