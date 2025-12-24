@@ -1,0 +1,351 @@
+---
+import { Image } from "astro:assets";
+import NavigationLink from "@components/ui/NavigationLink.astro";
+
+import { basics } from "@data";
+
+interface Props {
+    baseUrl: "/" | "/who-we-are";
+    classNames?: ("slide__in-down" | "on__dark-bg")[];
+}
+
+const { baseUrl, classNames } = Astro.props;
+const { name, logo } = basics;
+---
+
+<nav id="navbar" class:list={["navbar", ...(classNames || [])]}>
+    <div class="navbar__brand">
+        <a href="/#" aria-label={`Ir a la página principal de ${name}`}>
+            <Image src={logo} alt={`Logo de ${name}`} width={60} height={45} />
+        </a>
+        <button
+            id="menu-btn"
+            type="button"
+            aria-label="Abrir menú de navegación"
+            aria-expanded="false"
+            aria-controls="nav-list"
+        >
+            <span style="--index: 3"></span>
+            <span style="--index: 2"></span>
+            <span style="--index: 1"></span>
+        </button>
+    </div>
+    <ul id="nav-list">
+        <li>
+            <a href="/#" aria-label={`Ir a la página principal de ${name}`}>Home</a>
+        </li>
+        <li data-link="about-us">
+            <a href="/who-we-are#about-us" aria-label={`Ir a la sección Sobre nosotros de ${name}`}>Sobre nosotros</a>
+        </li>
+        <li data-link="testimonies">
+            <a href="/who-we-are#testimonies" aria-label={`Ir a la sección Testimonios de ${name}`}>Testimonios</a>
+        </li>
+        <li data-link="our-team">
+            <a href="/who-we-are#our-team" aria-label={`Ir a la sección Nuestro equipo de ${name}`}>Nuestro equipo</a>
+        </li>
+    </ul>
+    <div class="navbar__actions">
+        <NavigationLink href="/#products" aria-label={`Ir a la sección Productos de ${name}`}>Productos</NavigationLink>
+        <NavigationLink
+            variant="secondary"
+            href={`${baseUrl}#contact-us`}
+            aria-label={`Ir a la sección Contacto de ${name}`}
+        >
+            Contacto
+        </NavigationLink>
+    </div>
+</nav>
+<div id="overlay" class="overlay"></div>
+
+<style is:global>
+    .navbar > .navbar__actions > a {
+        flex: 1;
+    }
+
+    .navbar.on__dark-bg > .navbar__actions > a.secondary {
+        border-color: var(--neutral-50);
+        color: var(--neutral-50);
+    }
+
+    .navbar.out__banner > .navbar__actions > a.secondary,
+    .navbar.open > .navbar__actions > a.secondary {
+        border-color: var(--neutral-900);
+        color: var(--neutral-900);
+    }
+
+    @media screen and (width <= 480px) {
+        .navbar > .navbar__actions > a.secondary {
+            display: none;
+        }
+
+        .navbar.open > .navbar__actions > a.secondary {
+            display: flex;
+        }
+    }
+</style>
+
+<style>
+    .navbar {
+        width: min(100%, var(--max-width));
+        display: flex;
+        align-items: stretch;
+        gap: 2rem;
+        color: var(--neutral-900);
+        transition:
+            width 0.3s ease-in-out,
+            padding 0.2s ease-in-out,
+            background-color 0.2s ease-in-out,
+            color 0.2s ease-in-out;
+    }
+
+    .navbar.on__dark-bg {
+        color: var(--neutral-50);
+    }
+
+    .navbar.on__dark-bg > .navbar__brand > a > img {
+        filter: brightness(0) invert(1);
+    }
+
+    .navbar.slide__in-down {
+        animation: slideInDown 0.5s ease-in-out;
+    }
+
+    .navbar > .navbar__brand {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-right: auto;
+    }
+
+    .navbar > .navbar__brand > a {
+        display: flex;
+    }
+
+    .navbar > .navbar__brand > button {
+        display: none;
+    }
+
+    .navbar > .navbar__brand > a > img {
+        width: 60px;
+        height: 45px;
+        object-fit: contain;
+    }
+
+    .navbar > ul {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .navbar > ul > li::before,
+    .navbar > ul > li.active::before,
+    .navbar.on__dark-bg > ul > li:first-child::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 1px;
+        background-color: var(--neutral-900);
+        transition:
+            left 0.3s ease-in-out,
+            width 0.3s ease-in-out;
+    }
+
+    .navbar.on__dark-bg > ul > li::before,
+    .navbar.on__dark-bg > ul > li:first-child::before {
+        background-color: var(--neutral-50);
+    }
+
+    .navbar > ul > li {
+        position: relative;
+    }
+
+    .navbar > ul > li:hover::before,
+    .navbar > ul > li.active::before,
+    .navbar.on__dark-bg > ul > li:first-child::before {
+        left: 0;
+        width: 100%;
+    }
+
+    .navbar > .navbar__actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .navbar + .overlay {
+        position: fixed;
+        inset: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+        z-index: 997;
+        pointer-events: none;
+    }
+
+    /* NAVBAR OUT OF BANNER */
+
+    .navbar.out__banner {
+        position: fixed;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        padding-block: 0.5rem;
+        background-color: var(--neutral-50);
+        color: var(--neutral-900);
+        border-radius: none;
+        border-bottom: 1px solid var(--neutral-300);
+    }
+
+    .navbar.out__banner > .navbar__brand > a > img,
+    .navbar.navbar.open > .navbar__brand > a > img {
+        filter: none;
+    }
+
+    .navbar.out__banner > ul > li::before {
+        background-color: var(--neutral-900);
+    }
+
+    @media screen and (width > 1542px) {
+        .navbar.out__banner::before,
+        .navbar.out__banner::after {
+            content: "";
+            position: absolute;
+            bottom: -1px;
+            height: 100%;
+            width: 100%;
+            border-bottom: 1px solid var(--neutral-300);
+            background-color: var(--neutral-50);
+        }
+
+        .navbar.out__banner::before {
+            left: 100%;
+        }
+
+        .navbar.out__banner::after {
+            right: 100%;
+        }
+    }
+
+    @media screen and (width <= 1542px) {
+        .navbar.out__banner {
+            padding-inline: 1rem;
+        }
+    }
+
+    @media screen and (width <= 864px) {
+        .navbar > .navbar__brand > button {
+            display: flex;
+            width: 36px;
+            height: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background-color: transparent;
+            border: none;
+        }
+
+        .navbar > .navbar__brand > button > span {
+            background-color: var(--neutral-900);
+            width: calc(var(--index) * 33.33%);
+            height: 3px;
+            border-radius: var(--border-radius-out);
+            transition:
+                width 0.9s ease-in-out,
+                transform 0.9s ease-in-out,
+                opacity 0.9s ease-in-out,
+                background-color 0.6s ease-in-out;
+        }
+
+        .navbar.on__dark-bg > .navbar__brand > button > span {
+            background-color: var(--neutral-50);
+        }
+
+        .navbar > ul {
+            display: none;
+            padding-block: 1rem;
+            border-top: 1px solid var(--neutral-300);
+        }
+
+        /* NAVBAR OPEN */
+
+        .navbar.open {
+            padding: 1rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: auto;
+            height: 100dvh;
+            flex-direction: column;
+            align-items: start;
+            gap: 1rem;
+            background-color: var(--neutral-50);
+            color: var(--neutral-900);
+            border-radius: 0 var(--border-radius-out) var(--border-radius-out) 0;
+            z-index: 998;
+        }
+
+        .navbar.open.out__banner {
+            transform: none;
+        }
+
+        .navbar.open > .navbar__brand {
+            width: 100%;
+        }
+
+        .navbar.open > .navbar__brand > button {
+            margin-left: auto;
+        }
+
+        .navbar.open > .navbar__brand > button > span {
+            background-color: var(--neutral-900);
+            width: 75%;
+        }
+
+        .navbar.open > .navbar__brand > button > span:nth-child(1) {
+            transform: translateX(12px) translateY(10.5px) rotate(45deg);
+        }
+
+        .navbar.open > .navbar__brand > button > span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .navbar.open > div > button > span:nth-child(3) {
+            transform: translateX(12px) translateY(-10.5px) rotate(-45deg);
+        }
+
+        .navbar.open > ul {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            align-items: start;
+        }
+
+        .navbar.open > ul > li {
+            width: 100%;
+        }
+
+        .navbar.open + .overlay {
+            opacity: 1;
+            pointer-events: visible;
+        }
+
+        /* NAVBAR OUT OF BANNER */
+        .navbar.out__banner > .navbar__brand > button > span {
+            background-color: var(--neutral-900);
+        }
+    }
+
+    @keyframes slideInDown {
+        from {
+            transform: translateY(-700px);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+</style>

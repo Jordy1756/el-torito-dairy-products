@@ -1,8 +1,8 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import PoliciesSection from "@sections/PoliciesSection.astro";
-import Navbar from "@components/Navbar.astro";
-import Footer from "@components/Footer.astro";
+import Navbar from "@components/layout/Navbar.astro";
+import Footer from "@components/layout/Footer.astro";
+import Policies from "@components/sections/policies/Policies.astro";
 
 import { basics, termsAndConditions } from "@data";
 
@@ -16,10 +16,10 @@ const baseUrl = "/";
         <Navbar baseUrl={baseUrl} />
     </header>
     <main>
-        <PoliciesSection title={title} description={description} content={content} />
+        <Policies title={title} description={description} content={content} />
     </main>
     <Footer baseUrl={baseUrl} />
-    <script src="../scripts/pages/tearmsAndConditions.ts"></script>
+    <!-- <script src="../scripts/pages/termsAndConditions.ts"></script> -->
 </Layout>
 
 <style>

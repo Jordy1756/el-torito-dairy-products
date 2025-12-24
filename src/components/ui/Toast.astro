@@ -1,0 +1,91 @@
+---
+import CloseIcon from "@components/icons/Close.astro";
+---
+
+<div id="toast" class="toast">
+    <aside></aside>
+    <section id="toast-content">
+        <figure id="toast-icon-container"></figure>
+        <div>
+            <h3 id="toast-title"></h3>
+            <p id="toast-message"></p>
+        </div>
+        <button id="toast-close-btn" aria-label="Cerrar notificación de toast">
+            <CloseIcon width={24} height={24} color="var(--neutral-600)" />
+        </button>
+    </section>
+</div>
+
+<style>
+    .toast {
+        position: fixed;
+        right: 1rem;
+        bottom: -100%;
+        display: flex;
+        width: 350px;
+        background-color: var(--neutral-50);
+        box-shadow: var(--box-shadow);
+        border-radius: var(--border-radius-in);
+        overflow: hidden;
+        opacity: 0;
+        transition:
+            bottom 0.3s ease-in-out,
+            opacity 0.3s ease-in-out;
+        z-index: 999;
+    }
+
+    .toast.active {
+        bottom: 1rem;
+        opacity: 1;
+    }
+
+    .toast > aside {
+        width: 5px;
+    }
+
+    .toast.success > aside {
+        background-color: var(--success-500);
+    }
+
+    .toast.error > aside {
+        background-color: var(--error-500);
+    }
+
+    .toast > section {
+        flex: 1;
+        display: flex;
+        align-items: start;
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .toast > section > figure,
+    .toast > section > button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .toast > section > div > h3 {
+        font-size: var(--text-size-small);
+    }
+
+    .toast > section > div > p {
+        color: var(--neutral-600);
+        font-size: 0.9rem;
+    }
+
+    .toast > section > button {
+        margin-left: auto;
+        background-color: transparent;
+        border: none;
+        display: grid;
+        place-items: center;
+    }
+
+    @media screen and (width <= 480px) {
+        .toast {
+            width: calc(100% - 2rem);
+        }
+    }
+</style>

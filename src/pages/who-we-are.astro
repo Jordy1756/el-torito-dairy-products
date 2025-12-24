@@ -1,14 +1,13 @@
 ---
-import Navbar from "@components/Navbar.astro";
 import Layout from "@layouts/Layout.astro";
-import AboutUs from "@sections/AboutUs.astro";
-import Testimonies from "@sections/Testimonies.astro";
-import OurTeam from "@sections/OurTeam.astro";
-import FAQ from "@sections/FAQ.astro";
-import Contact from "@sections/Contact.astro";
-import Footer from "@components/Footer.astro";
-import Toast from "@components/Toast.astro";
-
+import Toast from "@components/ui/Toast.astro";
+import Navbar from "@components/layout/Navbar.astro";
+import Footer from "@components/layout/Footer.astro";
+import AboutUs from "@components/sections/about-us/AboutUs.astro";
+import Testimonies from "@components/sections/testimonies/Testimonies.astro";
+import OurTeam from "@components/sections/our-team/OurTeam.astro";
+import FAQ from "@components/sections/faq/FAQ.astro";
+import Contact from "@components/sections/contact-us/Contact.astro";
 import { basics } from "@data";
 
 const { name } = basics;
@@ -28,7 +27,7 @@ const baseUrl = "/who-we-are";
     </main>
     <Footer baseUrl={baseUrl} />
     <Toast />
-    <script src="../scripts/pages/whoWeAre.ts"></script>
+    <!-- <script src="../scripts/pages/whoWeAre.ts"></script> -->
 </Layout>
 
 <style>

@@ -1,11 +1,11 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import Banner from "@sections/Banner.astro";
-import Products from "@sections/Products.astro";
-import FAQ from "@sections/FAQ.astro";
-import Contact from "@sections/Contact.astro";
-import Footer from "@components/Footer.astro";
-import Toast from "@components/Toast.astro";
+import Toast from "@components/ui/Toast.astro";
+import Footer from "@components/layout/Footer.astro";
+import Banner from "@components/sections/banner/Banner.astro";
+import Products from "@components/sections/products/Products.astro";
+import FAQ from "@components/sections/faq/FAQ.astro";
+import Contact from "@components/sections/contact-us/Contact.astro";
 
 import { basics } from "@data";
 
@@ -36,7 +36,7 @@ const bannerImages = [
     </main>
     <Footer baseUrl={baseUrl} />
     <Toast />
-    <script src="../scripts/pages/index.ts"></script>
+    <!-- <script src="../scripts/pages/index.ts"></script> -->
 
     <style>
         main {

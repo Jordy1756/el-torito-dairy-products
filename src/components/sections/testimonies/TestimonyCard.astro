@@ -1,0 +1,132 @@
+---
+import UserIcon from "@components/icons/User.astro";
+
+interface Props {
+    id: string;
+    name: string;
+    time: string;
+    testimony: string;
+    gridArea: string;
+}
+
+const { id, name, time, testimony, gridArea } = Astro.props;
+const viewTimeline = `--${id}`;
+---
+
+<article {id} class="testimony__card" draggable="false">
+    <header>
+        <figure>
+            <UserIcon width={32} height={32} color="var(--neutral-50)" />
+        </figure>
+        <div>
+            <h3>{name}</h3>
+            <p>{time}</p>
+        </div>
+    </header>
+    <main>
+        <p>{testimony}</p>
+    </main>
+</article>
+
+<style define:vars={{ "grid-area": gridArea, "view-timeline": viewTimeline }}>
+    .testimony__card {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        padding: 2rem;
+        border-radius: var(--border-radius-out);
+        background-color: var(--neutral-50);
+        box-shadow: var(--box-shadow);
+    }
+
+    .testimony__card > header {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .testimony__card > header > figure {
+        display: grid;
+        place-items: center;
+        padding: 0.75rem;
+        border-radius: 9999px;
+        background-color: var(--neutral-900);
+    }
+
+    .testimony__card > header > div {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .testimony__card > header > div > h3 {
+        font-size: var(--text-size-small);
+    }
+
+    .testimony__card > header > div > p {
+        font-size: 0.875rem;
+        color: var(--neutral-700);
+        opacity: 0.9;
+    }
+
+    .testimony__card > main > p {
+        max-width: 50ch;
+    }
+
+    @media (width >= 950px) {
+        .testimony__card {
+            grid-area: var(--grid-area);
+            width: fit-content;
+            animation: revealTestimonyCard linear both;
+            animation-timeline: view();
+            animation-range: entry 25% cover 30%;
+            transition:
+                box-shadow 0.3s ease-in-out,
+                transform 0.3s ease-in-out;
+        }
+
+        .testimony__card:hover {
+            box-shadow: var(--box-shadow-hover);
+            transform: translate(5px, 5px);
+            z-index: 1;
+        }
+
+        @keyframes revealTestimonyCard {
+            from {
+                opacity: 0;
+                scale: 0.5;
+                translate: 0 100px;
+            }
+            to {
+                opacity: 1;
+                scale: 1;
+                translate: 0 0;
+            }
+        }
+    }
+
+    @media screen and (width < 950px) {
+        @supports (animation-timeline: view()) {
+            .testimony__card {
+                view-timeline: var(--view-timeline) inline;
+                scroll-snap-align: center;
+                min-width: calc(50% - 0.5rem);
+            }
+        }
+
+        .testimony__card {
+            padding: 1rem;
+        }
+
+        .testimony__card > main > p {
+            max-width: 100%;
+        }
+    }
+
+    @media (width < 600px) {
+        @supports (animation-timeline: view()) {
+            .testimony__card {
+                min-width: 100%;
+            }
+        }
+    }
+</style>

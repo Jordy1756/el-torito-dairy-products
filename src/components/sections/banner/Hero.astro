@@ -1,0 +1,90 @@
+---
+import NavigationLink from "@components/ui/NavigationLink.astro";
+import { basics } from "@data";
+
+const { name, summary } = basics;
+---
+
+<section class="hero">
+    <article>
+        <h1 translate="no">{name}</h1>
+        <p>{summary}</p>
+        <NavigationLink href="/#products" aria-label={`Ir a la sección Productos de ${name}`}>Productos</NavigationLink>
+    </article>
+    <div id="carousel-controls">
+        {Array.from({ length: 4 }).map((_, index) => <span>{(index + 1).toString().padStart(2, "0")}</span>)}
+    </div>
+</section>
+
+<style>
+    .hero {
+        flex: 1;
+        width: min(100%, var(--max-width));
+        color: var(--neutral-50);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 2rem;
+    }
+
+    .hero > div,
+    .hero > article {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .hero > article {
+        align-items: start;
+        animation: slideInRight 0.5s ease-in-out;
+    }
+
+    .hero > article > p {
+        max-width: 50ch;
+    }
+
+    .hero > div {
+        align-items: center;
+        animation: slideInLeft 0.5s ease-in-out;
+    }
+
+    .hero > div > span {
+        font-size: 1rem;
+        transition:
+            font-size 0.3s ease-in-out,
+            font-weight 0.3s ease-in-out;
+    }
+
+    .hero > div > span.active {
+        font-size: var(--text-size-medium);
+        font-weight: var(--font-weight-title);
+    }
+
+    @media screen and (width <= 480px) {
+        .hero > div {
+            display: none;
+        }
+    }
+
+    @keyframes slideInRight {
+        from {
+            transform: translateX(-700px);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    @keyframes slideInLeft {
+        from {
+            transform: translateX(700px);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+</style>

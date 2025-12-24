@@ -4,14 +4,12 @@
         "baseUrl": ".",
         "paths": {
             "@components/*": ["src/components/*"],
+            "@sections/*": ["src/components/sections/*"],
             "@layouts/*": ["src/layouts/*"],
-            "@sections/*": ["src/sections/*"],
-            "@icons/*": ["src/components/icons/*"],
-            "@config/*": ["src/scripts/config/*"],
-            "@utils/*": ["src/scripts/utils/*"],
-            "@definitions/*": ["src/scripts/types/*"],
+            "@data": ["src/data/data.json"],
             "@scripts/*": ["src/scripts/*"],
-            "@data": ["src/data/data.json"]
+            "@styles/*": ["src/styles/*"],
+            "@definitions/*": ["src/scripts/types/*"]
         }
     }
 }

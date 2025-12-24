@@ -1,0 +1,93 @@
+---
+interface Props {
+    label: string;
+    name: string;
+    flex?: number;
+}
+
+const { label, name, flex } = Astro.props;
+---
+
+<div class="input__box">
+    <div>
+        <slot />
+        <label for={name}>{label}</label>
+    </div>
+    <p class="error__message"></p>
+</div>
+
+<style is:global define:vars={{ flex }}>
+    .input__box {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        position: relative;
+        flex: var(--flex);
+    }
+    
+    .input__box > div {
+        flex: 1;
+        position: relative;
+        border: none;
+    }
+
+    .input__box > div > :is(input, textarea) {
+        width: 100%;
+        height: 100%;
+        padding: 9.5px 12px;
+        border: 1px solid var(--neutral-400);
+        border-radius: var(--border-radius-out);
+        background-color: var(--neutral-50);
+        outline: none;
+    }
+
+    .input__box > div > :is(input:focus, textarea:focus):not(:placeholder-shown):valid {
+        border-color: var(--success-700);
+    }
+
+    .input__box > div > :is(input, textarea):not(:placeholder-shown):invalid {
+        border-color: var(--error-700);
+    }
+
+    .input__box > div > textarea {
+        scrollbar-width: thin;
+        resize: none;
+        field-sizing: content;
+        min-height: 300px;
+    }
+
+    .input__box > div > label {
+        padding-inline: 0.25rem;
+        position: absolute;
+        top: 14.5px;
+        left: 9px;
+        pointer-events: none;
+        background-color: var(--neutral-50);
+        line-height: 1;
+        transition:
+            top 0.3s ease-in-out,
+            font-size 0.3s ease-in-out,
+            color 0.3s ease-in-out;
+    }
+
+    .input__box > div > :is(input, textarea):focus + label,
+    .input__box > div > :is(input, textarea):not(:placeholder-shown) + label {
+        top: -7.5px;
+        font-size: 0.9rem;
+        color: var(--neutral-700);
+    }
+
+    .input__box > div > :is(input:focus, textarea:focus):not(:placeholder-shown):valid + label {
+        color: var(--success-900);
+    }
+
+    .input__box > div > :is(input, textarea):not(:placeholder-shown):invalid + label {
+        color: var(--error-900);
+    }
+
+    .input__box > p {
+        padding-inline: 0.5625rem;
+        color: var(--error-900);
+        font-size: 0.75rem;
+    }
+</style>

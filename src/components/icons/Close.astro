@@ -1,0 +1,21 @@
+---
+import type { IconProps } from "@definitions/iconTypes.ts";
+interface Props extends IconProps {}
+const { width, height, color } = Astro.props;
+---
+
+<!-- <svg width={width} height={height} viewBox="0 0 24 24">
+    <path
+        fill="none"
+        stroke={color}
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M18 6L6 18M6 6l12 12"></path>
+</svg> -->
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"
+    ><path
+        fill="#000000"
+        d="m12 13.4l-4.9 4.9q-.275.275-.7.275t-.7-.275t-.275-.7t.275-.7l4.9-4.9l-4.9-4.9q-.275-.275-.275-.7t.275-.7t.7-.275t.7.275l4.9 4.9l4.9-4.9q.275-.275.7-.275t.7.275t.275.7t-.275.7L13.4 12l4.9 4.9q.275.275.275.7t-.275.7t-.7.275t-.7-.275z"
+    ></path></svg
+>
