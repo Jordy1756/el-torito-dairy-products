@@ -1,19 +1,19 @@
 ---
 import { Image } from "astro:assets";
-import NavigationLink from "@components/ui/NavigationLink.astro";
+import Link from "@components/ui/Link.astro";
 
 import { basics } from "@data";
 
 interface Props {
     baseUrl: "/" | "/who-we-are";
-    classNames?: ("slide__in-down" | "on__dark-bg")[];
+    slideInDownClass?: "slide__in-down";
 }
 
-const { baseUrl, classNames } = Astro.props;
+const { baseUrl, slideInDownClass } = Astro.props;
 const { name, logo } = basics;
 ---
 
-<nav id="navbar" class:list={["navbar", ...(classNames || [])]}>
+<nav id="navbar" class:list={["navbar", slideInDownClass]}>
     <div class="navbar__brand">
         <a href="/#" aria-label={`Ir a la página principal de ${name}`}>
             <Image src={logo} alt={`Logo de ${name}`} width={62} height={49} />
@@ -32,27 +32,28 @@ const { name, logo } = basics;
     </div>
     <ul id="nav-list">
         <li>
-            <a href="/#" aria-label={`Ir a la página principal de ${name}`}>Home</a>
+            <Link href="/#" aria-label={`Ir a la página principal de ${name}`}>Home</Link>
         </li>
         <li data-link="about-us">
-            <a href="/who-we-are#about-us" aria-label={`Ir a la sección Sobre nosotros de ${name}`}>Sobre nosotros</a>
+            <Link href="/who-we-are#about-us" aria-label={`Ir a la sección Sobre nosotros de ${name}`}>
+                Sobre nosotros
+            </Link>
         </li>
         <li data-link="testimonies">
-            <a href="/who-we-are#testimonies" aria-label={`Ir a la sección Testimonios de ${name}`}>Testimonios</a>
+            <Link href="/who-we-are#testimonies" aria-label={`Ir a la sección Testimonios de ${name}`}>Testimonios</Link
+            >
         </li>
         <li data-link="our-team">
-            <a href="/who-we-are#our-team" aria-label={`Ir a la sección Nuestro equipo de ${name}`}>Nuestro equipo</a>
+            <Link href="/who-we-are#our-team" aria-label={`Ir a la sección Nuestro equipo de ${name}`}>
+                Nuestro equipo
+            </Link>
         </li>
     </ul>
     <div class="navbar__actions">
-        <NavigationLink href="/#products" aria-label={`Ir a la sección Productos de ${name}`}>Productos</NavigationLink>
-        <NavigationLink
-            variant="secondary"
-            href={`${baseUrl}#contact-us`}
-            aria-label={`Ir a la sección Contacto de ${name}`}
-        >
+        <Link variant="primary" href="/#products" aria-label={`Ir a la sección Productos de ${name}`}>Productos</Link>
+        <Link variant="secondary" href={`${baseUrl}#contact-us`} aria-label={`Ir a la sección Contacto de ${name}`}>
             Contacto
-        </NavigationLink>
+        </Link>
     </div>
 </nav>
 <div id="overlay" class="overlay"></div>
@@ -62,15 +63,9 @@ const { name, logo } = basics;
         flex: 1;
     }
 
-    .navbar.on__dark-bg > .navbar__actions > a.secondary {
-        border-color: var(--neutral-50);
-        color: var(--neutral-50);
-    }
-
-    .navbar.out__banner > .navbar__actions > a.secondary,
-    .navbar.open > .navbar__actions > a.secondary {
-        border-color: var(--neutral-900);
-        color: var(--neutral-900);
+    #banner li:first-child .link::before {
+        left: 0;
+        width: 100%;
     }
 
     @media screen and (width <= 480px) {
@@ -102,9 +97,9 @@ const { name, logo } = basics;
         color: var(--neutral-50);
     }
 
-    .navbar.on__dark-bg > .navbar__brand > a > img {
+    /* .navbar.on__dark-bg > .navbar__brand > a > img {
         filter: brightness(0) invert(1);
-    }
+    } */
 
     .navbar.slide__in-down {
         animation: slideInDown 0.5s ease-in-out;
@@ -135,39 +130,9 @@ const { name, logo } = basics;
         gap: 1rem;
     }
 
-    .navbar > ul > li::before,
-    .navbar > ul > li.active::before,
-    .navbar.on__dark-bg > ul > li:first-child::before {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        width: 0;
-        height: 1px;
-        background-color: var(--neutral-900);
-        transition:
-            left 0.3s ease-in-out,
-            width 0.3s ease-in-out;
-    }
-
-    .navbar.on__dark-bg > ul > li::before,
-    .navbar.on__dark-bg > ul > li:first-child::before {
-        background-color: var(--neutral-50);
-    }
-
-    .navbar > ul > li {
-        position: relative;
-    }
-
-    .navbar > ul > li:hover::before,
-    .navbar > ul > li.active::before,
-    .navbar.on__dark-bg > ul > li:first-child::before {
-        left: 0;
-        width: 100%;
-    }
-
     .navbar > .navbar__actions {
         display: flex;
+        align-items: center;
         flex-wrap: wrap;
         gap: 1rem;
     }
@@ -196,14 +161,10 @@ const { name, logo } = basics;
         border-bottom: 1px solid var(--neutral-300);
     }
 
-    .navbar.out__banner > .navbar__brand > a > img,
+    /* .navbar.out__banner > .navbar__brand > a > img,
     .navbar.navbar.open > .navbar__brand > a > img {
         filter: none;
-    }
-
-    .navbar.out__banner > ul > li::before {
-        background-color: var(--neutral-900);
-    }
+    } */
 
     @media screen and (width > 1542px) {
         .navbar.out__banner::before,

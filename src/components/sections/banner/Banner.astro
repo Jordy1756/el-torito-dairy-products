@@ -11,7 +11,7 @@ const { baseUrl } = Astro.props;
 ---
 
 <header id="banner">
-    <Navbar baseUrl={baseUrl} classNames={["on__dark-bg", "slide__in-down"]} />
+    <Navbar baseUrl={baseUrl} slideInDownClass={"slide__in-down"} />
     <Hero />
     <Awards />
 </header>
@@ -42,6 +42,7 @@ const { baseUrl } = Astro.props;
         animation: changeBackground 20s infinite linear;
         z-index: 999;
         overflow: hidden;
+        color-scheme: dark;
     }
 
     @keyframes changeBackground {

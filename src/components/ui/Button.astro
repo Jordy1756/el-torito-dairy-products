@@ -13,12 +13,12 @@ const { variant = "primary", class: className, ...props } = Astro.props;
 </button>
 
 <style>
-    a {
+    button {
         display: flex;
         align-items: center;
         justify-content: center;
         gap: 0.5rem;
-        padding: 11px 23px;
+        padding: 11px 31px;
         border: 1px solid transparent;
         border-radius: var(--border-radius-out);
         font-weight: 400;
@@ -36,9 +36,9 @@ const { variant = "primary", class: className, ...props } = Astro.props;
     }
 
     .secondary {
-        border-color: var(--neutral-900);
+        border-color: light-dark(var(--neutral-900), var(--neutral-50));
         background-color: transparent;
-        color: var(--neutral-900);
+        color: light-dark(var(--neutral-900), var(--neutral-50));
         transition: opacity 0.3s ease-in-out;
     }
 
