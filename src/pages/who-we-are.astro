@@ -11,12 +11,11 @@ import Contact from "@components/sections/contact-us/ContactUs.astro";
 import { basics } from "@data";
 
 const { name } = basics;
-const baseUrl = "/who-we-are";
 ---
 
 <Layout title={`${name} - Sobre nosotros`}>
     <header id="header">
-        <Navbar baseUrl={baseUrl} />
+        <Navbar />
     </header>
     <main>
         <AboutUs />
@@ -25,7 +24,7 @@ const baseUrl = "/who-we-are";
         <FAQ />
         <Contact />
     </main>
-    <Footer baseUrl={baseUrl} />
+    <Footer />
     <Toast />
     <!-- <script src="../scripts/pages/whoWeAre.ts"></script> -->
 </Layout>

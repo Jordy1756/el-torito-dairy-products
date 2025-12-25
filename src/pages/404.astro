@@ -6,12 +6,11 @@ import Footer from "@components/layout/Footer.astro";
 import { basics } from "@data";
 
 const { name } = basics;
-const baseUrl = "/";
 ---
 
 <Layout title={`404 - Página no encontrada | ${name}`}>
     <header>
-        <Navbar baseUrl={baseUrl} />
+        <Navbar />
     </header>
     <main>
         <h1 class="sr-only">Error 404: Página no encontrada</h1>
@@ -30,7 +29,7 @@ const baseUrl = "/";
             />
         </video>
     </main>
-    <Footer baseUrl={baseUrl} />
+    <Footer />
     <!-- <script src="../scripts/pages/404.ts"></script> -->
 </Layout>
 

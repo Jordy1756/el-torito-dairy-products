@@ -8,17 +8,16 @@ import { basics, termsAndConditions } from "@data";
 
 const { name } = basics;
 const { title, description, content } = termsAndConditions;
-const baseUrl = "/";
 ---
 
 <Layout title=`Política de privacidad de ${name}`>
     <header>
-        <Navbar baseUrl={baseUrl} />
+        <Navbar />
     </header>
     <main>
         <Policies title={title} description={description} content={content} />
     </main>
-    <Footer baseUrl={baseUrl} />
+    <Footer />
     <!-- <script src="../scripts/pages/termsAndConditions.ts"></script> -->
 </Layout>
 

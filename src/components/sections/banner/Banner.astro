@@ -2,16 +2,10 @@
 import Navbar from "@components/layout/Navbar.astro";
 import Hero from "@components/sections/banner/Hero.astro";
 import Awards from "@components/sections/awards/Awards.astro";
-
-interface Props {
-    baseUrl: "/";
-}
-
-const { baseUrl } = Astro.props;
 ---
 
 <header id="banner">
-    <Navbar baseUrl={baseUrl} slideInDownClass={"slide__in-down"} />
+    <Navbar />
     <Hero />
     <Awards />
 </header>

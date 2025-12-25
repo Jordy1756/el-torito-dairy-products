@@ -10,7 +10,6 @@ import Contact from "@components/sections/contact-us/ContactUs.astro";
 import { basics } from "@data";
 
 const { name } = basics;
-const baseUrl = "/";
 
 const bannerImages = [
     "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387808/banner_img_01_xp3kl6.webp",
@@ -28,13 +27,13 @@ const bannerImages = [
             ))
         }
     </Fragment>
-    <Banner baseUrl={baseUrl} />
+    <Banner />
     <!-- <main>
         <Products />
         <FAQ />
         <Contact />
     </main> -->
-    <!-- <Footer baseUrl={baseUrl} /> -->
+    <!-- <Footer /> -->
     <!-- <Toast /> -->
 
     <style>

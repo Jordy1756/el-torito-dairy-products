@@ -7,11 +7,7 @@ import { getYear } from "@scripts/utils/handleDates";
 
 import { basics } from "@data";
 
-interface Props {
-    baseUrl: "/" | "/who-we-are";
-}
-
-const { baseUrl } = Astro.props;
+const pathname = Astro.url.pathname;
 const { name, slogan, logo, socialNetworks } = basics;
 
 const SOCIAL_NETWORKS: Record<string, string | any> = {
@@ -57,12 +53,12 @@ const SOCIAL_NETWORKS: Record<string, string | any> = {
                         </a>
                     </li>
                     <li>
-                        <a href={`${baseUrl}#FAQ`} aria-label={`Ir a la sección Preguntas frecuentes de ${name}`}>
+                        <a href={`${pathname}#FAQ`} aria-label={`Ir a la sección Preguntas frecuentes de ${name}`}>
                             Preguntas frecuentes
                         </a>
                     </li>
                     <li>
-                        <a href={`${baseUrl}#contact-us`} aria-label={`Ir a la sección Contáctanos de ${name}`}>
+                        <a href={`${pathname}#contact-us`} aria-label={`Ir a la sección Contáctanos de ${name}`}>
                             Contáctanos
                         </a>
                     </li>
