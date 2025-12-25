@@ -16,7 +16,7 @@ const { name, logo } = basics;
 <nav id="navbar" class:list={["navbar", ...(classNames || [])]}>
     <div class="navbar__brand">
         <a href="/#" aria-label={`Ir a la página principal de ${name}`}>
-            <Image src={logo} alt={`Logo de ${name}`} width={60} height={45} />
+            <Image src={logo} alt={`Logo de ${name}`} width={62} height={49} />
         </a>
         <button
             id="menu-btn"
@@ -126,8 +126,6 @@ const { name, logo } = basics;
     }
 
     .navbar > .navbar__brand > a > img {
-        width: 60px;
-        height: 45px;
         object-fit: contain;
     }
 
