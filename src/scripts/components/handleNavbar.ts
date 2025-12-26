@@ -1,37 +1,37 @@
-export const initNavbar = () => {
-    const nav = document.querySelector("#navbar") as HTMLElement;
+const initNavbar = () => {
+    if (window.innerWidth > 864) return;
 
-    if (window.innerWidth > 864) return { nav };
-
-    const menuBtn = nav.querySelector("#menu-btn") as HTMLButtonElement;
-    const navbarLinks = nav.querySelectorAll("ul > li > a, div > a") as NodeListOf<HTMLAnchorElement>;
+    const navbar = document.querySelector("#navbar") as HTMLElement;
+    const menuBtn = navbar.querySelector("#menu-btn") as HTMLButtonElement;
     const overlay = document.querySelector("#overlay") as HTMLDivElement;
+    const navbarLinks = navbar.querySelectorAll("#navbar-menu-container a") as NodeListOf<HTMLAnchorElement>;
 
-    const toggleAriaExpanded = () => {
-        const isExpanded = menuBtn.getAttribute("aria-expanded") === "true";
-        menuBtn.setAttribute("aria-expanded", String(!isExpanded));
-        menuBtn.setAttribute("aria-label", isExpanded ? "Abrir menú de navegación" : "Cerrar menú de navegación");
+    const openNavbar = () => {
+        const navbarCloseButtonText = "Cerrar menú de navegación";
+        navbar.classList.add("open");
+        menuBtn.setAttribute("aria-expanded", "true");
+        menuBtn.setAttribute("aria-label", navbarCloseButtonText);
+        menuBtn.setAttribute("title", navbarCloseButtonText);
     };
 
-    const addToggleListener = (element: HTMLElement) => {
-        element.addEventListener("click", () => {
-            nav.classList.toggle("open");
-            toggleAriaExpanded();
-        });
+    const closeNavbar = () => {
+        const navbarOpenButtonText = "Abrir menú de navegación";
+        navbar.classList.remove("open");
+        navbar.classList.add("closing");
+        menuBtn.setAttribute("aria-expanded", "false");
+        menuBtn.setAttribute("aria-label", navbarOpenButtonText);
+        menuBtn.setAttribute("title", navbarOpenButtonText);
+
+        setTimeout(() => {
+            navbar.classList.remove("closing");
+        }, 300);
     };
 
-    const addRemoveListener = (element: HTMLElement) => {
-        element.addEventListener("click", () => {
-            if (!nav.classList.contains("open")) return;
+    const toggleNavbar = () => (navbar.classList.contains("open") ? closeNavbar() : openNavbar());
 
-            nav.classList.remove("open");
-            toggleAriaExpanded();
-        });
-    };
-
-    addToggleListener(menuBtn);
-    addRemoveListener(overlay);
-    navbarLinks.forEach(addRemoveListener);
-
-    return { nav };
+    menuBtn.addEventListener("click", () => toggleNavbar());
+    overlay.addEventListener("click", () => closeNavbar());
+    navbarLinks.forEach((link) => link.addEventListener("click", () => closeNavbar()));
 };
+
+initNavbar();

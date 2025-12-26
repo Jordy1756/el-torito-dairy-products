@@ -10,7 +10,7 @@ const pathname = Astro.url.pathname;
 const { name } = basics;
 
 const menuItems = [
-    { href: "/", label: "Home", aria: `Ir a la página principal de ${name}` },
+    { href: "/#", label: "Home", aria: `Ir a la página principal de ${name}` },
     {
         href: "/who-we-are#about-us",
         label: "Sobre nosotros",
@@ -79,31 +79,11 @@ const menuItems = [
 <div id="overlay" class="overlay"></div>
 <div class="navbar__spacer"></div>
 
-<script>
-    const navbar = document.getElementById("navbar") as HTMLElement;
-    const menuBtn = document.getElementById("menu-btn") as HTMLButtonElement;
-    const overlay = document.getElementById("overlay") as HTMLDivElement;
-
-    menuBtn.addEventListener("click", () => {
-        const isExpanded = menuBtn.getAttribute("aria-expanded") === "true" || false;
-        navbar.classList.toggle("open");
-        navbar.classList.toggle("slide_in--down");
-    });
-
-    overlay.addEventListener("click", () => {
-        navbar.classList.remove("open");
-        navbar.classList.add("closing");
-        menuBtn.setAttribute("aria-expanded", "false");
-
-        setTimeout(() => {
-            navbar.classList.remove("closing");
-        }, 300);
-    });
-</script>
+<script src="../../scripts/components/handleNavbar.ts"></script>
 
 <style is:global>
-    .banner > nav:is(:not(.slide_in--down)) {
-        animation: slideInDown 2s ease-in-out;
+    .banner > nav {
+        animation: slideInDown 0.5s ease-in-out;
     }
 
     .banner > nav:is(.open, .closing) {
@@ -182,6 +162,7 @@ const menuItems = [
 
         nav:is(.open, .closing) {
             position: fixed;
+            left: 0;
             top: 0;
             flex-direction: column;
             align-items: start;
