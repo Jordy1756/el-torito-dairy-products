@@ -30,6 +30,21 @@ const menuItems = [
         dataLink: "our-team",
     },
 ];
+
+const menuActions = [
+    {
+        href: "/#products",
+        label: "Productos",
+        aria: `Ir a la sección Productos de ${name}`,
+        variant: "primary",
+    },
+    {
+        href: `${pathname}#contact-us`,
+        label: "Contacto",
+        aria: `Ir a la sección Contacto de ${name}`,
+        variant: "secondary",
+    },
+];
 ---
 
 <nav id="navbar">
@@ -62,16 +77,13 @@ const menuItems = [
             }
         </ul>
         <div>
-            <Link variant="primary" href="/#products" aria-label={`Ir a la sección Productos de ${name}`}>
-                Productos
-            </Link>
-            <Link
-                variant="secondary"
-                href={`${pathname}#contact-us`}
-                aria-label={`Ir a la sección Contacto de ${name}`}
-            >
-                Contacto
-            </Link>
+            {
+                menuActions.map(({ href, label, aria, variant }) => (
+                    <Link variant={variant as "primary" | "secondary"} href={href} aria-label={aria}>
+                        {label}
+                    </Link>
+                ))
+            }
         </div>
     </div>
 </nav>

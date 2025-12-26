@@ -1,176 +1,173 @@
 ---
+import Link from "@components/ui/Link.astro";
+import Logo from "@components/icons/Logo.astro";
 import WhatsappIcon from "@components/icons/Whatsapp.astro";
 import FacebookIcon from "@components/icons/Facebook.astro";
 import InstagramIcon from "@components/icons/Instagram.astro";
-import { Image } from "astro:assets";
 import { getYear } from "@scripts/utils/handleDates";
 
 import { basics } from "@data";
 
 const pathname = Astro.url.pathname;
-const { name, slogan, logo, socialNetworks } = basics;
+const { name, slogan, socialNetworks } = basics;
+const year = getYear(new Date());
 
 const SOCIAL_NETWORKS: Record<string, string | any> = {
     Whatsapp: WhatsappIcon,
     Facebook: FacebookIcon,
     Instagram: InstagramIcon,
 };
+
+const nav = [
+    {
+        title: "Empresa",
+        items: [
+            { href: "/#", label: "Home", aria: `Ir a la página principal de ${name}` },
+            {
+                href: "/who-we-are#about-us",
+                label: "Sobre nosotros",
+                aria: `Ir a la sección Sobre nosotros de ${name}`,
+            },
+            {
+                href: "/#products",
+                label: "Nuestros productos",
+                aria: `Ir a la sección Nuestros productos de ${name}`,
+            },
+            {
+                href: "/who-we-are#testimonies",
+                label: "Testimonios",
+                aria: `Ir a la sección Testimonios de ${name}`,
+            },
+            {
+                href: "/who-we-are#our-team",
+                label: "Nuestro equipo",
+                aria: `Ir a la sección Nuestro equipo de ${name}`,
+            },
+            {
+                href: `${pathname}#FAQ`,
+                label: "Preguntas frecuentes",
+                aria: `Ir a la sección Preguntas frecuentes de ${name}`,
+            },
+            {
+                href: `${pathname}#contact-us`,
+                label: "Contáctanos",
+                aria: `Ir a la sección Contáctanos de ${name}`,
+            },
+        ],
+    },
+    {
+        title: "Legal",
+        items: [
+            {
+                href: "/privacy-policy",
+                label: "Privacidad",
+                aria: `Ir a la página de Política de Privacidad de ${name}`,
+            },
+            {
+                href: "/terms-and-conditions",
+                label: "Términos",
+                aria: `Ir a la página de Términos y Condiciones de ${name}`,
+            },
+        ],
+    },
+];
 ---
 
 <footer>
     <section class="footer__content">
         <div>
             <a href="/#" aria-label={`Ir a la página principal de ${name}`}>
-                <Image src={logo} alt={`Logo de ${name}`} width={120} height={89} />
+                <Logo height={78} />
             </a>
             <p>{slogan}</p>
         </div>
-        <nav>
-            <div>
-                <h2>Empresa</h2>
-                <ul>
-                    <li>
-                        <a href="/#" aria-label={`Ir a la página principal de ${name}`}>Home</a>
-                    </li>
-                    <li>
-                        <a href="/who-we-are#about-us" aria-label={`Ir a la sección Sobre nosotros de ${name}`}>
-                            Sobre nosotros
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/#products" aria-label={`Ir a la sección Nuestros productos de ${name}`}>
-                            Nuestros productos
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/who-we-are#testimonies" aria-label={`Ir a la sección Testimonios de ${name}`}>
-                            Testimonios
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/who-we-are#our-team" aria-label={`Ir a la sección Nuestro equipo de ${name}`}>
-                            Nuestro equipo
-                        </a>
-                    </li>
-                    <li>
-                        <a href={`${pathname}#FAQ`} aria-label={`Ir a la sección Preguntas frecuentes de ${name}`}>
-                            Preguntas frecuentes
-                        </a>
-                    </li>
-                    <li>
-                        <a href={`${pathname}#contact-us`} aria-label={`Ir a la sección Contáctanos de ${name}`}>
-                            Contáctanos
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div>
-                <h2>Legal</h2>
-                <ul>
-                    <li>
-                        <a href="/privacy-policy" aria-label={`Ir a la página de Política de Privacidad de ${name}`}>
-                            Privacidad
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            href="/terms-and-conditions"
-                            aria-label={`Ir a la página de Términos y Condiciones de ${name}`}
-                        >
-                            Términos
-                        </a>
-                    </li>
-                </ul>
-            </div>
+        <nav aria-label="Navegación principal">
+            {
+                nav.map(({ title, items }) => (
+                    <div>
+                        <h2>{title}</h2>
+                        <ul>
+                            {items.map(({ href, label, aria }) => (
+                                <li>
+                                    <Link href={href} aria-label={aria}>
+                                        {label}
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                ))
+            }
         </nav>
     </section>
     <div></div>
     <section class="footer__info">
         <p translate="no">
-            © {getYear(new Date())}
+            © {year}
             {name}. <span translate="yes">Todos los derechos reservados.</span>
         </p>
-        <address>
-            {
-                socialNetworks.map(({ network, url }) => {
-                    const Icon = SOCIAL_NETWORKS[network];
-                    return (
-                        <a
-                            href={url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label={`Ir a la página de ${network} de ${name}`}
-                        >
-                            <Icon width={24} height={24} color="var(--neutral-50)" />
-                        </a>
-                    );
-                })
-            }
-        </address>
+        <nav aria-label="Redes sociales de {name}">
+            <ul role="list">
+                {
+                    socialNetworks.map(({ network, url }) => {
+                        const Icon = SOCIAL_NETWORKS[network];
+                        return (
+                            <li>
+                                <a
+                                    href={url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label={`Seguir a ${name} en ${network}`}
+                                >
+                                    <Icon width={24} color="var(--neutral-50)" />
+                                </a>
+                            </li>
+                        );
+                    })
+                }
+            </ul>
+        </nav>
     </section>
 </footer>
 
 <style>
-    footer {
-        width: 100%;
-        padding: calc(44px + 2rem) 1rem;
-        background-color: var(--primary-900);
-        color: var(--neutral-50);
+    footer,
+    .footer__content > div,
+    .footer__content > nav > div,
+    .footer__content > nav > div > ul {
         display: flex;
         flex-direction: column;
-        align-items: center;
-        gap: 2rem;
     }
 
-    footer > div {
-        height: 1px;
-        width: min(100%, var(--max-width));
-        background-color: var(--neutral-50);
+    footer {
+        align-items: center;
+        gap: 2rem;
+        padding: 4rem 1rem;
+        background-color: var(--primary-900);
+        color: var(--neutral-50);
     }
 
     footer > section {
-        width: min(100%, var(--max-width));
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
         gap: 2rem;
+        width: min(100%, var(--max-width));
     }
-
-    /* FOOTER CONTENT */
 
     .footer__content > div {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-        flex: 1;
-    }
-
-    .footer__content > div > a,
-    .footer__content > ul > li > a {
-        display: flex;
+        align-items: flex-start;
+        gap: 0.5rem;
     }
 
     .footer__content > div > a {
-        width: fit-content;
-    }
-
-    .footer__content > div > a > img {
-        width: 120px;
-        height: 89px;
-        object-fit: contain;
-        filter: brightness(0) invert(1);
+        display: flex;
     }
 
     .footer__content > nav {
         display: flex;
         flex-wrap: wrap;
         gap: 2rem;
-    }
-
-    .footer__content > nav > div,
-    .footer__content > nav > div > ul {
-        display: flex;
-        flex-direction: column;
     }
 
     .footer__content > nav > div {
@@ -182,68 +179,59 @@ const SOCIAL_NETWORKS: Record<string, string | any> = {
     }
 
     .footer__content > nav > div > ul {
+        align-items: flex-start;
         gap: 0.25rem;
     }
 
     .footer__content > nav > div > ul > li > a::before {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        width: 0;
-        height: 1px;
         background-color: var(--neutral-50);
-        transition:
-            left 0.3s ease-in-out,
-            width 0.3s ease-in-out;
     }
 
     .footer__content > nav > div > ul > li > a {
-        position: relative;
-        color: var(--neutral-500);
+        color: var(--neutral-50);
+        opacity: 0.65;
     }
 
-    .footer__content > nav > div > ul > li > a:hover::before {
-        width: 100%;
-        left: 0;
+    footer > div {
+        height: 1px;
+        width: min(100%, var(--max-width));
+        background-color: var(--neutral-50);
     }
 
-    /* FOOTER INFO */
-
-    .footer__info > address {
+    .footer__info > nav > ul {
         display: flex;
         align-items: center;
         gap: 1rem;
     }
 
-    .footer__info > address > a {
+    .footer__info > nav > ul > li > a {
         display: flex;
         transition: scale 0.3s ease-in-out;
     }
 
-    .footer__info > address > a:hover {
+    .footer__info > nav > ul > li > a:hover {
         scale: 1.1;
     }
 
-    @media screen and (width <= 650px) {
-        .footer__content,
-        .footer__content > div,
-        .footer__content > nav,
-        .footer__content > nav > div,
-        .footer__content > nav > div > ul {
-            align-items: center;
-        }
-
-        .footer__info > address {
-            justify-content: center;
-        }
-
+    @media (width < 655px) {
         :is(footer > section, .footer__content > nav) {
             flex-direction: column;
         }
 
         :is(.footer__content > div, .footer__info > p) {
             text-align: center;
+        }
+
+        .footer__content > div,
+        .footer__content > nav > div,
+        .footer__content > nav > div > ul,
+        .footer__info {
+            align-items: center;
+        }
+
+        .footer__content > nav,
+        footer .footer__info {
+            gap: 1rem;
         }
     }
 </style>
