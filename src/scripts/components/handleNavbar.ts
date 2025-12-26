@@ -7,20 +7,16 @@ const initNavbar = () => {
     const navbarLinks = navbar.querySelectorAll("#navbar-menu-container a") as NodeListOf<HTMLAnchorElement>;
 
     const openNavbar = () => {
-        const navbarCloseButtonText = "Cerrar menú de navegación";
         navbar.classList.add("open");
         menuBtn.setAttribute("aria-expanded", "true");
-        menuBtn.setAttribute("aria-label", navbarCloseButtonText);
-        menuBtn.setAttribute("title", navbarCloseButtonText);
+        menuBtn.setAttribute("aria-label", "Cerrar menú de navegación");
     };
 
     const closeNavbar = () => {
-        const navbarOpenButtonText = "Abrir menú de navegación";
         navbar.classList.remove("open");
         navbar.classList.add("closing");
         menuBtn.setAttribute("aria-expanded", "false");
-        menuBtn.setAttribute("aria-label", navbarOpenButtonText);
-        menuBtn.setAttribute("title", navbarOpenButtonText);
+        menuBtn.setAttribute("aria-label", "Abrir menú de navegación");
 
         setTimeout(() => {
             navbar.classList.remove("closing");
