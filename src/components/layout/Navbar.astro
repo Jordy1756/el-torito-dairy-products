@@ -8,6 +8,28 @@ import { basics } from "@data";
 
 const pathname = Astro.url.pathname;
 const { name } = basics;
+
+const menuItems = [
+    { href: "/", label: "Home", aria: `Ir a la página principal de ${name}` },
+    {
+        href: "/who-we-are#about-us",
+        label: "Sobre nosotros",
+        aria: `Ir a la sección Sobre nosotros de ${name}`,
+        dataLink: "about-us",
+    },
+    {
+        href: "/who-we-are#testimonies",
+        label: "Testimonios",
+        aria: `Ir a la sección Testimonios de ${name}`,
+        dataLink: "testimonies",
+    },
+    {
+        href: "/who-we-are#our-team",
+        label: "Nuestro equipo",
+        aria: `Ir a la sección Nuestro equipo de ${name}`,
+        dataLink: "our-team",
+    },
+];
 ---
 
 <nav id="navbar">
@@ -30,24 +52,15 @@ const { name } = basics;
     <div class="separator"></div>
     <div id="navbar-menu-container" class="menu__container">
         <ul>
-            <li>
-                <Link href="/#" aria-label={`Ir a la página principal de ${name}`}>Home</Link>
-            </li>
-            <li data-link="about-us">
-                <Link href="/who-we-are#about-us" aria-label={`Ir a la sección Sobre nosotros de ${name}`}>
-                    Sobre nosotros
-                </Link>
-            </li>
-            <li data-link="testimonies">
-                <Link href="/who-we-are#testimonies" aria-label={`Ir a la sección Testimonios de ${name}`}>
-                    Testimonios
-                </Link>
-            </li>
-            <li data-link="our-team">
-                <Link href="/who-we-are#our-team" aria-label={`Ir a la sección Nuestro equipo de ${name}`}>
-                    Nuestro equipo
-                </Link>
-            </li>
+            {
+                menuItems.map(({ href, label, aria, dataLink }) => (
+                    <li data-link={dataLink}>
+                        <Link href={href} aria-label={aria}>
+                            {label}
+                        </Link>
+                    </li>
+                ))
+            }
         </ul>
         <div>
             <Link variant="primary" href="/#products" aria-label={`Ir a la sección Productos de ${name}`}>
@@ -64,26 +77,37 @@ const { name } = basics;
     </div>
 </nav>
 <div id="overlay" class="overlay"></div>
+<div class="navbar__spacer"></div>
 
 <script>
     const navbar = document.getElementById("navbar") as HTMLElement;
     const menuBtn = document.getElementById("menu-btn") as HTMLButtonElement;
-    const overlay = document.getElementById("overlay") as HTMLElement;
+    const overlay = document.getElementById("overlay") as HTMLDivElement;
 
     menuBtn.addEventListener("click", () => {
         const isExpanded = menuBtn.getAttribute("aria-expanded") === "true" || false;
         navbar.classList.toggle("open");
+        navbar.classList.toggle("slide_in--down");
     });
 
     overlay.addEventListener("click", () => {
         navbar.classList.remove("open");
+        navbar.classList.add("closing");
         menuBtn.setAttribute("aria-expanded", "false");
+
+        setTimeout(() => {
+            navbar.classList.remove("closing");
+        }, 300);
     });
 </script>
 
 <style is:global>
-    .banner > nav {
-        animation: slideInDown 0.5s ease-in-out;
+    .banner > nav:is(:not(.slide_in--down)) {
+        animation: slideInDown 2s ease-in-out;
+    }
+
+    .banner > nav:is(.open, .closing) {
+        padding: 1rem;
     }
 
     .banner .menu__container > ul > li:first-child > .link::before {
@@ -147,11 +171,18 @@ const { name } = basics;
         transition: background-color 0.3s ease-in-out;
     }
 
+    .navbar__spacer {
+        display: none;
+    }
+
     @media (width < 868px) {
-        nav.open {
+        nav.slide_in--down {
+            animation: slideInDown 0.3s ease-in-out;
+        }
+
+        nav:is(.open, .closing) {
             position: fixed;
             top: 0;
-            left: 0;
             flex-direction: column;
             align-items: start;
             justify-content: flex-start;
@@ -166,16 +197,15 @@ const { name } = basics;
             z-index: 998;
         }
 
-        @keyframes closeNavbar {
-            from {
-                left: 0;
-            }
-            to {
-                left: -100%;
-            }
+        nav.open {
+            animation: openNavbar 0.3s ease-in-out forwards;
         }
 
-        nav.open > .brand {
+        nav.closing {
+            animation: closeNavbar 0.3s ease-in-out forwards;
+        }
+
+        nav:is(.open, .closing) > .brand {
             justify-content: space-between;
             width: 100%;
         }
@@ -190,37 +220,26 @@ const { name } = basics;
 
         nav > .brand > button .menu__icon,
         nav > .brand > button > .close__icon {
-            position: absolute;
-            top: 50%;
-            left: 50%;
             color: light-dark(var(--neutral-900), var(--neutral-50));
-            transition: transform 0.3s ease-in-out;
         }
 
-        nav > .brand > button .menu__icon {
-            transform: translate(-50%, -50%);
+        nav > .brand > button > .close__icon,
+        nav:is(.open, .closing) > .brand > button > .menu__icon {
+            display: none;
         }
 
-        nav.open > .brand > button > .menu__icon {
-            transform: translate(-50%, -700%);
+        nav:is(.open, .closing) .brand > button .close__icon {
+            display: flex;
         }
 
-        nav > .brand > button > .close__icon {
-            transform: translate(-50%, -700%);
-        }
-
-        nav.open .brand > button .close__icon {
-            transform: translate(-50%, -50%);
-        }
-
-        nav.open > .separator {
+        nav:is(.open, .closing) > .separator {
             display: block;
             width: 100%;
             height: 1px;
             background-color: var(--neutral-200);
         }
 
-        nav.open > .menu__container {
+        nav:is(.open, .closing) > .menu__container {
             flex: 1;
             flex-direction: column;
             align-items: start;
@@ -233,7 +252,7 @@ const { name } = basics;
             display: none;
         }
 
-        nav.open > .menu__container > ul {
+        nav:is(.open, .closing) > .menu__container > ul {
             flex: 1;
             display: flex;
             flex-direction: column;
@@ -241,19 +260,43 @@ const { name } = basics;
             gap: 0.5rem;
         }
 
-        nav.open > .menu__container > div {
+        nav:is(.open, .closing) > .menu__container > div {
             flex-wrap: wrap;
             width: 100%;
         }
 
-        nav.open > .menu__container > div > a {
+        nav:is(.open, .closing) > .menu__container > div > a {
             flex: 1;
         }
 
-        nav.open ~ .overlay {
+        nav:is(.open, .closing) ~ .overlay {
             inset: 0;
             background-color: rgba(0, 0, 0, 0.5);
             z-index: 997;
+        }
+
+        nav:is(.open, .closing) ~ .navbar__spacer {
+            display: block;
+            width: 100%;
+            height: 49px;
+        }
+
+        @keyframes openNavbar {
+            from {
+                left: -100%;
+            }
+            to {
+                left: 0;
+            }
+        }
+
+        @keyframes closeNavbar {
+            from {
+                left: 0;
+            }
+            to {
+                left: -100%;
+            }
         }
     }
 
@@ -262,7 +305,7 @@ const { name } = basics;
             display: none;
         }
 
-        nav.open > .menu__container > div > a.secondary {
+        nav:is(.open, .closing) > .menu__container > div > a.secondary {
             display: flex;
         }
     }
