@@ -1,31 +1,33 @@
 ---
-import { Image } from "astro:assets";
+import CloseIcon from "@components/icons/Close.astro";
+import Logo from "@components/icons/Logo.astro";
+import MenuIcon from "@components/icons/Menu.astro";
 import Link from "@components/ui/Link.astro";
 
 import { basics } from "@data";
-import CloseIcon from "@components/icons/Close.astro";
-import MenuIcon from "@components/icons/Menu.astro";
 
 const pathname = Astro.url.pathname;
-const { name, logo } = basics;
+const { name } = basics;
 ---
 
 <nav id="navbar">
     <div class="brand">
-        <a href="/#" aria-label={`Ir a la página principal de ${name}`}>
-            <Image src={logo} alt={`Logo de ${name}`} width={62} height={49} />
+        <a href="/#" aria-label={`Ir a la página principal de ${name}`} title={`Ir a la página principal de ${name}`}>
+            <Logo height={45} class="logo" />
         </a>
         <button
             id="menu-btn"
             type="button"
+            title="Abrir menú de navegación"
             aria-label="Abrir menú de navegación"
             aria-expanded="false"
             aria-controls="navbar-menu-container"
         >
-            <MenuIcon width={24} class="menu__icon" />
+            <MenuIcon width={32} class="menu__icon" />
             <CloseIcon width={24} class="close__icon" />
         </button>
     </div>
+    <div class="separator"></div>
     <div id="navbar-menu-container" class="menu__container">
         <ul>
             <li>
@@ -37,9 +39,9 @@ const { name, logo } = basics;
                 </Link>
             </li>
             <li data-link="testimonies">
-                <Link href="/who-we-are#testimonies" aria-label={`Ir a la sección Testimonios de ${name}`}
-                    >Testimonios</Link
-                >
+                <Link href="/who-we-are#testimonies" aria-label={`Ir a la sección Testimonios de ${name}`}>
+                    Testimonios
+                </Link>
             </li>
             <li data-link="our-team">
                 <Link href="/who-we-are#our-team" aria-label={`Ir a la sección Nuestro equipo de ${name}`}>
@@ -63,243 +65,205 @@ const { name, logo } = basics;
 </nav>
 <div id="overlay" class="overlay"></div>
 
-<!-- <style is:global>
-    .navbar > .navbar__actions > a {
-        flex: 1;
+<script>
+    const navbar = document.getElementById("navbar") as HTMLElement;
+    const menuBtn = document.getElementById("menu-btn") as HTMLButtonElement;
+    const overlay = document.getElementById("overlay") as HTMLElement;
+
+    menuBtn.addEventListener("click", () => {
+        const isExpanded = menuBtn.getAttribute("aria-expanded") === "true" || false;
+        navbar.classList.toggle("open");
+    });
+
+    overlay.addEventListener("click", () => {
+        navbar.classList.remove("open");
+        menuBtn.setAttribute("aria-expanded", "false");
+    });
+</script>
+
+<style is:global>
+    .banner > nav {
+        animation: slideInDown 0.5s ease-in-out;
     }
 
-    #banner li:first-child .link::before {
+    .banner .menu__container > ul > li:first-child > .link::before {
         left: 0;
         width: 100%;
-    }
-
-    @media screen and (width <= 480px) {
-        .navbar > .navbar__actions > a.secondary {
-            display: none;
-        }
-
-        .navbar.open > .navbar__actions > a.secondary {
-            display: flex;
-        }
     }
 </style>
 
 <style>
-    nav {
-        width: min(100%, var(--max-width));
-        display: flex;
-        align-items: stretch;
-        gap: 2rem;
-        transition:
-            width 0.3s ease-in-out,
-            padding 0.2s ease-in-out,
-            background-color 0.2s ease-in-out,
-            color 0.2s ease-in-out;
-
-        background-color: red;
-    }
-
-    .navbar.on__dark-bg {
-        color: var(--neutral-50);
-    }
-
-    /* .navbar.on__dark-bg > .navbar__brand > a > img {
-        filter: brightness(0) invert(1);
-    } */
-
-    .navbar.slide__in-down {
-        animation: slideInDown 0.5s ease-in-out;
-    }
-
-    .navbar > .navbar__brand {
+    nav,
+    .brand,
+    .brand > button,
+    .menu__container,
+    .menu__container > ul,
+    .menu__container > div {
         display: flex;
         align-items: center;
-        gap: 1rem;
-        margin-right: auto;
     }
 
-    .navbar > .navbar__brand > a {
+    nav {
+        justify-content: space-between;
+        gap: 2rem;
+        width: min(100%, var(--max-width));
+    }
+
+    .brand,
+    .menu__container > ul {
+        gap: 1rem;
+    }
+
+    .brand > a {
         display: flex;
     }
 
-    .navbar > .navbar__brand > button {
+    .brand > a > .logo {
+        object-fit: contain;
+        color: light-dark(var(--neutral-900), var(--neutral-50));
+    }
+
+    .brand > button {
         display: none;
     }
 
-    .navbar > .navbar__brand > a > img {
-        object-fit: contain;
+    .separator {
+        display: none;
     }
 
-    .navbar > ul {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
+    .menu__container {
+        gap: 1.5rem;
     }
 
-    .navbar > .navbar__actions {
-        display: flex;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 1rem;
+    .menu__container > div {
+        gap: 0.5rem;
     }
 
-    .navbar + .overlay {
+    nav ~ .overlay {
         position: fixed;
         inset: 0;
-        background-color: rgba(0, 0, 0, 0.5);
-        opacity: 0;
-        transition: opacity 0.3s ease-in-out;
-        z-index: 997;
-        pointer-events: none;
+        background-color: transparent;
+        z-index: -1;
+        transition: background-color 0.3s ease-in-out;
     }
 
-    /* NAVBAR OUT OF BANNER */
-
-    .navbar.out__banner {
-        position: fixed;
-        top: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        padding-block: 0.5rem;
-        background-color: var(--neutral-50);
-        color: var(--neutral-900);
-        border-radius: none;
-        border-bottom: 1px solid var(--neutral-300);
-    }
-
-    /* .navbar.out__banner > .navbar__brand > a > img,
-    .navbar.navbar.open > .navbar__brand > a > img {
-        filter: none;
-    } */
-
-    @media screen and (width > 1542px) {
-        .navbar.out__banner::before,
-        .navbar.out__banner::after {
-            content: "";
-            position: absolute;
-            bottom: -1px;
-            height: 100%;
-            width: 100%;
-            border-bottom: 1px solid var(--neutral-300);
-            background-color: var(--neutral-50);
-        }
-
-        .navbar.out__banner::before {
-            left: 100%;
-        }
-
-        .navbar.out__banner::after {
-            right: 100%;
-        }
-    }
-
-    @media screen and (width <= 1542px) {
-        .navbar.out__banner {
-            padding-inline: 1rem;
-        }
-    }
-
-    @media screen and (width <= 864px) {
-        .navbar > .navbar__brand > button {
-            display: flex;
-            width: 36px;
-            height: 24px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            background-color: transparent;
-            border: none;
-        }
-
-        .navbar > .navbar__brand > button > span {
-            background-color: var(--neutral-900);
-            width: calc(var(--index) * 33.33%);
-            height: 3px;
-            border-radius: var(--border-radius-out);
-            transition:
-                width 0.9s ease-in-out,
-                transform 0.9s ease-in-out,
-                opacity 0.9s ease-in-out,
-                background-color 0.6s ease-in-out;
-        }
-
-        .navbar.on__dark-bg > .navbar__brand > button > span {
-            background-color: var(--neutral-50);
-        }
-
-        .navbar > ul {
-            display: none;
-            padding-block: 1rem;
-            border-top: 1px solid var(--neutral-300);
-        }
-
-        /* NAVBAR OPEN */
-
-        .navbar.open {
-            padding: 1rem;
+    @media (width < 868px) {
+        nav.open {
             position: fixed;
             top: 0;
             left: 0;
-            width: auto;
-            height: 100dvh;
             flex-direction: column;
             align-items: start;
+            justify-content: flex-start;
             gap: 1rem;
+            padding: 0.5rem 1rem;
+            width: min(350px, 75%);
+            height: 100dvh;
             background-color: var(--neutral-50);
-            color: var(--neutral-900);
-            border-radius: 0 var(--border-radius-out) var(--border-radius-out) 0;
+            border-top-right-radius: var(--border-radius-out);
+            border-bottom-right-radius: var(--border-radius-out);
+            color-scheme: light;
             z-index: 998;
         }
 
-        .navbar.open.out__banner {
-            transform: none;
+        @keyframes closeNavbar {
+            from {
+                left: 0;
+            }
+            to {
+                left: -100%;
+            }
         }
 
-        .navbar.open > .navbar__brand {
+        nav.open > .brand {
+            justify-content: space-between;
             width: 100%;
         }
 
-        .navbar.open > .navbar__brand > button {
-            margin-left: auto;
+        .brand > button {
+            --size: 32px;
+            position: relative;
+            display: flex;
+            width: var(--size);
+            height: var(--size);
         }
 
-        .navbar.open > .navbar__brand > button > span {
-            background-color: var(--neutral-900);
-            width: 75%;
+        nav > .brand > button .menu__icon,
+        nav > .brand > button > .close__icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            color: light-dark(var(--neutral-900), var(--neutral-50));
+            transition: transform 0.3s ease-in-out;
         }
 
-        .navbar.open > .navbar__brand > button > span:nth-child(1) {
-            transform: translateX(12px) translateY(10.5px) rotate(45deg);
+        nav > .brand > button .menu__icon {
+            transform: translate(-50%, -50%);
         }
 
-        .navbar.open > .navbar__brand > button > span:nth-child(2) {
-            opacity: 0;
+        nav.open > .brand > button > .menu__icon {
+            transform: translate(-50%, -700%);
         }
 
-        .navbar.open > div > button > span:nth-child(3) {
-            transform: translateX(12px) translateY(-10.5px) rotate(-45deg);
+        nav > .brand > button > .close__icon {
+            transform: translate(-50%, -700%);
         }
 
-        .navbar.open > ul {
+        nav.open .brand > button .close__icon {
+            transform: translate(-50%, -50%);
+        }
+
+        nav.open > .separator {
+            display: block;
             width: 100%;
+            height: 1px;
+            background-color: var(--neutral-200);
+        }
+
+        nav.open > .menu__container {
+            flex: 1;
+            flex-direction: column;
+            align-items: start;
+            gap: 1rem;
+            width: 100%;
+            overflow-y: scroll;
+        }
+
+        nav > .menu__container > ul {
+            display: none;
+        }
+
+        nav.open > .menu__container > ul {
+            flex: 1;
             display: flex;
             flex-direction: column;
-            flex: 1;
             align-items: start;
+            gap: 0.5rem;
         }
 
-        .navbar.open > ul > li {
+        nav.open > .menu__container > div {
+            flex-wrap: wrap;
             width: 100%;
         }
 
-        .navbar.open + .overlay {
-            opacity: 1;
-            pointer-events: visible;
+        nav.open > .menu__container > div > a {
+            flex: 1;
         }
 
-        /* NAVBAR OUT OF BANNER */
-        .navbar.out__banner > .navbar__brand > button > span {
-            background-color: var(--neutral-900);
+        nav.open ~ .overlay {
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 997;
+        }
+    }
+
+    @media (width < 480px) {
+        nav > .menu__container > div > a.secondary {
+            display: none;
+        }
+
+        nav.open > .menu__container > div > a.secondary {
+            display: flex;
         }
     }
 
@@ -313,35 +277,4 @@ const { name, logo } = basics;
             opacity: 1;
         }
     }
-</style> -->
-
-<style is:global></style>
-
-<style>
-    nav {
-        display: flex;
-        /* justify-content: space-between; */
-        gap: 2rem;
-        width: min(100%, var(--max-width));
-        /* background-color: red; */
-    }
-
-    .menu__container {
-        flex: 1;
-        display: flex;
-        justify-content: space-between;
-        gap: 10rem;
-        /* background-color: red; */
-    }
-
-    .menu__container > ul,
-    .menu__container > div {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-    }
-
-    /* .test {
-        color: var(--neutral-50);
-    } */
 </style>
