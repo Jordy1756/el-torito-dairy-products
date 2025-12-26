@@ -8,6 +8,7 @@ const initNavbar = () => {
 
     const openNavbar = () => {
         navbar.classList.add("open");
+        navbar.classList.add("slide__in--down");
         menuBtn.setAttribute("aria-expanded", "true");
         menuBtn.setAttribute("aria-label", "Cerrar menú de navegación");
     };
@@ -20,7 +21,7 @@ const initNavbar = () => {
 
         setTimeout(() => {
             navbar.classList.remove("closing");
-        }, 300);
+        }, 150);
     };
 
     const toggleNavbar = () => (navbar.classList.contains("open") ? closeNavbar() : openNavbar());

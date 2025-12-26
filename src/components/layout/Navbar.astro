@@ -81,7 +81,7 @@ const menuItems = [
 <script src="../../scripts/components/handleNavbar.ts"></script>
 
 <style is:global>
-    .banner > nav {
+    .banner > nav:not(.slide__in--down) {
         animation: slideInDown 0.5s ease-in-out;
     }
 
@@ -146,6 +146,7 @@ const menuItems = [
         position: fixed;
         inset: 0;
         background-color: transparent;
+        pointer-events: none;
         z-index: -1;
         transition: background-color 0.3s ease-in-out;
     }
@@ -155,8 +156,8 @@ const menuItems = [
     }
 
     @media (width < 868px) {
-        nav.slide_in--down {
-            animation: slideInDown 0.3s ease-in-out;
+        nav.slide__in--down {
+            animation: slideInDown 150ms ease-in-out;
         }
 
         nav:is(.open, .closing) {
@@ -182,7 +183,7 @@ const menuItems = [
         }
 
         nav.closing {
-            animation: closeNavbar 0.3s ease-in-out forwards;
+            animation: closeNavbar 150ms ease-in-out forwards;
         }
 
         nav:is(.open, .closing) > .brand {
@@ -252,6 +253,7 @@ const menuItems = [
         nav:is(.open, .closing) ~ .overlay {
             inset: 0;
             background-color: rgba(0, 0, 0, 0.5);
+            pointer-events: auto;
             z-index: 997;
         }
 
