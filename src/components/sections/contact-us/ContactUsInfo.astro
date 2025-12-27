@@ -1,0 +1,123 @@
+---
+import LocationIcon from "@components/icons/Location.astro";
+import PhoneIcon from "@components/icons/Phone.astro";
+import EmailIcon from "@components/icons/Email.astro";
+import Link from "@components/ui/Link.astro";
+
+import { basics, contactUsSection } from "@data";
+
+const { email, phone, address } = basics;
+const { title, description, addressLink, addressMapLink, schedules } = contactUsSection;
+---
+
+<article class="contact__info">
+    <header>
+        <h2>{title}</h2>
+        <p>{description}</p>
+    </header>
+    <div>
+        <div>
+            <h3>Información de contacto</h3>
+            <address>
+                <Link
+                    href={addressLink}
+                    aria-label="Ver dirección en Google Maps"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <LocationIcon width={24} color="var(--neutral-900)" />
+                    <span>{address}</span>
+                </Link>
+                <Link
+                    href={`tel:${phone.trim()}`}
+                    aria-label={`Llamar al número ${phone}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <PhoneIcon width={24} color="var(--neutral-900)" />
+                    <span>{phone}</span>
+                </Link>
+                <Link
+                    href={`mailto:${email}`}
+                    aria-label={`Enviar un correo a ${email}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <EmailIcon width={24} color="var(--neutral-900)" />
+                    <span>{email}</span>
+                </Link>
+            </address>
+        </div>
+        <div>
+            <h3>Horario</h3>
+            <ul>
+                {
+                    schedules.map(({ day, hours }) => (
+                        <li>
+                            {day}: {hours}
+                        </li>
+                    ))
+                }
+            </ul>
+        </div>
+    </div>
+    <iframe
+        src={addressMapLink}
+        loading="lazy"
+        allowfullscreen=""
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Mapa de la ubicación de El Torito Productos Lácteos"
+    >
+    </iframe>
+</article>
+
+<style>
+    .contact__info,
+    .contact__info > header,
+    .contact__info > div > div,
+    .contact__info > div > div > address,
+    .contact__info > div > div > ul {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .contact__info {
+        gap: 1.5rem;
+        flex: 4 400px;
+    }
+
+    .contact__info > header {
+        gap: 0.25rem;
+    }
+
+    .contact__info > div {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .contact__info > div > div {
+        flex: 1 285px;
+        gap: 0.25rem;
+    }
+
+    .contact__info > div > div > h3 {
+        font-size: var(--text-size-small);
+    }
+
+    .contact__info > div > div > address {
+        align-items: flex-start;
+    }
+
+    .contact__info > div > div > address > a > svg {
+        min-width: 24px;
+    }
+
+    .contact__info > iframe {
+        border: none;
+        border-radius: var(--border-radius-out);
+        flex: 1;
+        width: 100%;
+        min-height: 250px;
+    }
+</style>
