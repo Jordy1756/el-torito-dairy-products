@@ -1,7 +1,7 @@
 import Lenis from "lenis";
 import "lenis/dist/lenis.css";
 
-export const initLenis = () => {
+(() => {
     const lenis = new Lenis();
 
     const raf = (time: number) => {
@@ -10,4 +10,4 @@ export const initLenis = () => {
     };
 
     requestAnimationFrame(raf);
-};
+})();

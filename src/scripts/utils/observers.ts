@@ -16,7 +16,8 @@ export const createSectionObserver = (sectionId: string): IntersectionObserver =
     };
 
     return new IntersectionObserver(([entry]) => {
-        const navigationItem = document.querySelector(`li[data-link="${sectionId}"]`) as HTMLAnchorElement;
+        const navigationItem = document.querySelector(`li[data-link="${sectionId}"] > a`) as HTMLAnchorElement;
+        console.log(navigationItem);
         navigationItem.classList.toggle("active", entry.isIntersecting);
     }, options);
 };

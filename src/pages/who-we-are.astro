@@ -26,7 +26,6 @@ const { name } = basics;
     </main>
     <Footer />
     <Toast />
-
 </Layout>
 
 <style>
@@ -49,3 +48,11 @@ const { name } = basics;
         width: min(100%, calc(var(--max-width) + 2rem));
     }
 </style>
+
+<script>
+    import { createSectionObserver } from "@scripts/utils/observers";
+
+    const sections = document.querySelectorAll("#about-us, #testimonies, #our-team") as NodeListOf<HTMLElement>;
+    console.log(sections);
+    sections.forEach((section) => createSectionObserver(section.id).observe(section));
+</script>

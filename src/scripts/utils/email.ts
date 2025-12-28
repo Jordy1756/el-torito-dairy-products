@@ -1,4 +1,4 @@
-import { MAILGUN_API_KEY, MAILGUN_DOMAIN } from "@config/environment";
+import { MAILGUN_API_KEY, MAILGUN_DOMAIN } from "@scripts/config/environment";
 import Mailgun from "mailgun.js";
 
 export const sendContactEmail = async ({

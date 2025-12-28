@@ -1,4 +1,4 @@
-const initNavbar = () => {
+(() => {
     if (window.innerWidth > 864) return;
 
     const navbar = document.querySelector("#navbar") as HTMLElement;
@@ -29,6 +29,4 @@ const initNavbar = () => {
     menuBtn.addEventListener("click", () => toggleNavbar());
     overlay.addEventListener("click", () => closeNavbar());
     navbarLinks.forEach((link) => link.addEventListener("click", () => closeNavbar()));
-};
-
-initNavbar();
+})();

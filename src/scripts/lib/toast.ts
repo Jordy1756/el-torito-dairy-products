@@ -1,7 +1,8 @@
 import type { Toast } from "@definitions/ToastTypes";
 
-const ICON_TYPES = {
-    success: `
+(() => {
+    const ICON_TYPES = {
+        success: `
         <svg width="24" height="24" viewBox="0 0 1024 1024">
             <path
                 fill="var(--success-500)"
@@ -9,7 +10,7 @@ const ICON_TYPES = {
             />
         </svg>
     `,
-    error: `
+        error: `
         <svg width="24" height="24" viewBox="0 0 20 20">
             <path
                 fill="var(--error-500)"
@@ -17,9 +18,8 @@ const ICON_TYPES = {
             />
         </svg>
     `,
-};
+    };
 
-export const initToast = () => {
     const toast = document.querySelector("#toast") as HTMLElement;
     const toastContent = toast.querySelector("#toast-content") as HTMLElement;
     const toastIcon = toastContent.querySelector("#toast-icon-container") as HTMLElement;
@@ -46,4 +46,4 @@ export const initToast = () => {
     toastCloseButton.addEventListener("click", closeToast);
 
     return { showToast, closeToast };
-};
+})();

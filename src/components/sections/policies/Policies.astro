@@ -1,6 +1,6 @@
 ---
 import MainSection from "@components/layout/MainSection.astro";
-import { getFormattedDate } from "@scripts/utils/handleDates";
+import { getFormattedDate } from "@scripts/utils/dates";
 
 interface Props {
     title: string;
@@ -12,6 +12,7 @@ interface Props {
 }
 
 const { title, description, content } = Astro.props;
+const date = getFormattedDate(new Date());
 ---
 
 <MainSection class="policies">
@@ -30,7 +31,7 @@ const { title, description, content } = Astro.props;
         }
     </div>
     <footer>
-        <p>Última actualización: {getFormattedDate(new Date())}</p>
+        <p>Última actualización: {date}</p>
     </footer>
 </MainSection>
 

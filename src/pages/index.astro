@@ -35,13 +35,22 @@ const bannerImages = [
     </main>
     <Footer />
     <!-- <Toast /> -->
-
-    <style>
-        main {
-            align-self: center;
-            display: flex;
-            flex-direction: column;
-            width: min(100%, var(--max-width));
-        }
-    </style>
 </Layout>
+
+<style>
+    main {
+        align-self: center;
+        display: flex;
+        flex-direction: column;
+        width: min(100%, var(--max-width));
+    }
+</style>
+
+<script>
+    import { createBannerObserver } from "@scripts/utils/observers";
+
+    const banner = document.querySelector("#banner") as HTMLElement;
+    const navbar = banner.querySelector("#navbar") as HTMLElement;
+
+    createBannerObserver(navbar).observe(banner);
+</script>
