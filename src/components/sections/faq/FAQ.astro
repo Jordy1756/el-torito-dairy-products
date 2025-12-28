@@ -6,7 +6,7 @@ import { FAQsSection } from "@data";
 const { title, description, FAQs } = FAQsSection;
 ---
 
-<MainSection id="FAQ">
+<MainSection id="FAQ" class="faq">
     <header>
         <h2>{title}</h2>
         <p>{description}</p>
@@ -17,11 +17,11 @@ const { title, description, FAQs } = FAQsSection;
 </MainSection>
 
 <style>
-    header {
+    .faq > header {
         text-align: center;
     }
 
-    div {
+    .faq > div {
         display: flex;
         flex-direction: column;
     }

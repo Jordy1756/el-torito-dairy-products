@@ -1,11 +1,12 @@
 ---
+import MainSection from "@components/layout/MainSection.astro";
 import OurTeamCard from "@components/sections/our-team/OurTeamCard.astro";
 import { ourTeamSection } from "@data";
 
 const { title, description, team } = ourTeamSection;
 ---
 
-<section class="our__team main__section" id="our-team">
+<MainSection class="our__team" id="our-team">
     <header>
         <h2>{title}</h2>
         <p>{description}</p>
@@ -15,17 +16,13 @@ const { title, description, team } = ourTeamSection;
             <OurTeamCard index={index} name={name} image={image} role={role} gridArea={gridArea} />
         ))
     }
-</section>
+</MainSection>
 
 <style>
     .our__team {
-        padding: calc(44px + 2rem) 1rem;
-        width: min(100%, var(--max-width));
-        min-height: 100dvh;
         display: grid;
         grid-auto-columns: 1fr;
         grid-auto-flow: row;
-        gap: 1rem;
     }
 
     .our__team > header {
@@ -43,9 +40,9 @@ const { title, description, team } = ourTeamSection;
             grid-template-columns: repeat(12, 1fr);
             grid-template-rows: repeat(11, 1fr);
             grid-template-areas:
-                ". . . staffImage1 staffImage1 staffImage1 . . . . . ."
-                ". . . staffImage1 staffImage1 staffImage1 . . . . staffImage2 staffImage2"
-                ". . . staffImage1 staffImage1 staffImage1 . . . . staffImage2 staffImage2"
+                ". . . . staffImage1 staffImage1 staffImage1 . . . . ."
+                ". . . . staffImage1 staffImage1 staffImage1 . . . staffImage2 staffImage2"
+                ". . . . staffImage1 staffImage1 staffImage1 . . . staffImage2 staffImage2"
                 "staffImage5 staffImage5 . text text text text text text . staffImage2 staffImage2"
                 "staffImage5 staffImage5 . text text text text text text . . ."
                 "staffImage5 staffImage5 . text text text text text text . . ."
@@ -72,14 +69,9 @@ const { title, description, team } = ourTeamSection;
 
     @media screen and (width <= 480px) {
         .our__team {
-            grid-template-columns: 1fr;
-            grid-template-areas:
-                "text"
-                "staffImage1"
-                "staffImage2"
-                "staffImage3"
-                "staffImage4"
-                "staffImage5";
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
         }
     }
 </style>

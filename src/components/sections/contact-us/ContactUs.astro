@@ -4,13 +4,13 @@ import ContactUsForm from "@components/sections/contact-us/ContactUsForm.astro";
 import ContactUsInfo from "@components/sections/contact-us/ContactUsInfo.astro";
 ---
 
-<MainSection id="contact-us">
+<MainSection id="contact-us" class="contact__us">
     <ContactUsInfo />
     <ContactUsForm />
 </MainSection>
 
-<style is:global>
-    #contact-us {
+<style>
+    .contact__us {
         flex-direction: row;
         flex-wrap: wrap;
         gap: 2rem;

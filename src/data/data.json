@@ -40,7 +40,7 @@
         ]
     },
     "aboutUsSection": {
-        "title": "Sobre nosotros",
+        "title": "Sobre Nosotros",
         "description": "Conoce más sobre nosotros y lo que hacemos.",
         "identities": [
             {
@@ -82,7 +82,7 @@
         ]
     },
     "productsSection": {
-        "title": "Nuestros productos",
+        "title": "Nuestros Productos",
         "description": "Conoce nuestra variedad de productos lácteos frescos y saludables",
         "products": [
             {
@@ -204,7 +204,7 @@
         ]
     },
     "ourTeamSection": {
-        "title": "Nuestro equipo",
+        "title": "Nuestro Equipo",
         "description": "Nuestro equipo, comprometido con la calidad y el bienestar, trabaja con dedicación para ofrecer productos lácteos frescos y saludables, cuidando cada paso del proceso.",
         "team": [
             {
@@ -260,7 +260,7 @@
         ]
     },
     "FAQsSection": {
-        "title": "Preguntas frecuentes",
+        "title": "Preguntas Frecuentes",
         "description": "Si no encuentras la respuesta a tu pregunta, no dudes en contactarnos.",
         "FAQs": [
             {
@@ -318,7 +318,7 @@
         ]
     },
     "privacyPolicySection": {
-        "title": "Política de privacidad",
+        "title": "Política de Privacidad",
         "description": "En Lácteos El Torito nos comprometemos con la transparencia sobre cómo funciona nuestro sitio web y el manejo de la información que usted comparte con nosotros.",
         "content": [
             {
@@ -344,7 +344,7 @@
         ]
     },
     "termsAndConditions": {
-        "title": "Términos y condiciones",
+        "title": "Términos y Condiciones",
         "description": "Agradecemos su visita al sitio web de Lácteos El Torito. Al utilizar nuestro sitio web, usted acepta los términos y condiciones que hemos establecido para garantizar una mejor experiencia para todos nuestros usuarios.",
         "content": [
             {

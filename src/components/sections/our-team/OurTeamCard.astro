@@ -24,13 +24,25 @@ const { index, name, image, role, gridArea } = Astro.props;
 </article>
 
 <style define:vars={{ index, "grid-area": gridArea }}>
+    .our__team-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(transparent, rgba(0, 0, 0, 0.5));
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+        z-index: 1;
+    }
+
     .our__team-card {
+        grid-area: var(--grid-area);
+        position: relative;
         padding: 1rem;
+        min-width: 200px;
+        min-height: 250px;
+        color: var(--neutral-50);
         border-radius: var(--border-radius-out);
         overflow: hidden;
-        position: relative;
-        color: var(--neutral-50);
-        grid-area: var(--grid-area);
     }
 
     .our__team-card > figure > img {
@@ -39,9 +51,7 @@ const { index, name, image, role, gridArea } = Astro.props;
         width: 100%;
         height: 100%;
         object-fit: cover;
-        transition:
-            scale 0.3s ease-in-out,
-            filter 0.3s ease-in-out;
+        transition: scale 0.3s ease-in-out;
     }
 
     .our__team-card > div {
@@ -50,7 +60,7 @@ const { index, name, image, role, gridArea } = Astro.props;
         border-radius: var(--border-radius-in);
         padding: 0.5rem;
         transition: bottom 0.3s ease-in-out;
-        z-index: 1;
+        z-index: 2;
     }
 
     .our__team-card > div::before {
@@ -72,6 +82,10 @@ const { index, name, image, role, gridArea } = Astro.props;
     }
 
     @media screen and (width > 1024px) {
+        .our__team-card:hover::before {
+            opacity: 1;
+        }
+
         .our__team-card {
             animation: scaleShift 2.5s infinite alternate calc(var(--index) * 0.5s) ease-in-out;
         }
@@ -82,7 +96,6 @@ const { index, name, image, role, gridArea } = Astro.props;
 
         .our__team-card:hover > figure > img {
             scale: 1.05;
-            filter: brightness(0.6);
         }
 
         .our__team-card > div {
@@ -101,6 +114,10 @@ const { index, name, image, role, gridArea } = Astro.props;
     }
 
     @media screen and (width <= 1024px) {
+        .our__team-card::before {
+            opacity: 1;
+        }
+
         .our__team-card {
             min-height: 300px;
             animation: revealTeamCard linear both;
@@ -110,7 +127,6 @@ const { index, name, image, role, gridArea } = Astro.props;
 
         .our__team-card > figure > img {
             scale: 1;
-            filter: brightness(0.6);
         }
 
         .our__team-card > div {
@@ -132,6 +148,7 @@ const { index, name, image, role, gridArea } = Astro.props;
     @media screen and (width <= 480px) {
         .our__team-card {
             aspect-ratio: 1 / 1;
+            min-width: auto;
             min-height: auto;
         }
     }

@@ -1,4 +1,5 @@
 ---
+import MainSection from "@components/layout/MainSection.astro";
 import { getFormattedDate } from "@scripts/utils/handleDates";
 
 interface Props {
@@ -13,7 +14,7 @@ interface Props {
 const { title, description, content } = Astro.props;
 ---
 
-<section>
+<MainSection class="policies">
     <header>
         <h2>{title}</h2>
         <p>{description}</p>
@@ -31,31 +32,30 @@ const { title, description, content } = Astro.props;
     <footer>
         <p>Última actualización: {getFormattedDate(new Date())}</p>
     </footer>
-</section>
+</MainSection>
 
 <style>
-    section,
-    section > header,
-    section > div,
-    section > div > article {
+    .policies {
+        gap: 2rem;
+    }
+
+    .policies > header,
+    .policies > div,
+    .policies > div > article {
         display: flex;
         flex-direction: column;
     }
 
-    section {
-        gap: 2rem;
-    }
-
-    section > header,
-    section > div > article {
+    .policies > header,
+    .policies > div > article {
         gap: 0.25rem;
     }
 
-    section > div {
+    .policies > div {
         gap: 1rem;
     }
 
-    section > div > article > h3 {
-        font-size: var(--text-size-large);
+    .policies > div > article > h3 {
+        font-size: var(--text-size-medium);
     }
 </style>

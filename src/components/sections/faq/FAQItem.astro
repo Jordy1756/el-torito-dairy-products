@@ -12,9 +12,9 @@ const { question, answer } = Astro.props;
 <details name="FAQs" class="faq__item">
     <summary>
         <h3>{question}</h3>
-        <figure>
-            <ChevronIcon width={24} height={24} color="var(--neutral-900)" />
-        </figure>
+        <div>
+            <ChevronIcon height={16} color="var(--neutral-900)" />
+        </div>
     </summary>
     <div>
         <p>{answer}</p>
@@ -41,14 +41,15 @@ const { question, answer } = Astro.props;
         font-size: var(--text-size-small);
     }
 
-    .faq__item > summary > figure {
+    .faq__item > summary > div {
         display: grid;
         place-items: center;
+        transform: rotate(180deg);
         transition: transform 0.2s ease-in-out;
     }
 
-    .faq__item[open] > summary > figure {
-        transform: rotate(180deg);
+    .faq__item[open] > summary > div {
+        transform: rotate(0);
     }
 
     .faq__item > div {

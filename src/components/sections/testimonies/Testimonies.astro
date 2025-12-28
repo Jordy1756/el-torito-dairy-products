@@ -7,7 +7,7 @@ import { getTestimonyId, getAnimationTimeline, getTimelineScope } from "@scripts
 const { title, description, testimonies } = testimoniesSection;
 ---
 
-<MainSection id="testimonies" paddingInline={0}>
+<MainSection id="testimonies" class="testimonies">
     <header>
         <h2>{title}</h2>
         <p>{description}</p>
@@ -41,6 +41,10 @@ const { title, description, testimonies } = testimoniesSection;
 </MainSection>
 
 <style define:vars={{ timelineScope: getTimelineScope(testimonies) }}>
+    .testimonies {
+        padding-inline: 0;
+    }
+
     header {
         text-align: center;
         padding-inline: 1rem;

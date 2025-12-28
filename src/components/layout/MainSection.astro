@@ -1,27 +1,20 @@
 ---
-interface Props {
-    id: "our-team" | "testimonies" | "products" | "about-us" | "FAQ" | "contact-us";
-    paddingInline?: "1rem" | 0;
-}
+import type { HTMLAttributes } from "astro/types";
 
-const { id, paddingInline = "1rem" } = Astro.props;
+interface Props extends HTMLAttributes<"section"> {}
+
+const { ...props } = Astro.props;
 ---
 
-<section id={id}>
+<section {...props}>
     <slot />
 </section>
 
-<style define:vars={{ "padding-inline": paddingInline }}>
+<style>
     section {
-        padding-block: calc(44px + 2rem);
         display: flex;
         flex-direction: column;
         gap: 1rem;
-    }
-
-    @media screen and (width < 1542px) {
-        section {
-            padding-inline: var(--padding-inline);
-        }
+        padding: 4.5rem 1rem;
     }
 </style>
