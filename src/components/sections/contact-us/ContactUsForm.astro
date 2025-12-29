@@ -1,70 +1,25 @@
 ---
 import Button from "@components/ui/Button.astro";
 import InputBox from "@components/ui/InputBox.astro";
-
-import { contactFields } from "@scripts/sections/handleContactFields";
-const { name, lastName, email, subject, message } = contactFields;
 ---
 
 <article class="contact__form">
     <h4>Ponte en contacto con nosotros</h4>
-    <form id="contact-form">
-        <InputBox name={name.name} label={name.label}>
-            <input
-                id={name.name}
-                type="text"
-                name="name"
-                placeholder=""
-                minlength={name.minLength}
-                maxlength={name.maxLength}
-                pattern={name.pattern.source}
-                required
-            />
+    <form id="contact-form" novalidate>
+        <InputBox name="name" label="Nombre">
+            <input id="name" type="text" name="name" placeholder="" required minlength={3} />
         </InputBox>
-        <InputBox name={lastName.name} label={lastName.label}>
-            <input
-                id={lastName.name}
-                type="text"
-                name="lastName"
-                placeholder=""
-                minlength={lastName.minLength}
-                maxlength={lastName.maxLength}
-                pattern={lastName.pattern.source}
-                required
-            />
+        <InputBox name="lastName" label="Apellido">
+            <input id="lastName" type="text" name="lastName" placeholder="" required minlength={3} />
         </InputBox>
-        <InputBox name={email.name} label={email.label}>
-            <input
-                id={email.name}
-                type="email"
-                name="email"
-                placeholder=""
-                minlength={email.minLength}
-                maxlength={email.maxLength}
-                pattern={email.pattern.source}
-                required
-            />
+        <InputBox name="email" label="Correo Electrónico">
+            <input id="email" type="email" name="email" placeholder="" />
         </InputBox>
-        <InputBox name={subject.name} label={subject.label}>
-            <input
-                id={subject.name}
-                type="text"
-                name="subject"
-                placeholder=""
-                minlength={subject.minLength}
-                maxlength={subject.maxLength}
-                pattern={subject.pattern.source}
-                required
-            />
+        <InputBox name="subject" label="Asunto">
+            <input id="subject" type="text" name="subject" placeholder="" />
         </InputBox>
-        <InputBox name={message.name} label={message.label} flex={message.flex}>
-            <textarea
-                id={message.name}
-                name="message"
-                placeholder=""
-                minlength={message.minLength}
-                maxlength={message.maxLength}
-                required></textarea>
+        <InputBox name="message" label="Mensaje" flex={1}>
+            <textarea id="message" name="message" placeholder=""></textarea>
         </InputBox>
         <Button type="submit" aria-label="Enviar mensaje de contacto">Enviar Mensaje</Button>
     </form>
@@ -90,3 +45,5 @@ const { name, lastName, email, subject, message } = contactFields;
         flex: 1;
     }
 </style>
+
+<script src="../../../scripts/lib/contact.ts"></script>

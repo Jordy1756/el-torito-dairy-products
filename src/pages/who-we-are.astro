@@ -53,6 +53,5 @@ const { name } = basics;
     import { createSectionObserver } from "@scripts/utils/observers";
 
     const sections = document.querySelectorAll("#about-us, #testimonies, #our-team") as NodeListOf<HTMLElement>;
-    console.log(sections);
     sections.forEach((section) => createSectionObserver(section.id).observe(section));
 </script>

@@ -5,3 +5,12 @@ interface Props extends HTMLAttributes<"svg"> {}
 
 const { ...props } = Astro.props;
 ---
+
+<svg fill="none" {...props} viewBox="0 0 24 24"
+    ><g clip-path="url(#clip0_10041_91)"
+        ><path
+            fill="currentColor"
+            d="M12 0a12 12 0 1 1 0 24 12 12 0 0 1 0-24m-1.495 14.367L7.84 11.7a1.028 1.028 0 1 0-1.455 1.455l3.394 3.395a1.024 1.024 0 0 0 1.456 0l7.028-7.03a1.03 1.03 0 1 0-1.453-1.456z"
+        ></path></g
+    ><defs><clipPath id="clip0_10041_91"><path fill="#fff" d="M0 0h24v24H0z"></path></clipPath></defs></svg
+>

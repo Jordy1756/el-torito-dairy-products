@@ -1,18 +1,28 @@
 ---
 import CloseIcon from "@components/icons/Close.astro";
+import ErrorIcon from "@components/icons/Error.astro";
+import InformationIcon from "@components/icons/Information.astro";
+import SuccessIcon from "@components/icons/Success.astro";
+import WarningIcon from "@components/icons/Warning.astro";
 ---
 
-<div id="toast" class="toast">
-    <aside></aside>
-    <section id="toast-content">
-        <figure id="toast-icon-container"></figure>
+<div id="toast" class="toast" data-type="success" role="alert" aria-live="assertive" aria-atomic="true">
+    <header>
         <div>
-            <h3 id="toast-title"></h3>
-            <p id="toast-message"></p>
+            <figure>
+                <SuccessIcon width={24} class="success__icon" color="var(--success-500)" />
+                <ErrorIcon width={24} class="error__icon" color="var(--error-500)" />
+                <WarningIcon width={24} class="warning__icon" color="var(--warning-500)" />
+                <InformationIcon width={24} class="information__icon" color="var(--information-500)" />
+            </figure>
+            <h3 id="toast-title">¡Mensaje Enviado!</h3>
         </div>
-        <button id="toast-close-btn" aria-label="Cerrar notificación de toast">
-            <CloseIcon width={24} height={24} color="var(--neutral-600)" />
+        <button id="toast-close-btn" aria-label="Cerrar notificación">
+            <CloseIcon width={16} color="var(--neutral-500)" />
         </button>
+    </header>
+    <section>
+        <p id="toast-message">Gracias por contactarnos. Nos comunicaremos contigo pronto.</p>
     </section>
 </div>
 
@@ -20,72 +30,90 @@ import CloseIcon from "@components/icons/Close.astro";
     .toast {
         position: fixed;
         right: 1rem;
-        bottom: -100%;
+        bottom: 1rem;
         display: flex;
-        width: 350px;
+        flex-direction: column;
+        gap: 0.25rem;
+        padding: 1rem 1rem 1rem calc(1rem + 5px);
+        width: min(calc(100% - 2rem), 350px);
         background-color: var(--neutral-50);
+        border-radius: var(--border-radius-out);
         box-shadow: var(--box-shadow);
-        border-radius: var(--border-radius-in);
+        transform: translateY(300%);
+        transition: transform 0.3s ease-in-out;
         overflow: hidden;
-        opacity: 0;
-        transition:
-            bottom 0.3s ease-in-out,
-            opacity 0.3s ease-in-out;
         z-index: 999;
     }
 
-    .toast.active {
-        bottom: 1rem;
-        opacity: 1;
-    }
-
-    .toast > aside {
+    .toast::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
         width: 5px;
+        height: 100%;
+        background-color: var(--neutral-900);
     }
 
-    .toast.success > aside {
+    .toast.active {
+        transform: translateY(0);
+    }
+
+    .toast[data-type="success"]::before {
         background-color: var(--success-500);
     }
 
-    .toast.error > aside {
+    .toast[data-type="error"]::before {
         background-color: var(--error-500);
     }
 
-    .toast > section {
-        flex: 1;
+    .toast[data-type="warning"]::before {
+        background-color: var(--warning-500);
+    }
+
+    .toast[data-type="information"]::before {
+        background-color: var(--information-500);
+    }
+
+    .toast > header {
         display: flex;
-        align-items: start;
+        justify-content: space-between;
+        gap: 2rem;
+    }
+
+    .toast > header > div {
+        display: flex;
         gap: 1rem;
-        padding: 1rem;
     }
 
-    .toast > section > figure,
-    .toast > section > button {
+    .toast > header > div > figure,
+    .toast > header > button {
         display: flex;
-        align-items: center;
-        justify-content: center;
+        align-self: start;
     }
 
-    .toast > section > div > h3 {
+    .toast > header > div > figure {
+        min-width: 24px;
+    }
+
+    .toast > header > div > figure > :is(.success__icon, .error__icon, .warning__icon, .information__icon) {
+        display: none;
+    }
+
+    .toast[data-type="success"] > header > div > figure > .success__icon,
+    .toast[data-type="error"] > header > div > figure > .error__icon,
+    .toast[data-type="warning"] > header > div > figure > .warning__icon,
+    .toast[data-type="information"] > header > div > figure > .information__icon {
+        display: block;
+    }
+
+    .toast > header > div > h3 {
         font-size: var(--text-size-small);
     }
 
-    .toast > section > div > p {
-        color: var(--neutral-600);
-        font-size: 0.9rem;
-    }
-
-    .toast > section > button {
-        margin-left: auto;
-        background-color: transparent;
-        border: none;
-        display: grid;
-        place-items: center;
-    }
-
-    @media screen and (width <= 480px) {
-        .toast {
-            width: calc(100% - 2rem);
-        }
+    .toast > section {
+        margin-left: calc(24px + 1rem);
     }
 </style>
+
+<script src="../../scripts/lib/toast.ts"></script>

@@ -1,5 +1,21 @@
 import { MAILGUN_API_KEY, MAILGUN_DOMAIN } from "@scripts/config/environment";
+import type { ToastType } from "@scripts/types/toast";
+import { ActionError } from "astro:actions";
 import Mailgun from "mailgun.js";
+
+interface ContactEmailParams {
+    name: string;
+    lastName: string;
+    email: string;
+    subject: string;
+    message: string;
+}
+
+interface ContactEmailResponse {
+    type: ToastType;
+    title: string;
+    message: string;
+}
 
 export const sendContactEmail = async ({
     name,
@@ -7,7 +23,7 @@ export const sendContactEmail = async ({
     email,
     subject,
     message,
-}: Record<string, string>): Promise<Response> => {
+}: ContactEmailParams): Promise<ContactEmailResponse> => {
     const fullName = `${name} ${lastName}`;
 
     const mailgun = new Mailgun(FormData);
@@ -23,27 +39,23 @@ export const sendContactEmail = async ({
             subject,
             text: `${message}\n\n${fullName}`,
             html: `
-                <p>${message}</p>
+                <div style="padding: 20px;">
+                    <p>${message}</p>
+                </div>
             `,
         });
 
-        if (!response.status || response.status !== 200) throw new Error("Failed to send email");
+        if (!response.status || response.status !== 200) throw new Error("Mailgun API returned non-200 status");
 
-        return new Response(
-            JSON.stringify({
-                success: true,
-                title: "¡Mensaje enviado!",
-                message: "Gracias por contactarnos. Nos comunicaremos contigo pronto.",
-            })
-        );
+        return {
+            type: "success",
+            title: "¡Mensaje enviado!",
+            message: "Gracias por contactarnos. Nos comunicaremos contigo pronto.",
+        };
     } catch (error) {
-        console.error(error);
-        return new Response(
-            JSON.stringify({
-                success: false,
-                title: "No se pudo enviar",
-                message: "Ocurrió un problema al enviar tu mensaje. Por favor, intenta nuevamente.",
-            })
-        );
+        throw new ActionError({
+            code: "INTERNAL_SERVER_ERROR",
+            message: "No se pudo enviar el mensaje. Por favor, intenta nuevamente más tarde.",
+        });
     }
 };

@@ -1,6 +1,5 @@
 ---
-import "@fontsource/poppins/300";
-import "@fontsource/poppins/400";
+import { Font } from "astro:assets";
 import { basics } from "@data";
 
 interface Props {
@@ -22,6 +21,8 @@ const hostname = url.hostname;
         <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
 
         <slot name="head" />
+
+        <Font cssVariable="--font-poppins" />
 
         <meta name="description" content={summary} />
         <meta property="og:url" content={url} />
@@ -46,7 +47,7 @@ const hostname = url.hostname;
 
 <style is:global>
     :root {
-        --font-family: "Poppins", "Open Sans", sans-serif, system-ui;
+        --font-family: var(--font-poppins), "Open Sans", sans-serif, system-ui;
         --font-weight-normal: 300;
         --font-weight-title: 400;
 
@@ -81,13 +82,17 @@ const hostname = url.hostname;
         --primary-800: #104621;
         --primary-900: #0b2f16;
 
-        --success-500: #b3e145;
-        --success-700: #8fce10;
-        --success-900: #5c9408;
+        --success-500: #8fce10;
+        --success-700: #5f890b;
+        --success-900: #304505;
 
-        --error-500: #ff745c;
-        --error-700: #ff3426;
-        --error-900: #b71323;
+        --error-500: #ff3426;
+        --error-700: #c30d00;
+        --error-900: #620600;
+
+        --warning-500: #ffdd05;
+
+        --information-500: #3ed8fa;
 
         --glass-color: rgba(255, 255, 255, 0.1);
         --blur-effect: blur(8px);
