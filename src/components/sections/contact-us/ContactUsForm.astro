@@ -5,18 +5,18 @@ import InputBox from "@components/ui/InputBox.astro";
 
 <article class="contact__form">
     <h4>Ponte en contacto con nosotros</h4>
-    <form id="contact-form" novalidate>
+    <form id="contact-form">
         <InputBox name="name" label="Nombre">
-            <input id="name" type="text" name="name" placeholder="" required minlength={3} />
+            <input id="name" type="text" name="name" placeholder="" autocomplete="name" />
         </InputBox>
         <InputBox name="lastName" label="Apellido">
-            <input id="lastName" type="text" name="lastName" placeholder="" required minlength={3} />
+            <input id="lastName" type="text" name="lastName" placeholder="" autocomplete="family-name" />
         </InputBox>
         <InputBox name="email" label="Correo Electrónico">
-            <input id="email" type="email" name="email" placeholder="" />
+            <input id="email" type="email" name="email" placeholder="" autocomplete="email" />
         </InputBox>
         <InputBox name="subject" label="Asunto">
-            <input id="subject" type="text" name="subject" placeholder="" />
+            <input id="subject" type="text" name="subject" placeholder="" autocomplete="off" />
         </InputBox>
         <InputBox name="message" label="Mensaje" flex={1}>
             <textarea id="message" name="message" placeholder=""></textarea>

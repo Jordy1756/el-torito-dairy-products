@@ -1,5 +1,7 @@
 import { actions, isInputError } from "astro:actions";
 import { showToast } from "@scripts/lib/toast";
+import { showError, validateField } from "@scripts/utils/validations";
+import { contactSchema } from "@scripts/schemas/contact";
 
 (() => {
     const form = document.querySelector("#contact-form") as HTMLFormElement;
@@ -8,32 +10,19 @@ import { showToast } from "@scripts/lib/toast";
     >;
     const inputs = Array.from(inputsElements);
 
-    const getErrorMessageElement = (input: HTMLInputElement | HTMLTextAreaElement) =>
-        input.closest(".input__box")?.querySelector(".error__message") as HTMLSpanElement;
+    inputs.forEach((input) => input.addEventListener("blur", () => validateField(input, contactSchema)));
 
-    inputs.forEach((input) => {
-        input.addEventListener("blur", async () => {
-            await handleTest(input);
-        });
-    });
-
-    const handleTest = async (input?: HTMLInputElement | HTMLTextAreaElement) => {
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        
         try {
             const { data, error } = await actions.sendContact(new FormData(form));
 
             if (isInputError(error)) {
-                if (input) {
-                    const fieldName = input.name as keyof typeof error.fields;
-                    const messages = error.fields[fieldName];
-                    input.closest(".input__box")?.classList.add("error");
-                    getErrorMessageElement(input).textContent = messages?.join(", ") || "";
-                } else {
-                    Object.entries(error.fields).forEach(([fieldName, messages]) => {
-                        const input = inputs.find((el) => el.name === fieldName);
-                        input?.closest(".input__box")?.classList.add("error");
-                        getErrorMessageElement(input!).textContent = messages.join(", ");
-                    });
-                }
+                Object.entries(error.fields).forEach(([fieldName, messages]) => {
+                    const input = inputs.find((el) => el.name === fieldName) as HTMLInputElement | HTMLTextAreaElement;
+                    showError(input, messages[0]);
+                });
 
                 return;
             }
@@ -55,10 +44,5 @@ import { showToast } from "@scripts/lib/toast";
                 message: "No se pudo enviar el mensaje. Por favor, intenta nuevamente más tarde.",
             });
         }
-    };
-
-    form.addEventListener("submit", async (e) => {
-        e.preventDefault();
-        await handleTest();
     });
 })();
