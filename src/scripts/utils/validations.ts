@@ -1,23 +1,16 @@
-import type { ZodObject } from "zod";
-import { ZodError } from "zod";
+import type { InputErrorTypes } from "@scripts/types/input";
 
-export const validateField = (input: HTMLInputElement | HTMLTextAreaElement, schema: ZodObject<any>) => {
-    try {
-        schema.shape[input.name].parse(input.value);
-        clearError(input);
-    } catch (err: any) {
-        if (!(err instanceof ZodError)) return;
-
-        console.log({ issues: err.issues });
-        showError(input, err.issues[0].message);
+export const validateInput = (input: HTMLInputElement | HTMLTextAreaElement, errors: InputErrorTypes): void => {
+    for (const [validity, message] of Object.entries(errors)) {
+        if (input.validity[validity as keyof ValidityState]) {
+            input.setCustomValidity(" ");
+            showError(input, message);
+            return;
+        }
     }
-};
 
-export const clearError = (input: HTMLInputElement | HTMLTextAreaElement) => {
-    const inputBox = input.closest(".input__box") as HTMLDivElement;
-    const errorMessage = inputBox.querySelector(".error__message") as HTMLSpanElement;
-    inputBox.classList.remove("error");
-    errorMessage.textContent = "";
+    input.setCustomValidity("");
+    clearError(input);
 };
 
 export const showError = (input: HTMLInputElement | HTMLTextAreaElement, message: string) => {
@@ -25,4 +18,11 @@ export const showError = (input: HTMLInputElement | HTMLTextAreaElement, message
     const errorMessage = inputBox.querySelector(".error__message") as HTMLSpanElement;
     inputBox.classList.add("error");
     errorMessage.textContent = message;
+};
+
+export const clearError = (input: HTMLInputElement | HTMLTextAreaElement) => {
+    const inputBox = input.closest(".input__box") as HTMLDivElement;
+    const errorMessage = inputBox.querySelector(".error__message") as HTMLSpanElement;
+    inputBox.classList.remove("error");
+    errorMessage.textContent = "";
 };

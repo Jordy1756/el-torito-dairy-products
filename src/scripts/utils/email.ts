@@ -55,7 +55,7 @@ export const sendContactEmail = async ({
     } catch (error) {
         throw new ActionError({
             code: "INTERNAL_SERVER_ERROR",
-            message: "No se pudo enviar el mensaje. Por favor, intenta nuevamente más tarde.",
+            message: "Hubo un error al enviar el correo. Por favor, intenta nuevamente más tarde.",
         });
     }
 };

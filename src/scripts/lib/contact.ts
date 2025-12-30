@@ -1,7 +1,7 @@
 import { actions, isInputError } from "astro:actions";
 import { showToast } from "@scripts/lib/toast";
-import { showError, validateField } from "@scripts/utils/validations";
-import { contactSchema } from "@scripts/schemas/contact";
+import { showError, validateInput } from "@scripts/utils/validations";
+import { contactFields } from "@scripts/validations/contactFields";
 
 (() => {
     const form = document.querySelector("#contact-form") as HTMLFormElement;
@@ -10,20 +10,22 @@ import { contactSchema } from "@scripts/schemas/contact";
     >;
     const inputs = Array.from(inputsElements);
 
-    inputs.forEach((input) => input.addEventListener("blur", () => validateField(input, contactSchema)));
+    inputs.forEach((input) => {
+        input.setCustomValidity(" ");
+        input.addEventListener("blur", () => validateInput(input, contactFields[input.name].errors));
+    });
 
     form.addEventListener("submit", async (e) => {
         e.preventDefault();
-        
+
         try {
             const { data, error } = await actions.sendContact(new FormData(form));
-
+            
             if (isInputError(error)) {
                 Object.entries(error.fields).forEach(([fieldName, messages]) => {
                     const input = inputs.find((el) => el.name === fieldName) as HTMLInputElement | HTMLTextAreaElement;
                     showError(input, messages[0]);
                 });
-
                 return;
             }
 
@@ -32,7 +34,7 @@ import { contactSchema } from "@scripts/schemas/contact";
             form.reset();
 
             showToast({
-                type: data?.type || "success",
+                type: "success",
                 title: data?.title || "¡Mensaje enviado!",
                 message: data?.message || "Gracias por contactarnos. Nos comunicaremos contigo pronto.",
             });

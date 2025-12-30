@@ -1,27 +1,84 @@
 ---
 import Button from "@components/ui/Button.astro";
 import InputBox from "@components/ui/InputBox.astro";
+import { contactFields } from "@scripts/validations/contactFields";
+
+const { name, lastName, email, subject, message } = contactFields;
 ---
 
 <article class="contact__form">
     <h4>Ponte en contacto con nosotros</h4>
     <form id="contact-form">
-        <InputBox name="name" label="Nombre">
-            <input id="name" type="text" name="name" placeholder="" autocomplete="name" />
+        <InputBox name={name.name} label={name.label}>
+            <input
+                id={name.id}
+                type="text"
+                name={name.name}
+                placeholder=""
+                required
+                minlength={name.minLength}
+                maxlength={name.maxLength}
+                pattern={name.pattern.source}
+                autocomplete="name"
+                autocapitalize="words"
+            />
         </InputBox>
-        <InputBox name="lastName" label="Apellido">
-            <input id="lastName" type="text" name="lastName" placeholder="" autocomplete="family-name" />
+
+        <InputBox name={lastName.name} label={lastName.label}>
+            <input
+                id={lastName.id}
+                type="text"
+                name={lastName.name}
+                placeholder=""
+                required
+                minlength={lastName.minLength}
+                maxlength={lastName.maxLength}
+                pattern={lastName.pattern.source}
+                autocomplete="family-name"
+                autocapitalize="words"
+            />
         </InputBox>
-        <InputBox name="email" label="Correo Electrónico">
-            <input id="email" type="email" name="email" placeholder="" autocomplete="email" />
+
+        <InputBox name={email.name} label={email.label}>
+            <input
+                id={email.id}
+                type="email"
+                name={email.name}
+                placeholder=""
+                required
+                minlength={email.minLength}
+                maxlength={email.maxLength}
+                pattern={email.pattern.source}
+                autocomplete="email"
+            />
         </InputBox>
-        <InputBox name="subject" label="Asunto">
-            <input id="subject" type="text" name="subject" placeholder="" autocomplete="off" />
+
+        <InputBox name={subject.name} label={subject.label}>
+            <input
+                id={subject.id}
+                type="text"
+                name={subject.name}
+                placeholder=""
+                required
+                minlength={subject.minLength}
+                maxlength={subject.maxLength}
+                pattern={subject.pattern.source}
+                autocomplete="off"
+            />
         </InputBox>
-        <InputBox name="message" label="Mensaje" flex={1}>
-            <textarea id="message" name="message" placeholder=""></textarea>
+
+        <InputBox name={message.name} label={message.label} flex={1}>
+            <textarea
+                id={message.id}
+                name={message.name}
+                placeholder=""
+                required
+                minlength={message.minLength}
+                maxlength={message.maxLength}
+                autocapitalize="sentences"></textarea>
         </InputBox>
-        <Button type="submit" aria-label="Enviar mensaje de contacto">Enviar Mensaje</Button>
+
+        <Button type="submit" aria-label="Enviar mensaje de contacto"> Enviar Mensaje </Button>
     </form>
 </article>
 
