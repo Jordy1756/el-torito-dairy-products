@@ -2,7 +2,6 @@
 import { Image } from "astro:assets";
 
 interface Props {
-    id: string;
     name: string;
     image: {
         src: string;
@@ -12,7 +11,7 @@ interface Props {
     highlight: string;
 }
 
-const { id, name, image, highlight } = Astro.props;
+const { name, image, highlight } = Astro.props;
 ---
 
 <article class="product__card">
@@ -26,7 +25,7 @@ const { id, name, image, highlight } = Astro.props;
     </div>
 </article>
 
-<style define:vars={{ "grid-area": id }}>
+<style define:vars={{ "grid-area": "" }}>
     .product__card {
         grid-area: var(--grid-area);
         position: relative;

@@ -3,11 +3,10 @@ import LocationIcon from "@components/icons/Location.astro";
 import PhoneIcon from "@components/icons/Phone.astro";
 import EmailIcon from "@components/icons/Email.astro";
 import Link from "@components/ui/Link.astro";
-
-import { basics, contactUsSection } from "@data";
+import { basics, contactUs } from "@data";
 
 const { email, phone, address } = basics;
-const { title, description, addressLink, addressMapLink, schedules } = contactUsSection;
+const { title, description, addressLink, addressMapLink, schedules } = contactUs;
 ---
 
 <article class="contact__info">
@@ -52,9 +51,9 @@ const { title, description, addressLink, addressMapLink, schedules } = contactUs
             <h3>Horario</h3>
             <ul>
                 {
-                    schedules.map(({ day, hours }) => (
+                    schedules.map(({ days, hours }) => (
                         <li>
-                            {day}: {hours}
+                            {days}: {hours}
                         </li>
                     ))
                 }

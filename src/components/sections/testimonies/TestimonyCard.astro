@@ -3,13 +3,13 @@ import UserIcon from "@components/icons/User.astro";
 
 interface Props {
     id: string;
-    name: string;
-    time: string;
-    testimony: string;
+    author: string;
+    date: string;
+    content: string;
     gridArea: string;
 }
 
-const { id, name, time, testimony, gridArea } = Astro.props;
+const { id, author, date, content, gridArea } = Astro.props;
 const viewTimeline = `--${id}`;
 ---
 
@@ -19,12 +19,12 @@ const viewTimeline = `--${id}`;
             <UserIcon width={32} color="var(--neutral-50)" />
         </figure>
         <div>
-            <h3>{name}</h3>
-            <p>{time}</p>
+            <h3>{author}</h3>
+            <p>{date}</p>
         </div>
     </header>
     <main>
-        <p>{testimony}</p>
+        <p>{content}</p>
     </main>
 </article>
 

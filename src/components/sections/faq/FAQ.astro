@@ -1,9 +1,9 @@
 ---
 import MainSection from "@components/layout/MainSection.astro";
 import FAQItem from "@components/sections/faq/FAQItem.astro";
-import { FAQsSection } from "@data";
+import { faqs } from "@data";
 
-const { title, description, FAQs } = FAQsSection;
+const { title, description, items } = faqs;
 ---
 
 <MainSection id="FAQ" class="faq">
@@ -12,7 +12,7 @@ const { title, description, FAQs } = FAQsSection;
         <p>{description}</p>
     </header>
     <div>
-        {FAQs.map(({ question, answer }) => <FAQItem question={question} answer={answer} />)}
+        {items.map(({ question, answer }) => <FAQItem question={question} answer={answer} />)}
     </div>
 </MainSection>
 

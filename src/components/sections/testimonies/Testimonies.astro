@@ -1,10 +1,10 @@
 ---
 import MainSection from "@components/layout/MainSection.astro";
 import TestimonyCard from "@components/sections/testimonies/TestimonyCard.astro";
-import { testimoniesSection } from "@data";
+import { testimonials } from "@data";
 import { getTestimonyId, getAnimationTimeline, getTimelineScope } from "@scripts/sections/handleTestimonies";
 
-const { title, description, testimonies } = testimoniesSection;
+const { title, description, items } = testimonials;
 ---
 
 <MainSection id="testimonies" class="testimonies">
@@ -15,12 +15,12 @@ const { title, description, testimonies } = testimoniesSection;
     <div class="testimonies__container">
         <div>
             {
-                testimonies.map(({ name, time, testimony, gridArea }, i) => (
+                items.map(({ author, date, content, gridArea }, i) => (
                     <TestimonyCard
                         id={getTestimonyId(i)}
-                        name={name}
-                        time={time}
-                        testimony={testimony}
+                        author={author}
+                        date={date}
+                        content={content}
                         gridArea={gridArea}
                     />
                 ))
@@ -28,7 +28,7 @@ const { title, description, testimonies } = testimoniesSection;
         </div>
         <nav>
             {
-                testimonies.map((_, i) => (
+                items.map((_, i) => (
                     <a
                         aria-label={`Ir a testimonio ${i + 1}`}
                         href={`#${getTestimonyId(i)}`}
@@ -40,12 +40,12 @@ const { title, description, testimonies } = testimoniesSection;
     </div>
 </MainSection>
 
-<style define:vars={{ timelineScope: getTimelineScope(testimonies) }}>
+<style define:vars={{ timelineScope: getTimelineScope(items) }}>
     .testimonies {
         padding-inline: 0;
     }
 
-    header {
+    .testimonies > header {
         text-align: center;
         padding-inline: 1rem;
     }

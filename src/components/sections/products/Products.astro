@@ -1,58 +1,58 @@
 ---
 import MainSection from "@components/layout/MainSection.astro";
 import ProductCard from "@components/sections/products/ProductCard.astro";
-import { productsSection } from "@data";
+import { products } from "@data";
 
-const { title, description, products } = productsSection;
+const { title, description, items } = products;
 ---
 
-<MainSection id="products">
+<MainSection id="products" class="products">
     <header>
         <h2>{title}</h2>
         <p>{description}</p>
     </header>
     <div>
-        {
-            products.map(({ id, name, image, weight, highlight }) => (
-                <ProductCard id={id} name={name} image={image} weight={weight} highlight={highlight} />
+        <!-- {
+            items.map(({ name, image, weight, highlight }) => (
+                <ProductCard name={name} image={image} weight={weight} highlight={highlight} />
             ))
-        }
+        } -->
     </div>
 </MainSection>
 
 <style>
-    header {
+    .products > header {
         text-align: center;
     }
 
-    div {
+    .products > div {
         flex: 1;
         display: grid;
         gap: 1rem;
     }
 
     @media screen and (width > 1024px) {
-        div {
+        .products > div {
             grid-template-columns: repeat(8, 1fr);
-            grid-template-rows: repeat(6, 125px);
+            grid-template-rows: repeat(6, 1fr);
             grid-template-areas:
-                "product1 product1 product2 product2 product2 product3 product3 product3"
-                "product1 product1 product2 product2 product2 product3 product3 product3"
-                "product4 product4 product2 product2 product2 product5 product5 product5"
-                "product4 product4 product2 product2 product2 product5 product5 product5"
-                "product4 product4 product6 product6 product7 product7 product8 product8"
-                "product4 product4 product6 product6 product7 product7 product8 product8";
+                "text1 text1 carousel carousel carousel . text2 text2"
+                "text1 text1 carousel carousel carousel product2 product2 ."
+                "product1 product1 carousel carousel carousel product2 product2 ."
+                "product1 product1 carousel carousel carousel . product4 product4"
+                "product1 product1 text3 text3 product3 product3 product4 product4"
+                ". . text3 text3 product3 product3 . .";
         }
     }
-
+    /* 
     @media screen and (width <= 1256px) {
-        div {
+        .products > div {
             grid-template-rows: repeat(6, 125px);
         }
     }
 
     @media screen and (768px <= width <= 1024px) {
-        div {
+        .products > div {
             grid-template-columns: repeat(6, 1fr);
             grid-template-rows: repeat(5, 225px);
             grid-template-areas:
@@ -65,7 +65,7 @@ const { title, description, products } = productsSection;
     }
 
     @media screen and (521px <= width <= 767px) {
-        div {
+        .products > div {
             grid-template-columns: repeat(2, 1fr);
             grid-template-rows: repeat(10, 100px);
             grid-template-areas:
@@ -83,7 +83,7 @@ const { title, description, products } = productsSection;
     }
 
     @media screen and (width <= 520px) {
-        div {
+        .products > div {
             grid-template-columns: 1fr;
             grid-template-rows: repeat(7, 1fr);
             grid-template-areas:
@@ -96,5 +96,5 @@ const { title, description, products } = productsSection;
                 "product7"
                 "product8";
         }
-    }
+    } */
 </style>

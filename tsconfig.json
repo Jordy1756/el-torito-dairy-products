@@ -4,12 +4,9 @@
         "baseUrl": ".",
         "paths": {
             "@components/*": ["src/components/*"],
-            "@sections/*": ["src/components/sections/*"],
-            "@layouts/*": ["src/layouts/*"],
             "@data": ["src/data/data.json"],
-            "@scripts/*": ["src/scripts/*"],
-            "@styles/*": ["src/styles/*"],
-            "@definitions/*": ["src/scripts/types/*"]
+            "@layouts/*": ["src/layouts/*"],
+            "@scripts/*": ["src/scripts/*"]
         }
     }
 }

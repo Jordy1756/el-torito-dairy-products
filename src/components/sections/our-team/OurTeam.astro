@@ -1,9 +1,9 @@
 ---
 import MainSection from "@components/layout/MainSection.astro";
 import OurTeamCard from "@components/sections/our-team/OurTeamCard.astro";
-import { ourTeamSection } from "@data";
+import { team } from "@data";
 
-const { title, description, team } = ourTeamSection;
+const { title, description, members } = team;
 ---
 
 <MainSection class="our__team" id="our-team">
@@ -12,7 +12,7 @@ const { title, description, team } = ourTeamSection;
         <p>{description}</p>
     </header>
     {
-        team.map(({ name, image, role, gridArea }, index) => (
+        members.map(({ name, image, role, gridArea }, index) => (
             <OurTeamCard index={index} name={name} image={image} role={role} gridArea={gridArea} />
         ))
     }

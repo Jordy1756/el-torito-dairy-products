@@ -7,7 +7,7 @@ import Policies from "@components/sections/policies/Policies.astro";
 import { basics, termsAndConditions } from "@data";
 
 const { name } = basics;
-const { title, description, content } = termsAndConditions;
+const { title, description, sections } = termsAndConditions;
 ---
 
 <Layout title=`Política de privacidad de ${name}`>
@@ -15,7 +15,7 @@ const { title, description, content } = termsAndConditions;
         <Navbar />
     </header>
     <main>
-        <Policies title={title} description={description} content={content} />
+        <Policies title={title} description={description} sections={sections} />
     </main>
     <Footer />
 </Layout>

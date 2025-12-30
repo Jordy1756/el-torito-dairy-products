@@ -5,13 +5,13 @@ import { getFormattedDate } from "@scripts/utils/dates";
 interface Props {
     title: string;
     description: string;
-    content: Array<{
+    sections: Array<{
         subtitle: string;
-        description: string;
+        content: string;
     }>;
 }
 
-const { title, description, content } = Astro.props;
+const { title, description, sections } = Astro.props;
 const date = getFormattedDate(new Date());
 ---
 
@@ -22,10 +22,10 @@ const date = getFormattedDate(new Date());
     </header>
     <div>
         {
-            content.map(({ subtitle, description }) => (
+            sections.map(({ subtitle, content }) => (
                 <article>
                     <h3>{subtitle}</h3>
-                    <p>{description}</p>
+                    <p>{content}</p>
                 </article>
             ))
         }
