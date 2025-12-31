@@ -82,7 +82,7 @@
             {
                 "name": "Natilla Casera",
                 "weight": "250g",
-                "highlight": "Receta familiar",
+                "feature": "Receta familiar",
                 "type": "carousel",
                 "gridArea": "carousel",
                 "image": {
@@ -93,7 +93,7 @@
             {
                 "name": "Queso Maduro",
                 "weight": "250g",
-                "highlight": "Maduración natural",
+                "feature": "Maduración natural",
                 "type": "carousel",
                 "gridArea": "carousel",
                 "image": {
@@ -104,7 +104,7 @@
             {
                 "name": "Queso con Orégano",
                 "weight": "250g",
-                "highlight": "Sabor mediterráneo",
+                "feature": "Sabor mediterráneo",
                 "type": "carousel",
                 "gridArea": "carousel",
                 "image": {
@@ -115,7 +115,7 @@
             {
                 "name": "Yogurt de Guanábana",
                 "weight": "250ml",
-                "highlight": "Sabor tropical",
+                "feature": "Sabor tropical",
                 "type": "product",
                 "gridArea": "product1",
                 "image": {
@@ -126,7 +126,7 @@
             {
                 "name": "Yogurt de Kiwi",
                 "weight": "250ml",
-                "highlight": "Rico en vitamina C",
+                "feature": "Rico en vitamina C",
                 "type": "product",
                 "gridArea": "product2",
                 "image": {
@@ -137,7 +137,7 @@
             {
                 "name": "Queso Maduro Picante",
                 "weight": "250g",
-                "highlight": "Con chile natural",
+                "feature": "Con chile natural",
                 "type": "product",
                 "gridArea": "product3",
                 "image": {
@@ -148,7 +148,7 @@
             {
                 "name": "Yogurt de Mora",
                 "weight": "250ml",
-                "highlight": "Antioxidante natural",
+                "feature": "Antioxidante natural",
                 "type": "product",
                 "gridArea": "product4",
                 "image": {

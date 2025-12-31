@@ -4,6 +4,9 @@ import ProductCard from "@components/sections/products/ProductCard.astro";
 import { products } from "@data";
 
 const { title, description, items } = products;
+
+const carouselItems = items.slice(0, 3);
+const otherItems = items.slice(3);
 ---
 
 <MainSection id="products" class="products">
@@ -12,13 +15,55 @@ const { title, description, items } = products;
         <p>{description}</p>
     </header>
     <div>
-        <!-- {
-            items.map(({ name, image, weight, highlight }) => (
-                <ProductCard name={name} image={image} weight={weight} highlight={highlight} />
+        <article class="text1">
+            <p>Recetas tradicionales con leche de Turrialba</p>
+        </article>
+        <article class="text2">
+            <span>+2K</span>
+            <p>Productos vendidos</p>
+        </article>
+        <article class="text3">
+            <p>
+                Nuestros lácteos combinan maduración natural, sabores tropicales como guanábana y mora, y texturas
+                cremosas sin aditivos. Del queso palmito al yogurt rico en vitamina C, todo fresco desde El Torito.
+            </p>
+        </article>
+        <div id="product-carousel" class="carousel">
+            {
+                carouselItems.map(({ name, image, weight, feature, gridArea }) => (
+                    <ProductCard name={name} image={image} weight={weight} feature={feature} gridArea={gridArea} />
+                ))
+            }
+            <div>
+                {
+                    Array.from({ length: carouselItems.length }).map((_, i) => (
+                        <button
+                            class={`carousel__button ${i === 0 ? "active" : ""}`}
+                            aria-label={`Ver producto ${i + 1}`}
+                            title={`Ver producto ${i + 1}`}
+                        />
+                    ))
+                }
+            </div>
+        </div>
+        {
+            otherItems.map(({ name, image, weight, feature, gridArea }) => (
+                <ProductCard name={name} image={image} weight={weight} feature={feature} gridArea={gridArea} />
             ))
-        } -->
+        }
     </div>
 </MainSection>
+
+<style is:global>
+    .products > div > .carousel > .product__card {
+        min-width: 100%;
+        box-shadow: none;
+    }
+
+    .products > div > .carousel > .product__card > div {
+        padding-bottom: calc(2rem + 16px);
+    }
+</style>
 
 <style>
     .products > header {
@@ -31,19 +76,84 @@ const { title, description, items } = products;
         gap: 1rem;
     }
 
-    @media screen and (width > 1024px) {
-        .products > div {
-            grid-template-columns: repeat(8, 1fr);
-            grid-template-rows: repeat(6, 1fr);
-            grid-template-areas:
-                "text1 text1 carousel carousel carousel . text2 text2"
-                "text1 text1 carousel carousel carousel product2 product2 ."
-                "product1 product1 carousel carousel carousel product2 product2 ."
-                "product1 product1 carousel carousel carousel . product4 product4"
-                "product1 product1 text3 text3 product3 product3 product4 product4"
-                ". . text3 text3 product3 product3 . .";
-        }
+    .products > div > :is(.text1, .text2, .text3) {
+        align-self: center;
+        padding: 1rem;
+        text-align: center;
     }
+
+    .products > div > .text1 {
+        grid-area: text1;
+    }
+
+    .products > div > .text2 {
+        grid-area: text2;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .products > div > .text2 > span {
+        font-size: var(--text-size-mega);
+        line-height: 1.2;
+        font-weight: 600;
+    }
+
+    .products > div > .text3 {
+        grid-area: text3;
+    }
+
+    .carousel {
+        grid-area: carousel;
+        position: relative;
+        display: flex;
+        border-radius: var(--border-radius-out);
+        box-shadow: var(--box-shadow);
+        overflow: hidden;
+    }
+
+    .carousel > div {
+        position: sticky;
+        right: 0;
+        bottom: 0;
+        align-self: flex-end;
+        display: flex;
+        justify-content: flex-end;
+        gap: 0.5rem;
+        padding: 1rem;
+        z-index: 2;
+    }
+
+    .carousel > div > button {
+        width: 16px;
+        height: 16px;
+        border-radius: 9999px;
+        background-color: var(--neutral-300);
+        transition:
+            width 0.3s ease-in-out,
+            background-color 0.3s ease-in-out,
+            border-radius 0.3s ease-in-out;
+    }
+
+    .carousel > div > button.active {
+        background-color: var(--primary-500);
+        width: 32px;
+        border-radius: 16px;
+    }
+
+    /* @media screen and (width > 1024px) { */
+    .products > div {
+        grid-template-columns: repeat(8, 1fr);
+        grid-template-rows: repeat(6, 1fr);
+        grid-template-areas:
+            "text1 text1 carousel carousel carousel . text2 text2"
+            "text1 text1 carousel carousel carousel product2 product2 ."
+            "product1 product1 carousel carousel carousel product2 product2 ."
+            "product1 product1 carousel carousel carousel . product4 product4"
+            "product1 product1 text3 text3 product3 product3 product4 product4"
+            ". . text3 text3 product3 product3 . .";
+    }
+    /* } */
+
     /* 
     @media screen and (width <= 1256px) {
         .products > div {
@@ -98,3 +208,5 @@ const { title, description, items } = products;
         }
     } */
 </style>
+
+<script src="../../../scripts/lib/product.ts"></script>
