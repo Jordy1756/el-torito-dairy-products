@@ -14,6 +14,8 @@
     };
 
     const closeNavbar = () => {
+        if (!navbar.classList.contains("open")) return;
+
         navbar.classList.remove("open");
         navbar.classList.add("closing");
         menuBtn.setAttribute("aria-expanded", "false");
