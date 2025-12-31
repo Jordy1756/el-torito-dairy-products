@@ -1,4 +1,4 @@
-import type { Testimony } from "@definitions/testimoniesTypes";
+import type { Testimony } from "@scripts/types/testimonies";
 
 export const getTestimonyId = (i: number) => `testimony-${i}`;
 export const getAnimationTimeline = (i: number) => `--${getTestimonyId(i)}`;

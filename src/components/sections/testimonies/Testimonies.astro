@@ -2,7 +2,7 @@
 import MainSection from "@components/layout/MainSection.astro";
 import TestimonyCard from "@components/sections/testimonies/TestimonyCard.astro";
 import { testimonials } from "@data";
-import { getTestimonyId, getAnimationTimeline, getTimelineScope } from "@scripts/sections/handleTestimonies";
+import { getTestimonyId, getAnimationTimeline, getTimelineScope } from "@scripts/lib/testimonies";
 
 const { title, description, items } = testimonials;
 ---
