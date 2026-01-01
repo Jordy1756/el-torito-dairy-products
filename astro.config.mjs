@@ -1,11 +1,12 @@
 // @ts-check
 import { defineConfig, fontProviders } from "astro/config";
 
-import node from "@astrojs/node";
+import vercel from "@astrojs/vercel";
 
 // https://astro.build/config
 export default defineConfig({
     site: "https://lacteos-el-torito.vercel.app",
+
     experimental: {
         fonts: [
             {
@@ -18,7 +19,6 @@ export default defineConfig({
             },
         ],
     },
-    adapter: node({
-        mode: "standalone",
-    }),
+
+    adapter: vercel(),
 });
