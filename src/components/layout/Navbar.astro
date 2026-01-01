@@ -13,8 +13,8 @@ const menuItems = [
     { href: "/#", label: "Home", aria: `Ir a la página principal de ${name}` },
     {
         href: "/who-we-are#about-us",
-        label: "Sobre nosotros",
-        aria: `Ir a la sección Sobre nosotros de ${name}`,
+        label: "Sobre Nosotros",
+        aria: `Ir a la sección Sobre Nosotros de ${name}`,
         dataLink: "about-us",
     },
     {
@@ -25,8 +25,8 @@ const menuItems = [
     },
     {
         href: "/who-we-are#our-team",
-        label: "Nuestro equipo",
-        aria: `Ir a la sección Nuestro equipo de ${name}`,
+        label: "Nuestro Equipo",
+        aria: `Ir a la sección Nuestro Equipo de ${name}`,
         dataLink: "our-team",
     },
 ];
@@ -101,7 +101,7 @@ const menuActions = [
         padding: 1rem;
     }
 
-    .banner .menu__container > ul > li:first-child > .link::before {
+    .banner > nav:not(.out__banner) > .menu__container > ul > li:first-child > .link::before {
         left: 0;
         width: 100%;
     }
@@ -122,6 +122,7 @@ const menuActions = [
         justify-content: space-between;
         gap: 2rem;
         width: min(100%, var(--max-width));
+        z-index: 998;
     }
 
     nav.out__banner::before,
@@ -218,7 +219,6 @@ const menuActions = [
             border-top-right-radius: var(--border-radius-out);
             border-bottom-right-radius: var(--border-radius-out);
             color-scheme: light;
-            z-index: 998;
         }
 
         nav.open {

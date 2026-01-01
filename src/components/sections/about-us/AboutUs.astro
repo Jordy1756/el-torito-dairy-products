@@ -1,19 +1,17 @@
 ---
 import AboutUsCard from "@components/sections/about-us/AboutUsCard.astro";
 import MainSection from "@components/layout/MainSection.astro";
-import { aboutUs } from "@data";
-
-const { title, description, sections } = aboutUs;
+import { aboutUsCards } from "@data";
 ---
 
 <MainSection id="about-us" class="about__us">
     <header>
-        <h2>{title}</h2>
-        <p>{description}</p>
+        <h2>Sobre Nosotros</h2>
+        <p>Conoce más sobre nosotros y lo que hacemos.</p>
     </header>
     <div>
         {
-            sections.map(({ title, content, image }, index) => (
+            aboutUsCards.map(({ title, content, image }, index) => (
                 <AboutUsCard
                     number={(index + 1).toString().padStart(2, "0")}
                     title={title}

@@ -1,24 +1,33 @@
 ---
 import MainSection from "@components/layout/MainSection.astro";
 import FAQItem from "@components/sections/faq/FAQItem.astro";
-import { faqs } from "@data";
+import { basics, faqs } from "@data";
 
-const { title, description, items } = faqs;
+const pathname = Astro.url.pathname;
 ---
 
 <MainSection id="FAQ" class="faq">
     <header>
-        <h2>{title}</h2>
-        <p>{description}</p>
+        <h2>Preguntas Frecuentes</h2>
+        <p>
+            Si no encuentras la respuesta a tu pregunta, no dudes en <a
+                href={`${pathname}#contact-us`}
+                aria-label={`Ir a la sección Contáctanos de ${basics.name}`}>contactarnos</a
+            >.
+        </p>
     </header>
-    <div>
-        {items.map(({ question, answer }) => <FAQItem question={question} answer={answer} />)}
-    </div>
 </MainSection>
+<div>
+    {faqs.map(({ question, answer }) => <FAQItem question={question} answer={answer} />)}
+</div>
 
 <style>
     .faq > header {
         text-align: center;
+    }
+
+    .faq > header > p > a:hover {
+        text-decoration: underline;
     }
 
     .faq > div {

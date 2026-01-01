@@ -1,17 +1,17 @@
 ---
 interface Props {
     label: string;
-    name: string;
+    labelFor: string;
     flex?: number;
 }
 
-const { label, name, flex } = Astro.props;
+const { label, labelFor, flex } = Astro.props;
 ---
 
 <div class="input__box">
     <div>
         <slot />
-        <label for={name}>{label}</label>
+        <label for={labelFor}>{label}</label>
     </div>
     <p class="error__message"></p>
 </div>

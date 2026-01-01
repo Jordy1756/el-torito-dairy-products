@@ -9,3 +9,11 @@ export interface ContactField {
     maxLength: number;
     errors: InputErrorTypes;
 }
+
+export interface MapConfig {
+    lat: number;
+    lng: number;
+    zoom: number;
+    minZoom?: number;
+    maxZoom?: number;
+}

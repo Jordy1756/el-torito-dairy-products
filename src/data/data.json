@@ -37,252 +37,232 @@
             "value": "2024"
         }
     ],
-    "aboutUs": {
-        "title": "Sobre Nosotros",
-        "description": "Conoce más sobre nosotros y lo que hacemos.",
-        "sections": [
-            {
-                "title": "Historia",
-                "content": "Lácteos el Torito nace en 2012 en Santa Cruz de Turrialba, fundada por Bernardo Araya Abarca, quien cuenta con más de 40 años de experiencia en distribución de lácteos. Comenzamos comprando productos terminados a fabricantes locales, hasta lograr construir nuestras propias instalaciones. Nos dedicamos a preservar recetas tradicionales, garantizando calidad y seguridad en cada uno de nuestros productos elaborados en esta pintoresca zona rural costarricense.",
-                "image": {
-                    "src": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387808/history_img_pdubh2.webp",
-                    "alt": "Bernardo Araya, Fundador y CEO de Lácteos El Torito"
-                }
-            },
-            {
-                "title": "Misión",
-                "content": "Nuestra misión es producir y comercializar productos lácteos frescos y naturales, sin conservantes ni aditivos, que cumplan con los más altos estándares de calidad. Nos enfocamos en satisfacer las necesidades de nuestros clientes mediante productos nutritivos y un servicio excepcional, contribuyendo a su bienestar y salud.",
-                "image": {
-                    "src": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387808/mission_img_wihlro.webp",
-                    "alt": "Vista del pueblo El Torito con casas de fondo, la plaza y el lugar de la planta de Lácteos El Torito"
-                }
-            },
-            {
-                "title": "Visión",
-                "content": "La visión de Lácteos El Torito es ser reconocidos como la empresa líder en productos lácteos en Costa Rica, destacándonos por la calidad y excelencia de nuestros productos. Nos esforzamos en innovar y mejorar continuamente nuestros procesos para ofrecer productos nutritivos y deliciosos, con integridad y compromiso hacia nuestros clientes.",
-                "image": {
-                    "src": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387808/vision_img_eyxn6i.webp",
-                    "alt": "Mural pintado en la pared del Volcán Turrialba en la planta de Lácteos El Torito"
-                }
-            },
-            {
-                "title": "Valores",
-                "content": "En Lácteos El Torito nos fundamentamos en la excelencia, honestidad, responsabilidad y compromiso. Valoramos la tradición artesanal combinada con prácticas modernas para garantizar la máxima calidad. Trabajamos con integridad, respetando a proveedores, colaboradores y consumidores, estableciendo relaciones duraderas basadas en la confianza mutua.",
-                "image": {
-                    "src": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387808/values_img_nkbstd.webp",
-                    "alt": "Trabajadores de Lácteos El Torito en una feria de queso"
-                }
+    "aboutUsCards": [
+        {
+            "title": "Historia",
+            "content": "Lácteos el Torito nace en 2012 en Santa Cruz de Turrialba, fundada por Bernardo Araya Abarca, quien cuenta con más de 40 años de experiencia en distribución de lácteos. Comenzamos comprando productos terminados a fabricantes locales, hasta lograr construir nuestras propias instalaciones. Nos dedicamos a preservar recetas tradicionales, garantizando calidad y seguridad en cada uno de nuestros productos elaborados en esta pintoresca zona rural costarricense.",
+            "image": {
+                "src": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387808/history_img_pdubh2.webp",
+                "alt": "Bernardo Araya, Fundador y CEO de Lácteos El Torito"
             }
-        ]
-    },
-    "products": {
-        "title": "Nuestros Productos",
-        "description": "Conoce nuestra variedad de productos lácteos frescos y saludables",
-        "items": [
-            {
-                "name": "Natilla Casera",
-                "weight": "250g",
-                "feature": "Receta familiar",
-                "type": "carousel",
-                "gridArea": "carousel",
-                "image": {
-                    "src": "/natilla_casera_img.png",
-                    "alt": "Natilla Casera encima de una mesa de madera con un fondo oscuro de madera"
-                }
-            },
-            {
-                "name": "Queso Maduro",
-                "weight": "250g",
-                "feature": "Maduración natural",
-                "type": "carousel",
-                "gridArea": "carousel",
-                "image": {
-                    "src": "/queso_maduro_oregano_img.png",
-                    "alt": "Queso Maduro encima de una mesa de madera con un fondo oscuro de madera y panuelos alrededor"
-                }
-            },
-            {
-                "name": "Queso con Orégano",
-                "weight": "250g",
-                "feature": "Sabor mediterráneo",
-                "type": "carousel",
-                "gridArea": "carousel",
-                "image": {
-                    "src": "/queso_maduro_oregano_img.png",
-                    "alt": "Queso Maduro con pequeñas cantidades de oregano dentro del queso, cortado a la mitad, encima de una mesa de madera"
-                }
-            },
-            {
-                "name": "Yogurt de Guanábana",
-                "weight": "250ml",
-                "feature": "Sabor tropical",
-                "type": "product",
-                "gridArea": "product1",
-                "image": {
-                    "src": "/yogurt_guanabana_img.png",
-                    "alt": "Yogurt de Guanábana encima de un tronco de madera con un lago de fondo y hojas verdes"
-                }
-            },
-            {
-                "name": "Yogurt de Kiwi",
-                "weight": "250ml",
-                "feature": "Rico en vitamina C",
-                "type": "product",
-                "gridArea": "product2",
-                "image": {
-                    "src": "/yogurt_kiwi_img.png",
-                    "alt": "Yogurt de Kiwi encima de un tronco de madera con un lago de fondo y hojas verdes"
-                }
-            },
-            {
-                "name": "Queso Maduro Picante",
-                "weight": "250g",
-                "feature": "Con chile natural",
-                "type": "product",
-                "gridArea": "product3",
-                "image": {
-                    "src": "/queso_chili_hot_img.png",
-                    "alt": "Queso Maduro con pequeñas cantidades de chile dentro del queso, encima de una mesa de madera con un fondo oscuro de madera y un chile alrededor"
-                }
-            },
-            {
-                "name": "Yogurt de Mora",
-                "weight": "250ml",
-                "feature": "Antioxidante natural",
-                "type": "product",
-                "gridArea": "product4",
-                "image": {
-                    "src": "/yogurt_mora_img.png",
-                    "alt": "Yogurt de Mora encima de un tronco de madera con un lago de fondo y hojas verdes"
-                }
+        },
+        {
+            "title": "Misión",
+            "content": "Nuestra misión es producir y comercializar productos lácteos frescos y naturales, sin conservantes ni aditivos, que cumplan con los más altos estándares de calidad. Nos enfocamos en satisfacer las necesidades de nuestros clientes mediante productos nutritivos y un servicio excepcional, contribuyendo a su bienestar y salud.",
+            "image": {
+                "src": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387808/mission_img_wihlro.webp",
+                "alt": "Vista del pueblo El Torito con casas de fondo, la plaza y el lugar de la planta de Lácteos El Torito"
             }
-        ]
-    },
-    "testimonials": {
-        "title": "Testimonios",
-        "description": "Conoce lo que las personas dicen de nosotros.",
-        "items": [
-            {
-                "author": "Roberto Méndez",
-                "date": "Hace 1 mes",
-                "content": "Desde que descubrí Lácteos El Torito, mi familia no quiere otra marca. La natilla casera es excepcional, con ese sabor auténtico que recuerda a la de mi abuela. El personal siempre es amable y puntual.",
-                "gridArea": "1 / 2 / 5 / 5"
-            },
-            {
-                "author": "Carolina Jiménez",
-                "date": "Hace 2 meses",
-                "content": "Como dueña de un restaurante, la calidad es fundamental. Lácteos El Torito nos ha proporcionado productos consistentes durante años. Su queso palmito es el preferido de nuestros clientes y distintivo de nuestra cocina.",
-                "gridArea": "3 / 4 / 7 / 9"
-            },
-            {
-                "author": "Eduardo Vargas",
-                "date": "Hace 3 meses",
-                "content": "Ningún yogurt se compara con los de El Torito. El de mora es mi favorito, con balance perfecto entre dulzura y acidez. Me encanta consumir un producto natural, sin conservantes y elaborado por una empresa local.",
-                "gridArea": "1 / 8 / 4 / 12"
-            },
-            {
-                "author": "Lucía Ramírez",
-                "date": "Hace 4 meses",
-                "content": "Como nutricionista, recomiendo productos locales y naturales. He visitado sus instalaciones y puedo dar fe de la limpieza y el cuidado en cada producto. Una empresa que se preocupa por la salud de sus consumidores.",
-                "gridArea": "6 / 1 / 10 / 5"
-            },
-            {
-                "author": "Manuel Solano",
-                "date": "Hace 5 meses",
-                "content": "El queso maduro con chile ha sido un gran descubrimiento. Como aficionado a la gastronomía, valoro sabores únicos y auténticos. Su servicio al cliente es ejemplar, siempre responden rápido y con información útil.",
-                "gridArea": "6 / 7 / 10 / 12"
+        },
+        {
+            "title": "Visión",
+            "content": "La visión de Lácteos El Torito es ser reconocidos como la empresa líder en productos lácteos en Costa Rica, destacándonos por la calidad y excelencia de nuestros productos. Nos esforzamos en innovar y mejorar continuamente nuestros procesos para ofrecer productos nutritivos y deliciosos, con integridad y compromiso hacia nuestros clientes.",
+            "image": {
+                "src": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387808/vision_img_eyxn6i.webp",
+                "alt": "Mural pintado en la pared del Volcán Turrialba en la planta de Lácteos El Torito"
             }
-        ]
-    },
-    "team": {
-        "title": "Nuestro Equipo",
-        "description": "Nuestro equipo, comprometido con la calidad y el bienestar, trabaja con dedicación para ofrecer productos lácteos frescos y saludables, cuidando cada paso del proceso.",
-        "members": [
-            {
-                "name": "Bernardo Araya",
-                "role": "Fundador y CEO",
-                "gridArea": "staffImage1",
-                "image": {
-                    "src": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387843/no_img_t09jhk.webp",
-                    "alt": "Bernardo Araya, Fundador y CEO de Lácteos El Torito"
-                }
-            },
-            {
-                "name": "Pamela Araya",
-                "role": "Gerente de ventas",
-                "gridArea": "staffImage2",
-                "image": {
-                    "src": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387843/no_img_t09jhk.webp",
-                    "alt": "Pamela Araya, Gerente de ventas de Lácteos El Torito"
-                }
-            },
-            {
-                "name": "Vinicio Araya",
-                "role": "Gerente de ventas",
-                "gridArea": "staffImage3",
-                "image": {
-                    "src": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387843/no_img_t09jhk.webp",
-                    "alt": "Vinicio Araya, Gerente de ventas de Lácteos El Torito"
-                }
-            },
-            {
-                "name": "Cinthya Aguilar",
-                "role": "Operaria",
-                "gridArea": "staffImage4",
-                "image": {
-                    "src": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387843/no_img_t09jhk.webp",
-                    "alt": "Cinthya Aguilar, Operaria de Lácteos El Torito"
-                }
-            },
-            {
-                "name": "Steven Prado",
-                "role": "Operario",
-                "gridArea": "staffImage5",
-                "image": {
-                    "src": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387843/no_img_t09jhk.webp",
-                    "alt": "Steven Prado, Operario de Lácteos El Torito"
-                }
+        },
+        {
+            "title": "Valores",
+            "content": "En Lácteos El Torito nos fundamentamos en la excelencia, honestidad, responsabilidad y compromiso. Valoramos la tradición artesanal combinada con prácticas modernas para garantizar la máxima calidad. Trabajamos con integridad, respetando a proveedores, colaboradores y consumidores, estableciendo relaciones duraderas basadas en la confianza mutua.",
+            "image": {
+                "src": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387808/values_img_nkbstd.webp",
+                "alt": "Trabajadores de Lácteos El Torito en una feria de queso"
             }
-        ]
-    },
-    "faqs": {
-        "title": "Preguntas Frecuentes",
-        "description": "Si no encuentras la respuesta a tu pregunta, no dudes en contactarnos.",
-        "items": [
-            {
-                "question": "¿Cuáles son los horarios de atención de Lácteos El Torito?",
-                "answer": "Nuestro horario de atención es de lunes a viernes de 6:00 a.m. a 6:00 p.m., los sábados de 7:00 a.m. a 2:00 p.m., y los domingos permanecemos cerrados."
-            },
-            {
-                "question": "¿Ofrecen servicio de entrega a domicilio?",
-                "answer": "Sí, contamos con servicio de entrega a domicilio en la zona de Turrialba y alrededores. Para otras localidades, trabajamos con empresas de mensajería. El tiempo estimado de entrega es de 1 a 2 días hábiles dependiendo de la ubicación."
-            },
-            {
-                "question": "¿Qué es la Denominación de Origen del Queso Turrialba y cómo la obtuvieron?",
-                "answer": "La Denominación de Origen es un reconocimiento que certifica que nuestro queso tiene características únicas debido a los factores geográficos y métodos de producción de la región. Lácteos El Torito obtuvo esta distinción en 2012, respaldada por la Asociación Consejo Regulador, gracias a la excepcional calidad de nuestra leche y el proceso artesanal que seguimos."
-            },
-            {
-                "question": "¿Utilizan conservantes o aditivos artificiales en sus productos?",
-                "answer": "No, en Lácteos El Torito nos comprometemos a elaborar productos 100% naturales, sin conservantes ni aditivos artificiales. Utilizamos métodos de preservación tradicionales y procesos que garantizan la frescura y seguridad de nuestros lácteos."
-            },
-            {
-                "question": "¿Cuánto tiempo duran frescos sus productos?",
-                "answer": "La duración varía según el producto: nuestros quesos frescos se mantienen en óptimas condiciones durante 7-10 días refrigerados, los quesos maduros entre 30-60 días, y nuestros yogures y natillas entre 7-14 días. Cada producto viene con su fecha de elaboración y vencimiento claramente indicada."
-            },
-            {
-                "question": "¿Qué protocolos de calidad siguen en la elaboración de sus productos?",
-                "answer": "Seguimos estrictos protocolos en cada etapa, desde la recepción de la leche hasta el envasado final. Esto incluye pasteurización adecuada, control de temperatura, higiene rigurosa del personal y equipos, y pruebas regulares de calidad. Nuestros procesos cumplen con todas las normativas sanitarias nacionales."
-            },
-            {
-                "question": "¿Realizan visitas guiadas a sus instalaciones?",
-                "answer": "Sí, ofrecemos visitas guiadas a nuestras instalaciones para grupos pequeños con reservación previa. Durante la visita, podrás conocer nuestro proceso de producción, la historia de la empresa y degustar algunos de nuestros productos. Puedes solicitar información y reservar contactándonos por teléfono o correo electrónico."
-            },
-            {
-                "question": "¿Ofrecen opciones para personas con intolerancia a la lactosa o restricciones dietéticas?",
-                "answer": "Actualmente estamos desarrollando una línea de productos bajos en lactosa para atender las necesidades de clientes con estas restricciones. Te invitamos a contactarnos directamente para obtener información actualizada sobre nuestras opciones disponibles y próximos lanzamientos."
+        }
+    ],
+    "products": [
+        {
+            "name": "Natilla Casera",
+            "weight": "250g",
+            "feature": "Receta familiar",
+            "type": "carousel",
+            "gridArea": "carousel",
+            "image": {
+                "src": "/natilla_casera_img.png",
+                "alt": "Natilla Casera encima de una mesa de madera con un fondo oscuro de madera"
             }
-        ]
-    },
+        },
+        {
+            "name": "Queso Maduro",
+            "weight": "250g",
+            "feature": "Maduración natural",
+            "type": "carousel",
+            "gridArea": "carousel",
+            "image": {
+                "src": "/queso_maduro_oregano_img.png",
+                "alt": "Queso Maduro encima de una mesa de madera con un fondo oscuro de madera y panuelos alrededor"
+            }
+        },
+        {
+            "name": "Queso con Orégano",
+            "weight": "250g",
+            "feature": "Sabor mediterráneo",
+            "type": "carousel",
+            "gridArea": "carousel",
+            "image": {
+                "src": "/queso_maduro_oregano_img.png",
+                "alt": "Queso Maduro con pequeñas cantidades de oregano dentro del queso, cortado a la mitad, encima de una mesa de madera"
+            }
+        },
+        {
+            "name": "Yogurt de Guanábana",
+            "weight": "250ml",
+            "feature": "Sabor tropical",
+            "type": "product",
+            "gridArea": "product1",
+            "image": {
+                "src": "/yogurt_guanabana_img.png",
+                "alt": "Yogurt de Guanábana encima de un tronco de madera con un lago de fondo y hojas verdes"
+            }
+        },
+        {
+            "name": "Yogurt de Kiwi",
+            "weight": "250ml",
+            "feature": "Rico en vitamina C",
+            "type": "product",
+            "gridArea": "product2",
+            "image": {
+                "src": "/yogurt_kiwi_img.png",
+                "alt": "Yogurt de Kiwi encima de un tronco de madera con un lago de fondo y hojas verdes"
+            }
+        },
+        {
+            "name": "Queso Maduro Picante",
+            "weight": "250g",
+            "feature": "Con chile natural",
+            "type": "product",
+            "gridArea": "product3",
+            "image": {
+                "src": "/queso_chili_hot_img.png",
+                "alt": "Queso Maduro con pequeñas cantidades de chile dentro del queso, encima de una mesa de madera con un fondo oscuro de madera y un chile alrededor"
+            }
+        },
+        {
+            "name": "Yogurt de Mora",
+            "weight": "250ml",
+            "feature": "Antioxidante natural",
+            "type": "product",
+            "gridArea": "product4",
+            "image": {
+                "src": "/yogurt_mora_img.png",
+                "alt": "Yogurt de Mora encima de un tronco de madera con un lago de fondo y hojas verdes"
+            }
+        }
+    ],
+    "testimonies": [
+        {
+            "author": "Roberto Méndez",
+            "date": "Hace 1 mes",
+            "content": "Desde que descubrí Lácteos El Torito, mi familia no quiere otra marca. La natilla casera es excepcional, con ese sabor auténtico que recuerda a la de mi abuela. El personal siempre es amable y puntual.",
+            "gridArea": "1 / 2 / 5 / 5"
+        },
+        {
+            "author": "Carolina Jiménez",
+            "date": "Hace 2 meses",
+            "content": "Como dueña de un restaurante, la calidad es fundamental. Lácteos El Torito nos ha proporcionado productos consistentes durante años. Su queso palmito es el preferido de nuestros clientes y distintivo de nuestra cocina.",
+            "gridArea": "3 / 4 / 7 / 9"
+        },
+        {
+            "author": "Eduardo Vargas",
+            "date": "Hace 3 meses",
+            "content": "Ningún yogurt se compara con los de El Torito. El de mora es mi favorito, con balance perfecto entre dulzura y acidez. Me encanta consumir un producto natural, sin conservantes y elaborado por una empresa local.",
+            "gridArea": "1 / 8 / 4 / 12"
+        },
+        {
+            "author": "Lucía Ramírez",
+            "date": "Hace 4 meses",
+            "content": "Como nutricionista, recomiendo productos locales y naturales. He visitado sus instalaciones y puedo dar fe de la limpieza y el cuidado en cada producto. Una empresa que se preocupa por la salud de sus consumidores.",
+            "gridArea": "6 / 1 / 10 / 5"
+        },
+        {
+            "author": "Manuel Solano",
+            "date": "Hace 5 meses",
+            "content": "El queso maduro con chile ha sido un gran descubrimiento. Como aficionado a la gastronomía, valoro sabores únicos y auténticos. Su servicio al cliente es ejemplar, siempre responden rápido y con información útil.",
+            "gridArea": "6 / 7 / 10 / 12"
+        }
+    ],
+    "team": [
+        {
+            "name": "Bernardo Araya",
+            "role": "Fundador y CEO",
+            "gridArea": "staffImage1",
+            "image": {
+                "src": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387843/no_img_t09jhk.webp",
+                "alt": "Bernardo Araya, Fundador y CEO de Lácteos El Torito"
+            }
+        },
+        {
+            "name": "Pamela Araya",
+            "role": "Gerente de ventas",
+            "gridArea": "staffImage2",
+            "image": {
+                "src": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387843/no_img_t09jhk.webp",
+                "alt": "Pamela Araya, Gerente de ventas de Lácteos El Torito"
+            }
+        },
+        {
+            "name": "Vinicio Araya",
+            "role": "Gerente de ventas",
+            "gridArea": "staffImage3",
+            "image": {
+                "src": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387843/no_img_t09jhk.webp",
+                "alt": "Vinicio Araya, Gerente de ventas de Lácteos El Torito"
+            }
+        },
+        {
+            "name": "Cinthya Aguilar",
+            "role": "Operaria",
+            "gridArea": "staffImage4",
+            "image": {
+                "src": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387843/no_img_t09jhk.webp",
+                "alt": "Cinthya Aguilar, Operaria de Lácteos El Torito"
+            }
+        },
+        {
+            "name": "Steven Prado",
+            "role": "Operario",
+            "gridArea": "staffImage5",
+            "image": {
+                "src": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387843/no_img_t09jhk.webp",
+                "alt": "Steven Prado, Operario de Lácteos El Torito"
+            }
+        }
+    ],
+    "faqs": [
+        {
+            "question": "¿Cuáles son los horarios de atención de Lácteos El Torito?",
+            "answer": "Nuestro horario de atención es de lunes a viernes de 6:00 a.m. a 6:00 p.m., los sábados de 7:00 a.m. a 2:00 p.m., y los domingos permanecemos cerrados."
+        },
+        {
+            "question": "¿Ofrecen servicio de entrega a domicilio?",
+            "answer": "Sí, contamos con servicio de entrega a domicilio en la zona de Turrialba y alrededores. Para otras localidades, trabajamos con empresas de mensajería. El tiempo estimado de entrega es de 1 a 2 días hábiles dependiendo de la ubicación."
+        },
+        {
+            "question": "¿Qué es la Denominación de Origen del Queso Turrialba y cómo la obtuvieron?",
+            "answer": "La Denominación de Origen es un reconocimiento que certifica que nuestro queso tiene características únicas debido a los factores geográficos y métodos de producción de la región. Lácteos El Torito obtuvo esta distinción en 2012, respaldada por la Asociación Consejo Regulador, gracias a la excepcional calidad de nuestra leche y el proceso artesanal que seguimos."
+        },
+        {
+            "question": "¿Utilizan conservantes o aditivos artificiales en sus productos?",
+            "answer": "No, en Lácteos El Torito nos comprometemos a elaborar productos 100% naturales, sin conservantes ni aditivos artificiales. Utilizamos métodos de preservación tradicionales y procesos que garantizan la frescura y seguridad de nuestros lácteos."
+        },
+        {
+            "question": "¿Cuánto tiempo duran frescos sus productos?",
+            "answer": "La duración varía según el producto: nuestros quesos frescos se mantienen en óptimas condiciones durante 7-10 días refrigerados, los quesos maduros entre 30-60 días, y nuestros yogures y natillas entre 7-14 días. Cada producto viene con su fecha de elaboración y vencimiento claramente indicada."
+        },
+        {
+            "question": "¿Qué protocolos de calidad siguen en la elaboración de sus productos?",
+            "answer": "Seguimos estrictos protocolos en cada etapa, desde la recepción de la leche hasta el envasado final. Esto incluye pasteurización adecuada, control de temperatura, higiene rigurosa del personal y equipos, y pruebas regulares de calidad. Nuestros procesos cumplen con todas las normativas sanitarias nacionales."
+        },
+        {
+            "question": "¿Realizan visitas guiadas a sus instalaciones?",
+            "answer": "Sí, ofrecemos visitas guiadas a nuestras instalaciones para grupos pequeños con reservación previa. Durante la visita, podrás conocer nuestro proceso de producción, la historia de la empresa y degustar algunos de nuestros productos. Puedes solicitar información y reservar contactándonos por teléfono o correo electrónico."
+        },
+        {
+            "question": "¿Ofrecen opciones para personas con intolerancia a la lactosa o restricciones dietéticas?",
+            "answer": "Actualmente estamos desarrollando una línea de productos bajos en lactosa para atender las necesidades de clientes con estas restricciones. Te invitamos a contactarnos directamente para obtener información actualizada sobre nuestras opciones disponibles y próximos lanzamientos."
+        }
+    ],
     "contactUs": {
         "title": "Contáctanos",
         "description": "Estamos aquí para ayudarte. Si tienes preguntas sobre nuestros productos lácteos, necesitas asesoría personalizada o deseas realizar un pedido, no dudes en contactarnos. Completa el formulario o usa nuestros datos de contacto, y un miembro de nuestro equipo estará encantado de atenderte.",

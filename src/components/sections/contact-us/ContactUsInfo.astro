@@ -3,10 +3,11 @@ import LocationIcon from "@components/icons/Location.astro";
 import PhoneIcon from "@components/icons/Phone.astro";
 import EmailIcon from "@components/icons/Email.astro";
 import Link from "@components/ui/Link.astro";
+import ContactUsMap from "@components/sections/contact-us/ContactUsMap.astro";
 import { basics, contactUs } from "@data";
 
 const { email, phone, address } = basics;
-const { title, description, addressLink, addressMapLink, schedules } = contactUs;
+const { title, description, addressLink, schedules } = contactUs;
 ---
 
 <article class="contact__info">
@@ -60,14 +61,7 @@ const { title, description, addressLink, addressMapLink, schedules } = contactUs
             </ul>
         </div>
     </div>
-    <iframe
-        src={addressMapLink}
-        loading="lazy"
-        allowfullscreen=""
-        referrerpolicy="no-referrer-when-downgrade"
-        title="Mapa de la ubicación de El Torito Productos Lácteos"
-    >
-    </iframe>
+    <ContactUsMap id="contact-us-map" />
 </article>
 
 <style>
@@ -110,13 +104,5 @@ const { title, description, addressLink, addressMapLink, schedules } = contactUs
 
     .contact__info > div > div > address > a > svg {
         min-width: 24px;
-    }
-
-    .contact__info > iframe {
-        border: none;
-        border-radius: var(--border-radius-out);
-        flex: 1;
-        width: 100%;
-        min-height: 250px;
     }
 </style>

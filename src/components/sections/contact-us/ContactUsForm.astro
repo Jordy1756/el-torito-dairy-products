@@ -9,7 +9,7 @@ const { name, lastName, email, subject, message } = contactFields;
 <article class="contact__form">
     <h4>Ponte en contacto con nosotros</h4>
     <form id="contact-form">
-        <InputBox name={name.name} label={name.label}>
+        <InputBox labelFor={name.id} label={name.label}>
             <input
                 id={name.id}
                 type="text"
@@ -23,8 +23,7 @@ const { name, lastName, email, subject, message } = contactFields;
                 autocapitalize="words"
             />
         </InputBox>
-
-        <InputBox name={lastName.name} label={lastName.label}>
+        <InputBox labelFor={lastName.id} label={lastName.label}>
             <input
                 id={lastName.id}
                 type="text"
@@ -38,8 +37,7 @@ const { name, lastName, email, subject, message } = contactFields;
                 autocapitalize="words"
             />
         </InputBox>
-
-        <InputBox name={email.name} label={email.label}>
+        <InputBox labelFor={email.id} label={email.label}>
             <input
                 id={email.id}
                 type="email"
@@ -52,8 +50,7 @@ const { name, lastName, email, subject, message } = contactFields;
                 autocomplete="email"
             />
         </InputBox>
-
-        <InputBox name={subject.name} label={subject.label}>
+        <InputBox labelFor={subject.id} label={subject.label}>
             <input
                 id={subject.id}
                 type="text"
@@ -66,18 +63,16 @@ const { name, lastName, email, subject, message } = contactFields;
                 autocomplete="off"
             />
         </InputBox>
-
-        <InputBox name={message.name} label={message.label} flex={1}>
+        <InputBox labelFor={message.id} label={message.label} flex={1}>
             <textarea
                 id={message.id}
-                name={message.name}
+                name={message.id}
                 placeholder=""
                 required
                 minlength={message.minLength}
                 maxlength={message.maxLength}
                 autocapitalize="sentences"></textarea>
         </InputBox>
-
         <Button type="submit" aria-label="Enviar mensaje de contacto"> Enviar Mensaje </Button>
     </form>
 </article>
@@ -103,4 +98,4 @@ const { name, lastName, email, subject, message } = contactFields;
     }
 </style>
 
-<script src="../../../scripts/lib/contact.ts"></script>
+<script src="../../../scripts/lib/contactForm.ts"></script>

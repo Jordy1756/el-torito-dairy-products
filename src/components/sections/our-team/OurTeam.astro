@@ -2,17 +2,18 @@
 import MainSection from "@components/layout/MainSection.astro";
 import OurTeamCard from "@components/sections/our-team/OurTeamCard.astro";
 import { team } from "@data";
-
-const { title, description, members } = team;
 ---
 
 <MainSection class="our__team" id="our-team">
     <header>
-        <h2>{title}</h2>
-        <p>{description}</p>
+        <h2>Nuestro Equipo</h2>
+        <p>
+            Nuestro equipo, comprometido con la calidad y el bienestar, trabaja con dedicación para ofrecer productos
+            lácteos frescos y saludables, cuidando cada paso del proceso.
+        </p>
     </header>
     {
-        members.map(({ name, image, role, gridArea }, index) => (
+        team.map(({ name, image, role, gridArea }, index) => (
             <OurTeamCard index={index} name={name} image={image} role={role} gridArea={gridArea} />
         ))
     }

@@ -3,16 +3,14 @@ import MainSection from "@components/layout/MainSection.astro";
 import ProductCard from "@components/sections/products/ProductCard.astro";
 import { products } from "@data";
 
-const { title, description, items } = products;
-
-const carouselItems = items.slice(0, 3);
-const otherItems = items.slice(3);
+const carouselProducts = products.slice(0, 3);
+const otherProducts = products.slice(3);
 ---
 
 <MainSection id="products" class="products">
     <header>
-        <h2>{title}</h2>
-        <p>{description}</p>
+        <h2>Nuestros Productos</h2>
+        <p>Conoce nuestra variedad de productos lácteos frescos y saludables</p>
     </header>
     <div>
         <article class="text1">
@@ -30,13 +28,13 @@ const otherItems = items.slice(3);
         </article>
         <div id="product-carousel" class="carousel">
             {
-                carouselItems.map(({ name, image, weight, feature, gridArea }) => (
+                carouselProducts.map(({ name, image, weight, feature, gridArea }) => (
                     <ProductCard name={name} image={image} weight={weight} feature={feature} gridArea={gridArea} />
                 ))
             }
             <div>
                 {
-                    Array.from({ length: carouselItems.length }).map((_, i) => (
+                    Array.from({ length: carouselProducts.length }).map((_, i) => (
                         <button
                             class={`carousel__button ${i === 0 ? "active" : ""}`}
                             aria-label={`Ver producto ${i + 1}`}
@@ -47,7 +45,7 @@ const otherItems = items.slice(3);
             </div>
         </div>
         {
-            otherItems.map(({ name, image, weight, feature, gridArea }) => (
+            otherProducts.map(({ name, image, weight, feature, gridArea }) => (
                 <ProductCard name={name} image={image} weight={weight} feature={feature} gridArea={gridArea} />
             ))
         }
