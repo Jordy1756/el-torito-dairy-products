@@ -1,0 +1,18 @@
+---
+import MainSection from "@components/layout/MainSection.astro";
+import ContactUsForm from "@components/sections/contact-us/ContactUsForm.astro";
+import ContactUsInfo from "@components/sections/contact-us/ContactUsInfo.astro";
+---
+
+<MainSection id="contact-us" class="contact__us">
+    <ContactUsInfo />
+    <ContactUsForm />
+</MainSection>
+
+<style>
+    .contact__us {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 2rem;
+    }
+</style>

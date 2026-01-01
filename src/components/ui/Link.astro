@@ -1,0 +1,77 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"a"> {
+    variant?: "primary" | "secondary" | "link";
+}
+
+const { variant = "link", class: className, ...props } = Astro.props;
+---
+
+<a class:list={[variant, className]} {...props}>
+    <slot />
+</a>
+
+<style>
+    a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+
+    .primary,
+    .secondary {
+        padding: 11px 31px;
+        border: 1px solid transparent;
+        border-radius: var(--border-radius-out);
+        font-weight: 400;
+        line-height: normal;
+        text-align: center;
+    }
+
+    .primary {
+        background-color: var(--primary-500);
+        color: var(--neutral-50);
+        transition: background-color 0.3s ease-in-out;
+    }
+
+    .primary:hover {
+        background-color: var(--primary-400);
+    }
+
+    .secondary {
+        border-color: light-dark(var(--neutral-900), var(--neutral-50));
+        background-color: transparent;
+        color: light-dark(var(--neutral-900), var(--neutral-50));
+        transition: opacity 0.3s ease-in-out;
+    }
+
+    .secondary:hover {
+        opacity: 0.75;
+    }
+
+    .link::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 1px;
+        background-color: light-dark(var(--neutral-900), var(--neutral-50));
+        transition:
+            left 0.3s ease-in-out,
+            width 0.3s ease-in-out;
+    }
+
+    .link:hover::before,
+    .link.active::before {
+        left: 0;
+        width: 100%;
+    }
+
+    .link {
+        position: relative;
+        color: light-dark(var(--neutral-900), var(--neutral-50));
+    }
+</style>

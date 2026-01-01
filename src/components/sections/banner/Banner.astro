@@ -1,0 +1,63 @@
+---
+import Navbar from "@components/layout/Navbar.astro";
+import Hero from "@components/sections/banner/Hero.astro";
+import Awards from "@components/sections/awards/Awards.astro";
+---
+
+<header id="banner" class="banner">
+    <Navbar />
+    <Hero />
+    <Awards />
+</header>
+
+<style>
+    header::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-color: var(--image-background-hover);
+        z-index: -1;
+    }
+
+    header {
+        color: var(--neutral-900);
+        padding: 1rem;
+        width: 100%;
+        min-height: 100dvh;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        background-attachment: fixed;
+        position: relative;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 5rem;
+        animation: changeBackground 20s infinite linear;
+        z-index: 999;
+        overflow: hidden;
+        color-scheme: dark;
+    }
+
+    @keyframes changeBackground {
+        0%,
+        20% {
+            background-image: url(https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387808/banner_img_01_xp3kl6.webp);
+        }
+        25%,
+        45% {
+            background-image: url(https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387808/banner_img_02_bnjs84.webp);
+        }
+        50%,
+        70% {
+            background-image: url(https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387808/banner_img_03_ic4ksm.webp);
+        }
+        75%,
+        95% {
+            background-image: url(https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387808/banner_img_04_rim6to.webp);
+        }
+        100% {
+            background-image: url(https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387808/banner_img_01_xp3kl6.webp);
+        }
+    }
+</style>

@@ -1,0 +1,62 @@
+---
+import MainSection from "@components/layout/MainSection.astro";
+import { getFormattedDate } from "@scripts/utils/dates";
+
+interface Props {
+    title: string;
+    description: string;
+    sections: Array<{
+        subtitle: string;
+        content: string;
+    }>;
+}
+
+const { title, description, sections } = Astro.props;
+const date = getFormattedDate(new Date());
+---
+
+<MainSection class="policies">
+    <header>
+        <h2>{title}</h2>
+        <p>{description}</p>
+    </header>
+    <div>
+        {
+            sections.map(({ subtitle, content }) => (
+                <article>
+                    <h3>{subtitle}</h3>
+                    <p>{content}</p>
+                </article>
+            ))
+        }
+    </div>
+    <footer>
+        <p>Última actualización: {date}</p>
+    </footer>
+</MainSection>
+
+<style>
+    .policies {
+        gap: 2rem;
+    }
+
+    .policies > header,
+    .policies > div,
+    .policies > div > article {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .policies > header,
+    .policies > div > article {
+        gap: 0.25rem;
+    }
+
+    .policies > div {
+        gap: 1rem;
+    }
+
+    .policies > div > article > h3 {
+        font-size: var(--text-size-medium);
+    }
+</style>

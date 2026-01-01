@@ -1,49 +1,44 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import Banner from "@sections/Banner.astro";
-import Products from "@sections/Products.astro";
-import FAQ from "@sections/FAQ.astro";
-import Contact from "@sections/Contact.astro";
-import Footer from "@components/Footer.astro";
-import Toast from "@components/Toast.astro";
+import Toast from "@components/ui/Toast.astro";
+import Footer from "@components/layout/Footer.astro";
+import Banner from "@components/sections/banner/Banner.astro";
+import Products from "@components/sections/products/Products.astro";
+import FAQ from "@components/sections/faq/FAQ.astro";
+import ContactUs from "@components/sections/contact-us/ContactUs.astro";
 
 import { basics } from "@data";
 
 const { name } = basics;
-const baseUrl = "/";
-
-const bannerImages = [
-    "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387808/banner_img_01_xp3kl6.webp",
-    "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387808/banner_img_02_bnjs84.webp",
-    "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387808/banner_img_03_ic4ksm.webp",
-    "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387808/banner_img_04_rim6to.webp",
-];
 ---
 
 <Layout title={name}>
-    <Fragment slot="head">
-        {
-            bannerImages.map((imageUrl, index) => (
-                <link rel="preload" as="image" href={imageUrl} fetchpriority={index === 0 ? "high" : "low"} />
-            ))
-        }
-    </Fragment>
-    <Banner baseUrl={baseUrl} />
+    <Banner />
     <main>
         <Products />
         <FAQ />
-        <Contact />
+        <ContactUs />
     </main>
-    <Footer baseUrl={baseUrl} />
+    <Footer />
     <Toast />
-    <script src="../scripts/pages/index.ts"></script>
-
-    <style>
-        main {
-            align-self: center;
-            display: flex;
-            flex-direction: column;
-            width: min(100%, var(--max-width));
-        }
-    </style>
 </Layout>
+
+<style>
+    main {
+        align-self: center;
+        display: flex;
+        flex-direction: column;
+        gap: 4.5rem;
+        padding-block: 4.5rem;
+        width: min(100%, var(--max-width));
+    }
+</style>
+
+<script>
+    import { createBannerObserver } from "@scripts/utils/observers";
+
+    const banner = document.querySelector("#banner") as HTMLElement;
+    const navbar = banner.querySelector("#navbar") as HTMLElement;
+
+    createBannerObserver(navbar).observe(banner);
+</script>

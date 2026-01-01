@@ -1,0 +1,16 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"svg"> {}
+
+const { ...props } = Astro.props;
+---
+
+<svg fill="none" viewBox="0 0 24 24" {...props}
+    ><g clip-path="url(#clip0_10041_87)"
+        ><path
+            fill="currentColor"
+            d="m12 14.555-8.943 8.943Q2.555 24 1.779 24q-.775 0-1.277-.502T0 22.221t.502-1.278L9.445 12 .502 3.057Q0 2.555 0 1.779 0 1.004.502.502T1.779 0t1.278.502L12 9.445 20.943.502Q21.445 0 22.22 0q.777 0 1.278.502.502.502.502 1.277 0 .776-.502 1.278L14.555 12l8.943 8.943q.502.502.502 1.277 0 .777-.502 1.278-.502.502-1.277.502-.776 0-1.278-.502z"
+        ></path></g
+    ><defs><clipPath id="clip0_10041_87"><path fill="#fff" d="M0 0h24v24H0z"></path></clipPath></defs></svg
+>

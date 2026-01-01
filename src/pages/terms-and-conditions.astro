@@ -1,25 +1,23 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import PoliciesSection from "@sections/PoliciesSection.astro";
-import Navbar from "@components/Navbar.astro";
-import Footer from "@components/Footer.astro";
+import Navbar from "@components/layout/Navbar.astro";
+import Footer from "@components/layout/Footer.astro";
+import Policies from "@components/sections/policies/Policies.astro";
 
 import { basics, termsAndConditions } from "@data";
 
 const { name } = basics;
-const { title, description, content } = termsAndConditions;
-const baseUrl = "/";
+const { title, description, sections } = termsAndConditions;
 ---
 
 <Layout title=`Política de privacidad de ${name}`>
     <header>
-        <Navbar baseUrl={baseUrl} />
+        <Navbar />
     </header>
     <main>
-        <PoliciesSection title={title} description={description} content={content} />
+        <Policies title={title} description={description} sections={sections} />
     </main>
-    <Footer baseUrl={baseUrl} />
-    <script src="../scripts/pages/tearmsAndConditions.ts"></script>
+    <Footer />
 </Layout>
 
 <style>
@@ -36,9 +34,9 @@ const baseUrl = "/";
     }
 
     main {
-        align-self: center;
-        padding: 3rem 1rem;
         flex: 1;
+        align-self: center;
+        padding-block: 4.5rem;
         width: min(100%, calc(var(--max-width) / 1.5));
     }
 </style>

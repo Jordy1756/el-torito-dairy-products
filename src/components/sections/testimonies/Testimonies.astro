@@ -1,0 +1,184 @@
+---
+import MainSection from "@components/layout/MainSection.astro";
+import TestimonyCard from "@components/sections/testimonies/TestimonyCard.astro";
+import { testimonies } from "@data";
+import { getTestimonyId, getAnimationTimeline, getTimelineScope } from "@scripts/lib/testimonies";
+---
+
+<MainSection id="testimonies" class="testimonies">
+    <header>
+        <h2>Testimonios</h2>
+        <p>Conoce lo que las personas dicen de nosotros.</p>
+    </header>
+    <div class="testimonies__container">
+        <div>
+            {
+                testimonies.map(({ author, date, content, gridArea }, i) => (
+                    <TestimonyCard
+                        id={getTestimonyId(i)}
+                        author={author}
+                        date={date}
+                        content={content}
+                        gridArea={gridArea}
+                    />
+                ))
+            }
+        </div>
+        <nav>
+            {
+                testimonies.map((_, i) => (
+                    <a
+                        aria-label={`Ir a testimonio ${i + 1}`}
+                        href={`#${getTestimonyId(i)}`}
+                        style={`animation-timeline: ${getAnimationTimeline(i)};`}
+                    />
+                ))
+            }
+        </nav>
+    </div>
+</MainSection>
+
+<style define:vars={{ timelineScope: getTimelineScope(testimonies) }}>
+    .testimonies {
+        padding-inline: 0;
+    }
+
+    .testimonies > header {
+        text-align: center;
+        padding-inline: 1rem;
+    }
+
+    .testimonies__container {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .testimonies__container > div {
+        padding-inline: 1rem;
+        gap: 1rem;
+    }
+
+    .testimonies__container > nav {
+        display: none;
+    }
+
+    @media screen and (width >= 950px) {
+        .testimonies__container > div {
+            display: grid;
+            place-items: center;
+        }
+    }
+
+    @media screen and (width < 950px) {
+        @supports (animation-timeline: view()) {
+            .testimonies__container {
+                timeline-scope: var(--timelineScope);
+                bottom: calc(anchor(top) - 3rem);
+                right: calc(anchor(right) + 3rem);
+            }
+
+            .testimonies__container > div {
+                display: flex;
+                padding-block: 1rem;
+                overflow-x: auto;
+                scrollbar-width: none;
+                overscroll-behavior-x: contain;
+                scroll-padding: 0 25%;
+                scroll-snap-type: x mandatory;
+                scroll-behavior: smooth;
+            }
+
+            .testimonies__container > nav {
+                display: flex;
+                justify-content: center;
+                gap: 0.5rem;
+            }
+
+            .testimonies__container > nav > a {
+                width: 16px;
+                height: 16px;
+                border-radius: 9999px;
+                background-color: var(--neutral-300);
+            }
+        }
+
+        @supports not (animation-timeline: view()) {
+            .testimonies__container > div {
+                display: grid;
+                place-items: center;
+            }
+        }
+    }
+
+    @media screen and (600px <= width < 950px) {
+        @supports (animation-timeline: view()) {
+            .testimonies__container > nav > a:first-child {
+                animation: colorize-first-dot linear;
+            }
+
+            .testimonies__container > nav > a:not(:first-child, :last-child) {
+                animation: colorize-center-dot linear;
+            }
+
+            .testimonies__container > nav > a:last-child {
+                animation: colorize-last-dot linear;
+            }
+
+            @keyframes colorize-first-dot {
+                entry 100%,
+                exit 100% {
+                    background-color: var(--primary-500);
+                    width: 32px;
+                    border-radius: 16px;
+                }
+            }
+
+            @keyframes colorize-center-dot {
+                entry 100% {
+                    background-color: var(--primary-500);
+                    width: 32px;
+                    border-radius: 16px;
+                }
+
+                entry 90%,
+                exit 50% {
+                    background-color: var(--neutral-300);
+                    width: 16px;
+                    border-radius: 9999px;
+                }
+            }
+
+            @keyframes colorize-last-dot {
+                entry 50%,
+                exit 100% {
+                    background-color: var(--primary-500);
+                    width: 32px;
+                    border-radius: 16px;
+                }
+            }
+        }
+    }
+
+    @media screen and (width < 600px) {
+        @supports (animation-timeline: view()) {
+            .testimonies__container > div {
+                scroll-padding: 0;
+            }
+
+            .testimonies__container > nav > a:first-child,
+            .testimonies__container > nav > a:last-child,
+            .testimonies__container > nav > a:not(:first-child, :last-child) {
+                animation: colorize-dot linear;
+            }
+
+            @keyframes colorize-dot {
+                50% {
+                    background-color: var(--primary-500);
+                    width: 32px;
+                    border-radius: 16px;
+                }
+            }
+        }
+    }
+</style>
