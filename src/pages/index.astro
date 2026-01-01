@@ -10,23 +10,9 @@ import ContactUs from "@components/sections/contact-us/ContactUs.astro";
 import { basics } from "@data";
 
 const { name } = basics;
-
-const bannerImages = [
-    "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387808/banner_img_01_xp3kl6.webp",
-    "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387808/banner_img_02_bnjs84.webp",
-    "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387808/banner_img_03_ic4ksm.webp",
-    "https://res.cloudinary.com/dygwpgeq9/image/upload/v1745387808/banner_img_04_rim6to.webp",
-];
 ---
 
 <Layout title={name}>
-    <Fragment slot="head">
-        {
-            bannerImages.map((imageUrl, index) => (
-                <link rel="preload" as="image" href={imageUrl} fetchpriority={index === 0 ? "high" : "low"} />
-            ))
-        }
-    </Fragment>
     <Banner />
     <main>
         <Products />

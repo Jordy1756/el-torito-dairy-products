@@ -3,8 +3,11 @@ import MainSection from "@components/layout/MainSection.astro";
 import ProductCard from "@components/sections/products/ProductCard.astro";
 import { products } from "@data";
 
-const carouselProducts = products.slice(0, 3);
-const otherProducts = products.slice(3);
+const carouselProducts = [];
+const otherProducts = [];
+
+for (const product of products)
+    product.type === "carousel" ? carouselProducts.push(product) : otherProducts.push(product);
 ---
 
 <MainSection id="products" class="products">
@@ -28,8 +31,8 @@ const otherProducts = products.slice(3);
         </article>
         <div id="product-carousel" class="carousel">
             {
-                carouselProducts.map(({ name, image, weight, feature, gridArea }) => (
-                    <ProductCard name={name} image={image} weight={weight} feature={feature} gridArea={gridArea} />
+                carouselProducts.map(({ name, image, weight, feature }) => (
+                    <ProductCard name={name} image={image} weight={weight} feature={feature} />
                 ))
             }
             <div>

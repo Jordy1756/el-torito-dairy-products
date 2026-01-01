@@ -73,25 +73,33 @@
     ],
     "products": [
         {
-            "name": "Natilla Casera",
+            "name": "Queso Maduro",
             "weight": "250g",
-            "feature": "Receta familiar",
+            "feature": "100% Original",
             "type": "carousel",
-            "gridArea": "carousel",
             "image": {
-                "src": "/natilla_casera_img.png",
-                "alt": "Natilla Casera encima de una mesa de madera con un fondo oscuro de madera"
+                "src": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1767301946/queso_maduro_img_q3p9gh.webp",
+                "alt": "Rueda de queso maduro El Torito vista superior, color amarillo dorado con etiqueta circular marrón en el centro"
             }
         },
         {
-            "name": "Queso Maduro",
+            "name": "Natilla Casera",
             "weight": "250g",
-            "feature": "Maduración natural",
+            "feature": "Pasteurizado",
             "type": "carousel",
-            "gridArea": "carousel",
             "image": {
-                "src": "/queso_maduro_oregano_img.png",
-                "alt": "Queso Maduro encima de una mesa de madera con un fondo oscuro de madera y panuelos alrededor"
+                "src": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1767301949/natilla_casera_img_xtp9eu.webp",
+                "alt": "Bolsa de natilla casera pasteurizada El Torito de 250 gramos, envuelta en plástico transparente con lazo de yute y etiqueta verde"
+            }
+        },
+        {
+            "name": "Queso semiduro",
+            "weight": "250g",
+            "feature": "100% Original",
+            "type": "carousel",
+            "image": {
+                "src": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1767301947/queso_semiduro_img_vlolrj.webp",
+                "alt": "Bloque de queso El Torito empacado en bolsa plástica transparente con lazo de yute y etiqueta redonda verde"
             }
         },
         {
@@ -99,10 +107,9 @@
             "weight": "250g",
             "feature": "Sabor mediterráneo",
             "type": "carousel",
-            "gridArea": "carousel",
             "image": {
-                "src": "/queso_maduro_oregano_img.png",
-                "alt": "Queso Maduro con pequeñas cantidades de oregano dentro del queso, cortado a la mitad, encima de una mesa de madera"
+                "src": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1767301948/queso_maduro_oregano_img_ry4esh.webp",
+                "alt": "Rueda de queso maduro El Torito con orégano vista superior, mostrando especias de orégano distribuidas en el queso con etiqueta verde turquesa"
             }
         },
         {
@@ -112,8 +119,8 @@
             "type": "product",
             "gridArea": "product1",
             "image": {
-                "src": "/yogurt_guanabana_img.png",
-                "alt": "Yogurt de Guanábana encima de un tronco de madera con un lago de fondo y hojas verdes"
+                "src": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1767301949/yogurt_guanabana_img_qd1opx.webp",
+                "alt": "Botella de yogurt de guanábana El Torito pasteurizado, envase plástico con tapa azul y etiqueta verde mostrando imagen de guanábana"
             }
         },
         {
@@ -123,19 +130,19 @@
             "type": "product",
             "gridArea": "product2",
             "image": {
-                "src": "/yogurt_kiwi_img.png",
-                "alt": "Yogurt de Kiwi encima de un tronco de madera con un lago de fondo y hojas verdes"
+                "src": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1767301949/yogurt_kiwi_img_jwdnsw.webp",
+                "alt": "Botella de yogurt de kiwi El Torito con tope de longaniza, envase con tapa azul y etiqueta verde mostrando rodajas de kiwi"
             }
         },
         {
             "name": "Queso Maduro Picante",
             "weight": "250g",
-            "feature": "Con chile natural",
+            "feature": "Chile natural",
             "type": "product",
             "gridArea": "product3",
             "image": {
-                "src": "/queso_chili_hot_img.png",
-                "alt": "Queso Maduro con pequeñas cantidades de chile dentro del queso, encima de una mesa de madera con un fondo oscuro de madera y un chile alrededor"
+                "src": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1767301946/queso_chili_hot_img_ro2yke.webp",
+                "alt": "Rueda de queso maduro El Torito con chile hot chili, vista superior mostrando trozos de chile rojo incrustados en el queso amarillo pálido"
             }
         },
         {
@@ -145,8 +152,8 @@
             "type": "product",
             "gridArea": "product4",
             "image": {
-                "src": "/yogurt_mora_img.png",
-                "alt": "Yogurt de Mora encima de un tronco de madera con un lago de fondo y hojas verdes"
+                "src": "https://res.cloudinary.com/dygwpgeq9/image/upload/v1767301948/yogurt_mora_img_vuzzgu.webp",
+                "alt": "Botella de yogurt de mora El Torito con tope de longaniza, color rosado con semillas visibles, tapa azul y etiqueta verde con imagen de moras"
             }
         }
     ],
@@ -267,7 +274,6 @@
         "title": "Contáctanos",
         "description": "Estamos aquí para ayudarte. Si tienes preguntas sobre nuestros productos lácteos, necesitas asesoría personalizada o deseas realizar un pedido, no dudes en contactarnos. Completa el formulario o usa nuestros datos de contacto, y un miembro de nuestro equipo estará encantado de atenderte.",
         "addressLink": "https://maps.app.goo.gl/tRkwK6eujYHQGy6W8",
-        "addressMapLink": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1115.9242631532675!2d-83.6986600087206!3d9.991042484622554!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa0d176a388655f%3A0xcc5ba0955c7d9442!2sPlanta%20L%C3%A1cteos%20El%20Torito!5e0!3m2!1ses-419!2scr!4v1749428311226!5m2!1ses-419!2scr",
         "schedules": [
             {
                 "days": "Lunes a viernes",
