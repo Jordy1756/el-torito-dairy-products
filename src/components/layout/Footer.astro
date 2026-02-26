@@ -1,9 +1,9 @@
 ---
-import Link from "@components/ui/Link.astro";
-import Logo from "@components/icons/Logo.astro";
-import WhatsappIcon from "@components/icons/Whatsapp.astro";
 import FacebookIcon from "@components/icons/Facebook.astro";
 import InstagramIcon from "@components/icons/Instagram.astro";
+import Logo from "@components/icons/Logo.astro";
+import WhatsappIcon from "@components/icons/Whatsapp.astro";
+import Link from "@components/ui/Link.astro";
 import { getYear } from "@scripts/utils/dates";
 
 import { basics } from "@data";
@@ -13,225 +13,220 @@ const { name, slogan, socialNetworks } = basics;
 const year = getYear(new Date());
 
 const SOCIAL_NETWORKS: Record<string, string | any> = {
-    Whatsapp: WhatsappIcon,
-    Facebook: FacebookIcon,
-    Instagram: InstagramIcon,
+  Whatsapp: WhatsappIcon,
+  Facebook: FacebookIcon,
+  Instagram: InstagramIcon,
 };
 
 const nav = [
-    {
-        title: "Empresa",
-        items: [
-            { href: "/#", label: "Home", aria: `Ir a la página principal de ${name}` },
-            {
-                href: "/who-we-are#about-us",
-                label: "Sobre Nosotros",
-                aria: `Ir a la sección Sobre Nosotros de ${name}`,
-            },
-            {
-                href: "/#products",
-                label: "Nuestros Productos",
-                aria: `Ir a la sección Nuestros Productos de ${name}`,
-            },
-            {
-                href: "/who-we-are#testimonies",
-                label: "Testimonios",
-                aria: `Ir a la sección Testimonios de ${name}`,
-            },
-            {
-                href: "/who-we-are#our-team",
-                label: "Nuestro Equipo",
-                aria: `Ir a la sección Nuestro Equipo de ${name}`,
-            },
-            {
-                href: `${pathname}#FAQ`,
-                label: "Preguntas Frecuentes",
-                aria: `Ir a la sección Preguntas Frecuentes de ${name}`,
-            },
-            {
-                href: `${pathname}#contact-us`,
-                label: "Contáctanos",
-                aria: `Ir a la sección Contáctanos de ${name}`,
-            },
-        ],
-    },
-    {
-        title: "Legal",
-        items: [
-            {
-                href: "/privacy-policy",
-                label: "Privacidad",
-                aria: `Ir a la página de Política de Privacidad de ${name}`,
-            },
-            {
-                href: "/terms-and-conditions",
-                label: "Términos",
-                aria: `Ir a la página de Términos y Condiciones de ${name}`,
-            },
-        ],
-    },
+  {
+    title: "Empresa",
+    items: [
+      { href: "/#", label: "Home", aria: `Ir a la página principal de ${name}` },
+      {
+        href: "/who-we-are#about-us",
+        label: "Sobre Nosotros",
+        aria: `Ir a la sección Sobre Nosotros de ${name}`,
+      },
+      {
+        href: "/#products",
+        label: "Nuestros Productos",
+        aria: `Ir a la sección Nuestros Productos de ${name}`,
+      },
+      {
+        href: "/who-we-are#testimonies",
+        label: "Testimonios",
+        aria: `Ir a la sección Testimonios de ${name}`,
+      },
+      {
+        href: "/who-we-are#our-team",
+        label: "Nuestro Equipo",
+        aria: `Ir a la sección Nuestro Equipo de ${name}`,
+      },
+      {
+        href: `${pathname}#FAQ`,
+        label: "Preguntas Frecuentes",
+        aria: `Ir a la sección Preguntas Frecuentes de ${name}`,
+      },
+      {
+        href: `${pathname}#contact-us`,
+        label: "Contáctanos",
+        aria: `Ir a la sección Contáctanos de ${name}`,
+      },
+    ],
+  },
+  {
+    title: "Legal",
+    items: [
+      {
+        href: "/privacy-policy",
+        label: "Privacidad",
+        aria: `Ir a la página de Política de Privacidad de ${name}`,
+      },
+      {
+        href: "/terms-and-conditions",
+        label: "Términos",
+        aria: `Ir a la página de Términos y Condiciones de ${name}`,
+      },
+    ],
+  },
 ];
 ---
 
 <footer>
-    <section class="footer__content">
-        <div>
-            <a href="/#" aria-label={`Ir a la página principal de ${name}`}>
-                <Logo height={78} />
-            </a>
-            <p>{slogan}</p>
-        </div>
-        <nav aria-label="Navegación principal">
-            {
-                nav.map(({ title, items }) => (
-                    <div>
-                        <h2>{title}</h2>
-                        <ul>
-                            {items.map(({ href, label, aria }) => (
-                                <li>
-                                    <Link href={href} aria-label={aria}>
-                                        {label}
-                                    </Link>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                ))
-            }
-        </nav>
-    </section>
-    <div></div>
-    <section class="footer__info">
-        <p translate="no">
-            © {year}
-            {name}. <span translate="yes">Todos los derechos reservados.</span>
-        </p>
-        <nav aria-label="Redes sociales de {name}">
-            <ul role="list">
-                {
-                    socialNetworks.map(({ network, url }) => {
-                        const Icon = SOCIAL_NETWORKS[network];
-                        return (
-                            <li>
-                                <a
-                                    href={url}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    aria-label={`Seguir a ${name} en ${network}`}
-                                >
-                                    <Icon width={24} color="var(--neutral-50)" />
-                                </a>
-                            </li>
-                        );
-                    })
-                }
+  <section class="footer__content">
+    <div>
+      <a href="/#" aria-label={`Ir a la página principal de ${name}`}>
+        <Logo height={78} />
+      </a>
+      <p>{slogan}</p>
+    </div>
+    <nav aria-label="Navegación principal">
+      {
+        nav.map(({ title, items }) => (
+          <div>
+            <h2>{title}</h2>
+            <ul>
+              {items.map(({ href, label, aria }) => (
+                <li>
+                  <Link href={href} aria-label={aria}>
+                    {label}
+                  </Link>
+                </li>
+              ))}
             </ul>
-        </nav>
-    </section>
+          </div>
+        ))
+      }
+    </nav>
+  </section>
+  <div></div>
+  <section class="footer__info">
+    <p translate="no">
+      © {year}
+      {name}. <span translate="yes">Todos los derechos reservados.</span>
+    </p>
+    <nav aria-label="Redes sociales de {name}">
+      <ul role="list">
+        {
+          socialNetworks.map(({ network, url }) => {
+            const Icon = SOCIAL_NETWORKS[network];
+            return (
+              <li>
+                <a href={url} target="_blank" rel="noopener noreferrer" aria-label={`Seguir a ${name} en ${network}`}>
+                  <Icon width={24} color="var(--neutral-50)" />
+                </a>
+              </li>
+            );
+          })
+        }
+      </ul>
+    </nav>
+  </section>
 </footer>
 
 <style>
-    footer,
+  footer,
+  .footer__content > div,
+  .footer__content > nav > div,
+  .footer__content > nav > div > ul {
+    display: flex;
+    flex-direction: column;
+  }
+
+  footer {
+    align-items: center;
+    gap: 2rem;
+    padding: 4rem 1rem;
+    background-color: var(--primary-900);
+    color: var(--neutral-50);
+  }
+
+  footer > section {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2rem;
+    width: min(100%, var(--max-width));
+  }
+
+  .footer__content > div {
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .footer__content > div > a {
+    display: flex;
+  }
+
+  .footer__content > nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+
+  .footer__content > nav > div {
+    gap: 0.75rem;
+  }
+
+  .footer__content > nav > div > h2 {
+    font-size: var(--text-size-small);
+  }
+
+  .footer__content > nav > div > ul {
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+
+  .footer__content > nav > div > ul > li > a::before {
+    background-color: var(--neutral-50);
+  }
+
+  .footer__content > nav > div > ul > li > a {
+    color: var(--neutral-50);
+    opacity: 0.65;
+  }
+
+  footer > div {
+    height: 1px;
+    width: min(100%, var(--max-width));
+    background-color: var(--neutral-50);
+  }
+
+  .footer__info > nav > ul {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .footer__info > nav > ul > li > a {
+    display: flex;
+    transition: scale 0.3s ease-in-out;
+  }
+
+  .footer__info > nav > ul > li > a:hover {
+    scale: 1.1;
+  }
+
+  @media (width < 655px) {
+    :is(footer > section, .footer__content > nav) {
+      flex-direction: column;
+    }
+
+    :is(.footer__content > div, .footer__info > p) {
+      text-align: center;
+    }
+
     .footer__content > div,
     .footer__content > nav > div,
-    .footer__content > nav > div > ul {
-        display: flex;
-        flex-direction: column;
+    .footer__content > nav > div > ul,
+    .footer__info {
+      align-items: center;
     }
 
-    footer {
-        align-items: center;
-        gap: 2rem;
-        padding: 4rem 1rem;
-        background-color: var(--primary-900);
-        color: var(--neutral-50);
+    .footer__content > nav,
+    footer .footer__info {
+      gap: 1rem;
     }
-
-    footer > section {
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        gap: 2rem;
-        width: min(100%, var(--max-width));
-    }
-
-    .footer__content > div {
-        align-items: flex-start;
-        gap: 0.5rem;
-    }
-
-    .footer__content > div > a {
-        display: flex;
-    }
-
-    .footer__content > nav {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 2rem;
-    }
-
-    .footer__content > nav > div {
-        gap: 0.75rem;
-    }
-
-    .footer__content > nav > div > h2 {
-        font-size: var(--text-size-small);
-    }
-
-    .footer__content > nav > div > ul {
-        align-items: flex-start;
-        gap: 0.25rem;
-    }
-
-    .footer__content > nav > div > ul > li > a::before {
-        background-color: var(--neutral-50);
-    }
-
-    .footer__content > nav > div > ul > li > a {
-        color: var(--neutral-50);
-        opacity: 0.65;
-    }
-
-    footer > div {
-        height: 1px;
-        width: min(100%, var(--max-width));
-        background-color: var(--neutral-50);
-    }
-
-    .footer__info > nav > ul {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-    }
-
-    .footer__info > nav > ul > li > a {
-        display: flex;
-        transition: scale 0.3s ease-in-out;
-    }
-
-    .footer__info > nav > ul > li > a:hover {
-        scale: 1.1;
-    }
-
-    @media (width < 655px) {
-        :is(footer > section, .footer__content > nav) {
-            flex-direction: column;
-        }
-
-        :is(.footer__content > div, .footer__info > p) {
-            text-align: center;
-        }
-
-        .footer__content > div,
-        .footer__content > nav > div,
-        .footer__content > nav > div > ul,
-        .footer__info {
-            align-items: center;
-        }
-
-        .footer__content > nav,
-        footer .footer__info {
-            gap: 1rem;
-        }
-    }
+  }
 </style>

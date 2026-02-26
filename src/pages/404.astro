@@ -1,80 +1,77 @@
 ---
-import Layout from "@layouts/Layout.astro";
-import Navbar from "@components/layout/Navbar.astro";
 import Footer from "@components/layout/Footer.astro";
-
+import Layout from "@layouts/Layout.astro";
+import Header from "@components/layout/Header.astro";
 import { basics } from "@data";
 
 const { name } = basics;
 ---
 
 <Layout title={`404 - Página no encontrada | ${name}`}>
-    <header>
-        <Navbar />
-    </header>
-    <main>
-        <h1 class="sr-only">Error 404: Página no encontrada</h1>
-        <video
-            autoplay
-            muted
-            loop
-            playsinline
-            aria-hidden="true"
-            tabindex="-1"
-            poster="https://res.cloudinary.com/dygwpgeq9/image/upload/v1764555617/404_poster_img_fis9xk.webp"
-        >
-            <source
-                src="https://res.cloudinary.com/dygwpgeq9/video/upload/v1750731148/404_Lacteos_El_Torito_qw9n2u.mp4"
-                type="video/mp4"
-            />
-        </video>
-    </main>
-    <Footer />
+  <Header />
+  <main>
+    <h1 class="sr-only">Error 404: Página no encontrada</h1>
+    <video
+      autoplay
+      muted
+      loop
+      playsinline
+      aria-hidden="true"
+      tabindex="-1"
+      poster="https://res.cloudinary.com/dygwpgeq9/image/upload/v1764555617/404_poster_img_fis9xk.webp"
+    >
+      <source
+        src="https://res.cloudinary.com/dygwpgeq9/video/upload/v1750731148/404_Lacteos_El_Torito_qw9n2u.mp4"
+        type="video/mp4"
+      />
+    </video>
+  </main>
+  <Footer />
 </Layout>
 
 <style>
-    header {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 0.5rem 1rem;
-        width: 100%;
-        background-color: var(--neutral-50);
-        border-bottom: 1px solid var(--neutral-300);
-    }
+  header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    width: 100%;
+    background-color: var(--neutral-50);
+    border-bottom: 1px solid var(--neutral-300);
+  }
 
-    main {
-        position: relative;
-        flex: 1;
-        display: grid;
-        place-items: center;
-        min-height: calc(100dvh - 66px);
-        background-color: #fffffe;
-    }
+  main {
+    position: relative;
+    flex: 1;
+    display: grid;
+    place-items: center;
+    min-height: calc(100dvh - 66px);
+    background-color: #fffffe;
+  }
 
-    main > .sr-only {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(0, 0, 0, 0);
-        white-space: nowrap;
-        border-width: 0;
-    }
+  main > .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
 
+  main > video {
+    width: 100%;
+    height: calc(100dvh - 66px);
+    object-fit: cover;
+  }
+
+  @media screen and (width <= 768px) {
     main > video {
-        width: 100%;
-        height: calc(100dvh - 66px);
-        object-fit: cover;
+      width: 100%;
+      height: calc(100dvw - 66px);
+      object-fit: cover;
     }
-
-    @media screen and (width <= 768px) {
-        main > video {
-            width: 100%;
-            height: calc(100dvw - 66px);
-            object-fit: cover;
-        }
-    }
+  }
 </style>

@@ -7,31 +7,31 @@ const pathname = Astro.url.pathname;
 ---
 
 <MainSection id="FAQ" class="faq">
-    <header>
-        <h2>Preguntas Frecuentes</h2>
-        <p>
-            Si no encuentras la respuesta a tu pregunta, no dudes en <a
-                href={`${pathname}#contact-us`}
-                aria-label={`Ir a la sección Contáctanos de ${basics.name}`}>contactarnos</a
-            >.
-        </p>
-    </header>
+  <header>
+    <h2>Preguntas Frecuentes</h2>
+    <p>
+      Si no encuentras la respuesta a tu pregunta, no dudes en <a
+        href={`${pathname}#contact-us`}
+        aria-label={`Ir a la sección Contáctanos de ${basics.name}`}>contactarnos</a
+      >.
+    </p>
+  </header>
 </MainSection>
 <div>
-    {faqs.map(({ question, answer }) => <FAQItem question={question} answer={answer} />)}
+  {faqs.map(({ question, answer }) => <FAQItem question={question} answer={answer} />)}
 </div>
 
 <style>
-    .faq > header {
-        text-align: center;
-    }
+  .faq > header {
+    text-align: center;
+  }
 
-    .faq > header > p > a:hover {
-        text-decoration: underline;
-    }
+  .faq > header > p > a:hover {
+    text-decoration: underline;
+  }
 
-    .faq > div {
-        display: flex;
-        flex-direction: column;
-    }
+  .faq > div {
+    display: flex;
+    flex-direction: column;
+  }
 </style>

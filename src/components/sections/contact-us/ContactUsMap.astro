@@ -2,57 +2,57 @@
 import "leaflet/dist/leaflet.css";
 
 interface Props {
-    id: string;
+  id: string;
 }
 
 const { id } = Astro.props;
 ---
 
 <div class="map__container" role="region" aria-label="Mapa interactivo de ubicación">
-    <div id={id}></div>
+  <div id={id}></div>
 </div>
 
 <style is:global>
-    .leaflet-control-container > div {
-        z-index: 998;
-    }
+  .leaflet-control-container > div {
+    z-index: 998;
+  }
 
-    .custom__popup {
-        width: fit-content;
-        font-family: var(--font-family);
-    }
+  .custom__popup {
+    width: fit-content;
+    font-family: var(--font-family);
+  }
 
-    .custom__popup > .leaflet-popup-content-wrapper {
-        background-color: var(--neutral-50);
-        border-radius: var(--border-radius-out);
-        box-shadow: var(--box-shadow);
-    }
+  .custom__popup > .leaflet-popup-content-wrapper {
+    background-color: var(--neutral-50);
+    border-radius: var(--border-radius-out);
+    box-shadow: var(--box-shadow);
+  }
 
-    .custom__popup p {
-        width: 100%;
-        margin: 0;
-        padding: 0;
-        text-align: center;
-        color: var(--neutral-900);
-        font-size: 0.875rem;
-        font-weight: 600;
-    }
+  .custom__popup p {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    color: var(--neutral-900);
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
 </style>
 
 <style>
-    .map__container {
-        flex: 1;
-        width: 100%;
-        min-height: 250px;
-        border: none;
-        border-radius: var(--border-radius-out);
-        overflow: hidden;
-    }
+  .map__container {
+    flex: 1;
+    width: 100%;
+    min-height: 250px;
+    border: none;
+    border-radius: var(--border-radius-out);
+    overflow: hidden;
+  }
 
-    .map__container > div {
-        width: 100%;
-        height: 100%;
-    }
+  .map__container > div {
+    width: 100%;
+    height: 100%;
+  }
 </style>
 
 <script src="../../../scripts/lib/contactMap.ts"></script>
