@@ -192,9 +192,19 @@ const hostname = url.hostname;
     content: none;
   }
 
-  dialog {
+  dialog,
+  [popover] {
+    position: fixed;
+    inset: unset;
     background: var(--neutral-50);
     border: none;
+    z-index: 999;
+  }
+
+  dialog::backdrop,
+  [popover]::backdrop {
+    background-color: rgba(0, 0, 0, 0);
+    backdrop-filter: blur(0px);
   }
 
   template {

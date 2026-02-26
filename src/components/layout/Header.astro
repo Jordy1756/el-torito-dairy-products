@@ -1,11 +1,14 @@
 ---
-import Navbar from "./Navbar.astro";
+import Navbar from "@components/ui/Navbar.astro";
+
+const popoverId = "nav-popover";
 ---
 
 <header>
-  <Navbar isPopover={false} />
-  <Navbar className="open" isPopover={true} />
-  <div popover="hint"></div>
+  <Navbar isPopover={false} popoverTargetId={popoverId} />
+  <div id={popoverId} popover>
+    <Navbar className="open" isPopover={true} popoverTargetId={popoverId} />
+  </div>
 </header>
 
 <style>
@@ -19,5 +22,46 @@ import Navbar from "./Navbar.astro";
     border-bottom: 1px solid var(--neutral-300);
     background-color: var(--neutral-50);
     z-index: 999;
+  }
+
+  header > div {
+    width: min(350px, 75%);
+    height: 100dvh;
+    padding: 0.5rem 1rem;
+    transform: translateX(-100%);
+    background-color: var(--neutral-50);
+    border-top-right-radius: var(--border-radius-out);
+    border-bottom-right-radius: var(--border-radius-out);
+    color-scheme: light;
+    transition:
+      transform 0.3s ease-in-out,
+      overlay 0.3s ease-in-out allow-discrete,
+      display 0.3s ease-in-out allow-discrete;
+  }
+
+  header > div::backdrop {
+    transition:
+      background-color 0.3s ease-in-out,
+      backdrop-filter 0.3s ease-in-out;
+  }
+
+  header > div:popover-open {
+    transform: translateX(0);
+  }
+
+  header > div:popover-open::backdrop {
+    background-color: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4px);
+  }
+
+  @starting-style {
+    header > div:popover-open {
+      transform: translateX(-100%);
+    }
+
+    header > div:popover-open::backdrop {
+      background-color: rgba(0, 0, 0, 0);
+      backdrop-filter: blur(0px);
+    }
   }
 </style>
