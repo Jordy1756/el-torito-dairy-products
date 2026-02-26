@@ -54,18 +54,24 @@ const menuActions = [
 ];
 ---
 
-<nav class={className}>
+<nav id={!isPopover ? "navbar" : null} class={className}>
   <div class="brand">
     <a href="/#" aria-label={`Ir a la página principal de ${name}`} title={`Ir a la página principal de ${name}`}>
       <Logo height={49} class="logo" />
     </a>
     {
       !isPopover ? (
-        <button title="Abrir menú de navegación" aria-label="Abrir menú de navegación" popovertarget={popoverTargetId}>
+        <button
+          id="open-menu-btn"
+          title="Abrir menú de navegación"
+          aria-label="Abrir menú de navegación"
+          popovertarget={popoverTargetId}
+        >
           <MenuIcon width={32} class="menu__icon" />
         </button>
       ) : (
         <button
+          id="close-menu-btn"
           title="Cerrar menú de navegación"
           aria-label="Cerrar menú de navegación"
           popovertarget={popoverTargetId}
@@ -107,6 +113,7 @@ const menuActions = [
     justify-content: space-between;
     gap: 2rem;
     width: min(100%, var(--max-width));
+    transition: transform 0.3s ease-in-out;
   }
 
   nav > .brand {

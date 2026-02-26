@@ -5,10 +5,10 @@ const popoverId = "nav-popover";
 ---
 
 <header>
-  <Navbar isPopover={false} popoverTargetId={popoverId} />
   <div id={popoverId} popover>
     <Navbar className="open" isPopover={true} popoverTargetId={popoverId} />
   </div>
+  <Navbar isPopover={false} popoverTargetId={popoverId} />
 </header>
 
 <style>
@@ -65,3 +65,11 @@ const popoverId = "nav-popover";
     }
   }
 </style>
+
+<style is:global>
+  header > div:popover-open + nav {
+    transform: translateY(calc(-100% - 1rem));
+  }
+</style>
+
+<script src="../../scripts/lib/header.ts"></script>
