@@ -1,15 +1,11 @@
 ---
-import { basics } from "@data";
 import Navbar from "./Navbar.astro";
-
-const pathname = Astro.url.pathname;
 ---
 
 <header>
-  <Navbar pathname={pathname} />
-  <div id="nav-popover" popover>
-    <Navbar pathname={pathname} isPopover className="open" />
-  </div>
+  <Navbar isPopover={false} />
+  <Navbar className="open" isPopover={true} />
+  <div popover="hint"></div>
 </header>
 
 <style>

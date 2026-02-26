@@ -7,13 +7,14 @@ import Link from "@components/ui/Link.astro";
 import { basics } from "@data";
 
 interface Props {
-  pathname: string;
   isPopover?: boolean;
   className?: "open";
 }
 
 const { name } = basics;
-const { pathname, isPopover, className } = Astro.props;
+const { isPopover, className } = Astro.props;
+const pathname = Astro.url.pathname;
+const popoverId = "nav-popover";
 
 const menuItems = [
   { href: "/#", label: "Home", aria: `Ir a la página principal de ${name}` },
@@ -53,21 +54,21 @@ const menuActions = [
 ];
 ---
 
-<nav class={className}>
+<nav id={isPopover ? popoverId : undefined} class={className} popover={isPopover ? "" : undefined}>
   <div class="brand">
     <a href="/#" aria-label={`Ir a la página principal de ${name}`} title={`Ir a la página principal de ${name}`}>
       <Logo height={45} class="logo" />
     </a>
     {
       !isPopover ? (
-        <button title="Abrir menú de navegación" aria-label="Abrir menú de navegación" popovertarget="nav-popover">
+        <button title="Abrir menú de navegación" aria-label="Abrir menú de navegación" popovertarget={popoverId}>
           <MenuIcon width={32} class="menu__icon" />
         </button>
       ) : (
         <button
           title="Cerrar menú de navegación"
           aria-label="Cerrar menú de navegación"
-          popovertarget="nav-popover"
+          popovertarget={popoverId}
           popovertargetaction="hide"
         >
           <CloseIcon width={24} class="close__icon" />
@@ -75,8 +76,8 @@ const menuActions = [
       )
     }
   </div>
-  <div class="separator"></div>
-  <div id="navbar-menu-container" class="menu__container">
+  {!isPopover && <div class="separator" />}
+  <div class="menu__container">
     <ul>
       {
         menuItems.map(({ href, label, aria, dataLink }) => (
@@ -100,7 +101,7 @@ const menuActions = [
   </div>
 </nav>
 
-<style is:global>
+<!-- <style is:global>
   .banner > nav:not(.slide__in--down) {
     animation: slideInDown 0.5s ease-in-out;
   }
@@ -113,244 +114,83 @@ const menuActions = [
     left: 0;
     width: 100%;
   }
-</style>
+</style> -->
 
 <style>
-  nav,
-  .brand,
-  .brand > button,
-  .menu__container,
-  .menu__container > ul,
-  .menu__container > div {
-    display: flex;
-    align-items: center;
-  }
-
   nav {
+    display: flex;
     justify-content: space-between;
     gap: 2rem;
     width: min(100%, var(--max-width));
-    z-index: 998;
+    background-color: red;
   }
 
-  nav.out__banner::before,
-  nav.out__banner::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    width: 100%;
-    height: 1px;
-    background-color: var(--neutral-300);
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: rebeccapurple;
   }
 
-  nav.out__banner::before {
-    right: 100%;
-  }
-
-  nav.out__banner {
-    color-scheme: light;
-    position: fixed;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 0.5rem 1rem;
-    width: min(100%, var(--max-width));
-    background-color: var(--neutral-50);
-    border-bottom: 1px solid var(--neutral-300);
-  }
-
-  nav.out__banner::after {
-    left: 100%;
-  }
-
-  .brand,
-  .menu__container > ul {
-    gap: 1rem;
-  }
-
-  .brand > a {
+  .brand > :is(button, a) {
     display: flex;
   }
 
   .brand > a > .logo {
     object-fit: contain;
+  }
+
+  .brand > a > .logo,
+  .brand > button > .menu__icon {
     color: light-dark(var(--neutral-900), var(--neutral-50));
   }
 
-  .brand > button {
-    display: none;
-  }
-
-  .separator {
-    display: none;
-  }
-
   .menu__container {
+    display: flex;
+    align-items: center;
     gap: 1.5rem;
+    background-color: blue;
   }
 
-  .menu__container > div {
+  .menu__container > :is(ul, div) {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  /* OPEN NAV */
+
+  nav.open {
+    flex-direction: column;
+    width: min(350px, 75%);
+    height: 100dvh;
+    background-color: var(--neutral-50);
+    border-top-right-radius: var(--border-radius-out);
+    border-bottom-right-radius: var(--border-radius-out);
+    color-scheme: light;
+  }
+
+  nav.open > .brand {
+    justify-content: space-between;
+  }
+
+  nav.open > .menu__container,
+  nav.open > .menu__container > ul {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav.open > .menu__container {
+    gap: 2rem;
+  }
+
+  nav.open > .menu__container > ul {
     gap: 0.5rem;
+    background-color: red;
   }
 
-  nav ~ .overlay {
-    position: fixed;
-    inset: 0;
-    background-color: transparent;
-    pointer-events: none;
-    z-index: -1;
-    transition: background-color 0.3s ease-in-out;
-  }
-
-  .navbar__spacer {
-    display: none;
-  }
-
-  @media (width < 868px) {
-    nav.slide__in--down {
-      animation: slideInDown 150ms ease-in-out;
-    }
-
-    nav:is(.open, .closing) {
-      position: fixed;
-      left: 0;
-      top: 0;
-      transform: translateX(0);
-      flex-direction: column;
-      align-items: start;
-      justify-content: flex-start;
-      gap: 1rem;
-      padding: 0.5rem 1rem;
-      width: min(350px, 75%);
-      height: 100dvh;
-      background-color: var(--neutral-50);
-      border-top-right-radius: var(--border-radius-out);
-      border-bottom-right-radius: var(--border-radius-out);
-      color-scheme: light;
-    }
-
-    nav.open {
-      animation: openNavbar 0.3s ease-in-out forwards;
-    }
-
-    nav.closing {
-      animation: closeNavbar 150ms ease-in-out forwards;
-    }
-
-    nav:is(.open, .closing) > .brand {
-      justify-content: space-between;
-      width: 100%;
-    }
-
-    .brand > button {
-      --size: 32px;
-      position: relative;
-      display: flex;
-      width: var(--size);
-      height: var(--size);
-    }
-
-    nav > .brand > button .menu__icon,
-    nav > .brand > button > .close__icon {
-      color: light-dark(var(--neutral-900), var(--neutral-50));
-    }
-
-    nav > .brand > button > .close__icon,
-    nav:is(.open, .closing) > .brand > button > .menu__icon {
-      display: none;
-    }
-
-    nav:is(.open, .closing) .brand > button .close__icon {
-      display: flex;
-    }
-
-    nav:is(.open, .closing) > .separator {
-      display: block;
-      width: 100%;
-      height: 1px;
-      background-color: var(--neutral-200);
-    }
-
-    nav:is(.open, .closing) > .menu__container {
-      flex: 1;
-      flex-direction: column;
-      align-items: start;
-      gap: 1rem;
-      width: 100%;
-      overflow-y: scroll;
-    }
-
-    nav > .menu__container > ul {
-      display: none;
-    }
-
-    nav:is(.open, .closing) > .menu__container > ul {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: start;
-      gap: 0.5rem;
-    }
-
-    nav:is(.open, .closing) > .menu__container > div {
-      flex-wrap: wrap;
-      width: 100%;
-    }
-
-    nav:is(.open, .closing) > .menu__container > div > a {
-      flex: 1;
-    }
-
-    nav:is(.open, .closing) ~ .overlay {
-      inset: 0;
-      background-color: rgba(0, 0, 0, 0.5);
-      pointer-events: auto;
-      z-index: 997;
-    }
-
-    nav:is(.open, .closing) ~ .navbar__spacer {
-      display: block;
-      width: 100%;
-      height: 49px;
-    }
-
-    @keyframes openNavbar {
-      from {
-        left: -100%;
-      }
-      to {
-        left: 0;
-      }
-    }
-
-    @keyframes closeNavbar {
-      from {
-        left: 0;
-      }
-      to {
-        left: -100%;
-      }
-    }
-  }
-
-  @media (width < 480px) {
-    nav > .menu__container > div > a.secondary {
-      display: none;
-    }
-
-    nav:is(.open, .closing) > .menu__container > div > a.secondary {
-      display: flex;
-    }
-  }
-
-  @keyframes slideInDown {
-    from {
-      transform: translateY(-700px);
-      opacity: 0;
-    }
-    to {
-      transform: translateY(0);
-      opacity: 1;
-    }
+  nav.open > .menu__container > div {
+    width: 100%;
+    background-color: red;
   }
 </style>
