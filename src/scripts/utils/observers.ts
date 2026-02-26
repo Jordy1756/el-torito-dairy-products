@@ -23,8 +23,6 @@ export const createSectionObserver = (sectionId: string): IntersectionObserver =
       `.header nav li[data-link="${sectionId}"] > a`,
     ) as NodeListOf<HTMLAnchorElement>;
 
-    console.log(navigationItems)
-
     navigationItems.forEach((item) => item.classList.toggle("active", entry.isIntersecting));
   }, options);
 };
