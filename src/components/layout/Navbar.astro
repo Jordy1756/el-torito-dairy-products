@@ -6,343 +6,351 @@ import Link from "@components/ui/Link.astro";
 
 import { basics } from "@data";
 
-const pathname = Astro.url.pathname;
+interface Props {
+  pathname: string;
+  isPopover?: boolean;
+  className?: "open";
+}
+
 const { name } = basics;
+const { pathname, isPopover, className } = Astro.props;
 
 const menuItems = [
-    { href: "/#", label: "Home", aria: `Ir a la página principal de ${name}` },
-    {
-        href: "/who-we-are#about-us",
-        label: "Sobre Nosotros",
-        aria: `Ir a la sección Sobre Nosotros de ${name}`,
-        dataLink: "about-us",
-    },
-    {
-        href: "/who-we-are#testimonies",
-        label: "Testimonios",
-        aria: `Ir a la sección Testimonios de ${name}`,
-        dataLink: "testimonies",
-    },
-    {
-        href: "/who-we-are#our-team",
-        label: "Nuestro Equipo",
-        aria: `Ir a la sección Nuestro Equipo de ${name}`,
-        dataLink: "our-team",
-    },
+  { href: "/#", label: "Home", aria: `Ir a la página principal de ${name}` },
+  {
+    href: "/who-we-are#about-us",
+    label: "Sobre Nosotros",
+    aria: `Ir a la sección Sobre Nosotros de ${name}`,
+    dataLink: "about-us",
+  },
+  {
+    href: "/who-we-are#testimonies",
+    label: "Testimonios",
+    aria: `Ir a la sección Testimonios de ${name}`,
+    dataLink: "testimonies",
+  },
+  {
+    href: "/who-we-are#our-team",
+    label: "Nuestro Equipo",
+    aria: `Ir a la sección Nuestro Equipo de ${name}`,
+    dataLink: "our-team",
+  },
 ];
 
 const menuActions = [
-    {
-        href: "/#products",
-        label: "Productos",
-        aria: `Ir a la sección Productos de ${name}`,
-        variant: "primary",
-    },
-    {
-        href: `${pathname}#contact-us`,
-        label: "Contacto",
-        aria: `Ir a la sección Contacto de ${name}`,
-        variant: "secondary",
-    },
+  {
+    href: "/#products",
+    label: "Productos",
+    aria: `Ir a la sección Productos de ${name}`,
+    variant: "primary",
+  },
+  {
+    href: `${pathname}#contact-us`,
+    label: "Contacto",
+    aria: `Ir a la sección Contacto de ${name}`,
+    variant: "secondary",
+  },
 ];
 ---
 
-<nav id="navbar">
-    <div class="brand">
-        <a href="/#" aria-label={`Ir a la página principal de ${name}`} title={`Ir a la página principal de ${name}`}>
-            <Logo height={45} class="logo" />
-        </a>
-        <button
-            id="menu-btn"
-            type="button"
-            aria-label="Abrir menú de navegación"
-            aria-expanded="false"
-            aria-controls="navbar-menu-container"
-        >
-            <MenuIcon width={32} class="menu__icon" />
-            <CloseIcon width={24} class="close__icon" />
+<nav class={className}>
+  <div class="brand">
+    <a href="/#" aria-label={`Ir a la página principal de ${name}`} title={`Ir a la página principal de ${name}`}>
+      <Logo height={45} class="logo" />
+    </a>
+    {
+      !isPopover ? (
+        <button title="Abrir menú de navegación" aria-label="Abrir menú de navegación" popovertarget="nav-popover">
+          <MenuIcon width={32} class="menu__icon" />
         </button>
+      ) : (
+        <button
+          title="Cerrar menú de navegación"
+          aria-label="Cerrar menú de navegación"
+          popovertarget="nav-popover"
+          popovertargetaction="hide"
+        >
+          <CloseIcon width={24} class="close__icon" />
+        </button>
+      )
+    }
+  </div>
+  <div class="separator"></div>
+  <div id="navbar-menu-container" class="menu__container">
+    <ul>
+      {
+        menuItems.map(({ href, label, aria, dataLink }) => (
+          <li data-link={dataLink}>
+            <Link href={href} aria-label={aria}>
+              {label}
+            </Link>
+          </li>
+        ))
+      }
+    </ul>
+    <div>
+      {
+        menuActions.map(({ href, label, aria, variant }) => (
+          <Link variant={variant as "primary" | "secondary"} href={href} aria-label={aria}>
+            {label}
+          </Link>
+        ))
+      }
     </div>
-    <div class="separator"></div>
-    <div id="navbar-menu-container" class="menu__container">
-        <ul>
-            {
-                menuItems.map(({ href, label, aria, dataLink }) => (
-                    <li data-link={dataLink}>
-                        <Link href={href} aria-label={aria}>
-                            {label}
-                        </Link>
-                    </li>
-                ))
-            }
-        </ul>
-        <div>
-            {
-                menuActions.map(({ href, label, aria, variant }) => (
-                    <Link variant={variant as "primary" | "secondary"} href={href} aria-label={aria}>
-                        {label}
-                    </Link>
-                ))
-            }
-        </div>
-    </div>
+  </div>
 </nav>
-<div id="overlay" class="overlay"></div>
-<div class="navbar__spacer"></div>
-
-<script src="../../scripts/lib/navigation.ts"></script>
 
 <style is:global>
-    .banner > nav:not(.slide__in--down) {
-        animation: slideInDown 0.5s ease-in-out;
-    }
+  .banner > nav:not(.slide__in--down) {
+    animation: slideInDown 0.5s ease-in-out;
+  }
 
-    .banner > nav:is(.open, .closing) {
-        padding: 1rem;
-    }
+  .banner > nav:is(.open, .closing) {
+    padding: 1rem;
+  }
 
-    .banner > nav:not(.out__banner) > .menu__container > ul > li:first-child > .link::before {
-        left: 0;
-        width: 100%;
-    }
+  .banner > nav:not(.out__banner) > .menu__container > ul > li:first-child > .link::before {
+    left: 0;
+    width: 100%;
+  }
 </style>
 
 <style>
-    nav,
-    .brand,
-    .brand > button,
-    .menu__container,
-    .menu__container > ul,
-    .menu__container > div {
-        display: flex;
-        align-items: center;
+  nav,
+  .brand,
+  .brand > button,
+  .menu__container,
+  .menu__container > ul,
+  .menu__container > div {
+    display: flex;
+    align-items: center;
+  }
+
+  nav {
+    justify-content: space-between;
+    gap: 2rem;
+    width: min(100%, var(--max-width));
+    z-index: 998;
+  }
+
+  nav.out__banner::before,
+  nav.out__banner::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    height: 1px;
+    background-color: var(--neutral-300);
+  }
+
+  nav.out__banner::before {
+    right: 100%;
+  }
+
+  nav.out__banner {
+    color-scheme: light;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.5rem 1rem;
+    width: min(100%, var(--max-width));
+    background-color: var(--neutral-50);
+    border-bottom: 1px solid var(--neutral-300);
+  }
+
+  nav.out__banner::after {
+    left: 100%;
+  }
+
+  .brand,
+  .menu__container > ul {
+    gap: 1rem;
+  }
+
+  .brand > a {
+    display: flex;
+  }
+
+  .brand > a > .logo {
+    object-fit: contain;
+    color: light-dark(var(--neutral-900), var(--neutral-50));
+  }
+
+  .brand > button {
+    display: none;
+  }
+
+  .separator {
+    display: none;
+  }
+
+  .menu__container {
+    gap: 1.5rem;
+  }
+
+  .menu__container > div {
+    gap: 0.5rem;
+  }
+
+  nav ~ .overlay {
+    position: fixed;
+    inset: 0;
+    background-color: transparent;
+    pointer-events: none;
+    z-index: -1;
+    transition: background-color 0.3s ease-in-out;
+  }
+
+  .navbar__spacer {
+    display: none;
+  }
+
+  @media (width < 868px) {
+    nav.slide__in--down {
+      animation: slideInDown 150ms ease-in-out;
     }
 
-    nav {
-        justify-content: space-between;
-        gap: 2rem;
-        width: min(100%, var(--max-width));
-        z-index: 998;
+    nav:is(.open, .closing) {
+      position: fixed;
+      left: 0;
+      top: 0;
+      transform: translateX(0);
+      flex-direction: column;
+      align-items: start;
+      justify-content: flex-start;
+      gap: 1rem;
+      padding: 0.5rem 1rem;
+      width: min(350px, 75%);
+      height: 100dvh;
+      background-color: var(--neutral-50);
+      border-top-right-radius: var(--border-radius-out);
+      border-bottom-right-radius: var(--border-radius-out);
+      color-scheme: light;
     }
 
-    nav.out__banner::before,
-    nav.out__banner::after {
-        content: "";
-        position: absolute;
-        top: 100%;
-        width: 100%;
-        height: 1px;
-        background-color: var(--neutral-300);
+    nav.open {
+      animation: openNavbar 0.3s ease-in-out forwards;
     }
 
-    nav.out__banner::before {
-        right: 100%;
+    nav.closing {
+      animation: closeNavbar 150ms ease-in-out forwards;
     }
 
-    nav.out__banner {
-        color-scheme: light;
-        position: fixed;
-        top: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        padding: 0.5rem 1rem;
-        width: min(100%, var(--max-width));
-        background-color: var(--neutral-50);
-        border-bottom: 1px solid var(--neutral-300);
-    }
-
-    nav.out__banner::after {
-        left: 100%;
-    }
-
-    .brand,
-    .menu__container > ul {
-        gap: 1rem;
-    }
-
-    .brand > a {
-        display: flex;
-    }
-
-    .brand > a > .logo {
-        object-fit: contain;
-        color: light-dark(var(--neutral-900), var(--neutral-50));
+    nav:is(.open, .closing) > .brand {
+      justify-content: space-between;
+      width: 100%;
     }
 
     .brand > button {
-        display: none;
+      --size: 32px;
+      position: relative;
+      display: flex;
+      width: var(--size);
+      height: var(--size);
     }
 
-    .separator {
-        display: none;
+    nav > .brand > button .menu__icon,
+    nav > .brand > button > .close__icon {
+      color: light-dark(var(--neutral-900), var(--neutral-50));
     }
 
-    .menu__container {
-        gap: 1.5rem;
+    nav > .brand > button > .close__icon,
+    nav:is(.open, .closing) > .brand > button > .menu__icon {
+      display: none;
     }
 
-    .menu__container > div {
-        gap: 0.5rem;
+    nav:is(.open, .closing) .brand > button .close__icon {
+      display: flex;
     }
 
-    nav ~ .overlay {
-        position: fixed;
-        inset: 0;
-        background-color: transparent;
-        pointer-events: none;
-        z-index: -1;
-        transition: background-color 0.3s ease-in-out;
+    nav:is(.open, .closing) > .separator {
+      display: block;
+      width: 100%;
+      height: 1px;
+      background-color: var(--neutral-200);
     }
 
-    .navbar__spacer {
-        display: none;
+    nav:is(.open, .closing) > .menu__container {
+      flex: 1;
+      flex-direction: column;
+      align-items: start;
+      gap: 1rem;
+      width: 100%;
+      overflow-y: scroll;
     }
 
-    @media (width < 868px) {
-        nav.slide__in--down {
-            animation: slideInDown 150ms ease-in-out;
-        }
-
-        nav:is(.open, .closing) {
-            position: fixed;
-            left: 0;
-            top: 0;
-            transform: translateX(0);
-            flex-direction: column;
-            align-items: start;
-            justify-content: flex-start;
-            gap: 1rem;
-            padding: 0.5rem 1rem;
-            width: min(350px, 75%);
-            height: 100dvh;
-            background-color: var(--neutral-50);
-            border-top-right-radius: var(--border-radius-out);
-            border-bottom-right-radius: var(--border-radius-out);
-            color-scheme: light;
-        }
-
-        nav.open {
-            animation: openNavbar 0.3s ease-in-out forwards;
-        }
-
-        nav.closing {
-            animation: closeNavbar 150ms ease-in-out forwards;
-        }
-
-        nav:is(.open, .closing) > .brand {
-            justify-content: space-between;
-            width: 100%;
-        }
-
-        .brand > button {
-            --size: 32px;
-            position: relative;
-            display: flex;
-            width: var(--size);
-            height: var(--size);
-        }
-
-        nav > .brand > button .menu__icon,
-        nav > .brand > button > .close__icon {
-            color: light-dark(var(--neutral-900), var(--neutral-50));
-        }
-
-        nav > .brand > button > .close__icon,
-        nav:is(.open, .closing) > .brand > button > .menu__icon {
-            display: none;
-        }
-
-        nav:is(.open, .closing) .brand > button .close__icon {
-            display: flex;
-        }
-
-        nav:is(.open, .closing) > .separator {
-            display: block;
-            width: 100%;
-            height: 1px;
-            background-color: var(--neutral-200);
-        }
-
-        nav:is(.open, .closing) > .menu__container {
-            flex: 1;
-            flex-direction: column;
-            align-items: start;
-            gap: 1rem;
-            width: 100%;
-            overflow-y: scroll;
-        }
-
-        nav > .menu__container > ul {
-            display: none;
-        }
-
-        nav:is(.open, .closing) > .menu__container > ul {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: start;
-            gap: 0.5rem;
-        }
-
-        nav:is(.open, .closing) > .menu__container > div {
-            flex-wrap: wrap;
-            width: 100%;
-        }
-
-        nav:is(.open, .closing) > .menu__container > div > a {
-            flex: 1;
-        }
-
-        nav:is(.open, .closing) ~ .overlay {
-            inset: 0;
-            background-color: rgba(0, 0, 0, 0.5);
-            pointer-events: auto;
-            z-index: 997;
-        }
-
-        nav:is(.open, .closing) ~ .navbar__spacer {
-            display: block;
-            width: 100%;
-            height: 49px;
-        }
-
-        @keyframes openNavbar {
-            from {
-                left: -100%;
-            }
-            to {
-                left: 0;
-            }
-        }
-
-        @keyframes closeNavbar {
-            from {
-                left: 0;
-            }
-            to {
-                left: -100%;
-            }
-        }
+    nav > .menu__container > ul {
+      display: none;
     }
 
-    @media (width < 480px) {
-        nav > .menu__container > div > a.secondary {
-            display: none;
-        }
-
-        nav:is(.open, .closing) > .menu__container > div > a.secondary {
-            display: flex;
-        }
+    nav:is(.open, .closing) > .menu__container > ul {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      gap: 0.5rem;
     }
 
-    @keyframes slideInDown {
-        from {
-            transform: translateY(-700px);
-            opacity: 0;
-        }
-        to {
-            transform: translateY(0);
-            opacity: 1;
-        }
+    nav:is(.open, .closing) > .menu__container > div {
+      flex-wrap: wrap;
+      width: 100%;
     }
+
+    nav:is(.open, .closing) > .menu__container > div > a {
+      flex: 1;
+    }
+
+    nav:is(.open, .closing) ~ .overlay {
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      pointer-events: auto;
+      z-index: 997;
+    }
+
+    nav:is(.open, .closing) ~ .navbar__spacer {
+      display: block;
+      width: 100%;
+      height: 49px;
+    }
+
+    @keyframes openNavbar {
+      from {
+        left: -100%;
+      }
+      to {
+        left: 0;
+      }
+    }
+
+    @keyframes closeNavbar {
+      from {
+        left: 0;
+      }
+      to {
+        left: -100%;
+      }
+    }
+  }
+
+  @media (width < 480px) {
+    nav > .menu__container > div > a.secondary {
+      display: none;
+    }
+
+    nav:is(.open, .closing) > .menu__container > div > a.secondary {
+      display: flex;
+    }
+  }
+
+  @keyframes slideInDown {
+    from {
+      transform: translateY(-700px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
 </style>

@@ -1,0 +1,27 @@
+---
+import { basics } from "@data";
+import Navbar from "./Navbar.astro";
+
+const pathname = Astro.url.pathname;
+---
+
+<header>
+  <Navbar pathname={pathname} />
+  <div id="nav-popover" popover>
+    <Navbar pathname={pathname} isPopover className="open" />
+  </div>
+</header>
+
+<style>
+  header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid var(--neutral-300);
+    background-color: var(--neutral-50);
+    z-index: 999;
+  }
+</style>

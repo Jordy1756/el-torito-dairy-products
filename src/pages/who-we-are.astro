@@ -1,59 +1,45 @@
 ---
-import Layout from "@layouts/Layout.astro";
-import Toast from "@components/ui/Toast.astro";
-import Navbar from "@components/layout/Navbar.astro";
 import Footer from "@components/layout/Footer.astro";
+import Header from "@components/layout/Header.astro";
 import AboutUs from "@components/sections/about-us/AboutUs.astro";
-import Testimonies from "@components/sections/testimonies/Testimonies.astro";
-import OurTeam from "@components/sections/our-team/OurTeam.astro";
-import FAQ from "@components/sections/faq/FAQ.astro";
 import Contact from "@components/sections/contact-us/ContactUs.astro";
+import FAQ from "@components/sections/faq/FAQ.astro";
+import OurTeam from "@components/sections/our-team/OurTeam.astro";
+import Testimonies from "@components/sections/testimonies/Testimonies.astro";
+import Toast from "@components/ui/Toast.astro";
 import { basics } from "@data";
+import Layout from "@layouts/Layout.astro";
 
 const { name } = basics;
 ---
 
 <Layout title={`${name} - Sobre nosotros`}>
-    <header id="header">
-        <Navbar />
-    </header>
-    <main id="main-content-test">
-        <AboutUs />
-        <Testimonies />
-        <OurTeam />
-        <FAQ />
-        <Contact />
-    </main>
-    <Footer />
-    <Toast />
+  <Header />
+  <main id="main-content-test">
+    <AboutUs />
+    <Testimonies />
+    <OurTeam />
+    <FAQ />
+    <Contact />
+  </main>
+  <Footer />
+  <Toast />
 </Layout>
 
 <style>
-    header {
-        position: sticky;
-        top: 0;
-        left: 0;
-        display: flex;
-        justify-content: center;
-        padding: 0.5rem 1rem;
-        border-bottom: 1px solid var(--neutral-300);
-        background-color: var(--neutral-50);
-        z-index: 999;
-    }
-
-    main {
-        align-self: center;
-        display: flex;
-        flex-direction: column;
-        gap: 4.5rem;
-        padding-block: 4.5rem;
-        width: min(100%, calc(var(--max-width) + 2rem));
-    }
+  main {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    gap: 4.5rem;
+    padding-block: 4.5rem;
+    width: min(100%, calc(var(--max-width) + 2rem));
+  }
 </style>
 
 <script>
-    import { createSectionObserver } from "@scripts/utils/observers";
+  import { createSectionObserver } from "@scripts/utils/observers";
 
-    const sections = document.querySelectorAll("#about-us, #testimonies, #our-team") as NodeListOf<HTMLElement>;
-    sections.forEach((section) => createSectionObserver(section.id).observe(section));
+  const sections = document.querySelectorAll("#about-us, #testimonies, #our-team") as NodeListOf<HTMLElement>;
+  sections.forEach((section) => createSectionObserver(section.id).observe(section));
 </script>
