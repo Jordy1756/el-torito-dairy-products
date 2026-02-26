@@ -1,10 +1,15 @@
 ---
 import Navbar from "@components/ui/Navbar.astro";
 
+interface Props {
+  hasHero?: boolean;
+}
+
+const { hasHero = false } = Astro.props;
 const popoverId = "nav-popover";
 ---
 
-<header>
+<header id="header" class={`header ${hasHero ? "has-hero" : ""}`}>
   <div id={popoverId} popover>
     <Navbar className="open" isPopover={true} popoverTargetId={popoverId} />
   </div>
@@ -12,7 +17,7 @@ const popoverId = "nav-popover";
 </header>
 
 <style>
-  header {
+  .header {
     position: sticky;
     top: 0;
     left: 0;
@@ -24,7 +29,24 @@ const popoverId = "nav-popover";
     z-index: 999;
   }
 
-  header > div {
+  .header.has-hero {
+    position: absolute;
+    width: 100%;
+    padding: 1rem;
+    background-color: transparent;
+    border-bottom: none;
+    color-scheme: dark;
+  }
+
+  .header.has-hero.outside-hero {
+    position: fixed;
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid var(--neutral-300);
+    background-color: var(--neutral-50);
+    color-scheme: light;
+  }
+
+  .header > div {
     width: min(350px, 75%);
     height: 100dvh;
     padding: 0.5rem 1rem;
@@ -32,34 +54,33 @@ const popoverId = "nav-popover";
     background-color: var(--neutral-50);
     border-top-right-radius: var(--border-radius-out);
     border-bottom-right-radius: var(--border-radius-out);
-    color-scheme: light;
     transition:
       transform 0.3s ease-in-out,
       overlay 0.3s ease-in-out allow-discrete,
       display 0.3s ease-in-out allow-discrete;
   }
 
-  header > div::backdrop {
+  .header > div::backdrop {
     transition:
       background-color 0.3s ease-in-out,
       backdrop-filter 0.3s ease-in-out;
   }
 
-  header > div:popover-open {
+  .header > div:popover-open {
     transform: translateX(0);
   }
 
-  header > div:popover-open::backdrop {
+  .header > div:popover-open::backdrop {
     background-color: rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(4px);
   }
 
   @starting-style {
-    header > div:popover-open {
+    .header > div:popover-open {
       transform: translateX(-100%);
     }
 
-    header > div:popover-open::backdrop {
+    .header > div:popover-open::backdrop {
       background-color: rgba(0, 0, 0, 0);
       backdrop-filter: blur(0px);
     }
@@ -67,8 +88,28 @@ const popoverId = "nav-popover";
 </style>
 
 <style is:global>
-  header > div:popover-open + nav {
+  .header > div:popover-open + nav {
     transform: translateY(calc(-100% - 1rem));
+  }
+
+  .header.has-hero > nav > .menu__container > ul > li:first-child > .link::before {
+    left: 0;
+    width: 100%;
+  }
+
+  .header.has-hero {
+    animation: slideInDown 0.5s ease-in-out;
+  }
+
+  @keyframes slideInDown {
+    from {
+      transform: translateY(-700px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
   }
 </style>
 

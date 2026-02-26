@@ -1,7 +1,7 @@
 ---
 import Footer from "@components/layout/Footer.astro";
 import Header from "@components/layout/Header.astro";
-import Banner from "@components/sections/banner/Banner.astro";
+import Hero from "@components/sections/hero/Hero.astro";
 import ContactUs from "@components/sections/contact-us/ContactUs.astro";
 import FAQ from "@components/sections/faq/FAQ.astro";
 import Products from "@components/sections/products/Products.astro";
@@ -28,9 +28,9 @@ const bannerImages = [
       ))
     }
   </Fragment>
-  <Header />
+  <Header hasHero />
   <main>
-    <Banner />
+    <Hero />
     <Products />
     <FAQ />
     <ContactUs />
@@ -45,16 +45,22 @@ const bannerImages = [
     display: flex;
     flex-direction: column;
     gap: 4.5rem;
-    padding-block: 4.5rem;
-    width: min(100%, var(--max-width));
+    padding-bottom: 4.5rem;
+  }
+</style>
+
+<style is:global>
+  main > section:not(:first-child) {
+    margin: auto;
+    width: min(100%, calc(var(--max-width) + 2rem));
   }
 </style>
 
 <script>
-  import { createBannerObserver } from "@scripts/utils/observers";
+  import { createHeroObserver } from "@scripts/utils/observers";
 
-  const banner = document.querySelector("#banner") as HTMLElement;
-  const navbar = banner.querySelector("#navbar") as HTMLElement;
+  const hero = document.querySelector("#hero") as HTMLElement;
+  const header = document.querySelector("#header") as HTMLElement;
 
-  createBannerObserver(navbar).observe(banner);
+  createHeroObserver(header).observe(hero);
 </script>

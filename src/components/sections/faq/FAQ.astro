@@ -16,10 +16,10 @@ const pathname = Astro.url.pathname;
       >.
     </p>
   </header>
+  <div>
+    {faqs.map(({ question, answer }) => <FAQItem question={question} answer={answer} />)}
+  </div>
 </MainSection>
-<div>
-  {faqs.map(({ question, answer }) => <FAQItem question={question} answer={answer} />)}
-</div>
 
 <style>
   .faq > header {

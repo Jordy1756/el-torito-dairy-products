@@ -1,11 +1,11 @@
-export const createBannerObserver = (nav: HTMLElement): IntersectionObserver => {
+export const createHeroObserver = (header: HTMLElement): IntersectionObserver => {
   const options: IntersectionObserverInit = {
     root: null,
     rootMargin: "-1px",
     threshold: 0,
   };
 
-  return new IntersectionObserver(([entry]) => nav.classList.toggle("out__banner", !entry.isIntersecting), options);
+  return new IntersectionObserver(([entry]) => header.classList.toggle("outside-hero", !entry.isIntersecting), options);
 };
 
 export const createSectionObserver = (sectionId: string): IntersectionObserver => {
